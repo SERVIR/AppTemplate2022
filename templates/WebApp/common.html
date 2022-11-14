@@ -1,0 +1,88 @@
+{% load static %}
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <!-- Sidebar - Brand -->
+
+
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
+       <div class="sidebar-brand-icon rotate-n-15">
+                                    <img src="{% static 'images/logo.png' %}" width="50" height="50">
+
+                </div>
+                <div class="sidebar-brand-text mx-3">SERVIR App Template</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                  Maps
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{% url 'map1' %}">WMS Map</a></li>
+                  <li><a class="dropdown-item" href="{% url 'map2' %}">GEE map</a></li>
+              </ul>
+            </li>
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >
+
+                  Charts
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="{% url 'chart1' %}">NetCDF timeseries</a></li>
+                  <li><a class="dropdown-item" href="{% url 'chart2' %}">ClimateSERV timeseries</a></li>
+                  <li><a class="dropdown-item" href="{% url 'chart3' %}">SQLite timeseries</a></li>
+              </ul>
+            </li>
+
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>About</span></a>
+            </li>
+             <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'feedback' %}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Feedback</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+     <script src="{% static '/js/sidebar.js' %}"></script>
+

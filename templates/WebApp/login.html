@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>SERVIR AppTemplate</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static '/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -20,13 +20,18 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Custom styles for this template-->
-<link href="{% static '/css/sb-admin-2.css' %}" rel="stylesheet">
+<link href="{% static '/css/basic.css' %}" rel="stylesheet">
 
 </head>
+<body id="page-top">
+ <div id="wrapper">
+{% include "WebApp/common.html" %}
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-<body class="bg-gradient-primary">
-
-    <div class="container">
+            <!-- Main Content -->
+            <div id="content">
+                {% include "WebApp/topbar.html" %}
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -62,17 +67,7 @@
         </div>
 
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-{#    <script src="vendor/jquery/jquery.min.js"></script>#}
-{#    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>#}
-
-    <!-- Core plugin JavaScript-->
-{#    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>#}
-
-    <!-- Custom scripts for all pages-->
-{#    <script src="js/sb-admin-2.min.js"></script>#}
-
+        </div>
+ </div>
 </body>
-
 </html>

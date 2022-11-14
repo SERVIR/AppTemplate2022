@@ -18,10 +18,25 @@ from django.urls import path
 
 import SERVIR_AppTemplate
 import WebApp.views as views
+from WebApp import controllers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('home/', views.home, name='home'),
-    path('login/', views.login, name='login')
+    path('login/', views.login, name='login'),
+    path('map1/', views.map1, name='map1'),
+    path('map2/', views.map2, name='map2'),
+    path('chart1/', views.chart1, name='chart1'),
+
+    path('chart2/', views.chart2, name='chart2'),
+
+    path('chart3/', views.chart3, name='chart3'),
+    path('about/', views.about, name='about'),
+    path('feedback/', views.feedback, name='feedback'),
+    path('chart1/get-timeseries-netcdf/', controllers.get_timeseries_netcdf, name='get-timeseries-netcdf'),
+
+    path('chart2/get-timeseries-climateserv/', controllers.get_timeseries_climateserv, name='get-timeseries-climateserv'),
+    path('chart3/get-timeseries-sqlite/', controllers.get_timeseries_sqlite, name='get-timeseries-sqlite')  ,
+    path('map2/get-gee-layer/', controllers.get_gee_layer, name='get-gee-layer')
 ]

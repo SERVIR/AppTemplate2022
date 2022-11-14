@@ -3014,7 +3014,7 @@ input[type="button"].btn-block {
 }
 
 .dropdown-menu {
-  position: absolute;
+  position: relative;
   top: 100%;
   left: 0;
   z-index: 1000;
@@ -10119,6 +10119,12 @@ a:focus {
 
 .dropdown .dropdown-menu {
   font-size: 0.85rem;
+  position: relative;
+    left: 0;
+    z-index: 1;
+    top: 0;
+    -webkit-animation: none;
+    animation: none;
 }
 
 .dropdown .dropdown-menu .dropdown-header {

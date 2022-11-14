@@ -1,0 +1,13 @@
+#map,#map2{
+    width:100%;
+    height: 600px;
+}
+
+#dropdown-id {
+  position: relative;
+  left: 0;
+  z-index: 1;
+  top: 0;
+  -webkit-animation: none;
+  animation: none;
+}
