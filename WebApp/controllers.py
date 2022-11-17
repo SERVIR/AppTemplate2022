@@ -137,7 +137,7 @@ def get_timeseries_sqlite(request):
 
 @csrf_exempt
 def get_gee_layer(request):
-    service_account = 'template@genuine-polymer-167814.iam.gserviceaccount.com'
+    service_account = config.service_account
     credentials = ee.ServiceAccountCredentials(service_account, config.private_key_json)
     ee.Initialize(credentials)
     params = {'min': 258, 'max': 316, 'palette': ['1303ff', '42fff6', 'f3ff40', 'ff5d0f'], }

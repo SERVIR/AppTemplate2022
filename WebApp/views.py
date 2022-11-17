@@ -6,10 +6,6 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'WebApp/home.html', {})
 
-
-def login(request):
-    return render(request, 'WebApp/login.html', {})
-
 def map1(request):
     return render(request, 'WebApp/map1.html', {})
 

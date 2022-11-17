@@ -42,8 +42,10 @@
                   Maps
               </a>
               <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{% url 'map1' %}">WMS Map</a></li>
-                  <li><a class="dropdown-item" href="{% url 'map2' %}">GEE map</a></li>
+           <li><a class="dropdown-item" href="{% url 'map1' %}">WMS (fixed size)</a></li>
+
+            <li><a class="dropdown-item" href="{% url 'map2' %}">WMS (full page)</a></li>
+            <li><a class="dropdown-item" href="{% url 'map2' %}">GEE content</a></li>
               </ul>
             </li>
              <li class="nav-item dropdown">
@@ -85,4 +87,3 @@
         <!-- End of Sidebar -->
 
      <script src="{% static '/js/sidebar.js' %}"></script>
-
