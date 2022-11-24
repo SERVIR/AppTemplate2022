@@ -1,89 +1,124 @@
 {% load static %}
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- Sidebar - Brand -->
+
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <img src="{% static 'images/logo.png' %}" width="50" height="50">
+        </div>
+        <div class="sidebar-brand-text mx-3">SERVIR App Template</div>
+    </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+     <li class="nav-item">
+   	<div class="nav-link dropdownSideBar">
+	    <a role="button" href="#" class="dropdown-btn font_white navi_map">
+			Maps<i class="fa-solid fa-chevron-right"></i>
+		  </a>
+		<div class="dropdown-container" id="dropdown-menu">
+		    <a class="dropdown-item" href="{% url 'map1' %}">WMS (fixed size)</a>
+
+            <a class="dropdown-item" href="{% url 'map3' %}">WMS (full page)</a>
+            <a class="dropdown-item" href="{% url 'map2' %}">GEE content</a>
+		</div>
+	</div>
+    </li>
+        <li class="nav-item">
+   	<div class="nav-link dropdownSideBar">
+	    <a role="button" href="#" class="dropdown-btn font_white navi_chart">
+			Charts<i class="fa-solid fa-chevron-right"></i>
+		  </a>
+		<div class="dropdown-container" id="dropdown-menu">
+		  <a class="dropdown-item" href="{% url 'chart1' %}">NetCDF timeseries</a>
+          <a class="dropdown-item" href="{% url 'chart2' %}">ClimateSERV timeseries</a>
+          <a class="dropdown-item" href="{% url 'chart3' %}">SQLite timeseries</a>
+		</div>
+	</div>
+    </li>
 
 
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
-       <div class="sidebar-brand-icon rotate-n-15">
-                                    <img src="{% static 'images/logo.png' %}" width="50" height="50">
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>About</span></a>
+    </li>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'feedback' %}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Feedback</span></a>
+    </li>
 
-                </div>
-                <div class="sidebar-brand-text mx-3">SERVIR App Template</div>
-            </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>
+<!-- End of Sidebar -->
+<style>
+    .dropdown-btn{
+        border: none;
+        width: 100%;
+        color: rgba(255, 255, 255, 0.8);
+        padding-left: 15px;
+        {#background-color: #486edb;#}
+         transform: rotate(-45deg);
+    }
+     .dropdown-btn i{
+        margin-left: 100px;
+    }
+     .dropdown-btn:hover{
+        color: white;
+                 text-decoration: none;
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+    }
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+.rtoate180 {
+  transform: rotate(-270deg);
+}
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
+.dropdownSideBar.is-open .dropdown-btn:before {
+	transform: rotate(-360deg);
+	color: white;
+}
 
+.dropdownSideBar.is-open .font_white {
+	width: 100%;
+	color: white;
+}
+.dropdownSideBar.is-open .dropdown-container {
+	display: block;
 
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
-                  Maps
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-           <li><a class="dropdown-item" href="{% url 'map1' %}">WMS (fixed size)</a></li>
-
-            <li><a class="dropdown-item" href="{% url 'map2' %}">WMS (full page)</a></li>
-            <li><a class="dropdown-item" href="{% url 'map2' %}">GEE content</a></li>
-              </ul>
-            </li>
-             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >
-
-                  Charts
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{% url 'chart1' %}">NetCDF timeseries</a></li>
-                  <li><a class="dropdown-item" href="{% url 'chart2' %}">ClimateSERV timeseries</a></li>
-                  <li><a class="dropdown-item" href="{% url 'chart3' %}">SQLite timeseries</a></li>
-              </ul>
-            </li>
-
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>About</span></a>
-            </li>
-             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'feedback' %}">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Feedback</span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-
-
-        </ul>
-        <!-- End of Sidebar -->
-
-     <script src="{% static '/js/sidebar.js' %}"></script>
+}
+/* hidden by default, make the content shifts under the title */
+.dropdown-container {
+	display: none;
+	padding: 10px;
+    margin: 10px;
+    text-align: center;
+	background-color: white;
+border-radius: 5% / 25%;
+}
+.dropdown-container a {color: black; font-size: small; text-align: center; padding: 5px;}
+.dropdown-container a:hover {text-decoration: none;}
+</style>
+<script src="{% static '/js/sidebar.js' %}"></script>

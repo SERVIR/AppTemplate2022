@@ -10,6 +10,8 @@
     <meta name="author" content="">
     <!-- Custom fonts for this template-->
     <link href="{% static '/css/all.min.css' %}" rel="stylesheet" type="text/css">
+            <link rel = "icon" href ="{% static '/images/logo.png' %}" type = "image/png">
+
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -20,9 +22,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Custom styles for this template-->
 <link href="{% static '/css/basic.css' %}" rel="stylesheet">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="140425635617-nkebib8gikq31h7ju0o3qk27c3s681dd.apps.googleusercontent.com">
+<style>
 
+      .customGPlusSignIn {
+            cursor: pointer;
+        }
+
+        span {
+            font-family: serif;
+            font-weight: normal;
+        }
+
+        span.icon {
+            {#background: url('{% static "/app/btn_google_dark_normal.svg" %}') transparent 5px 50% no-repeat;#}
+            display: inline-block;
+            vertical-align: middle;
+            width: 48px;
+            height: 42px;
+        }
+
+        .buttonText {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 24px;
+            font-weight: bold;
+            /* Use the Roboto font that is loaded in the <head> */
+            font-family: 'Roboto', sans-serif;
+        }
+</style>
 </head>
 <body id="page-top">
  <div id="wrapper">
@@ -32,31 +59,7 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <h1>Project Title</h1>
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                         </li>
-                 <li class="nav-item">
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                </li>
-                    </ul>
-
-                </nav>
+                   {% include "WebApp/topbar.html" %}
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->

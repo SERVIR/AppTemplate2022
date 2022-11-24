@@ -32,6 +32,7 @@
     integrity="sha512-E0DKVahIg0p1UHR2Kf9NX7x7TUewJb30mxkxEm2qOYTVJObgsAGpEol9F6iK6oefCbkJiA4/i6fnTHzM6H1kEA=="
     crossorigin=""></script>
      <script src="{% static '/js/L.Control.Opacity.js' %}"></script>
+    <script src="{% static '/js/sidebar.js' %}"></script>
         <link href="{% static '/css/L.Control.Opacity.css' %}" rel="stylesheet" />
 
     <!-- Custom styles for this template-->
@@ -42,36 +43,61 @@
 </head>
 <body id="page-top">
  <div id="wrapper">
-{% include "WebApp/common.html" %}
-        <!-- Content Wrapper -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <img src="{% static 'images/logo.png' %}" width="50" height="50">
+        </div>
+        <div class="sidebar-brand-text mx-3">SERVIR App Template</div>
+    </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>About</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
                 {% include "WebApp/topbar.html" %}
- <div class="container-fluid">
 
-    <div class="row">
      <!-- Area Chart -->
-                           <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Map Viewer from WMS Service</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
+
                                     <link rel="stylesheet" href="{% static 'css/map1.css' %}">
 
-                                <div id="map"></div>
-                                <script src="{% static 'js/map1.js' %}"></script>
+                                <div id="map3"></div>
+                                <script src="{% static 'js/map3.js' %}"></script>
                                 </div>
-                            </div>
 
-                        </div>
-    </div>
-                    </div>
 
             </div>
         </div>

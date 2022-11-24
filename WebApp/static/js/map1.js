@@ -9,20 +9,40 @@ let streets = L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' 
 
 // create a satellite imagery layer
 let satellite = L.tileLayer( 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}' )
-var baseMaps = {
-    "OpenStreetMap": osm,
-  "Satellite": satellite
-};
-var layerControl = L.control.layers(baseMaps).addTo(map);
-
-  var wmsLayer = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
+   var wmsLayer = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
             layers: 'precipitation_amount',
             format: 'image/png',
             transparent: true,
             style: 'boxfill/apcp_surface',
       zIndex:200
         });
-wmsLayer.addTo(map);
+ let ms=L.esri.dynamicMapLayer({
+    url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
+  });
+var baseMaps = {
+    "OpenStreetMap": osm,
+  "Satellite": satellite,
+
+};
+var datamaps = {
+    "CHIRPS":wmsLayer,
+    "ESI":ms
+};
+
+ L.control.layers(baseMaps,datamaps).addTo(map);
+L.control
+    .opacity(datamaps, {
+        label: 'Layers Opacity',
+    })
+    .addTo(map);
+//   var wmsLayer = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
+//             layers: 'precipitation_amount',
+//             format: 'image/png',
+//             transparent: true,
+//             style: 'boxfill/apcp_surface',
+//       zIndex:200
+//         });
+// wmsLayer.addTo(map);
 // spinner.stop();
 
 // var geocoder = L.Control.geocoder({

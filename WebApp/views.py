@@ -9,9 +9,15 @@ def home(request):
 def map1(request):
     return render(request, 'WebApp/map1.html', {})
 
+def login(request):
+    return render(request, 'WebApp/login.html', {})
+
 
 def map2(request):
     return render(request, 'WebApp/map2.html', {})
+
+def map3(request):
+    return render(request, 'WebApp/map3.html', {})
 
 
 def chart1(request):
