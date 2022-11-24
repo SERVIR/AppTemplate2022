@@ -106,24 +106,24 @@ def get_timeseries_sqlite(request):
     ts_plot1 = []
     json_obj={}
     try:
-        conn = sqlite3.connect('Chinook.db')
+        conn = sqlite3.connect('db.sqlite3')
         cur = conn.cursor()
 
         cur1 = conn.cursor()
-        cur.execute("SELECT InvoiceDate,total FROM Invoice LIMIT 10")
-        cur1.execute("SELECT InvoiceDate,customerid FROM Invoice LIMIT 10")
+        cur.execute("SELECT measurement_date,measurement_temp FROM WebApp_measurement LIMIT 10")
+        cur1.execute("SELECT measurement_date,measurement_precip FROM WebApp_measurement LIMIT 10")
 
         rows = cur.fetchall()
         rows1 = cur1.fetchall()
 
 
         for row in rows:
-            dt = datetime.strptime(row[0], '%Y-%m-%d %H:%M:%S')
+            dt = datetime.strptime(row[0], '%Y-%m-%d')
             time_stamp = calendar.timegm(dt.timetuple()) * 1000
             val=row[1]
             ts_plot.append([time_stamp,float(val)])
         for row in rows1:
-            dt = datetime.strptime(row[0], '%Y-%m-%d %H:%M:%S')
+            dt = datetime.strptime(row[0], '%Y-%m-%d')
             time_stamp = calendar.timegm(dt.timetuple()) * 1000
             val = row[1]
 
