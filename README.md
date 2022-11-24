@@ -28,19 +28,19 @@ Please follow the instructions to set up the project
 
 ### Walkthrough
 
-####Home
+#### Home
 * Home page is the welcome page that has the hero image and information about the project. 
-####Maps
+#### Maps
 * There are three types of maps
   * WMS fixed size
   * WMS full page
   * GEE layers
-####Charts
+#### Charts
 * There are three types of charts
   * Chart from netCDF
   * Chart from data model
   * Chart from ClimateSERV API
-####About
+#### About
 * Information about the project, team and logos
-####Feedback
+#### Feedback
 * If a user wants to send comments to the owner of the website, he can do it using a google form that is provided here.
