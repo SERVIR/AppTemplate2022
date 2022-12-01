@@ -1,5 +1,26 @@
 
- var map = L.map('map').setView([42.35, -71.08], 3);
+ var map = L.map('map', {
+    fullscreenControl: true,
+    timeDimension: true,
+    timeDimensionOptions: {
+        timeInterval: "2015-09-01/2015-09-03",
+        period: "PT1H",
+        currentTime: Date.parse("2015-09-01T00:00:00Z")
+    },
+    timeDimensionControl: true,
+    timeDimensionControlOptions: {
+        autoPlay: false,
+        loopButton: true,
+        timeSteps: 1,
+        playReverseButton: true,
+        limitSliders: true,
+        playerOptions: {
+            buffer: 0,
+            transitionTime: 250,
+            loop: true,
+        }
+    },center: [42.35, -71.08], zoom: 3
+ });
 
 var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -35,6 +56,12 @@ L.control
         label: 'Layers Opacity',
     })
     .addTo(map);
+
+var testTimeLayer = L.timeDimension.layer.wms(wmsLayer, {
+    updateTimeDimension: true
+});
+testTimeLayer.addTo(map);
+
 //   var wmsLayer = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
 //             layers: 'precipitation_amount',
 //             format: 'image/png',
@@ -58,6 +85,6 @@ L.control
 //     ]).addTo(map);
 //     map.fitBounds(poly.getBounds());
 //   })
-//   .addTo(map);
+
 
 L.Control.geocoder().addTo(map);

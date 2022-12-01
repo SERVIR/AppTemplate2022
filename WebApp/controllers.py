@@ -14,6 +14,9 @@ import WebApp.config as config
 import climateserv.api
 import ee
 
+from WebApp.models import Organization
+
+
 @csrf_exempt
 def get_timeseries_netcdf(request):
     json_obj = {}
@@ -145,4 +148,37 @@ def get_gee_layer(request):
     image = collection.select('SoilMoist_S_tavg')
     imgId = image.getMapId(params)
     json_obj={"url":imgId['tile_fetcher'].url_format}
+    return JsonResponse(json_obj)
+
+
+@csrf_exempt
+def get_gee_user_layer(request):
+    service_account = config.service_account
+    credentials = ee.ServiceAccountCredentials(service_account, config.private_key_json)
+    ee.Initialize(credentials)
+    user_asset = ee.Image("projects/servir-sco-assets/assets/tmp_servir_cms/factors_t1/f2_pcp_x1k")
+    params = {'min': 258, 'max': 316, 'palette': ['1303ff', '42fff6', 'f3ff40', 'ff5d0f'], }
+    user_img = user_asset.getMapId(params)
+    json_obj={"url":user_img['tile_fetcher'].url_format}
+    return JsonResponse(json_obj)
+
+
+
+@csrf_exempt
+def update_record(request):
+    json_obj = {}
+    try:
+        if request.method == 'POST':
+            org_name = request.POST["org_name"]
+            org_id = request.POST["org_id"]
+            print(org_name)
+            print(org_id)
+            org = Organization.objects.get(organization_id=int(org_id))
+            org.organization_name = org_name
+            org.save()
+            json_obj = {"updated": "true"}
+    except:
+        json_obj = {"updated": "false"}
+    print(json_obj)
+
     return JsonResponse(json_obj)

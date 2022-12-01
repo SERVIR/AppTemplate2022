@@ -18,17 +18,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
     <!-- Custom styles for this template-->
 <link href="{% static '/css/basic.css' %}" rel="stylesheet">
+     <script src="{% static '/js/ajax_calls.js' %}"></script>
 
 </head>
 <body id="page-top">
@@ -40,65 +33,38 @@
             <!-- Main Content -->
             <div id="content">
                 {% include "WebApp/topbar.html" %}
+
  <div class="container-fluid">
 
     <div class="row">
 
 
-<form class="needs-validation" novalidate>
+<form class="needs-validation" id="updateForm" onsubmit="test();">
+
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationTooltip01">First name</label>
-      <input type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="Mark" required>
+      <label for="validationTooltip01">Organization Id</label>
+      <input type="text" class="form-control" id="orgId" placeholder="Enter Organization Id"  required>
       <div class="valid-tooltip">
         Looks good!
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationTooltip02">Last name</label>
-      <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" value="Otto" required>
+      <label for="validationTooltip02">Organization Name</label>
+      <input type="text" class="form-control" id="orgName" placeholder="Enter Organization Name" required>
       <div class="valid-tooltip">
         Looks good!
       </div>
     </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-        </div>
-        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
-        <div class="invalid-tooltip">
-          Please choose a unique and valid username.
-        </div>
-      </div>
-    </div>
+
+
   </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationTooltip03">City</label>
-      <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required>
-      <div class="invalid-tooltip">
-        Please provide a valid city.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationTooltip04">State</label>
-      <input type="text" class="form-control" id="validationTooltip04" placeholder="State" required>
-      <div class="invalid-tooltip">
-        Please provide a valid state.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationTooltip05">Zip</label>
-      <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
-      <div class="invalid-tooltip">
-        Please provide a valid zip.
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+
+  <button id="update_record" class="btn btn-primary">Submit form</button>
+
 </form>
+<script src="{% static '/js/update_record.js' %}"></script>
+
     </div>
  </div>
             </div>
