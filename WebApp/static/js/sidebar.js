@@ -95,3 +95,4 @@ dropdowns.forEach(el => {
  $(".navi_chart").click(function(){
     $(".navi_chart .fa-chevron-right").toggleClass("rtoate180");
   });
+
