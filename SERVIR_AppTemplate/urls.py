@@ -33,12 +33,9 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('login/', views.login, name='login'),
     path('feedback/', views.feedback, name='feedback'),
-    path('updates/', views.updates, name='updates'),
-    path('updates/update-record/', controllers.update_record, name='update-record'),
     path('chart1/get-timeseries-netcdf/', controllers.get_timeseries_netcdf, name='get-timeseries-netcdf'),
     path('chart2/get-timeseries-climateserv/', controllers.get_timeseries_climateserv, name='get-timeseries-climateserv'),
     path('chart3/get-timeseries-sqlite/', controllers.get_timeseries_sqlite, name='get-timeseries-sqlite'),
     path('map2/get-gee-layer/', controllers.get_gee_layer, name='get-gee-layer'),
-    path('map2/get-gee-user-layer/', controllers.get_gee_user_layer, name='get-gee-user-layer'),
     path('accounts/', include('allauth.urls')),
 ]

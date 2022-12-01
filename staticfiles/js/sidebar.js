@@ -52,46 +52,8 @@
     }, 1000, 'easeInOutExpo');
     e.preventDefault();
   });
-
+  $('.sub-btn').click(function(){
+       $(this).next('.sub-menu').slideToggle();
+       $(this).find('.dropdown').toggleClass('rotate');
+     });
 })(jQuery); // End of use strict
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-var indexOfSelectedElement = window.location.pathname;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    var dropdownContent = this.nextElementSibling;
-
-    Array.from(document.querySelectorAll('.dropdown-container')).forEach(el => {
-		//hide the nonclicked
-        if (el !== dropdownContent) {
-			el.style.display = 'none';
-		}
-    });
-    if (dropdownContent.style.display === "block")
-		dropdownContent.style.display = "none";
-    else
-		dropdownContent.style.display = "block";
-  });
-}
-//get the three Dropdowns
-
-const dropdowns = document.querySelectorAll(".dropdownSideBar");
-dropdowns.forEach(el => {
-	const button = el.querySelector(".dropdown-btn");
-	button.addEventListener("click", () => {
-		const caret = document.getElementById('caret');
-		// Close all
-		[...dropdowns].filter(x => x != el).forEach(el => el.classList.remove("is-open"));
-		// Toggle one
-		el.classList.toggle("is-open");
-
-  });
-});
- $
-  $(".navi_map").click(function(){
-    $(".navi_map .fa-chevron-right").toggleClass("rtoate180");
-  });
- $(".navi_chart").click(function(){
-    $(".navi_chart .fa-chevron-right").toggleClass("rtoate180");
-  });

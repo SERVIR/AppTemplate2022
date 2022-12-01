@@ -2,11 +2,6 @@ from django.shortcuts import render
 
 
 # Create your views here.
-from django.views import generic
-from django.views.decorators.csrf import csrf_exempt
-
-from WebApp.models import Measurement
-
 
 def home(request):
     return render(request, 'WebApp/home.html', {})
@@ -43,8 +38,3 @@ def about(request):
 
 def feedback(request):
     return render(request, 'WebApp/feedback.html', {})
-
-
-@csrf_exempt
-def updates(request):
-    return render(request, 'WebApp/updates.html', {})

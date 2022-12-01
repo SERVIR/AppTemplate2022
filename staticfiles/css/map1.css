@@ -3,6 +3,22 @@
     height: 600px;
 }
 
-#map3{
-    height:90%;
+.side-bar .menu{
+ width: 100%;
+ margin-top: 30px;
 }
+
+.side-bar .menu .item{
+ position: relative;
+ cursor: pointer;
+}
+
+.side-bar .menu .item a{
+ color: #fff;
+ font-size: 16px;
+ text-decoration: none;
+ display: block;
+ padding: 5px 30px;
+ line-height: 60px;
+}
+
