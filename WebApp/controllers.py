@@ -15,7 +15,10 @@ import climateserv.api
 import ee
 
 from WebApp.models import Organization
+import warnings
+from shapely.errors import ShapelyDeprecationWarning
 
+warnings.filterwarnings("ignore", category=ShapelyDeprecationWarning)
 
 @csrf_exempt
 def get_timeseries_netcdf(request):

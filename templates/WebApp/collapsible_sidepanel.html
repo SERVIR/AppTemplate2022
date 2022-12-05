@@ -1,0 +1,26 @@
+{% load static %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TVBG7FLSBK"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-TVBG7FLSBK');
+</script>
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <img src="{% static 'images/logo.png' %}" width="50" height="50">
+        </div>
+        <div class="sidebar-brand-text mx-3">SERVIR App Template</div>
+    </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+</ul>
+<script src="{% static '/js/sidebar.js' %}"></script>

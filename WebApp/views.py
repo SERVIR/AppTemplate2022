@@ -1,40 +1,36 @@
 from django.shortcuts import render
-
-
-# Create your views here.
-from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
-
-from WebApp.models import Measurement
-
 
 def home(request):
     return render(request, 'WebApp/home.html', {})
 
+
 def map1(request):
-    return render(request, 'WebApp/map1.html', {})
+    return render(request, 'WebApp/map_fixedsize.html', {})
+
 
 def login(request):
     return render(request, 'WebApp/login.html', {})
 
 
 def map2(request):
-    return render(request, 'WebApp/map2.html', {})
+    return render(request, 'WebApp/map_from_GEE.html', {})
+
 
 def map3(request):
-    return render(request, 'WebApp/map3.html', {})
+    return render(request, 'WebApp/map_fullscreen.html', {})
 
 
 def chart1(request):
-    return render(request, 'WebApp/chart1.html', {})
+    return render(request, 'WebApp/chart_from_netCDF.html', {})
 
 
 def chart2(request):
-    return render(request, 'WebApp/chart2.html', {})
+    return render(request, 'WebApp/chart_from_ClimateSERV.html', {})
 
 
 def chart3(request):
-    return render(request, 'WebApp/chart3.html', {})
+    return render(request, 'WebApp/chart_from_SQLite.html', {})
 
 
 def about(request):
@@ -47,4 +43,4 @@ def feedback(request):
 
 @csrf_exempt
 def updates(request):
-    return render(request, 'WebApp/updates.html', {})
+    return render(request, 'WebApp/update_datamodel.html', {})

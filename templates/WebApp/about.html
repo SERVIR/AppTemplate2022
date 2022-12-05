@@ -2,115 +2,103 @@
 <html lang="en">
 {% load static %}
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>SERVIR AppTemplate</title>
-        <link rel = "icon" href ="{% static '/images/logo.png' %}" type = "image/png">
-
-    <!-- Custom fonts for this template-->
+    <link rel="icon" href="{% static '/images/logo.png' %}" type="image/png">
     <link href="{% static '/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
-    <!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/data.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
+    <!-- Leaflet-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
           integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
             integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
-    <!-- Custom styles for this template-->
+    <!-- Custom styles-->
     <link href="{% static '/css/basic.css' %}" rel="stylesheet">
-
 </head>
 <body id="page-top">
-<div id="wrapper">
-    {% include "WebApp/common.html" %}
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-        <!-- Main Content -->
-        <div id="content">
-            {% include "WebApp/topbar.html" %}
-            <div class="container-fluid">
-
-                <div class="row">
-                     <div class="col-lg-12 mb-4">
-
-                            <!-- Illustrations -->
+    <div id="wrapper">
+        {% include "WebApp/common.html" %}
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                {% include "WebApp/topbar.html" %}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
                             <div class="card shadow mb-4">
-
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">About this project</h6>
                                 </div>
-
                                 <div class="card-body">
                                     <div class="text-center text-dark">
-The SERVIR Project, NASA, USAID and [Hub organization name] make no express or implied warranty of
-                    this [data/application/sofware] as to the merchantability or fitness for a particular purpose.
-                    Neither the US Government nor its contractors shall be liable for special, consequential or
-                    incidental damages attributed to this [data/application/sofware] .
+                                        The SERVIR Project, NASA, USAID and [Hub organization name] make no express or
+                                        implied warranty of
+                                        this [data/application/sofware] as to the merchantability or fitness for a
+                                        particular purpose.
+                                        Neither the US Government nor its contractors shall be liable for special,
+                                        consequential or
+                                        incidental damages attributed to this [data/application/sofware] .
                                     </div>
                                 </div>
                             </div>
-                     </div>
-                </div>
-
-
-
-                <hr>
-                 <div class="row">
-                              <div class="col-lg-12 mb-4">
-
-                            <!-- Illustrations -->
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
                             <div class="card shadow mb-4">
-
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Team</h6>
                                 </div>
-
                                 <div class="card-body text-center">
                                     <div>
-  <ul class="list-group list-group-horizontal">
-                           <li class="list-group-item"><div><img src="" alt="img1" class="img-thumbnail"><p>Team member 1</p></div></li>
-          <li class="list-group-item"><div><img src="" alt="img1" class="img-thumbnail"><p>Team member 2</p></div></li>
-          <li class="list-group-item"><div><img src="" alt="img1" class="img-thumbnail"><p>Team member 3</p></div></li>
-          <li class="list-group-item"><div><img src="" alt="img1" class="img-thumbnail"><p>Team member 4</p></div></li>  </ul>
-
+                                        <ul class="list-group list-group-horizontal">
+                                            <li class="list-group-item">
+                                                <div><img src="" alt="img1" class="img-thumbnail">
+                                                    <p>Team member 1</p></div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div><img src="" alt="img1" class="img-thumbnail">
+                                                    <p>Team member 2</p></div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div><img src="" alt="img1" class="img-thumbnail">
+                                                    <p>Team member 3</p></div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div><img src="" alt="img1" class="img-thumbnail">
+                                                    <p>Team member 4</p></div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                     </div>
-                 </div>
-            </div>
-        </div>
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-
-                    <img src="{% static 'images/nasa.png' %}" width="120" height="90" style="padding: 10px">
-                    <img src="{% static 'images/usaid.png' %}" width="120" height="90" style="padding: 10px">
-                    <img src="{% static 'images/SERVIR_flat_color.png' %}" width="120" height="90"
-                         style="padding: 10px">
-
-
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
-    </div>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
 
-</div>
+                        <img src="{% static 'images/nasa.png' %}" width="120" height="90" style="padding: 10px">
+                        <img src="{% static 'images/usaid.png' %}" width="120" height="90" style="padding: 10px">
+                        <img src="{% static 'images/SERVIR_flat_color.png' %}" width="120" height="90"
+                             style="padding: 10px">
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>

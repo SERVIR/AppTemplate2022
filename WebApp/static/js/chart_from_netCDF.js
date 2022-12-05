@@ -1,18 +1,18 @@
-let geom_data="";
+let geom_data = "";
 
-$("#selectFiles").change(function(event){
+$("#selectFiles").change(function (event) {
     var uploadedFile = event.target.files[0];
 
-     if(uploadedFile.type !== "application/json") {
+    if (uploadedFile.type !== "application/json") {
         alert("Wrong file type == " + uploadedFile.type);
         return false;
     }
 
     if (uploadedFile) {
         var readFile = new FileReader();
-        readFile.onload = function(e) {
+        readFile.onload = function (e) {
             var contents = e.target.result;
-            geom_data=contents;
+            geom_data = contents;
             get_chart();
         };
         readFile.readAsText(uploadedFile);

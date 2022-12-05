@@ -11286,3 +11286,11 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+#welcome_block{
+    margin: auto;
+    padding-top: 20px;
+}
+.dropdown-menu .topmenu{
+  top:150px;
+  z-index: 10000;
+}

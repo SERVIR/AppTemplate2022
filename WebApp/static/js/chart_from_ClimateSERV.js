@@ -1,17 +1,16 @@
-
-$("#selectFiles").change(function(event){
+$("#selectFiles").change(function (event) {
     var uploadedFile = event.target.files[0];
 
-     if(uploadedFile.type !== "application/json") {
+    if (uploadedFile.type !== "application/json") {
         alert("Wrong file type == " + uploadedFile.type);
         return false;
     }
 
     if (uploadedFile) {
         var readFile = new FileReader();
-        readFile.onload = function(e) {
+        readFile.onload = function (e) {
             var contents = e.target.result;
-            var geom_data=contents;
+            var geom_data = contents;
             get_chart(geom_data);
         };
         readFile.readAsText(uploadedFile);
@@ -23,24 +22,24 @@ $("#selectFiles").change(function(event){
 
 function get_chart(geom_data) {
     const xhr = ajax_call("get-timeseries-climateserv", {
-        "dataset": ["CHIRP","CHIRPS","IMERG"],
-        "operation":"Average",
+        "dataset": ["CHIRP", "CHIRPS", "IMERG"],
+        "operation": "Average",
         "startdate": "01/03/2018",
         "enddate": "01/10/2018",
         "interaction": "polygon",
         "geom_data": geom_data
     });
     xhr.done(function (result) {
-         let series =[];
-         let ds1="CHIRP";
-         let ds2="CHIRPS";
-         let ds3="IMERG";
-         let vals=result;
-            series=[{
-                data: vals[ds1],
-                name: ds1,
-                color: "blue"
-            },
+        let series = [];
+        let ds1 = "CHIRP";
+        let ds2 = "CHIRPS";
+        let ds3 = "IMERG";
+        let vals = result;
+        series = [{
+            data: vals[ds1],
+            name: ds1,
+            color: "blue"
+        },
             {
                 data: vals[ds2],
                 name: ds2,
@@ -58,7 +57,7 @@ function get_chart(geom_data) {
                 zoomType: 'x',
                 events: {
                     load: function () {
-                        var label = this.renderer.label( "Graph dates and times are in UTC time")
+                        var label = this.renderer.label("Graph dates and times are in UTC time")
                             .css({
                                 width: '400px',
                                 fontSize: '12px'

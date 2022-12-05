@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import json
 import os
 from pathlib import Path
+import  WebApp.config as config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-f = open(r'C:\Users\gtondapu\PycharmProjects\SERVIR_AppTemplate\data.json', )
+f = open(str(BASE_DIR) + '/data.json', )
 data = json.load(f)
 
 
