@@ -10466,6 +10466,8 @@ a:focus {
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   z-index: 1;
+  background: white;
+   border-right: 1px solid #4e73df;
 }
 
 .sidebar .sidebar-brand .sidebar-brand-icon i {
@@ -10474,6 +10476,7 @@ a:focus {
 
 .sidebar .sidebar-brand .sidebar-brand-text {
   display: none;
+  color: #4e73df;
 }
 
 .sidebar hr.sidebar-divider {

@@ -1,5 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from WebApp.forms import MeasurementForm
+from WebApp.models import Measurement
+
 
 def home(request):
     return render(request, 'WebApp/home.html', {})
@@ -43,4 +47,10 @@ def feedback(request):
 
 @csrf_exempt
 def updates(request):
-    return render(request, 'WebApp/update_datamodel.html', {})
+    context={}
+    form = MeasurementForm(request.POST)
+    context["form"]=form
+
+    return render(request, 'WebApp/update_datamodel.html', context)
+
+

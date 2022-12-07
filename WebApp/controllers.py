@@ -14,7 +14,7 @@ import WebApp.config as config
 import climateserv.api
 import ee
 
-from WebApp.models import Organization
+from WebApp.models import Organization, Station
 import warnings
 from shapely.errors import ShapelyDeprecationWarning
 
@@ -148,7 +148,7 @@ def get_gee_layer(request):
     ee.Initialize(credentials)
     params = {'min': 258, 'max': 316, 'palette': ['1303ff', '42fff6', 'f3ff40', 'ff5d0f'], }
     collection = ee.ImageCollection('NASA/GLDAS/V022/CLSM/G025/DA1D').filter(ee.Filter.date('2010-06-01', '2010-06-02'))
-    image = collection.select('SoilMoist_S_tavg')
+    image = collection.select('AvgSurfT_tavg')
     imgId = image.getMapId(params)
     json_obj={"url":imgId['tile_fetcher'].url_format}
     return JsonResponse(json_obj)
@@ -185,3 +185,6 @@ def update_record(request):
     print(json_obj)
 
     return JsonResponse(json_obj)
+
+
+

@@ -38,10 +38,10 @@
                 <div id="welcome_block">Welcome, {{ user.username }} !</div>
                 <p><a class="btn btn-outline-secondary btn-sm" href="/accounts/logout/">Log Out</a></p>
             {% else %}
-                <a class="btn btn-outline-dark" href="{% provider_login_url 'google' %}">
-                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
-                    Login with Google
+                <a href="{% provider_login_url 'google' %}">
+{#                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"#}
+{#                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>#}
+                    Login
                 </a>
             {% endif %}
         </li>
