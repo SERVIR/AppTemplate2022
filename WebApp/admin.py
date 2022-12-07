@@ -5,10 +5,6 @@ from WebApp.models import Station, Measurement, Organization
 from import_export.admin import ImportExportModelAdmin
 
 admin.site.site_header = "SERVIR Template App Administration"
-
-admin.site.register(Station)
-admin.site.register(Organization)
-
 class MeasurementAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('station', 'measurement_date', 'measurement_temp','measurement_precip')
     list_filter = ('station__station_name',)
