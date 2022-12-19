@@ -17,29 +17,33 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
         <div class="sidebar-brand-icon">
-            <img src="{% static 'images/Servir_Logo_Flat_Color_Stacked_Small.png' %}" width="70%">
+            <img src="{% static 'images/servir.jpg' %}" width="100px">
         </div>
     </a>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-    <!-- Nav Item - Dashboard -->
+    <!-- Nav Item - Dashboard 
     <li class="nav-item active">
         <a class="nav-link" href="{% url 'home' %}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
+    -->
     <!-- Divider -->
     <hr class="sidebar-divider">
-    <!-- Heading -->
+    <!-- Heading 
     <div class="sidebar-heading">
         Interface
     </div>
-    <!-- Divider -->
+    -->
+    <!-- Divider 
     <hr class="sidebar-divider">
+    -->
     <li class="nav-item">
         <div class="nav-link dropdownSideBar">
             <a role="button" href="#" class="dropdown-btn font_white navi_map">
-                Maps<i class="fa-solid fa-chevron-right"></i>
+                Maps
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
             <div class="dropdown-container" id="dropdown-menu">
                 <a class="dropdown-item" href="{% url 'map1' %}">WMS (fixed size)</a>
@@ -52,7 +56,8 @@
     <li class="nav-item">
         <div class="nav-link dropdownSideBar">
             <a role="button" href="#" class="dropdown-btn font_white navi_chart">
-                Charts<i class="fa-solid fa-chevron-right"></i>
+                Charts
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
             <div class="dropdown-container" id="dropdown-menu">
                 <a class="dropdown-item" href="{% url 'chart1' %}">NetCDF timeseries</a>
@@ -61,27 +66,23 @@
             </div>
         </div>
     </li>
+    <hr class="sidebar-divider">
 
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'about' %}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>About</span></a>
-    </li>
-    <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="{% url 'updates' %}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Update Model</span></a>
+            <i class="fas fa-fw fa-pencil"></i>
+            <span>Update Data</span></a>
     </li>
-    <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="{% url 'feedback' %}">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-comment"></i>
             <span>Feedback</span></a>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>About</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

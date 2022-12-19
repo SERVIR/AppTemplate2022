@@ -53,4 +53,20 @@ def updates(request):
 
     return render(request, 'WebApp/update_datamodel.html', context)
 
+""" @csrf_exempt
+def updates2(request):
+    context={}
+    form = MeasurementForm(request.POST)
+    context["form"]=form
+
+    if form.is_valid():
+        measurement_date = form.cleaned_data["measurement_date"]
+        measurement_temp = form.cleaned_data["measurement_temp"]
+        measurement_precip = form.cleaned_data["measurement_precip"]
+        stations = form.cleaned_data["stations"]
+        m = Measurement(measurement_date=measurement_date, measurement_temp=measurement_temp, measurement_precip=measurement_precip, stations=stations)
+        m.save()
+        return HttpResponseRedirect("/updates")
+
+    return render(request, 'WebApp/update_datamodel.html', context) """
 

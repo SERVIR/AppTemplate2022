@@ -46,6 +46,7 @@
                 {% include "WebApp/topbar.html" %}
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    
                     <!-- Page Heading -->
                     <div class="align-items-center justify-content-between">
                         <img class="img-fluid" src="{% static '/images/hero.jpg' %}">
@@ -53,6 +54,7 @@
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col-lg-12 mb-4">
+                            <br>
                             <!-- Illustrations -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -61,11 +63,30 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                     </div>
-                                    <p>This is a project about</p>
-                                    <p>This project helps</p>
+                                    <p>This web application shows typical implementations of common user interface requirements
+                                        in geospatial information delivery. You can customize this template according to
+                                        your specific application workflow, combining different functions, such as displayign 
+                                        maps and charts in the same page, or eliminating unnecesary functions.</p>
+                                    <p>This template app is created and maintanined by the SERVIR Science Coordination office.</p>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-left text-dark">
+                                        <strong>templates/WebApp/home.html</strong> contains the HTML code to modify 
+                                        the text and graphics in this page.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     </div>
 
                 </div>
@@ -76,9 +97,9 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
 
-                        <img src="{% static 'images/nasa.png' %}" width="120" height="90" style="padding: 10px">
-                        <img src="{% static 'images/usaid.png' %}" width="120" height="90" style="padding: 10px">
-                        <img src="{% static 'images/SERVIR_flat_color.png' %}" width="120" height="90"
+                        <img src="{% static 'images/NASA.jpg' %}" height="120" style="padding: 10px">
+                        <img src="{% static 'images/USAID.jpg' %}" height="120" style="padding: 10px">
+                        <img src="{% static 'images/SERVIR.jpg' %}" height="120"
                              style="padding: 10px">
                     </div>
                 </div>

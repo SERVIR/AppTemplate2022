@@ -30,26 +30,35 @@
         <div id="content">
             {% include "WebApp/topbar.html" %}
             <div class="container-fluid">
-                <div class="row">
 
-                    {% if user.is_authenticated %}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Add records to Measurements Table</h6>
+                    </div>
+                    <div class="card-body">
+                        {% if user.is_authenticated %}
                         {% block content %}
-                            <h2>Add New Measurement</h2>
                             <form method="POST">
                                 {% csrf_token %}
                                 {{ form.as_p }}
-                                <input type="submit" value="Submit">
+                                <input type="submit" value="Submit" class="btn btn-primary">
                             </form>
                         {% endblock %}
-                    {% else %}
-                        <div class="row">
-                            <div class="col-lg-12 mb-4">
-                                <div class="card-body text-center">
-                                    <h3>Please login and retry loading this page.</h3>
+                        {% else %}
+                            <div class="row">
+                                <div class="col-lg-12 mb-4">
+                                    <div class="card-body text-center">
+                                        <h3>Please login and retry loading this page.</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                    </div>
+                
+
+                <div class="row">
+
+
 
 
                     <script src="{% static '/js/update_datamodel.js' %}"></script>

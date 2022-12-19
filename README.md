@@ -1,16 +1,23 @@
 # About this Project
 
-The SERVIR Project, NASA, USAID and [Hub organization name] make no express or implied warranty of this [data/application/sofware] as to the merchantability or fitness for a particular purpose. Neither the US Government nor its contractors shall be liable for special, consequential or incidental damages attributed to this [data/application/sofware] .
+This repository is intended to be used as a base template to use for development of custom applications. 
+It contains several commonly used elements implemented in separate pages so that developers
+can remove or combine them to build interfaces addressing complex use-cases.
 
-### Prerequisites
+### Technology stack
+
+* Python 3.10
+* Django 4.1.3
+* Bootstrap 5.2.2
+* Google Earth Engine Python API ()
+
+### Google Earth Engine Authentication
 
 You need the following in order to set up this project.
 
 * Create credentials by following the steps in from https://docs.google.com/document/d/1jn3abOHUM5EpfrSipWUPYV-KhphzKVbGNGSLUBPGuHA/edit
     * You will need the key JSON file, client ID, client secret key and service account detaills
   
-* Python 3.10
-* Django 4.1.3
 * Install and authenticate earth engine using your google account and enable Earthengine API 
 
 ### Installation
@@ -44,3 +51,27 @@ Please follow the instructions to set up the project
 * Information about the project, team and logos
 #### Feedback
 * If a user wants to send comments to the owner of the website, he can do it using a google form that is provided here.
+#### Graphic design
+This application template is built using Bootstrap, based on [https://startbootstrap.com/theme/sb-admin-2](https://startbootstrap.com/theme/sb-admin-2)
+
+## Contact
+
+### Authors
+
+- [Githika Tondapu (NASA/USRA)](https://github.com/gtondapu)
+- [Francisco Delgado (NASA/USRA)](https://github.com/fdelgadosv)
+- [Lance Gilliland (NASA/JACOBS)](https://github.com/lgilliland)
+- [Billy Ashmall (NASA/USRA)](https://github.com/billyz313)
+
+## License and Distribution
+
+This application is built and maintained by SERVIR under the terms of the MIT License. See
+[LICENSE](https://github.com/SERVIR/AppTemplate2022/blob/master/license) for more information.
+
+## Privacy & Terms of Use
+
+This applications abides to all of SERVIR's privacy and terms of use as described
+at [https://servirglobal.net/Privacy-Terms-of-Use](https://servirglobal.net/Privacy-Terms-of-Use).
+
+## Disclaimer
+The SERVIR Project, NASA and USAID make no express or implied warranty of this application as to the merchantability or fitness for a particular purpose. Neither the US Government nor its contractors shall be liable for special, consequential or incidental damages attributed to this application.

@@ -32,52 +32,90 @@
             <!-- Main Content -->
             <div id="content">
                 {% include "WebApp/topbar.html" %}
+                <br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">About this project</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">About this application</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="text-center text-dark">
-                                        The SERVIR Project, NASA, USAID and [Hub organization name] make no express or
-                                        implied warranty of
-                                        this [data/application/sofware] as to the merchantability or fitness for a
-                                        particular purpose.
-                                        Neither the US Government nor its contractors shall be liable for special,
-                                        consequential or
-                                        incidental damages attributed to this [data/application/sofware] .
+                                    <div class="text-left text-dark">
+                                        <strong>Use this Placeholder to describe your application: </strong> Lorem ipsum dolor sit amet, 
+                                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+                                        mollit anim id est laborum.
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <hr>
                     <div class="row">
                         <div class="col-lg-12 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Team</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Team members</h6>
                                 </div>
                                 <div class="card-body text-center">
                                     <div class="row row-centered pos">
                                             <div class="col-sm-3">
-                                                <div><img src="" alt="img1" class="img-thumbnail">
+                                                <div><img src="{% static 'images/generic_profile.jpg' %}" alt="img1" class="img-thumbnail">
                                                     <p>Team member 1</p></div>
                                             </div>
                                             <div class="col-sm-3">
-                                                <div><img src="" alt="img1" class="img-thumbnail">
+                                                <div><img src="{% static 'images/generic_profile.jpg' %}" alt="img1" class="img-thumbnail">
                                                     <p>Team member 2</p></div>
                                             </div>
                                             <div class="col-sm-3">
-                                                <div><img src="" alt="img1" class="img-thumbnail">
+                                                <div><img src="{% static 'images/generic_profile.jpg' %}" alt="img1" class="img-thumbnail">
                                                     <p>Team member 3</p></div>
                                             </div>
                                             <div class="col-sm-3">
-                                                <div><img src="" alt="img1" class="img-thumbnail">
+                                                <div><img src="{% static 'images/generic_profile.jpg' %}" alt="img1" class="img-thumbnail">
                                                     <p>Team member 4</p></div>
                                             </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Disclaimer</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-left text-dark">
+                                        SERVIR's standard disclaimer is
+                                        <hr> 
+                                        <strong>SERVIR Program, NASA, USAID and SERVIR partner organizations
+                                        make no express or implied warranty of this application as to the 
+                                        merchantability or fitness for any particular purpose.
+                                        Neither the US Government nor its contractors shall be liable for 
+                                        special, consequential or incidental damages attributed to this application.</strong>
+                                        <hr>
+                                        Modify it to add other organizations that contributed to the 
+                                        development of this application as necessary.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-left text-dark">
+                                        <strong>templates/WebApp/about.html</strong> contains the HTML code to modify 
+                                        the text and graphics in this page.
                                     </div>
                                 </div>
                             </div>
@@ -88,10 +126,9 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-
-                        <img src="{% static 'images/nasa.png' %}" width="120" height="90" style="padding: 10px">
-                        <img src="{% static 'images/usaid.png' %}" width="120" height="90" style="padding: 10px">
-                        <img src="{% static 'images/SERVIR_flat_color.png' %}" width="120" height="90"
+                        <img src="{% static 'images/NASA.jpg' %}" height="120" style="padding: 10px">
+                        <img src="{% static 'images/USAID.jpg' %}" height="120" style="padding: 10px">
+                        <img src="{% static 'images/SERVIR.jpg' %}" height="120"
                              style="padding: 10px">
                     </div>
                 </div>

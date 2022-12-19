@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 # Organization model: This data model describes an organization that operates a monitoring station network
 class Organization(models.Model):
     organization_id = models.CharField(max_length=10, primary_key=True, help_text="Organization ID, usually the Accronym")
