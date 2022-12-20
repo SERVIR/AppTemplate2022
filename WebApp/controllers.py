@@ -10,7 +10,6 @@ import shapely as shapely
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from shapely.geometry import Polygon
-import WebApp.config as config
 import climateserv.api
 import ee
 
@@ -19,6 +18,11 @@ import warnings
 from shapely.errors import ShapelyDeprecationWarning
 
 warnings.filterwarnings("ignore", category=ShapelyDeprecationWarning)
+from pathlib import Path
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+f = open(str(BASE_DIR) + '/data.json', )
+data = json.load(f)
 
 @csrf_exempt
 def get_timeseries_netcdf(request):
@@ -40,7 +44,7 @@ def get_timeseries_netcdf(request):
         minx = float(bounds[1])
         maxy = float(bounds[2])
         maxx = float(bounds[3])
-        infile = os.path.join(config.DATA_DIR, platform, run_date) + ".nc"
+        infile = os.path.join(data['DATA_DIR'], platform, run_date) + ".nc"
         print(infile)
         nc_fid = netCDF4.Dataset(infile, 'r')
         lis_var = nc_fid.variables
@@ -143,8 +147,8 @@ def get_timeseries_sqlite(request):
 
 @csrf_exempt
 def get_gee_layer(request):
-    service_account = config.service_account
-    credentials = ee.ServiceAccountCredentials(service_account, config.private_key_json)
+    service_account = data['service_account']
+    credentials = ee.ServiceAccountCredentials(service_account, data['private_key_json'])
     ee.Initialize(credentials)
     params = {'min': 258, 'max': 316, 'palette': ['1303ff', '42fff6', 'f3ff40', 'ff5d0f'], }
     collection = ee.ImageCollection('NASA/GLDAS/V022/CLSM/G025/DA1D').filter(ee.Filter.date('2010-06-01', '2010-06-02'))
@@ -156,8 +160,8 @@ def get_gee_layer(request):
 
 @csrf_exempt
 def get_gee_user_layer(request):
-    service_account = config.service_account
-    credentials = ee.ServiceAccountCredentials(service_account, config.private_key_json)
+    service_account = data['service_account']
+    credentials = ee.ServiceAccountCredentials(service_account, data['private_key_json'])
     ee.Initialize(credentials)
     user_asset = ee.Image("projects/servir-sco-assets/assets/tmp_servir_cms/factors_t1/f2_pcp_x1k")
     params = {'min': 258, 'max': 316, 'palette': ['1303ff', '42fff6', 'f3ff40', 'ff5d0f'], }

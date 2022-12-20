@@ -25,26 +25,29 @@
             integrity="sha512-E0DKVahIg0p1UHR2Kf9NX7x7TUewJb30mxkxEm2qOYTVJObgsAGpEol9F6iK6oefCbkJiA4/i6fnTHzM6H1kEA=="
             crossorigin=""></script>
     <script src="{% static '/js/L.Control.Opacity.js' %}"></script>
-    <script src="{% static '/js/sidebar.js' %}"></script>
+    <script src="{% static '/js/home.js' %}"></script>
     <link href="{% static '/css/L.Control.Opacity.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <!-- Custom styles-->
     <link href="{% static '/css/basic.css' %}" rel="stylesheet">
 </head>
+
 <body id="page-top">
+
     <div id="wrapper">
-      {% include "WebApp/collapsible_sidepanel.html" %}
+
         <div id="content-wrapper" class="d-flex flex-column">
+
             <!-- Main Content -->
             <div id="content">
-                {% include "WebApp/topbar_with_menu.html" %}
+                {% include "WebApp/topbar.html" %}
                 <link rel="stylesheet" href="{% static 'css/map1.css' %}">
                 <div id="map3"></div>
                 <script src="{% static 'js/map_fullscreen.js' %}"></script>
             </div>
         </div>
     </div>
-    </div>
+
 </body>
 </html>

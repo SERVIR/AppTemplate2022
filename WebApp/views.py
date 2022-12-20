@@ -9,7 +9,7 @@ def home(request):
     return render(request, 'WebApp/home.html', {})
 
 
-def map1(request):
+def map_fixedSize(request):
     return render(request, 'WebApp/map_fixedsize.html', {})
 
 
@@ -17,23 +17,23 @@ def login(request):
     return render(request, 'WebApp/login.html', {})
 
 
-def map2(request):
+def map_fromGEE(request):
     return render(request, 'WebApp/map_from_GEE.html', {})
 
 
-def map3(request):
+def map_fullScreen(request):
     return render(request, 'WebApp/map_fullscreen.html', {})
 
 
-def chart1(request):
+def chart_fromNetcdf(request):
     return render(request, 'WebApp/chart_from_netCDF.html', {})
 
 
-def chart2(request):
+def chart_climateserv(request):
     return render(request, 'WebApp/chart_from_ClimateSERV.html', {})
 
 
-def chart3(request):
+def chart_sqlite(request):
     return render(request, 'WebApp/chart_from_SQLite.html', {})
 
 

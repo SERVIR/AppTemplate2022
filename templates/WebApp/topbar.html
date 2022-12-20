@@ -1,49 +1,112 @@
 {% load static %}
 {% load socialaccount %}
-<nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow mb-4">
-    <!-- Sidebar Toggle (Topbar) -->
-    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
+<div class="row bg-white">
+        <div class="col-lg-12 h-50">
+
+<div class="float-sm-start ml-5">
+    <a
+          class="align-items-center "
+          href="#"
+          id="navbarDropdownMenuAvatar"
+          role="button"
+
+        >
+            <img src="{% static "images/USAID.jpg" %}" width="110" height="50">
+    </a>
+    <a
+          class=" align-items-center"
+          href="#"
+          id="navbarDropdownMenuAvatar"
+          role="button"
+
+        >
+    <img src="{% static "images/NASA.jpg" %}" width="60" height="60">
+    </a>
+</div>
+<div class="float-sm-end mr-5">
+       <a
+          class="align-items-center"
+          href="#"
+          id="navbarDropdownMenuAvatar"
+          role="button"
+
+        >
+    <img src="{% static "images/SERVIR.jpg" %}" width="130" height="60"/>
+    </a>
+</div>
+        </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0c1a4e;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url "home" %}" style="margin-left: 5%">Geospatial App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <h1>Geospatial App</h1>
-    <!-- Topbar Navbar -->
-    <ul class="navbar-nav ml-auto">
-        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-        <li class="nav-item dropdown no-arrow d-sm-none">
-            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-            </a>
-            <!-- Dropdown - Messages -->
-            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                 aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small"
-                               placeholder="Search for..." aria-label="Search"
-                               aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </li>
-        <div class="topbar-divider d-none d-sm-block"></div>
-        <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+ <ul class="navbar-nav float-right" style="margin-left: 75%">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+      <li class="nav-item">
+                    <a class="nav-link" href="{% url 'feedback' %}">Feedback</a>
+                </li>
+                      <li class="nav-item dropdown">
+                              <!-- Nav Item - User Information -->
             {% if user.is_authenticated %}
-                <div id="welcome_block">Welcome, {{ user.username }} !</div>
-                <p><a class="btn btn-outline-secondary btn-sm" href="/accounts/logout/">Log Out</a></p>
+                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{{ user.username }} </a>
+                    <ul class="dropdown-menu" id="details">
+                        <li><a class="dropdown-item"  href="/accounts/logout/">Log Out</a></li>
+                    </ul>
             {% else %}
-                <a href="{% provider_login_url 'google' %}">
+                    <a class="nav-link" href="{% provider_login_url 'google' %}">
+                        Login
+                    </a>
+
+            {% endif %}
+                </li>
+            </ul>
+    </div>
+  </div>
+</nav>
+{##}
+{#<nav class="navbar navbar-expand navbar-light topbar static-top mb-4" style="background-color: #0c1a4e;color: white">#}
+{##}
+{##}
+{##}
+{#    <!-- Sidebar Toggle (Topbar) -->#}
+{#    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">#}
+{#        <i class="fa fa-bars"></i>#}
+{#    </button>#}
+{#    <h1>Geospatial App</h1>#}
+{#    <!-- Topbar Navbar -->#}
+{#    <ul class="navbar-nav ml-auto">#}
+{#        <!-- Nav Item - Search Dropdown (Visible Only XS) -->#}
+{#        <li class="nav-item dropdown no-arrow d-sm-none">#}
+{#            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"#}
+{#               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                <i class="fas fa-search fa-fw"></i>#}
+{#            </a>#}
+{##}
+{#        </li>#}
+{#        <div class="topbar-divider d-none d-sm-block"></div>#}
+{#        <!-- Nav Item - User Information -->#}
+{#        <li class="nav-item dropdown no-arrow">#}
+{#            {% if user.is_authenticated %}#}
+{#                <div id="welcome_block">Welcome, {{ user.username }} !</div>#}
+{#                <p><a class="btn btn-outline-secondary btn-sm" href="/accounts/logout/">Log Out</a></p>#}
+{#            {% else %}#}
+{#                <a href="{% provider_login_url 'google' %}">#}
 {#                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"#}
 {#                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>#}
-                    Login
-                </a>
-            {% endif %}
-        </li>
-    </ul>
-</nav>
+{#                    Login#}
+{#                </a>#}
+{#            {% endif %}#}
+{#        </li>#}
+{#    </ul>#}
+{#</nav>#}

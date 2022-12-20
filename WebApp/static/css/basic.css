@@ -11299,3 +11299,12 @@ body.sidebar-toggled footer.sticky-footer {
   top:30px;
   z-index:20000;
 }
+
+.layer {
+    background-color: hwb(58deg 18% 80% / 50%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
