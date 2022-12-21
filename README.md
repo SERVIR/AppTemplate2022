@@ -50,7 +50,7 @@ Please follow the instructions to set up the project
 #### About
 * Information about the project, team and logos
 #### Feedback
-* If a user wants to send comments to the owner of the website, he can do it using a google form that is provided here.
+* A sample google form is used to collect feedback information for the application. 
 #### Graphic design
 This application template is built using Bootstrap, based on [https://startbootstrap.com/theme/sb-admin-2](https://startbootstrap.com/theme/sb-admin-2)
 
@@ -74,4 +74,4 @@ This applications abides to all of SERVIR's privacy and terms of use as describe
 at [https://servirglobal.net/Privacy-Terms-of-Use](https://servirglobal.net/Privacy-Terms-of-Use).
 
 ## Disclaimer
-The SERVIR Project, NASA and USAID make no express or implied warranty of this application as to the merchantability or fitness for a particular purpose. Neither the US Government nor its contractors shall be liable for special, consequential or incidental damages attributed to this application.
+The SERVIR Program, NASA and USAID make no express or implied warranty of this application as to the merchantability or fitness for a particular purpose. Neither the US Government nor its contractors shall be liable for special, consequential or incidental damages attributed to this application.
