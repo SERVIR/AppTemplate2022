@@ -51,6 +51,25 @@
                                     <link rel="stylesheet" href="{% static 'css/map1.css' %}">
 
                                     <div id="map2"></div>
+                                     <div id="layer_manager_gee" class="ml-5 mr-5 mt-3 d-flex justify-content-around">
+                                        <p>GEE collection Image
+                                            <input id="coll" type="checkbox"/>
+                                        </p>
+
+                                        <div id="opacitySlider_coll">
+                                            <label>Opacity for GEE Image:</label>
+                                             <input id="opacity_collection" type="range" value="contrast" max="1.0" min="0" step="0.1"/>
+                                        </div>
+                                        <p>GEE User Asset
+                                            <input id="asset" type="checkbox"/>
+                                        </p>
+
+                                        <div id="opacitySlider_asset">
+                                             <label>Opacity for User Asset:</label>
+                                             <input id="opacity_userasset" type="range" value="contrast" max="1.0" min="0" step="0.1"/>
+                                        </div>
+{#                                        <button id="save_settings">Save</button>#}
+                                    </div>
                                     <script src="{% static 'js/map_from_GEE.js' %}"></script>
                                 </div>
                             </div>
