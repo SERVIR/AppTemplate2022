@@ -18,33 +18,58 @@ var datamaps = {
     "ImageCollection": gee_layer,
     "UserAsset": user_layer
 };
-ajax_call("get-gee-layer", {}).done(function (data) {
-    console.log(data['url']);
-    gee_layer = L.tileLayer(data['url'], {
-        zoom: 3
-    });
-    gee_layer.addTo(map);
-    //  layerControl.addOverlay(gee_layer, "gee");
-    datamaps.ImageCollection = gee_layer;
-    update_map();
-});
-ajax_call("get-gee-user-layer", {}).done(function (data) {
-    console.log(data['url']);
-    user_layer = L.tileLayer(data['url'], {
-        zoom: 3
-    });
-    //   layerControl.addOverlay(user_layer, "user");
-    datamaps.UserAsset = user_layer;
-    update_map();
+
+update_map();
+$("#coll").change(function() {
+    if(this.checked) {
+
+
+      ajax_call("get-gee-layer", {}).done(function (data) {
+          console.log(data['url']);
+          gee_layer = L.tileLayer(data['url'], {
+              zoom: 3
+          });
+          gee_layer.addTo(map);
+          //  layerControl.addOverlay(gee_layer, "gee");
+          // datamaps.ImageCollection = gee_layer;
+          // update_map();
+      });
+     }
 });
 
+$("#asset").change(function() {
+    if (this.checked) {
+
+        ajax_call("get-gee-user-layer", {}).done(function (data) {
+            console.log(data['url']);
+            user_layer = L.tileLayer(data['url'], {
+                zoom: 3
+            });user_layer.addTo(map);
+            //   layerControl.addOverlay(user_layer, "user");
+            // datamaps.UserAsset = user_layer;
+            // update_map();
+        });
+    }
+});
+
+$('#opacity_collection').change(function() {
+                gee_layer.setOpacity($(this).val());
+            });
+$('#opacity_userasset').change(function() {
+                user_layer.setOpacity($(this).val());
+            });
+
 function update_map() {
-    var layerControl = L.control.layers(baseMaps, datamaps).addTo(map);
-    L.control
-        .opacity(datamaps, {
-            label: 'Layers Opacity',
-        })
-        .addTo(map);
+    osm.addTo(map);
+
+  //  var layerControl = L.control.layers(baseMaps, datamaps).addTo(map);
+        var layerControl = L.control.layers(baseMaps).addTo(map);
+
+    // L.control
+    //     .opacity(datamaps, {
+    //         label: 'Layers Opacity',
+    //     })
+    //     .addTo(map);
     L.Control.geocoder().addTo(map);
 }
 

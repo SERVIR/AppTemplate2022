@@ -48,18 +48,15 @@ var datamaps = {
     "CHIRPS": wmsLayer,
     "ESI": ms
 };
+osm.addTo(map);
+ L.control.layers(baseMaps).addTo(map);
+// L.control
+//     .opacity(datamaps, {
+//         label: 'Layers Opacity',
+//     })
+//     .addTo(map);
 
-L.control.layers(baseMaps, datamaps).addTo(map);
-L.control
-    .opacity(datamaps, {
-        label: 'Layers Opacity',
-    })
-    .addTo(map);
 
-var testTimeLayer = L.timeDimension.layer.wms(wmsLayer, {
-    updateTimeDimension: true
-});
-testTimeLayer.addTo(map);
 
 //   var wmsLayer = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
 //             layers: 'precipitation_amount',
@@ -87,3 +84,50 @@ testTimeLayer.addTo(map);
 
 
 L.Control.geocoder().addTo(map);
+
+
+
+$( "#settings" ).click(function() {
+  $("#layer_manager").show();
+});
+
+$( "#save_settings" ).click(function() {
+       var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
+        layers: 'precipitation_amount',
+        transparency: 'true',
+        format: 'image/png',
+         style: 'boxfill/apcp_surface',
+        maxZoom: 21,
+        opacity: $("#opacity_chirps").val()
+    });
+
+
+  var testTimeLayer = L.timeDimension.layer.wms(chirps, {
+            updateTimeDimension: true
+        });
+     if ($("#chirps").is(':checked')){
+
+         chirps.addTo(map);
+
+       // testTimeLayer.addTo(map);
+ }
+     else{
+         map.remove(chirps);
+     }
+ if($("#esi").is(':checked')) {
+     let esi = L.esri.dynamicMapLayer({
+        url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
+         transparency: 'true',
+        format: 'image/png',
+         style: 'boxfill/apcp_surface',
+        maxZoom: 21,
+        opacity: $("#opacity_esi").val()
+    });
+
+
+        esi.addTo(map);
+
+ }
+
+
+});

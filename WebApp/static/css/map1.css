@@ -10,3 +10,16 @@
   top:30px;
   z-index:20000;
 }
+ #settings {
+  position: absolute;
+  top: 180px;
+  right: 20px;
+  padding: 10px;
+  z-index: 400;
+ }
+
+ /*#layer_manager{*/
+ /*position: relative;*/
+ /*   display: flex;*/
+ /*   justify-content: space-between;*/
+ /*}*/

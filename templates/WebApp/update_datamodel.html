@@ -23,7 +23,6 @@
 </head>
 <body id="page-top">
 <div id="wrapper">
-    {% include "WebApp/sidebar.html" %}
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
@@ -40,7 +39,11 @@
                         {% block content %}
                             <form method="POST">
                                 {% csrf_token %}
-                                {{ form.as_p }}
+
+                                <p> form.measurement_date }}</p>
+                                <p>{{ form.measurement_precip }}</p>
+                                <p>{{ form.measurement_temp }}</p>
+                                <p>{{ form.stations }}</p>
                                 <input type="submit" value="Submit" class="btn btn-primary">
                             </form>
                         {% endblock %}

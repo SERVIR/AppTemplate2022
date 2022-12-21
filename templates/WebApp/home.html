@@ -38,18 +38,164 @@
     </style>
 </head>
 <body id="page-top">
-    <div id="wrapper">
-        {% include "WebApp/sidebar.html" %}
-        <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
-            <div id="content">
-                {% include "WebApp/topbar.html" %}
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    
-                    <!-- Page Heading -->
-                    <div class="align-items-center justify-content-between">
-                        <img class="img-fluid" src="{% static '/images/hero.jpg' %}">
+<div id="wrapper">
+    {#        {% include "WebApp/sidebar.html" %}#}
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            {% include "WebApp/topbar.html" %}
+            <!-- Begin Page Content -->
+
+            <div class="align-items-center justify-content-between">
+                <div class="card" style="  background-color: black;opacity: 0.5;">
+                    <div>
+                    <img class="img-fluid" src="{% static '/images/hero.jpg' %}" style="height: 50vh;width: 100%;">
+                        <div class="layer">
+                        </div>
+                    <div class="card-img-overlay">
+                        <div class="text-center text-white" style="height: 30vh;align-items: center;margin: 12vh;">
+                            <p style="font-size:2vw; font-family: monospace; text-shadow: black 0.1em 0.1em 0.2em;">This web application shows typical
+                                implementations of common user interface requirements
+                                in geospatial information delivery. </p>
+                             <p style="font-size:1vw; font-family: monospace; text-shadow: black 0.1em 0.1em 0.2em;">
+                             This template app is created and maintanined by the SERVIR Science Coordination
+                                        office</p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="mt-4 form-outline">
+                    <input type="search" id="searchBox" class="form-control" placeholder="Search for the app here..."
+                           aria-label="Search"/>
+                </div>
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="app-card col-lg-3 mb-4" style="height: 50vh">
+                        <br>
+                        <!-- Illustrations -->
+                        <div class="card shadow mb-4 h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Map Fixed Size</h6>
+                            </div>
+                            <div class="card-body"
+                                 style="background: url({% static "images/cards/fixed.PNG" %});background-size: cover">
+                                <div class="text-center">
+                                    <a href="{% url 'map_fixedSize' %}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-card col-lg-3 mb-4" style="height: 50vh">
+                        <br>
+                        <!-- Illustrations -->
+                        <div class="card shadow mb-4  h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Map Fullscreen</h6>
+                            </div>
+                            <div class="card-body"
+                                 style="background: url({% static "images/cards/full.PNG" %});background-size: cover">
+                                <div class="text-center">
+                                    <a href="{% url 'map_fullScreen' %}" class="stretched-link"></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-card col-lg-3 mb-4" style="height: 50vh">
+                        <br>
+                        <!-- Illustrations -->
+                        <div class="card shadow mb-4  h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">GEE Map</h6>
+                            </div>
+                            <div class="card-body"
+                                 style="background: url({% static "images/cards/gee.PNG" %});background-size: cover">
+                                <div class="text-center">
+                                    <a href="{% url 'map_fromGEE' %}" class="stretched-link"></a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-card col-lg-3 mb-4" style="height: 50vh">
+                        <br>
+                        <!-- Illustrations -->
+                        <div class="card shadow mb-4  h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Chart from NetCDF</h6>
+                            </div>
+                            <div class="card-body"
+                                 style="background: url({% static "images/cards/netcdf.PNG" %});background-size: cover">
+                                <div class="text-center">
+                                    <a href="{% url 'chart_fromNetcdf' %}" class="stretched-link"></a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+{#                </div>#}
+{#                <div class="row">#}
+                    <div class="app-card col-lg-3 mb-4" style="height: 50vh">
+                        <br>
+                        <!-- Illustrations -->
+                        <div class="card shadow mb-4  h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Chart ClimateSERV</h6>
+                            </div>
+                            <div class="card-body"
+                                 style="background: url({% static "images/cards/cserv.PNG" %});background-size: cover">
+                                <div class="text-center">
+                                    <a href="{% url 'chart_climateserv' %}" class="stretched-link"></a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-card col-lg-3 mb-4" style="height: 50vh">
+                        <br>
+                        <!-- Illustrations -->
+                        <div class="card shadow mb-4   h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Chart Data Model</h6>
+                            </div>
+                            <div class="card-body"
+                                 style="background: url({% static "images/cards/dm.PNG" %});background-size: cover">
+                                <div class="text-center">
+                                    <a href="{% url 'chart_sqlite' %}" class="stretched-link"></a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-card col-lg-3 mb-4" style="height: 50vh">
+                        <br>
+                        <!-- Illustrations -->
+                        <div class="card shadow mb-4   h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Update Data Model</h6>
+                            </div>
+                            <div class="card-body"
+                                 style="background: url({% static "images/cards/update_dm.PNG" %});background-size: cover">
+                                <div class="text-center">
+                                    <a href="{% url 'updates' %}" class="stretched-link"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-card col-lg-3 mb-4 ">
+                        <br>
+
                     </div>
                     <!-- Content Row -->
                     <div class="row">
@@ -63,48 +209,39 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                     </div>
-                                    <p>This web application shows typical implementations of common user interface requirements
+                                    <p>This web application shows typical implementations of common user interface
+                                        requirements
                                         in geospatial information delivery. You can customize this template according to
-                                        your specific application workflow, combining different functions, such as displayign 
+                                        your specific application workflow, combining different functions, such as
+                                        displayign
                                         maps and charts in the same page, or eliminating unnecesary functions.</p>
-                                    <p>This template app is created and maintanined by the SERVIR Science Coordination office.</p>
+                                    <p>This template app is created and maintanined by the SERVIR Science Coordination
+                                        office.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                        <div class="col-lg-12 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-left text-dark">
-                                        <strong>templates/WebApp/home.html</strong> contains the HTML code to modify 
-                                        the text and graphics in this page.
+                            <div class="col-lg-12 mb-4">
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-left text-dark">
+                                            <strong>templates/WebApp/home.html</strong> contains the HTML code to modify
+                                            the text and graphics in this page.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     </div>
 
                 </div>
             </div>
             <!-- End of Main Content -->
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
 
-                        <img src="{% static 'images/NASA.jpg' %}" height="120" style="padding: 10px">
-                        <img src="{% static 'images/USAID.jpg' %}" height="120" style="padding: 10px">
-                        <img src="{% static 'images/SERVIR.jpg' %}" height="120"
-                             style="padding: 10px">
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->
     </div>
@@ -113,6 +250,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    <script src="{% static '/js/sidebar.js' %}"></script>
+    <script src="{% static '/js/home.js' %}"></script>
 </body>
 </html>

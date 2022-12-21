@@ -38,7 +38,7 @@
 </head>
 <body id="page-top">
     <div id="wrapper">
-        {% include "WebApp/sidebar.html" %}
+{#        {% include "WebApp/sidebar.html" %}#}
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -59,6 +59,27 @@
                                     <link rel="stylesheet" href="{% static 'css/map1.css' %}">
 
                                     <div id="map"></div>
+{#                                    <button id="settings"><i class="fa fa-cog" aria-hidden="true"></i></button>#}
+                                    <div id="layer_manager" class="ml-5 mr-5 mt-3 d-flex justify-content-around">
+                                        <p>CHIRPS Layer
+                                            <input id="chirps" type="checkbox"/>
+                                        </p>
+
+                                        <div id="opacitySlider_chirps">
+                                            <label>Opacity for CHIRPS:</label>
+                                             <input id="opacity_chirps" type="range" value="contrast" max="0.5" min="0" step="0.1"/>
+                                        </div>
+                                        <p>ESI Layer
+                                            <input id="esi" type="checkbox"/>
+                                        </p>
+
+                                        <div id="opacitySlider_esi">
+                                             <label>Opacity for ESI:</label>
+                                             <input id="opacity_esi" type="range" value="contrast" max="0.5" min="0" step="0.1"/>
+                                        </div>
+{#                                        <button id="save_settings">Save</button>#}
+                                    </div>
+
                                     <script src="{% static 'js/map_fixedsize.js' %}"></script>
                                 </div>
                             </div>
