@@ -49,7 +49,7 @@ var datamaps = {
     "ESI": ms
 };
 osm.addTo(map);
- L.control.layers(baseMaps).addTo(map);
+ // L.control.layers(baseMaps).addTo(map);
 // L.control
 //     .opacity(datamaps, {
 //         label: 'Layers Opacity',
@@ -131,3 +131,14 @@ $( "#save_settings" ).click(function() {
 
 
 });
+var control=L.control.layers(baseMaps).addTo(map);
+ var htmlObject = control.getContainer();
+
+var a = document.getElementById('basemaps_tab');
+
+ // Finally append that node to the new parent, recursively searching out and re-parenting nodes.
+ function setParent(el, newParent)
+ {
+    newParent.appendChild(el);
+ }
+ setParent(htmlObject, a);
