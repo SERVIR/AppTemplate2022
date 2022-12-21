@@ -4,3 +4,4 @@
             $(this).toggle($(this).find('h6').text().toLowerCase().indexOf(value) > -1)
         });
     });
+
