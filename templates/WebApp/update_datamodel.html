@@ -30,23 +30,41 @@
             {% include "WebApp/topbar.html" %}
             <div class="container-fluid">
 
-                <div class="card shadow mb-4">
+                <div class="card shadow mt-4 mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Add records to Measurements Table</h6>
                     </div>
                     <div class="card-body">
                         {% if user.is_authenticated %}
-                        {% block content %}
-                            <form method="POST">
-                                {% csrf_token %}
+                            {% block content %}
 
-                                <p> form.measurement_date }}</p>
-                                <p>{{ form.measurement_precip }}</p>
-                                <p>{{ form.measurement_temp }}</p>
-                                <p>{{ form.stations }}</p>
-                                <input type="submit" value="Submit" class="btn btn-primary">
-                            </form>
-                        {% endblock %}
+
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                    <div class="col-lg-6 col-sm-6 d-flex">
+                                       <div class="col-md-3 col-sm-3 d-inline"> {{ form.measurement_date.help_text }}</div>
+                                       <div class="col-md-3 col-sm-3 mb-2"> {{ form.measurement_date }}</div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 d-flex">
+                                        <div class="col-md-3 col-sm-3 d-inline">{{ form.measurement_precip.help_text }}</div>
+                                           <div class="col-md-3 col-sm-3 mb-2">{{ form.measurement_precip }}</div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 d-flex">
+                                        <div class="col-md-3 col-sm-3 d-inline">{{ form.measurement_temp.help_text }}</div>
+                                             <div class="col-md-3 col-sm-3 mb-2">{{ form.measurement_temp }}</div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 d-flex">
+                                         <div class="col-md-3 col-sm-3 d-inline">{{ form.stations.help_text }}</div>
+                                            <div class="col-md-3 col-sm-3 mb-2">{{ form.stations }}</div>
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-7 col-md-7 col-sm-12 d-table-cell" style="padding-left: 6vw">
+                                        <input class="form-control btn-primary" type="submit" value="Submit" class="btn btn-primary">
+                                    </div>
+
+                                </form>
+                            {% endblock %}
                         {% else %}
                             <div class="row">
                                 <div class="col-lg-12 mb-4">
@@ -66,11 +84,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="alert alert-info">
-                                    <strong>path/to/file.html</strong> contains the HTML code to modify 
+                                    <strong>templates\WebApp\update_datamodel.html</strong> contains the HTML code to modify
                                     the text and graphics in this page.<br>
-                                    <strong>path/to/form.py</strong> contains the form definition.
+                                    <strong>WebApp\forms.py</strong> contains the form definition.
                                     <br>
-                                    The code for this application is available <a href="https://github.com/SERVIR/AppTemplate2022">here</a>
+                                    The code for this application is available <a
+                                        href="https://github.com/SERVIR/AppTemplate2022">here</a>
                                 </div>
                             </div>
                         </div>

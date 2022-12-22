@@ -51,25 +51,64 @@
                                     <link rel="stylesheet" href="{% static 'css/map1.css' %}">
 
                                     <div id="map2"></div>
-                                     <div id="layer_manager_gee" class="ml-5 mr-5 mt-3 d-flex justify-content-around">
-                                        <p>GEE collection Image
-                                            <input id="coll" type="checkbox"/>
-                                        </p>
+                                   <div id="layer_manager_gee">
+                                    <div class="container mt-3">
+                                        <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="myTab1" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="active nav-link" id="layers-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#layers" type="button" role="tab"
+                                                        aria-controls="layers" aria-selected="true">Layers
+                                                </button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#basemaps_gee" type="button" role="tab"
+                                                        aria-controls="basemaps_gee" aria-selected="false"></i> Basemaps
+                                                </button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="legends_gee-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#legends_gee" type="button" role="tab"
+                                                        aria-controls="legends_gee" aria-selected="false"></i> Legends
+                                                </button>
+                                            </li>
 
-                                        <div id="opacitySlider_coll">
-                                            <label>Opacity for GEE Image:</label>
-                                             <input id="opacity_collection" type="range" value="contrast" max="1.0" min="0" step="0.1"/>
-                                        </div>
-                                        <p>GEE User Asset
-                                            <input id="asset" type="checkbox"/>
-                                        </p>
+                                        </ul>
+                                        <div class="border-grey bg-white p-3 tab-content">
+                                            <div class="tab-pane active" id="layers" role="tabpanel"
+                                                 aria-labelledby="layers-tab"><p><input class="form-check-input"
+                                                                                      id="collection" type="checkbox"/>
+                                                <label class="form-check-label" for="collection">Image Collection Layer</label>
 
-                                        <div id="opacitySlider_asset">
-                                             <label>Opacity for User Asset:</label>
-                                             <input id="opacity_userasset" type="range" value="contrast" max="1.0" min="0" step="0.1"/>
+                                            </p>
+
+                                                <input id="opacity_collection" type="range" value="contrast" max="0.5"
+                                                       min="0" step="0.1"/>
+                                                <a role="button" href=#" data-bs-toggle="popover" title="Image Collection"
+                                                   data-bs-trigger="hover focus" data-bs-content="Info about GEE Collection"><i
+                                                        class="fa-solid fa-circle-info ml-2"></i></a>
+
+                                                <p><input class="form-check-input" id="asset" type="checkbox"/>
+                                                    <label class="form-check-label" for="asset">User Asset Layer</label>
+
+                                                </p>
+
+                                                <input id="opacity_asset" type="range" value="contrast" max="0.5" min="0"
+                                                       step="0.1"/>
+                                                <a role="button" href=#" data-bs-toggle="popover"
+                                                   data-bs-trigger="hover focus" title="Asset"
+                                                   data-bs-content="Info about user asset"><i
+                                                        class="fa-solid fa-circle-info ml-2"></i></a>
+
+                                            </div>
+                                            <div class="tab-pane" id="basemaps_gee" role="tabpanel"
+                                                 aria-labelledby="basemaps_gee-tab"><p></p></div>
+                                            <div class="tab-pane" id="messages" role="tabpanel"
+                                                 aria-labelledby="legends_gee-tab"></div>
                                         </div>
-{#                                        <button id="save_settings">Save</button>#}
                                     </div>
+                                </div>
+
                                     <script src="{% static 'js/map_from_GEE.js' %}"></script>
                                 </div>
                             </div>
@@ -108,7 +147,7 @@
                                         <ul>
                                         <li><strong>templates/WebApp/map_from_GEE.html</strong> contains the HTML code to modify 
                                         the text and graphics in this page.</li>
-                                        <li><strong>staticfiles/js/map2.js</strong> controls the behavior of the map.</li>
+                                        <li><strong>staticfiles/js/map_from_GEE.js</strong> controls the behavior of the map.</li>
                                         <br>
                                         The code for this application is available <a href="https://github.com/SERVIR/AppTemplate2022">here</a>
                                         </ul>

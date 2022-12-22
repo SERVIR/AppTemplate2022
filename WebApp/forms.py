@@ -5,11 +5,12 @@ from WebApp.models import Measurement, Station, Organization
 # Measurement Form
 class MeasurementForm(forms.Form):
     # #
-    stations = forms.ModelChoiceField(label="Station", help_text="Select a station", queryset=Station.objects.all(), initial=Station.objects.first())
+    stations = forms.ModelChoiceField(label="Station", help_text="Select a station", queryset=Station.objects.all(), initial=Station.objects.first(),widget=widgets.Select(attrs={'class': 'form-control'}))
     measurement_date = forms.DateField(label="Date", help_text="Enter the observation date", 
-        widget=widgets.DateInput(attrs={'type': 'date'}))
-    measurement_temp = forms.FloatField(label="Temperature", help_text="Enter the temperature in Celsius")
-    measurement_precip = forms.FloatField(label="Precipitation", help_text="Enter the precipitation in mm")
+        widget=widgets.DateInput(attrs={'type': 'date','class':'form-control'}))
+    measurement_temp = forms.FloatField(label="Temperature", help_text="Enter the temperature in Celsius",widget=widgets.NumberInput(attrs={'class': 'form-control'}))
+    measurement_precip = forms.FloatField(label="Precipitation", help_text="Enter the precipitation in mm",widget=widgets.NumberInput(attrs={'class': 'form-control'}))
+
 
 """ # Station Form
 class StationForm(forms.Form):
