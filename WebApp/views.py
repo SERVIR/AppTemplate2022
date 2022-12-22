@@ -48,9 +48,11 @@ def feedback(request):
 @csrf_exempt
 def updates(request):
     context={}
-    member = Measurement(station_id=request.POST["stations"],measurement_date=request.POST["measurement_date"],measurement_temp=request.POST["measurement_temp"],measurement_precip=request.POST["measurement_precip"])
-    member.save()
-    context["form"]=MeasurementForm()
+    form=MeasurementForm(request.POST)
+    context["form"]=form
+    if form.is_valid():
+        member = Measurement(station_id=request.POST["stations"],measurement_date=request.POST["measurement_date"],measurement_temp=request.POST["measurement_temp"],measurement_precip=request.POST["measurement_precip"])
+        member.save()
 
     return render(request, 'WebApp/update_datamodel.html', context)
 
