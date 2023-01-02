@@ -4,5 +4,42 @@
 }
 
 #map3{
-    height:90%;
+    height:90vh;
+}
+ #charts,#maps,#details{
+  top:30px;
+  z-index:20000;
+}
+
+ #layer_manager, #layer_manager_gee {
+ width: 50vh;
+  position: absolute;
+  background: white;
+ top:12vh;
+  z-index: 400;
+  right: 3vh;
+     height: 40vh;
+     overflow-y: scroll;
+ }
+.nav-tabs .nav-item .nav-link.active {
+  color: #0080FF;
+}
+.nav-tabs .nav-item .nav-link {
+  color: gray;
+}
+
+#opacity_chirps ,#opacity_esi,#opacity_collection,#opacity_asset{
+accent-color:  #0c1a4e;
+    background: #e3e6f0;
+    width: 12vw;
+}
+.info_btn{
+      color: gray;
+}
+#layer-control-id{
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid gray;
+  background: none;
+  box-shadow: none;
 }

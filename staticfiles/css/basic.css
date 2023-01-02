@@ -562,6 +562,7 @@ pre code {
   .container, .container-sm {
     max-width: 540px;
   }
+
 }
 
 @media (min-width: 768px) {
@@ -9901,8 +9902,8 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #4e73df;
-  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  background-color: #0c1a4e;
+  background-image: linear-gradient(180deg, #122750 10%, #0c193d 100%);
   background-size: cover;
 }
 
@@ -10465,6 +10466,8 @@ a:focus {
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   z-index: 1;
+  background: white;
+   border-right: 1px solid #4e73df;
 }
 
 .sidebar .sidebar-brand .sidebar-brand-icon i {
@@ -10473,6 +10476,7 @@ a:focus {
 
 .sidebar .sidebar-brand .sidebar-brand-text {
   display: none;
+  color: #4e73df;
 }
 
 .sidebar hr.sidebar-divider {
@@ -11290,7 +11294,17 @@ body.sidebar-toggled footer.sticky-footer {
     margin: auto;
     padding-top: 20px;
 }
-.dropdown-menu .topmenu{
-  top:150px;
-  z-index: 10000;
+
+.dropdown-menu .test{
+  top:30px;
+  z-index:20000;
+}
+
+.layer {
+    background-color: hwb(58deg 18% 80% / 50%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
