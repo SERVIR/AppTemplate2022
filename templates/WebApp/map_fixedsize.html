@@ -34,6 +34,7 @@
     <link href="{% static '/css/L.Control.Opacity.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.5/leaflet-search.src.js" integrity="sha512-PDM7dpetuBcPp2fV/ZyCj9BGV8ybPchsrSzQqVZ3WoM8YcxEa2lAj0n1+4MCRzgsEROmVTwQXGw0IrXCCgH+/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/leaflet-providers.js' %}"></script>
     <!-- Custom styles-->
     <link href="{% static '/css/basic.css' %}" rel="stylesheet">
@@ -79,9 +80,15 @@
                                                 </button>
                                             </li>
                                             <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="messages-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#messages" type="button" role="tab"
-                                                        aria-controls="messages" aria-selected="false"></i> Legends
+                                                <button class="nav-link" id="legends-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#legends" type="button" role="tab"
+                                                        aria-controls="legends" aria-selected="false"></i> Legends
+                                                </button>
+                                            </li>
+                                             <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="location-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#location" type="button" role="tab"
+                                                        aria-controls="messages" aria-selected="false"></i> Location
                                                 </button>
                                             </li>
 
@@ -97,8 +104,8 @@
                                                 <input id="opacity_chirps" type="range" value="contrast" max="0.5"
                                                        min="0" step="0.1"/>
                                                 <a role="button" href=#" data-bs-toggle="popover" title="CHIRPS"
-                                                   data-bs-trigger="hover focus" data-bs-content="Info about chirps"><i
-                                                        class="fa-solid fa-circle-info ml-2"></i></a>
+                                                   data-bs-trigger="focus" data-bs-content="Info about chirps"><i
+                                                        class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
 
                                                 <p><input class="form-check-input" id="esi" type="checkbox"/>
                                                     <label class="form-check-label" for="esi">ESI Layer</label>
@@ -108,15 +115,50 @@
                                                 <input id="opacity_esi" type="range" value="contrast" max="0.5" min="0"
                                                        step="0.1"/>
                                                 <a role="button" href=#" data-bs-toggle="popover"
-                                                   data-bs-trigger="hover focus" title="ESI"
+                                                   data-bs-trigger="focus" title="ESI"
                                                    data-bs-content="Info about esi"><i
-                                                        class="fa-solid fa-circle-info ml-2"></i></a>
+                                                        class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
 
                                             </div>
                                             <div class="tab-pane" id="basemaps" role="tabpanel"
-                                                 aria-labelledby="profile-tab"><p></p></div>
-                                            <div class="tab-pane" id="messages" role="tabpanel"
-                                                 aria-labelledby="messages-tab"></div>
+                                                 aria-labelledby="profile-tab">
+                                                <div class="card-body text-center">
+                                                    <div class="row row-centered pos">
+                                                            <div class="col-sm-6">
+                                                                <a id="osm" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/osm.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>OSM</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a id="topo" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/topo.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>TOPO</p></a>
+                                                            </div>
+                                                              <div class="col-sm-6">
+                                                                <a id="gsatellite" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>GOOGLE</p></a>
+                                                            </div>
+                                                                <div class="col-sm-6">
+                                                                <a id="bathymetry" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/bath.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>BATHYMETRY</p></a>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <a id="satellite" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/satellite.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>SATELLITE</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a id="terrain" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/terrain.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>TERRAIN</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a id="delorme" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/delorme.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>DELORME</p></a>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="legends" role="tabpanel"
+                                                 aria-labelledby="legends-tab">This tab is under construction</div>
+                                            <div class="tab-pane" id="location" role="tabpanel"
+                                                 aria-labelledby="location-tab"><p>Enter location name and hit Enter to recenter the map</p></div>
                                         </div>
                                     </div>
                                 </div>

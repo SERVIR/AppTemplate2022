@@ -80,7 +80,7 @@ var baseMaps = {
 
 };
 
-var control = L.control.layers(baseMaps, null, {collapsed: false}).addTo(map);
+var control = L.control.layers(baseMaps, null, {collapsed: false});
 var a = document.getElementById('basemaps_gee');
 
 var htmlObject = control.getContainer();

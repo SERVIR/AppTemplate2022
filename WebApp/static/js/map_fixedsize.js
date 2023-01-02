@@ -81,9 +81,6 @@ osm.addTo(map);
 //   })
 
 
-L.Control.geocoder().addTo(map);
-
-
 var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
     layers: 'precipitation_amount',
     transparency: 'true',
@@ -105,36 +102,36 @@ let esi = L.esri.dynamicMapLayer({
 var testTimeLayer = L.timeDimension.layer.wms(chirps, {
     updateTimeDimension: true
 });
-$("#chirps").change(function() {
+$("#chirps").change(function () {
     if (this.checked) {
         // chirps.addTo(map);
 
         testTimeLayer.addTo(map);
-    }
-    else{
+        testTimeLayer.bringToFront();
+    } else {
         testTimeLayer.remove();
     }
 });
 
-$("#esi").change(function() {
+$("#esi").change(function () {
     if (this.checked) {
 
 
         esi.addTo(map);
+        esi.bringToFront();
 
-    }
-    else{
+    } else {
         esi.remove();
     }
 });
 
-$('#opacity_chirps').change(function() {
-                testTimeLayer.setOpacity($(this).val());
-            });
+$('#opacity_chirps').change(function () {
+    testTimeLayer.setOpacity($(this).val());
+});
 
-$('#opacity_esi').change(function() {
-                esi.setOpacity($(this).val());
-            });
+$('#opacity_esi').change(function () {
+    esi.setOpacity($(this).val());
+});
 
 var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     maxZoom: 17,
@@ -148,15 +145,149 @@ var baseMaps = {
     "OpenTopoMap": OpenTopoMap
 
 };
-
-var control = L.control.layers(baseMaps, null, {collapsed: false}).addTo(map);
-var a = document.getElementById('basemaps');
-
-var htmlObject = control.getContainer();
+//
+// var control = L.control.layers(baseMaps, null, {collapsed: false}).addTo(map);
+// var a = document.getElementById('basemaps');
+//
+// var htmlObject = control.getContainer();
 
 // Finally append that node to the new parent, recursively searching out and re-parenting nodes.
 function setParent(el, newParent) {
     newParent.appendChild(el);
 }
 
+// setParent(htmlObject, a);
+
+var control1 = L.Control.geocoder({collapsed: false});
+
+control1.addTo(map);
+
+
+let layerControlDiv = control1.getContainer();
+
+// you can set an id for it if you want to use it to override the CSS later
+layerControlDiv.setAttribute("id", "layer-control-id");
+
+let layerControlParentLayer = L.control({
+    position: "topright"
+});
+layerControlParentLayer.onAdd = function (map) {
+    // Create the main div that will hold all your elements
+    let parentDiv = L.DomUtil.create("a");
+
+    // you can set an id for it if you want to use it for CSS
+    parentDiv.setAttribute("id", "layer-control-parent-id");
+    parentDiv.appendChild(layerControlDiv);
+    L.DomEvent.disableClickPropagation(parentDiv);
+    return parentDiv;
+};
+// add the Layer to the map
+layerControlParentLayer.addTo(map);
+var htmlObject = layerControlParentLayer.getContainer();
+var a = document.getElementById('location');
 setParent(htmlObject, a);
+var bathymetryLayer = L.tileLayer.wms(
+    "https://ows.emodnet-bathymetry.eu/wms",
+    {
+        layers: "emodnet:mean_atlas_land",
+        format: "image/png",
+        transparent: true,
+        attribution: "EMODnet Bathymetry",
+        opacity: 0.8,
+    }
+);
+var coastlinesLayer = L.tileLayer.wms(
+    "https://ows.emodnet-bathymetry.eu/wms",
+    {
+        layers: "coastlines",
+        format: "image/png",
+        transparent: true,
+        attribution: "EMODnet Bathymetry",
+        opacity: 0.8,
+    }
+);
+var bathymetryGroupLayer = L.layerGroup([bathymetryLayer, coastlinesLayer]);
+var terrainLayer = L.tileLayer(
+    "https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}",
+    {
+        attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        minZoom: 0,
+        maxZoom: 22,
+        subdomains: 'abcd',
+        accessToken: 'rU9sOZqw2vhWdd1iYYIFqXxstyXPNKIp9UKC1s8NQkl9epmf0YpFF8a2HX1sNMBM',
+        opacity: 1,
+        thumb: "img/terrain.png",
+        displayName: "Terrain",
+    }
+);
+var deLormeLayer = L.tileLayer.wms(
+    "https://server.arcgisonline.com/arcgis/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}",
+    {
+        format: "image/png",
+        transparent: true,
+        attribution:
+            'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+            'rest/services/Reference/Specialty/DeLorme_World_Base_Map/MapServer">ArcGIS</a>',
+        opacity: 1,
+        thumb: "img/delorme.png",
+        displayName: "DeLorme",
+    }
+);
+var gSatLayer = L.tileLayer(
+    "https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+    {
+        format: "image/png",
+        transparent: true,
+        attribution:
+            'Tiles © Map data ©2019 Google',
+        opacity: 1,
+        thumb: "img/gsatellite.png",
+        displayName: "Google Satellite",
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+    }
+);
+
+removeLayers = function () {
+    satellite.remove();
+    osm.remove();
+    OpenTopoMap.remove();
+    bathymetryGroupLayer.remove();
+    terrainLayer.remove();
+    deLormeLayer.remove();
+    gSatLayer.remove();
+}
+
+add_basemap = function (map_name) {
+    removeLayers();
+
+    switch (map_name) {
+        case "osm":
+
+            osm.addTo(map);
+            // osm.bringToFront();
+
+            break;
+        case "delorme":
+            deLormeLayer.addTo(map);
+            break;
+        case "satellite":
+            satellite.addTo(map);
+            break;
+
+        case "terrain":
+            terrainLayer.addTo(map);
+            break;
+        case "topo":
+            OpenTopoMap.addTo(map);
+            break;
+        case "bathymetry":
+            bathymetryGroupLayer.addTo(map);
+            break;
+        case "gsatellite":
+            gSatLayer.addTo(map);
+            break;
+        default:
+            osm.addTo(map);
+
+    }
+}

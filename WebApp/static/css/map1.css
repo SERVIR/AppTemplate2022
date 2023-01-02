@@ -12,7 +12,7 @@
 }
 
  #layer_manager, #layer_manager_gee {
- width: 45vh;
+ width: 50vh;
   position: absolute;
   background: white;
  top:12vh;
@@ -29,6 +29,17 @@
 }
 
 #opacity_chirps ,#opacity_esi,#opacity_collection,#opacity_asset{
-accent-color:  #0080FF;
-    background: #96dbe4;
+accent-color:  #0c1a4e;
+    background: #e3e6f0;
+    width: 12vw;
+}
+.info_btn{
+      color: gray;
+}
+#layer-control-id{
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid gray;
+  background: none;
+  box-shadow: none;
 }
