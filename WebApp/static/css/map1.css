@@ -24,6 +24,9 @@
      /*overflow-y: scroll;*/
 
  }
+  #layer_manager1{
+       width: 60vh;
+  }
 .nav-tabs .nav-item .nav-link.active {
   color: #0080FF;
 }
@@ -55,6 +58,7 @@ accent-color:  #0c1a4e;
   box-shadow: none;
     width: 20vh;
     font-size: small;
+    position: absolute;
     display: contents;
 }
 #layer-control-parent-id-full{
@@ -74,4 +78,9 @@ accent-color:  #0c1a4e;
 }
 .leaflet-control-geocoder .leaflet-control-geocoder-alternatives a {
 font-size: medium;
+    color: black;
+}
+.leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
+position: inherit;
+    line-height: 2;
 }
