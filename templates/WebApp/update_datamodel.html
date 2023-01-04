@@ -41,29 +41,27 @@
 
                                 <form method="POST" action="">
                                     {% csrf_token %}
-                                    <div class="col-lg-6 col-md-6 d-flex">
-                                         <div class="col-md-3 col-sm-3 d-inline">{{ form.stations.help_text }}</div>
-                                            <div class="col-md-3 col-sm-3 mb-2">{{ form.stations }}</div>
+                                    <div class="mb-3">
+                                        <label class="form-label">{{ form.stations.help_text }}</label>
+                                        {{ form.stations }}
                                     </div>
-                                    <div class="col-lg-6 col-sm-6 d-flex">
-                                       <div class="col-md-3 col-sm-3 d-inline"> {{ form.measurement_date.help_text }}</div>
-                                       <div class="col-md-3 col-sm-3 mb-2"> {{ form.measurement_date }}</div>
+                                    <div class="mb-3">
+                                       <label class="form-label"> {{ form.measurement_date.help_text }}</label>
+                                       {{ form.measurement_date }}
                                     </div>
-                                    <div class="col-lg-6 col-md-6 d-flex">
-                                        <div class="col-md-3 col-sm-3 d-inline">{{ form.measurement_precip.help_text }}</div>
-                                           <div class="col-md-3 col-sm-3 mb-2">{{ form.measurement_precip }}</div>
+                                    <div class="mb-3">
+                                        <label class="form-label">{{ form.measurement_precip.help_text }}</label>
+                                        {{ form.measurement_precip }}
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 d-flex">
-                                        <div class="col-md-3 col-sm-3 d-inline">{{ form.measurement_temp.help_text }}</div>
-                                             <div class="col-md-3 col-sm-3 mb-2">{{ form.measurement_temp }}</div>
+                                    <div class="mb-3">
+                                        <label class="form-label">{{ form.measurement_temp.help_text }}</label>
+                                        {{ form.measurement_temp }}
                                     </div>
 
                                     <br>
-                                    <div class="col-lg-7 col-md-7 col-sm-12 d-table-cell" style="padding-left: 6vw">
-                                        <input class="form-control btn-primary" type="submit" value="Submit" class="btn btn-primary">
-                                    </div>
-
+                                    <input type="submit" value="Submit" class="btn btn-primary">
+                                    
                                 </form>
                             {% endblock %}
                         {% else %}
