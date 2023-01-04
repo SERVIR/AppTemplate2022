@@ -46,4 +46,20 @@ accent-color:  #0c1a4e;
   box-shadow: none;
     width: 50vh;
 }
+#layer-control-id-full{
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid gray;
+  background: none;
+  box-shadow: none;
+    width: 20vh;
+    font-size: small;
+    display: flex;
+}
+#layer-control-parent-id-full{
+    padding: 0px;
+}
 
+#location_full{
+    display: flow-root;
+}
