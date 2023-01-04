@@ -2,207 +2,106 @@
 <html>
 {% load static %}
 
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Snippet - BBBootstrap</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SERVIR AppTemplate</title>
+    <!-- Custom fonts-->
+    <link href="{% static '/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <!-- Bootstrap-->
 
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Leaflet-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+          integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+            integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <script src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js"
+            integrity="sha512-E0DKVahIg0p1UHR2Kf9NX7x7TUewJb30mxkxEm2qOYTVJObgsAGpEol9F6iK6oefCbkJiA4/i6fnTHzM6H1kEA=="
+            crossorigin=""></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="{% static '/js/L.Control.Opacity.js' %}"></script>
+    <link href="{% static '/css/L.Control.Opacity.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.5/leaflet-search.src.js"
+            integrity="sha512-PDM7dpetuBcPp2fV/ZyCj9BGV8ybPchsrSzQqVZ3WoM8YcxEa2lAj0n1+4MCRzgsEROmVTwQXGw0IrXCCgH+/Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'js/leaflet-providers.js' %}"></script>
+    <!-- Custom styles-->
+    <link href="{% static '/css/basic.css' %}" rel="stylesheet">
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
-      :root {
-        --header-height: 3rem;
-        --nav-width: 68px;
-        --first-color: #4723d9;
-        --first-color-light: #afa5d9;
-        --white-color: #f7f6fb;
-        --body-font: "Nunito", sans-serif;
-        --normal-font-size: 1rem;
-        --z-fixed: 100;
-      }
+        .sidenav {
+            height: 100%;
+          padding: 0px;
 
-      *,
-      ::before,
-      ::after {
-        box-sizing: border-box;
-      }
-
-      body {
-        position: relative;
-        {#margin: var(--header-height) 0 0 0;#}
-        {#padding: 0 1rem;#}
-        font-family: var(--body-font);
-        font-size: var(--normal-font-size);
-        transition: 0.5s;
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      .header {
-        width: 100%;
-        height: var(--header-height);
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 1rem;
-        background-color: var(--white-color);
-        z-index: var(--z-fixed);
-        transition: 0.5s;
-      }
-
-      .header_toggle {
-        color: var(--first-color);
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-
-      .header_img {
-        width: 35px;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        border-radius: 50%;
-        overflow: hidden;
-      }
-
-      .header_img img {
-        width: 40px;
-      }
-
-      .l-navbar {
-        position: fixed;
-        top: 0;
-        left: -30%;
-        width: var(--nav-width);
-        height: 100vh;
-        background-color: var(--first-color);
-        padding: 0.5rem 1rem 0 0;
-        transition: 0.5s;
-        z-index: var(--z-fixed);
-      }
-
-      .nav {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow: hidden;
-      }
-
-      .nav_logo,
-      .nav_link {
-        display: grid;
-        grid-template-columns: max-content max-content;
-        align-items: center;
-        column-gap: 1rem;
-        padding: 0.5rem 0 0.5rem 1.5rem;
-      }
-
-      .nav_logo {
-        margin-bottom: 2rem;
-      }
-
-      .nav_logo-icon {
-        font-size: 1.25rem;
-        color: var(--white-color);
-      }
-
-      .nav_logo-name {
-        color: var(--white-color);
-        font-weight: 700;
-      }
-
-      .nav_link {
-        position: relative;
-        color: var(--first-color-light);
-        margin-bottom: 1.5rem;
-        transition: 0.3s;
-      }
-
-      .nav_link:hover {
-        color: var(--white-color);
-      }
-
-      .nav_icon {
-        font-size: 1.25rem;
-      }
-
-      .show {
-        left: 0;
-      }
-
-      .body-pd {
-        {#padding-left: calc(var(--nav-width) + 1rem);#}
-      }
-
-      .active {
-        color: var(--white-color);
-      }
-
-      .active::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 2px;
-        height: 32px;
-        background-color: var(--white-color);
-      }
-
-      .height-100 {
-        height: 100vh;
-      }
-
-      @media screen and (min-width: 768px) {
-        body {
-          {#margin: calc(var(--header-height) + 1rem) 0 0 0;#}
-          {#padding-left: calc(var(--nav-width) + 2rem);#}
+            width: 0;
+            position: fixed;
+            z-index: 100;
+            top: 115px;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
         }
 
-        .header {
-          height: calc(var(--header-height) + 1rem);
-          padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
         }
 
-        .header_img {
-          width: 40px;
-          height: 40px;
+        .sidenav a:hover {
+            color: #f1f1f1;
         }
 
-        .header_img img {
-          width: 45px;
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
         }
 
-        .l-navbar {
-          left: 0;
-          padding: 1rem 1rem 0 0;
-        }
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
 
-        .show {
-          width: calc(var(--nav-width) + 156px);
+            .sidenav a {
+                font-size: 18px;
+            }
         }
-
-        .body-pd {
-          {#padding-left: calc(var(--nav-width) + 188px);#}
-        }
-      }
     </style>
-  </head>
-  <body id="body-pd">
-  <div id="wrapper">
+    </style>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">
     {#        {% include "WebApp/sidebar.html" %}#}
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -210,109 +109,52 @@
         <div id="content">
 
             {% include "WebApp/topbar.html" %}
-            <div class="container-fluid">
+            <div class="container-fluid p-0">
                 <div class="row">
 
 
-    <header class="header position-relative" id="header">
-      <div class="header_toggle">
-        <i class="bx bx-menu" id="header-toggle"></i>
-      </div>
-      <div class="header_img">
-        <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
-      </div>
-    </header>
-    <div class="l-navbar position-relative" id="nav-bar">
-      <nav class="nav">
-        <div>
-          <a href="#" class="nav_logo">
-            <i class="bx bx-layer nav_logo-icon"></i>
-            <span class="nav_logo-name">BBBootstrap</span>
-          </a>
-          <div class="nav_list">
-            <a href="#" class="nav_link active">
-              <i class="bx bx-grid-alt nav_icon"></i>
-              <span class="nav_name">Dashboard</span>
-            </a>
-            <a href="#" class="nav_link">
-              <i class="bx bx-user nav_icon"></i>
-              <span class="nav_name">Users</span>
-            </a>
-            <a href="#" class="nav_link">
-              <i class="bx bx-message-square-detail nav_icon"></i>
-              <span class="nav_name">Messages</span>
-            </a>
-            <a href="#" class="nav_link">
-              <i class="bx bx-bookmark nav_icon"></i>
-              <span class="nav_name">Bookmark</span>
-            </a>
-            <a href="#" class="nav_link">
-              <i class="bx bx-folder nav_icon"></i>
-              <span class="nav_name">Files</span>
-            </a>
-            <a href="#" class="nav_link">
-              <i class="bx bx-bar-chart-alt-2 nav_icon"></i>
-              <span class="nav_name">Stats</span>
-            </a>
-          </div>
-        </div>
-        <a href="#" class="nav_link">
-          <i class="bx bx-log-out nav_icon"></i>
-          <span class="nav_name">SignOut</span>
-        </a>
-      </nav>
-    </div>
-    <div class="height-100 bg-light">
-      <h4>Main Components</h4>
-    </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function (event) {
-        const showNavbar = (toggleId, navId, bodyId, headerId) => {
-          const toggle = document.getElementById(toggleId),
-            nav = document.getElementById(navId),
-            bodypd = document.getElementById(bodyId),
-            headerpd = document.getElementById(headerId);
+                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-          // Validate that all variables exist
-          if (toggle && nav && bodypd && headerpd) {
-            toggle.addEventListener("click", () => {
-              // show navbar
-              nav.classList.toggle("show");
-              // change icon
-              toggle.classList.toggle("bx-x");
-              // add padding to body
-              bodypd.classList.toggle("body-pd");
-              // add padding to header
-              headerpd.classList.toggle("body-pd");
-            });
-          }
-        };
+<div style="padding-left: 30px">
+    <p>
+    <input class="form-check-input" id="chirps_full" type="checkbox"/>
 
-        showNavbar("header-toggle", "nav-bar", "body-pd", "header");
+                                                <label class="form-check-label" for="chirps_full">CHIRPS Layer</label>
 
-        /*===== LINK ACTIVE =====*/
-        const linkColor = document.querySelectorAll(".nav_link");
+                                            </p>
 
-        function colorLink() {
-          if (linkColor) {
-            linkColor.forEach((l) => l.classList.remove("active"));
-            this.classList.add("active");
-          }
-        }
-        linkColor.forEach((l) => l.addEventListener("click", colorLink));
+                                                <input id="opacity_chirps_full" type="range" value="contrast" max="0.5"
+                                                       min="0" step="0.1"/>
+                                                <a role="button" href=#" data-bs-toggle="popover" title="CHIRPS"
+                                                   data-bs-trigger="focus" data-bs-content="Info about chirps"><i
+                                                        class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
 
-        // Your code to run since DOM is loaded and ready
-      });
-    </script>
+                                                <p><input class="form-check-input" id="esi_full" type="checkbox"/>
+                                                    <label class="form-check-label" for="esi_full">ESI Layer</label>
+
+                                                </p>
+
+                                                <input id="opacity_esi_full" type="range" value="contrast" max="0.5" min="0"
+                                                       step="0.1"/>
+                                                <a role="button" href=#" data-bs-toggle="popover"
+                                                   data-bs-trigger="focus" title="ESI"
+                                                   data-bs-content="Info about esi"><i
+                                                        class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+</div>
+
+                    </div>
+                                        <div id="map3"></div>
+
+                    <script src="{% static 'js/map_fullscreen.js' %}"></script>
+
+                    <link rel="stylesheet" href="{% static 'css/map1.css' %}">
+
                 </div>
             </div>
         </div>
     </div>
-  </div>
-  </body>
+</div>
+</body>
 </html>

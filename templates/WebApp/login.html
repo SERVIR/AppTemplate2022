@@ -1,16 +1,22 @@
-{% extends "account/base.html" %} {% load i18n account %} {% block head_title %}{% trans "Sign In" %}{% endblock %}
+ {% load static %}
+<link href="{% static '/css/basic.css' %}" rel="stylesheet">
+ {% load i18n account %}
 {% block common_scripts %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="text/javascript">
-        function open_local_login() {
-            $("#local_account_login").toggle("display")
-        }
-    </script>
 {% endblock %} {% block content %}
-    <div class="container col-md-12">
-        <div class="well login-well">
+    <div id="wrapper">
+    {#        {% include "WebApp/sidebar.html" %}#}
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            {% include "WebApp/topbar.html" %}
+    <div class="container col-md-12 text-center">
+        <h2 class="m-4">Geospatial App Authentication</h2>
+
+        <div class="well login-well mt-4">
             <div class="socialaccount_ballot">
                 <ul class="socialaccount_providers">
                     {% load socialaccount %}
@@ -21,48 +27,12 @@
                         <a href="{% provider_login_url 'google' %}">Login with Google account</a>
                     {% endif %}
                 </ul>
-                <hr>
-                <a href="" onclick="open_local_login(); return false;">Login with local account</a>
-                <div id="local_account_login" style="display:none">
-                    <form class="django-login" method="POST" action="{% url 'account_login' %}">
-                        {% csrf_token %} {% if form.non_field_errors %}
-                        <div class="alert alert-warning">
-                            <ul class="alert-message">
-                                {% for error in form.non_field_errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                        <div class="input-group {% if form.login.errors %}has-error{% endif %}">
-                            <span class="input-group-addon glyphicon glyphicon-envelope"></span>
-                            {{ form.login }}
-                        </div>
 
-                        <div class="input-group {% if form.password.errors %}has-error{% endif %}">
-                            <span class="input-group-addon glyphicon glyphicon-lock"></span>
-                            {{ form.password }}
-                        </div>
-
-                        <div class="fieldWrapper form-inline remember text-center">
-                            {{ form.remember }}
-                            <label for="id_remember" class="text-muted">Remember me</label>
-                        </div>
-
-                        {% if redirect_field_value %}
-                            <input type="hidden" name="{{ redirect_field_name }}"
-                                   value="{{ redirect_field_value }}"/>{% endif %}
-                        <div class="btn-div pull-center">
-                            <button class="btn btn-primary btn-block" type="submit">{% trans "Sign In" %}</button>
-                        </div>
-                    </form>
-                </div>
             </div>
-            <hr>
-            <div>
-                <small><a class="text-muted"
-                          href="{% url 'account_reset_password' %}">{% trans "Forgot Password? (only local account holders)" %}</a></small>
-            </div>
+
         </div>
+    </div>
+        </div>
+    </div>
     </div>
 {% endblock %}

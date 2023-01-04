@@ -1,3 +1,6 @@
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 var map = L.map('map3').setView([71.72, 52.48], 3);
 
 var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -15,3 +18,50 @@ var baseMaps = {
 };
 satellite.addTo(map);
 L.Control.geocoder().addTo(map);
+
+
+
+var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
+    layers: 'precipitation_amount',
+    transparency: 'true',
+    format: 'image/png',
+    style: 'boxfill/apcp_surface',
+    maxZoom: 21,
+    zIndex: 400,
+    opacity: $("#opacity_chirps_full").val()
+});
+let esi = L.esri.dynamicMapLayer({
+    url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
+    transparency: 'true',
+    format: 'image/png',
+    style: 'boxfill/apcp_surface',
+    maxZoom: 21,
+    opacity: $("#opacity_esi_full").val()
+});
+
+var testTimeLayer = L.timeDimension.layer.wms(chirps, {
+    updateTimeDimension: true
+});
+$("#chirps_full").change(function () {
+    if (this.checked) {
+        // chirps.addTo(map);
+
+        testTimeLayer.addTo(map);
+        testTimeLayer.bringToFront();
+    } else {
+        testTimeLayer.remove();
+    }
+});
+
+$("#esi_full").change(function () {
+    if (this.checked) {
+
+
+        esi.addTo(map);
+        esi.bringToFront();
+
+    } else {
+        esi.remove();
+    }
+});
+

@@ -64,7 +64,10 @@
                         <li><a class="dropdown-item"  href="/accounts/logout/">Log Out</a></li>
                     </ul>
             {% else %}
-                    <a class="nav-link" href="{% provider_login_url 'google' %}">
+{#                    <a class="nav-link" href="{% provider_login_url 'google' %}">#}
+{#                        Login#}
+{#                    </a>#}
+                                    <a class="nav-link" href="{% url 'login' %}">
                         Login
                     </a>
 
