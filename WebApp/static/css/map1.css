@@ -16,12 +16,13 @@
  #layer_manager, #layer_manager_gee {
  width: 60vh;
   position: absolute;
-  background: white;
+  /*background: white;*/
  top:12vh;
   z-index: 400;
   right: 3vh;
      height: 40vh;
-     overflow-y: scroll;
+     /*overflow-y: scroll;*/
+
  }
 .nav-tabs .nav-item .nav-link.active {
   color: #0080FF;
@@ -42,7 +43,7 @@ accent-color:  #0c1a4e;
   margin: 0px;
   padding: 0px;
   border: 1px solid gray;
-  background: none;
+  background: white;
   box-shadow: none;
     width: 50vh;
 }
@@ -54,7 +55,7 @@ accent-color:  #0c1a4e;
   box-shadow: none;
     width: 20vh;
     font-size: small;
-    display: flex;
+    display: contents;
 }
 #layer-control-parent-id-full{
     padding: 0px;
@@ -62,4 +63,15 @@ accent-color:  #0c1a4e;
 
 #location_full{
     display: flow-root;
+    padding: 0px;
+}
+#location{
+    padding-bottom: 20px;
+}
+#basemaps{
+     overflow-y: scroll;
+    height: 35vh;
+}
+.leaflet-control-geocoder .leaflet-control-geocoder-alternatives a {
+font-size: medium;
 }

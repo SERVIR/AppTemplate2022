@@ -64,7 +64,19 @@
                                 <div id="map"></div>
                                 {#                                    <button id="settings"><i class="fa fa-cog" aria-hidden="true"></i></button>#}
                                 <!-- Tabs navs -->
-                                <div id="layer_manager">
+                                       <div class="accordion" id="layer_manager">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                        Map Control
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                <div id="layer_manager1">
                                     <div class="container mt-3">
                                         <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item" role="presentation">
@@ -162,6 +174,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                    </div>
+                                </div>
+                            </div>
+                                       </div>
 
                                 <script src="{% static 'js/map_fixedsize.js' %}"></script>
                             </div>
