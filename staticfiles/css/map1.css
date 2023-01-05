@@ -74,7 +74,7 @@ accent-color:  #0c1a4e;
 }
 #basemaps{
      overflow-y: scroll;
-    height: 35vh;
+    height: 25vh;
 }
 .leaflet-control-geocoder .leaflet-control-geocoder-alternatives a {
 font-size: medium;
@@ -83,4 +83,7 @@ font-size: medium;
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
 position: inherit;
     line-height: 2;
+}
+.accordion-body {
+height: 35vh;
 }

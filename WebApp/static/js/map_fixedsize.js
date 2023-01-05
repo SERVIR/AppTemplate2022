@@ -186,27 +186,6 @@ layerControlParentLayer.addTo(map);
 var htmlObject = layerControlParentLayer.getContainer();
 var a = document.getElementById('location');
 setParent(htmlObject, a);
-var bathymetryLayer = L.tileLayer.wms(
-    "https://ows.emodnet-bathymetry.eu/wms",
-    {
-        layers: "emodnet:mean_atlas_land",
-        format: "image/png",
-        transparent: true,
-        attribution: "EMODnet Bathymetry",
-        opacity: 0.8,
-    }
-);
-var coastlinesLayer = L.tileLayer.wms(
-    "https://ows.emodnet-bathymetry.eu/wms",
-    {
-        layers: "coastlines",
-        format: "image/png",
-        transparent: true,
-        attribution: "EMODnet Bathymetry",
-        opacity: 0.8,
-    }
-);
-var bathymetryGroupLayer = L.layerGroup([bathymetryLayer, coastlinesLayer]);
 var terrainLayer = L.tileLayer(
     "https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}",
     {
@@ -279,9 +258,6 @@ add_basemap = function (map_name) {
             break;
         case "topo":
             OpenTopoMap.addTo(map);
-            break;
-        case "bathymetry":
-            bathymetryGroupLayer.addTo(map);
             break;
         case "gsatellite":
             gSatLayer.addTo(map);
