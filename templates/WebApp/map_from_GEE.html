@@ -52,8 +52,20 @@
                                     <link rel="stylesheet" href="{% static 'css/map1.css' %}">
 
                                     <div id="map2"></div>
+                                     <div class="accordion" id="layer_manager_gee" style="top:12vh">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                        Map Control
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
                                    <div id="layer_manager_gee">
-                                    <div class="container mt-3">
+                                    <div class="container mt-3" style="margin-left: 20px;">
                                         <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="myTab1" role="tablist">
                                             <li class="nav-item" role="presentation">
                                                 <button class="active nav-link" id="layers-tab" data-bs-toggle="tab"
@@ -71,6 +83,12 @@
                                                 <button class="nav-link" id="legends_gee-tab" data-bs-toggle="tab"
                                                         data-bs-target="#legends_gee" type="button" role="tab"
                                                         aria-controls="legends_gee" aria-selected="false"></i> Legends
+                                                </button>
+                                            </li>
+                                                 <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="location_gee-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#location_gee" type="button" role="tab"
+                                                        aria-controls="location_gee" aria-selected="false"></i> Location
                                                 </button>
                                             </li>
 
@@ -109,12 +127,50 @@
 
                                             </div>
                                             <div class="tab-pane" id="basemaps_gee" role="tabpanel"
-                                                 aria-labelledby="basemaps_gee-tab"><p></p></div>
+                                                 aria-labelledby="basemaps_gee-tab">
+                                                                                                <div class="card-body text-center">
+                                                    <div class="row row-centered pos">
+                                                            <div class="col-sm-6">
+                                                                <a id="osm" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/osm.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>OSM</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a id="topo" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/topo.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>TOPO</p></a>
+                                                            </div>
+                                                              <div class="col-sm-6">
+                                                                <a id="gsatellite" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>GOOGLE</p></a>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <a id="satellite" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/satellite.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>SATELLITE</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a id="terrain" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/terrain.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>TERRAIN</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a id="delorme" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/delorme.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>DELORME</p></a>
+                                                            </div>
+                                                    </div>
+                                                </div>
+
+
+                                        </div>
                                             <div class="tab-pane" id="messages" role="tabpanel"
                                                  aria-labelledby="legends_gee-tab"></div>
+                                              <div class="tab-pane" id="location_gee" role="tabpanel"
+                                                 aria-labelledby="location_gee-tab"><p>Enter location name and hit Enter to recenter the map</p></div>
                                         </div>
                                     </div>
                                 </div>
+                                    </div>
+                                </div>
+                            </div>
+                                     </div>
 
                                     <script src="{% static 'js/map_from_GEE.js' %}"></script>
                                 </div>

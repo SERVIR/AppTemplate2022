@@ -17,13 +17,16 @@
  width: 60vh;
   position: absolute;
   /*background: white;*/
- top:12vh;
+ /*top:12vh;*/
   z-index: 400;
   right: 3vh;
      height: 40vh;
      /*overflow-y: scroll;*/
 
  }
+  #layer_manager_gee{
+      /*margin-top: 6vh;*/
+  }
   #layer_manager1{
        width: 60vh;
   }
@@ -72,7 +75,7 @@ accent-color:  #0c1a4e;
 #location{
     padding-bottom: 20px;
 }
-#basemaps{
+#basemaps,#basemaps_gee{
      overflow-y: scroll;
     height: 20vh;
 }
@@ -86,7 +89,4 @@ position: inherit;
 }
 .accordion-body {
 height: 35vh;
-}
-.img-thumbnail{
-    height: 150px;
 }

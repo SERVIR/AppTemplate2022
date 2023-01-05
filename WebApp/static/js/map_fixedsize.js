@@ -230,7 +230,6 @@ removeLayers = function () {
     satellite.remove();
     osm.remove();
     OpenTopoMap.remove();
-    bathymetryGroupLayer.remove();
     terrainLayer.remove();
     deLormeLayer.remove();
     gSatLayer.remove();

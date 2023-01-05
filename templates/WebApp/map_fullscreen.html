@@ -128,30 +128,31 @@
                                      aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <div style="padding-left: 30px">
-                                            <p>
+                                            <div class="d-inline-flex">
                                                 <input class="form-check-input" id="chirps_full" type="checkbox"/>
 
                                                 <label class="form-check-label" for="chirps_full">CHIRPS Layer</label>
-
-                                            </p>
+                                                <a style="PADDING-TOP: 0;DISPLAY: flex;" role="button" href=#" data-bs-toggle="popover" title="CHIRPS"
+                                                   data-bs-trigger="focus" data-bs-content="Info about chirps"><i
+                                                        class="fa-solid fa-circle-info info_btn"></i></a>
+                                            </div>
 
                                             <input id="opacity_chirps_full" type="range" value="contrast" max="0.5"
                                                    min="0" step="0.1"/>
-                                            <a role="button" href=#" data-bs-toggle="popover" title="CHIRPS"
-                                               data-bs-trigger="focus" data-bs-content="Info about chirps"><i
-                                                    class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
 
-                                            <p><input class="form-check-input" id="esi_full" type="checkbox"/>
+
+                                            <div class="d-inline-flex"><input class="form-check-input" id="esi_full"
+                                                                              type="checkbox"/>
                                                 <label class="form-check-label" for="esi_full">ESI Layer</label>
-
-                                            </p>
+                                                <a style="PADDING-TOP: 0;DISPLAY: flex;" role="button" href=#" data-bs-toggle="popover"
+                                                   data-bs-trigger="focus" title="ESI"
+                                                   data-bs-content="Info about esi"><i
+                                                        class="fa-solid fa-circle-info info_btn"></i></a>
+                                            </div>
 
                                             <input id="opacity_esi_full" type="range" value="contrast" max="0.5" min="0"
                                                    step="0.1"/>
-                                            <a role="button" href=#" data-bs-toggle="popover"
-                                               data-bs-trigger="focus" title="ESI"
-                                               data-bs-content="Info about esi"><i
-                                                    class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -166,9 +167,36 @@
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                      data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        This accordion is under construction
+                                    <div class="accordion-body" id="basemaps" aria-labelledby="profile-tab">
+                                                <div class="card-body text-center">
+                                                    <div class="row row-centered pos">
+                                                            <div class="col-sm-6">
+                                                                <a style="padding: 0;font-size: 15px;" id="osm" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/osm.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>OSM</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a style="padding: 0;font-size: 15px;" id="topo" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/topo.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>TOPO</p></a>
+                                                            </div>
+                                                              <div class="col-sm-6">
+                                                                <a  style="padding: 0;font-size: 15px;" id="gsatellite" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>GOOGLE</p></a>
+                                                            </div>
 
+                                                            <div class="col-sm-6">
+                                                                <a  style="padding: 0;font-size: 15px;" id="satellite" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/satellite.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>SATELLITE</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a  style="padding: 0;font-size: 15px;" id="terrain" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/terrain.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>TERRAIN</p></a>
+                                                            </div>
+                                                                  <div class="col-sm-6">
+                                                                <a  style="padding: 0;font-size: 15px;" id="delorme" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/delorme.png' %}" alt="img1" class="img-thumbnail">
+                                                                    <p>DELORME</p></a>
+                                                            </div>
+                                                    </div>
+                                                </div>
                                     </div>
                                 </div>
                             </div>
