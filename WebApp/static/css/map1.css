@@ -14,7 +14,7 @@
 }
 
  #layer_manager, #layer_manager_gee {
- width: 60vh;
+ width: 50vh;
   position: absolute;
   /*background: white;*/
  /*top:12vh;*/
@@ -78,7 +78,7 @@ accent-color:  #0c1a4e;
 }
 #basemaps,#basemaps_gee,#layers,#layes_gee{
      overflow-y: auto;
-    height: 20vh;
+    /*height: 20vh;*/
 }
 .leaflet-control-geocoder .leaflet-control-geocoder-alternatives a {
 font-size: medium;
@@ -89,7 +89,7 @@ position: inherit;
     line-height: 2;
 }
 .accordion-body {
-height: 35vh;
+/*height: 35vh;*/
     padding: 0;
 }
 .img-thumbnail{

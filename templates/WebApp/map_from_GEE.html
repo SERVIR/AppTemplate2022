@@ -64,8 +64,8 @@
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                      aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                   <div id="layer_manager_gee">
-                                    <div class="container mt-3" style="margin-left: 20px;">
+                                   <div id="layer_manager_gee1">
+                                    <div class="container mt-3">
                                         <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="myTab1" role="tablist">
                                             <li class="nav-item" role="presentation">
                                                 <button class="active nav-link" id="layers-tab" data-bs-toggle="tab"
@@ -93,7 +93,8 @@
                                             </li>
 
                                         </ul>
-                                        <div class="border-grey bg-white tab-content">
+                                        <div class="border-grey bg-white tab-content" style="    height: 30vh;
+    overflow: auto;">
                                             <div class="tab-pane active  p-3 ml-3" id="layers" role="tabpanel"
                                                  aria-labelledby="layers-tab"><p>
                                                 <label class="form-check-label  mt-2 w-75" for="collection"><input class="form-check-input"
@@ -112,10 +113,11 @@
                                                        min="0" step="0.1"/>
 
                                                 <p>
-                                                    <label class="form-check-label mt-2 w-75" for="asset"><input class="form-check-input" id="asset" type="checkbox"/>Precipitation factor for carbon monitoring estimations</label>
+                                                    <label class="form-check-label mt-2 w-75" for="asset"><input class="form-check-input" id="asset" type="checkbox"/>
+                                                        Public GEE User Asset</label>
                                                     <a role="button" href=#" data-bs-toggle="popover"
                                                    data-bs-trigger="hover focus" title="User Asset Info"
-                                                   data-bs-content="Use this space to offer a description of the dataset.
+                                                   data-bs-content="Precipitation factor for carbon monitoring estimations.
                                                    For this template we are using a GEE User Asset that is exposed publicly.
                                                    This is defined in the file filename.ext">
                                                    <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
@@ -129,32 +131,25 @@
                                             <div class="tab-pane" id="basemaps_gee" role="tabpanel"
                                                  aria-labelledby="basemaps_gee-tab">
                                                                                                 <div class="card-body text-center">
-                                                    <div class="row row-centered pos">
-                                                            <div class="col-sm-4">
+                                                    <div class="row row-centered pos d-block">
                                                                 <a id="osm" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/osm.png' %}" alt="img1" class="img-thumbnail">
                                                                     </a>
-                                                            </div>
-                                                                  <div class="col-sm-4">
+
                                                                 <a id="topo" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/topo.png' %}" alt="img1" class="img-thumbnail">
                                                                    </a>
-                                                            </div>
-                                                              <div class="col-sm-4">
+
                                                                 <a id="gsatellite" href="#" onclick="add_basemap(this.id);"><img  src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1" class="img-thumbnail">
                                                                    </a>
-                                                            </div>
 
-                                                            <div class="col-sm-4">
                                                                 <a id="satellite" href="#" onclick="add_basemap(this.id);"><img  src="{% static 'images/basemaps/satellite.png' %}" alt="img1" class="img-thumbnail">
                                                                     </a>
-                                                            </div>
-                                                                  <div class="col-sm-4">
+
                                                                 <a id="terrain" href="#" onclick="add_basemap(this.id);"><img  src="{% static 'images/basemaps/terrain.png' %}" alt="img1" class="img-thumbnail">
                                                                    </a>
-                                                            </div>
-                                                                  <div class="col-sm-4">
+
                                                                 <a id="delorme" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/delorme.png' %}" alt="img1" class="img-thumbnail">
                                                                    </a>
-                                                            </div>
+
                                                     </div>
                                                 </div>
 
