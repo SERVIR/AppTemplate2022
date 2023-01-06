@@ -115,3 +115,6 @@ p{
 .leaflet-control-geocoder {
     width: 100%;
 }
+.leaflet-control-geocoder-form input {
+    font-size: 100%;
+}
