@@ -1,3 +1,5 @@
+$('#opacity_asset').hide();
+$('#opacity_collection').hide();
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
 
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
@@ -25,38 +27,58 @@ var datamaps = {
      console.log(data['url']);
      user_layer = L.tileLayer(data['url'], {
          zoom: 3,
-         zIndex:400
+         zIndex:400,
+         opacity:0.5
      });
  });
 ajax_call("get-gee-layer", {}).done(function (data) {
      gee_layer = L.tileLayer(data['url'], {
          zoom: 3,
-         zIndex: 400
+         zIndex: 400,
+         opacity:0.5
      });
  });
 
 $("#collection").change(function() {
     if (this.checked) {
         gee_layer.addTo(map);
+        $('#opacity_collection').show();
+        var val=$('#opacity_collection').val()*100;
+                $('#collection_opacity').text(val+"%");
+                  $('#collection_opacity').show();
     } else {
         gee_layer.remove();
+         $('#collection_opacity').hide();
+        $('#opacity_collection').hide();
     }
+
 });
 
 $("#asset").change(function() {
     if (this.checked) {
        user_layer.addTo(map);
+       $('#opacity_asset').show();
+       var val=$('#opacity_asset').val()*100;
+                  $('#asset_opacity').text(val+"%");
+                   $('#asset_opacity').show();
+
     }
     else{
         user_layer.remove();
+         $('#asset_opacity').hide();
+         $('#opacity_asset').hide();
     }
 });
 
 $('#opacity_collection').change(function() {
                 gee_layer.setOpacity($(this).val());
+                  var val=$(this).val()*100;
+                $('#collection_opacity').text(val+"%");
             });
 $('#opacity_asset').change(function() {
                 user_layer.setOpacity($(this).val());
+                var val=$(this).val()*100;
+                  $('#asset_opacity').text(val+"%");
             });
 
 osm.addTo(map);

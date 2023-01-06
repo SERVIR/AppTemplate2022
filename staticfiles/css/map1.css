@@ -14,7 +14,7 @@
 }
 
  #layer_manager, #layer_manager_gee {
- width: 60vh;
+ width: 50vh;
   position: absolute;
   /*background: white;*/
  /*top:12vh;*/
@@ -41,6 +41,7 @@
 accent-color:  #0c1a4e;
     background: #e3e6f0;
     width: 12vw;
+    margin-bottom: 20px;
 }
 .info_btn{
       color: gray;
@@ -75,9 +76,9 @@ accent-color:  #0c1a4e;
 #location{
     padding-bottom: 20px;
 }
-#basemaps,#basemaps_gee{
-     overflow-y: scroll;
-    height: 20vh;
+#basemaps,#basemaps_gee,#layers,#layes_gee{
+     overflow-y: auto;
+    /*height: 20vh;*/
 }
 .leaflet-control-geocoder .leaflet-control-geocoder-alternatives a {
 font-size: medium;
@@ -88,5 +89,32 @@ position: inherit;
     line-height: 2;
 }
 .accordion-body {
-height: 35vh;
+/*height: 35vh;*/
+    padding: 0;
+}
+.img-thumbnail{
+    height: 100px;
+    border: none;
+}
+.accordion-button:not(.collapsed) {
+    background-color:white;
+color: gray;
+}
+.accordion-button {
+color: gray;
+}
+
+p{
+    color: gray;
+}
+.leaflet-control, .leaflet-control-geocoder-alternatives {
+    width: 100%;
+}
+
+
+.leaflet-control-geocoder {
+    width: 100%;
+}
+.leaflet-control-geocoder-form input {
+    font-size: 100%;
 }
