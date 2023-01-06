@@ -51,7 +51,6 @@ $("#collection").change(function() {
          $('#collection_opacity').hide();
         $('#opacity_collection').hide();
     }
-
 });
 
 $("#asset").change(function() {

@@ -24,12 +24,8 @@
      /*overflow-y: scroll;*/
 
  }
-  #layer_manager_gee{
-      /*margin-top: 6vh;*/
-  }
-  #layer_manager1{
-       width: 60vh;
-  }
+
+
 .nav-tabs .nav-item .nav-link.active {
   color: #0080FF;
 }
@@ -46,14 +42,14 @@ accent-color:  #0c1a4e;
 .info_btn{
       color: gray;
 }
-#layer-control-id{
-  margin: 0px;
-  padding: 0px;
-  border: 1px solid gray;
-  background: white;
-  box-shadow: none;
-    width: 50vh;
-}
+/*#layer-control-id{*/
+/*  margin: 0px;*/
+/*  padding: 0px;*/
+/*  border: 1px solid gray;*/
+/*  background: white;*/
+/*  box-shadow: none;*/
+/*    width: 50vh;*/
+/*}*/
 #layer-control-id-full{
   margin: 0px;
   padding: 0px;
@@ -76,7 +72,7 @@ accent-color:  #0c1a4e;
 #location{
     padding-bottom: 20px;
 }
-#basemaps,#basemaps_gee,#layers,#layes_gee{
+#basemaps,#basemaps_gee,#layers,#layers_gee{
      overflow-y: auto;
     /*height: 20vh;*/
 }
@@ -117,4 +113,8 @@ p{
 }
 .leaflet-control-geocoder-form input {
     font-size: 100%;
+}
+
+#chirps_opacity,#esi_opacity, #collection_opacity,#asset_opacity{
+    display: contents;
 }

@@ -1,3 +1,5 @@
+ $('#opacity_chirps').hide();
+ $('#opacity_esi').hide();
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
@@ -108,29 +110,46 @@ $("#chirps").change(function () {
 
         testTimeLayer.addTo(map);
         testTimeLayer.bringToFront();
+         var val=$('#opacity_chirps').val()*100;
+                $('#chirps_opacity').text(val+"%");
+                  $('#chirps_opacity').show();
+                                              $('#opacity_chirps').show();
+
     } else {
         testTimeLayer.remove();
+        $('#chirps_opacity').hide();
+                                                      $('#opacity_chirps').hide();
+
     }
 });
 
 $("#esi").change(function () {
     if (this.checked) {
-
-
         esi.addTo(map);
         esi.bringToFront();
+        var val = $('#opacity_esi').val() * 100;
+        $('#esi_opacity').text(val + "%");
+        $('#esi_opacity').show();
+        $('#opacity_esi').show();
+
 
     } else {
         esi.remove();
+        $('#esi_opacity').hide();
+        $('#opacity_esi').hide();
     }
 });
 
 $('#opacity_chirps').change(function () {
     testTimeLayer.setOpacity($(this).val());
+     var val=$(this).val()*100;
+                  $('#chirps_opacity').text(val+"%");
 });
 
 $('#opacity_esi').change(function () {
     esi.setOpacity($(this).val());
+     var val=$(this).val()*100;
+                  $('#esi_opacity').text(val+"%");
 });
 
 var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {

@@ -34,7 +34,9 @@
     <link href="{% static '/css/L.Control.Opacity.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.5/leaflet-search.src.js" integrity="sha512-PDM7dpetuBcPp2fV/ZyCj9BGV8ybPchsrSzQqVZ3WoM8YcxEa2lAj0n1+4MCRzgsEROmVTwQXGw0IrXCCgH+/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.5/leaflet-search.src.js"
+            integrity="sha512-PDM7dpetuBcPp2fV/ZyCj9BGV8ybPchsrSzQqVZ3WoM8YcxEa2lAj0n1+4MCRzgsEROmVTwQXGw0IrXCCgH+/Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/leaflet-providers.js' %}"></script>
     <!-- Custom styles-->
     <link href="{% static '/css/basic.css' %}" rel="stylesheet">
@@ -63,118 +65,166 @@
 
                                 <div id="map"></div>
                                 {#                                    <button id="settings"><i class="fa fa-cog" aria-hidden="true"></i></button>#}
-                                <!-- Tabs navs -->
-                                       <div class="accordion" id="layer_manager" style="top:12vh">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne">
-                                        Map Control
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                <div id="layer_manager1">
-                                    <div class="container mt-3">
-                                        <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="myTab" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="active nav-link" id="home-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#home" type="button" role="tab"
-                                                        aria-controls="home" aria-selected="true">Layers
-                                                </button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#basemaps" type="button" role="tab"
-                                                        aria-controls="profile" aria-selected="false"></i> Basemaps
-                                                </button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="legends-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#legends" type="button" role="tab"
-                                                        aria-controls="legends" aria-selected="false"></i> Legends
-                                                </button>
-                                            </li>
-                                             <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="location-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#location" type="button" role="tab"
-                                                        aria-controls="messages" aria-selected="false"></i> Location
-                                                </button>
-                                            </li>
+                                <div class="accordion" id="layer_manager" style="top:12vh">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseOne" aria-expanded="true"
+                                                    aria-controls="collapseOne">
+                                                Map Control
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show"
+                                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div id="layer_manager1">
+                                                    <div class="container mt-3">
+                                                        <ul class="m-0 nav nav-fill nav-justified nav-tabs"
+                                                            style="font-size:smaller;" id="myTab1" role="tablist">
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="active nav-link p-0" id="layers-tab"
+                                                                        data-bs-toggle="tab"
+                                                                        data-bs-target="#layers" type="button"
+                                                                        role="tab"
+                                                                        aria-controls="layers" aria-selected="true">
+                                                                    Layers
+                                                                </button>
+                                                            </li>
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="nav-link p-0" id="profile-tab"
+                                                                        data-bs-toggle="tab"
+                                                                        data-bs-target="#basemaps" type="button"
+                                                                        role="tab"
+                                                                        aria-controls="basemaps"
+                                                                        aria-selected="false"></i> Basemaps
+                                                                </button>
+                                                            </li>
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="nav-link p-0" id="legends-tab"
+                                                                        data-bs-toggle="tab"
+                                                                        data-bs-target="#legends" type="button"
+                                                                        role="tab"
+                                                                        aria-controls="legends"
+                                                                        aria-selected="false"></i> Legends
+                                                                </button>
+                                                            </li>
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="nav-link p-0" id="location-tab"
+                                                                        data-bs-toggle="tab"
+                                                                        data-bs-target="#location" type="button"
+                                                                        role="tab"
+                                                                        aria-controls="location"
+                                                                        aria-selected="false"></i> Location
+                                                                </button>
+                                                            </li>
 
-                                        </ul>
-                                        <div class="border-grey bg-white p-3 tab-content">
-                                            <div class="tab-pane active" id="home" role="tabpanel"
-                                                 aria-labelledby="home-tab"><p><input class="form-check-input"
-                                                                                      id="chirps" type="checkbox"/>
-                                                <label class="form-check-label" for="chirps">CHIRPS Layer</label>
+                                                        </ul>
+                                                        <div class="border-grey bg-white tab-content"
+                                                             style="height: 30vh;overflow: auto;">
+                                                            <div class="tab-pane active  p-3 ml-3" id="layers"
+                                                                 role="tabpanel"
+                                                                 aria-labelledby="layers-tab"><p>
 
-                                            </p>
+                                                                <label class="form-check-label  mt-2 w-75" for="chirps"><input
+                                                                        class="form-check-input"
+                                                                        id="chirps" type="checkbox"/>CHIRPS
+                                                                    Layer</label>
 
-                                                <input id="opacity_chirps" type="range" value="contrast" max="0.5"
-                                                       min="0" step="0.1"/>
-                                                <a role="button" href=#" data-bs-toggle="popover" title="CHIRPS"
-                                                   data-bs-trigger="focus" data-bs-content="Info about chirps"><i
-                                                        class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                                                <a role="button" href=#" data-bs-toggle="popover"
+                                                                   title="CHIRPS dataset Info"
+                                                                   data-bs-trigger="focus"
+                                                                   data-bs-content="Use this space to offer a description of the dataset.
+                                                   For this template we are using CHIRPS Dataset.
+                                                   This is defined in the file filename.ext">
+                                                                    <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
 
-                                                <p><input class="form-check-input" id="esi" type="checkbox"/>
-                                                    <label class="form-check-label" for="esi">ESI Layer</label>
+                                                            </p>
 
-                                                </p>
+                                                                <input id="opacity_chirps" type="range"
+                                                                       max="1"
+                                                                       min="0" step="0.01"/><label class="ml-1"
+                                                                                                   id="chirps_opacity"></label>
 
-                                                <input id="opacity_esi" type="range" value="contrast" max="0.5" min="0"
-                                                       step="0.1"/>
-                                                <a role="button" href=#" data-bs-toggle="popover"
-                                                   data-bs-trigger="focus" title="ESI"
-                                                   data-bs-content="Info about esi"><i
-                                                        class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                                                <p>
 
-                                            </div>
-                                            <div class="tab-pane" id="basemaps" role="tabpanel"
-                                                 aria-labelledby="profile-tab">
-                                                <div class="card-body text-center">
-                                                    <div class="row row-centered pos">
-                                                            <div class="col-sm-6">
-                                                                <a id="osm" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/osm.png' %}" alt="img1" class="img-thumbnail">
-                                                                    <p>OSM</p></a>
+                                                                    <label class="form-check-label  mt-2 w-75"
+                                                                           for="esi"> <input class="form-check-input"
+                                                                                             id="esi" type="checkbox"/>ESI
+                                                                        Layer</label>
+                                                                    <a role="button" href=#" data-bs-toggle="popover"
+                                                                       data-bs-trigger="focus" title="ESI dataset Info"
+                                                                       data-bs-content="Use this space to offer a description of the dataset.
+                                                   For this template we are using ESI Dataset.
+                                                   This is defined in the file filename.ext">
+                                                                        <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                                                </p>
+
+                                                                <input id="opacity_esi" type="range"
+                                                                       max="1" min="0"
+                                                                       step="0.01"/><label class="ml-1"
+                                                                                           id="esi_opacity"></label>
+
+
                                                             </div>
-                                                                  <div class="col-sm-6">
-                                                                <a id="topo" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/topo.png' %}" alt="img1" class="img-thumbnail">
-                                                                    <p>TOPO</p></a>
-                                                            </div>
-                                                              <div class="col-sm-6">
-                                                                <a id="gsatellite" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1" class="img-thumbnail">
-                                                                    <p>GOOGLE</p></a>
-                                                            </div>
+                                                            <div class="tab-pane" id="basemaps" role="tabpanel"
+                                                                 aria-labelledby="basemaps-tab">
+                                                                <div class="card-body text-center">
+                                                                    <div class="row row-centered pos d-block">
+                                                                        <a id="osm" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/osm.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
 
-                                                            <div class="col-sm-6">
-                                                                <a id="satellite" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/satellite.png' %}" alt="img1" class="img-thumbnail">
-                                                                    <p>SATELLITE</p></a>
+                                                                        <a id="topo" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/topo.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
+
+                                                                        <a id="gsatellite" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/gsatellite.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
+
+                                                                        <a id="satellite" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/satellite.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
+
+                                                                        <a id="terrain" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/terrain.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
+
+                                                                        <a id="delorme" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/delorme.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
+
+                                                                    </div>
+                                                                </div>
+
+
                                                             </div>
-                                                                  <div class="col-sm-6">
-                                                                <a id="terrain" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/terrain.png' %}" alt="img1" class="img-thumbnail">
-                                                                    <p>TERRAIN</p></a>
-                                                            </div>
-                                                                  <div class="col-sm-6">
-                                                                <a id="delorme" href="#" onclick="add_basemap(this.id);"><img style="height: 150px;" src="{% static 'images/basemaps/delorme.png' %}" alt="img1" class="img-thumbnail">
-                                                                    <p>DELORME</p></a>
-                                                            </div>
+                                                            <div class="tab-pane" id="messages" role="tabpanel"
+                                                                 aria-labelledby="legends-tab"></div>
+                                                            <div class="tab-pane p-3 ml-3" id="location"
+                                                                 role="tabpanel"
+                                                                 aria-labelledby="location_tab"><p>Enter location
+                                                                name and hit Enter to recenter the map</p></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane" id="legends" role="tabpanel"
-                                                 aria-labelledby="legends-tab">This tab is under construction</div>
-                                            <div class="tab-pane" id="location" role="tabpanel"
-                                                 aria-labelledby="location-tab"><p>Enter location name and hit Enter to recenter the map</p></div>
                                         </div>
                                     </div>
                                 </div>
-                                    </div>
-                                </div>
-                            </div>
-                                       </div>
+
 
                                 <script src="{% static 'js/map_fixedsize.js' %}"></script>
                             </div>
