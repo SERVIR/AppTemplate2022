@@ -164,7 +164,7 @@ def get_gee_user_layer(request):
     credentials = ee.ServiceAccountCredentials(service_account, data['private_key_json'])
     ee.Initialize(credentials)
     user_asset = ee.Image("projects/servir-sco-assets/assets/tmp_servir_cms/factors_t1/f2_pcp_x1k")
-    params = {'min': 258, 'max': 316, 'palette': ['1303ff', '42fff6', 'f3ff40', 'ff5d0f'], }
+    params = {'min': 1000, 'max': 3000,'bands':['b1'] ,'palette': ['fcffe7', 'd2ffba', '70d7ff', '423fff'], }
     user_img = user_asset.getMapId(params)
     json_obj={"url":user_img['tile_fetcher'].url_format}
     return JsonResponse(json_obj)
