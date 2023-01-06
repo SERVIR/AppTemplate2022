@@ -30,194 +30,246 @@
     <script src="{% static '/js/ajax_calls.js' %}"></script>
 </head>
 <body id="page-top">
-    <div id="wrapper">
-{#        {% include "WebApp/sidebar.html" %}#}
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
-            <div id="content">
-                {% include "WebApp/topbar.html" %}
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12">
-                            <br>
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Map Viewer</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <link rel="stylesheet" href="{% static 'css/map1.css' %}">
+<div id="wrapper">
+    {#        {% include "WebApp/sidebar.html" %}#}
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            {% include "WebApp/topbar.html" %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <br>
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Map Viewer</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <link rel="stylesheet" href="{% static 'css/map1.css' %}">
 
-                                    <div id="map2"></div>
-                                     <div class="accordion" id="layer_manager_gee" style="top:12vh">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne">
-                                        Map Control
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                   <div id="layer_manager_gee1">
-                                    <div class="container mt-3">
-                                        <ul class="m-0 nav nav-fill nav-justified nav-tabs" style="font-size:smaller;" id="myTab1" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="active nav-link p-0" id="layers-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#layers" type="button" role="tab"
-                                                        aria-controls="layers" aria-selected="true">Layers
-                                                </button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link p-0" id="profile-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#basemaps_gee" type="button" role="tab"
-                                                        aria-controls="basemaps_gee" aria-selected="false"></i> Basemaps
-                                                </button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link p-0" id="legends_gee-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#legends_gee" type="button" role="tab"
-                                                        aria-controls="legends_gee" aria-selected="false"></i> Legends
-                                                </button>
-                                            </li>
-                                                 <li class="nav-item" role="presentation">
-                                                <button class="nav-link p-0" id="location_gee-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#location_gee" type="button" role="tab"
-                                                        aria-controls="location_gee" aria-selected="false"></i> Location
-                                                </button>
-                                            </li>
+                                <div id="map2"></div>
+                                <div class="accordion" id="layer_manager_gee" style="top:12vh">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseOne" aria-expanded="true"
+                                                    aria-controls="collapseOne">
+                                                Map Control
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show"
+                                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div id="layer_manager_gee1">
+                                                    <div class="container mt-3">
+                                                        <ul class="m-0 nav nav-fill nav-justified nav-tabs"
+                                                            style="font-size:smaller;" id="myTab1" role="tablist">
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="active nav-link p-0" id="layers-tab"
+                                                                        data-bs-toggle="tab"
+                                                                        data-bs-target="#layers" type="button"
+                                                                        role="tab"
+                                                                        aria-controls="layers" aria-selected="true">
+                                                                    Layers
+                                                                </button>
+                                                            </li>
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="nav-link p-0" id="profile-tab"
+                                                                        data-bs-toggle="tab"
+                                                                        data-bs-target="#basemaps_gee" type="button"
+                                                                        role="tab"
+                                                                        aria-controls="basemaps_gee"
+                                                                        aria-selected="false"></i> Basemaps
+                                                                </button>
+                                                            </li>
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="nav-link p-0" id="legends_gee-tab"
+                                                                        data-bs-toggle="tab"
+                                                                        data-bs-target="#legends_gee" type="button"
+                                                                        role="tab"
+                                                                        aria-controls="legends_gee"
+                                                                        aria-selected="false"></i> Legends
+                                                                </button>
+                                                            </li>
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="nav-link p-0" id="location_gee-tab"
+                                                                        data-bs-toggle="tab"
+                                                                        data-bs-target="#location_gee" type="button"
+                                                                        role="tab"
+                                                                        aria-controls="location_gee"
+                                                                        aria-selected="false"></i> Location
+                                                                </button>
+                                                            </li>
 
-                                        </ul>
-                                        <div class="border-grey bg-white tab-content" style="    height: 30vh;
-    overflow: auto;">
-                                            <div class="tab-pane active  p-3 ml-3" id="layers" role="tabpanel"
-                                                 aria-labelledby="layers-tab"><p>
-                                                <label class="form-check-label  mt-2 w-75" for="collection"><input class="form-check-input"
-                                                                                      id="collection" type="checkbox"/>Image Collection Layer</label>
-                                                
-                                                <a role="button" href=#" data-bs-toggle="popover" title="Image Collection Info"
-                                                   data-bs-trigger="hover focus" 
-                                                   data-bs-content="Use this space to offer a description of the dataset.
+                                                        </ul>
+                                                        <div class="border-grey bg-white tab-content" style="height: 30vh;overflow: auto;">
+                                                            <div class="tab-pane active  p-3 ml-3" id="layers"
+                                                                 role="tabpanel"
+                                                                 aria-labelledby="layers-tab"><p>
+                                                                <label class="form-check-label  mt-2 w-75"
+                                                                       for="collection"><input class="form-check-input"
+                                                                                               id="collection"
+                                                                                               type="checkbox"/>Image
+                                                                    Collection Layer</label>
+
+                                                                <a role="button" href=#" data-bs-toggle="popover"
+                                                                   title="Image Collection Info"
+                                                                   data-bs-trigger="focus"
+                                                                   data-bs-content="Use this space to offer a description of the dataset.
                                                    For this template we are using a standard GEE image collection. 
                                                    This is defined in the file filename.ext">
-                                                   <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                                                    <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
 
-                                            </p>
+                                                            </p>
 
-                                                <input id="opacity_collection" type="range" value="contrast" max="0.5"
-                                                       min="0" step="0.1"/>
+                                                                <input id="opacity_collection" type="range"
+                                                                     max="1"
+                                                                       min="0" step="0.01"/><label class="ml-1" id="collection_opacity"></label>
 
-                                                <p>
-                                                    <label class="form-check-label mt-2 w-75" for="asset"><input class="form-check-input" id="asset" type="checkbox"/>
-                                                        Public GEE User Asset</label>
-                                                    <a role="button" href=#" data-bs-toggle="popover"
-                                                   data-bs-trigger="hover focus" title="User Asset Info"
-                                                   data-bs-content="Precipitation factor for carbon monitoring estimations.
+                                                                <p>
+                                                                    <label class="form-check-label mt-2 w-75"
+                                                                           for="asset"><input class="form-check-input"
+                                                                                              id="asset"
+                                                                                              type="checkbox"/>
+                                                                        Public GEE User Asset</label>
+                                                                    <a role="button" href=#" data-bs-toggle="popover"
+                                                                       data-bs-trigger="focus" title="User Asset Info"
+                                                                       data-bs-content="Precipitation factor for carbon monitoring estimations.
                                                    For this template we are using a GEE User Asset that is exposed publicly.
                                                    This is defined in the file filename.ext">
-                                                   <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
-                                                </p>
+                                                                        <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                                                </p>
 
-                                                <input id="opacity_asset" type="range" value="contrast" max="0.5" min="0"
-                                                       step="0.1"/>
-                                                
+                                                                <input id="opacity_asset" type="range"
+                                                                       max="1" min="0"
+                                                                       step="0.01"/><label class="ml-1" id="asset_opacity"></label>
 
-                                            </div>
-                                            <div class="tab-pane" id="basemaps_gee" role="tabpanel"
-                                                 aria-labelledby="basemaps_gee-tab">
-                                                                                                <div class="card-body text-center">
-                                                    <div class="row row-centered pos d-block">
-                                                                <a id="osm" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/osm.png' %}" alt="img1" class="img-thumbnail">
-                                                                    </a>
 
-                                                                <a id="topo" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/topo.png' %}" alt="img1" class="img-thumbnail">
-                                                                   </a>
+                                                            </div>
+                                                            <div class="tab-pane" id="basemaps_gee" role="tabpanel"
+                                                                 aria-labelledby="basemaps_gee-tab">
+                                                                <div class="card-body text-center">
+                                                                    <div class="row row-centered pos d-block">
+                                                                        <a id="osm" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/osm.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
 
-                                                                <a id="gsatellite" href="#" onclick="add_basemap(this.id);"><img  src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1" class="img-thumbnail">
-                                                                   </a>
+                                                                        <a id="topo" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/topo.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
 
-                                                                <a id="satellite" href="#" onclick="add_basemap(this.id);"><img  src="{% static 'images/basemaps/satellite.png' %}" alt="img1" class="img-thumbnail">
-                                                                    </a>
+                                                                        <a id="gsatellite" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/gsatellite.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
 
-                                                                <a id="terrain" href="#" onclick="add_basemap(this.id);"><img  src="{% static 'images/basemaps/terrain.png' %}" alt="img1" class="img-thumbnail">
-                                                                   </a>
+                                                                        <a id="satellite" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/satellite.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
 
-                                                                <a id="delorme" href="#" onclick="add_basemap(this.id);"><img src="{% static 'images/basemaps/delorme.png' %}" alt="img1" class="img-thumbnail">
-                                                                   </a>
+                                                                        <a id="terrain" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/terrain.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
 
+                                                                        <a id="delorme" href="#"
+                                                                           onclick="add_basemap(this.id);"><img
+                                                                                src="{% static 'images/basemaps/delorme.png' %}"
+                                                                                alt="img1" class="img-thumbnail">
+                                                                        </a>
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="tab-pane" id="messages" role="tabpanel"
+                                                                 aria-labelledby="legends_gee-tab"></div>
+                                                            <div class="tab-pane p-3 ml-3" id="location_gee"
+                                                                 role="tabpanel"
+                                                                 aria-labelledby="location_gee-tab"><p>Enter location
+                                                                name and hit Enter to recenter the map</p></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-
-
-                                        </div>
-                                            <div class="tab-pane" id="messages" role="tabpanel"
-                                                 aria-labelledby="legends_gee-tab"></div>
-                                              <div class="tab-pane p-3 ml-3" id="location_gee" role="tabpanel"
-                                                 aria-labelledby="location_gee-tab"><p>Enter location name and hit Enter to recenter the map</p></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                    </div>
-                                </div>
-                            </div>
-                                     </div>
 
-                                    <script src="{% static 'js/map_from_GEE.js' %}"></script>
-                                </div>
+                                <script src="{% static 'js/map_from_GEE.js' %}"></script>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">About GEE</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-left text-dark">
-                                        Google Earth Engine (GEE) is a very popular cloud-based platform for processing and analyzing 
-                                        geospatial data.
-                                        <hr>
-                                        GEE contains a large number of datasets, including satellite imagery, climate data, and other 
-                                        spatial data. You can create your own datasets by combining existing datasets, or by uploading 
-                                        your own data.
-                                        <hr>
-                                        In order to use GEE content in your web application, you need to create a GEE account and
-                                        obtain an API key. You can find more information about GEE accounts and API keys at <a href="">[link]</a>.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="alert alert-info">
-                                        <ul>
-                                        <li><strong>templates/WebApp/map_from_GEE.html</strong> contains the HTML code to modify 
-                                        the text and graphics in this page.</li>
-                                        <li><strong>staticfiles/js/map_from_GEE.js</strong> controls the behavior of the map.</li>
-                                        <br>
-                                        The code for this application is available <a href="https://github.com/SERVIR/AppTemplate2022">here</a>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">About GEE</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-left text-dark">
+                                    Google Earth Engine (GEE) is a very popular cloud-based platform for processing and
+                                    analyzing
+                                    geospatial data.
+                                    <hr>
+                                    GEE contains a large number of datasets, including satellite imagery, climate data,
+                                    and other
+                                    spatial data. You can create your own datasets by combining existing datasets, or by
+                                    uploading
+                                    your own data.
+                                    <hr>
+                                    In order to use GEE content in your web application, you need to create a GEE
+                                    account and
+                                    obtain an API key. You can find more information about GEE accounts and API keys at
+                                    <a href="">[link]</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-info">
+                                    <ul>
+                                        <li><strong>templates/WebApp/map_from_GEE.html</strong> contains the HTML code
+                                            to modify
+                                            the text and graphics in this page.
+                                        </li>
+                                        <li><strong>staticfiles/js/map_from_GEE.js</strong> controls the behavior of the
+                                            map.
+                                        </li>
+                                        <br>
+                                        The code for this application is available <a
+                                            href="https://github.com/SERVIR/AppTemplate2022">here</a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
