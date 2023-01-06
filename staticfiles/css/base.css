@@ -1,0 +1,13 @@
+#footer {
+    background-color: #0c1a4e;
+    height: 50px;
+    position: relative;
+}
+
+.app-copy {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
