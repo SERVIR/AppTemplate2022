@@ -11,3 +11,11 @@
     transform: translateY(-50%);
     right: 20px;
 }
+
+.app-power {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}

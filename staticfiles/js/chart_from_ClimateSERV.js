@@ -1,7 +1,7 @@
 $("#selectFiles").change(function (event) {
     var uploadedFile = event.target.files[0];
-
-    if (uploadedFile.type !== "application/json") {
+    var ext=uploadedFile.name.split('.')[1];
+    if (ext in ["geojson","json"]){
         alert("Wrong file type == " + uploadedFile.type);
         return false;
     }
