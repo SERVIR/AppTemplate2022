@@ -1,3 +1,5 @@
+$('#opacity_asset').hide();
+$('#opacity_collection').hide();
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
 
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
@@ -38,17 +40,22 @@ ajax_call("get-gee-layer", {}).done(function (data) {
 $("#collection").change(function() {
     if (this.checked) {
         gee_layer.addTo(map);
+        $('#opacity_collection').show();
     } else {
         gee_layer.remove();
+        $('#opacity_collection').hide();
     }
+
 });
 
 $("#asset").change(function() {
     if (this.checked) {
        user_layer.addTo(map);
+       $('#opacity_asset').show();
     }
     else{
         user_layer.remove();
+         $('#opacity_asset').hide();
     }
 });
 

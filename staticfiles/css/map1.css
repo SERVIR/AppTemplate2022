@@ -41,6 +41,7 @@
 accent-color:  #0c1a4e;
     background: #e3e6f0;
     width: 12vw;
+    margin-bottom: 20px;
 }
 .info_btn{
       color: gray;
@@ -75,8 +76,8 @@ accent-color:  #0c1a4e;
 #location{
     padding-bottom: 20px;
 }
-#basemaps,#basemaps_gee{
-     overflow-y: scroll;
+#basemaps,#basemaps_gee,#layers,#layes_gee{
+     overflow-y: auto;
     height: 20vh;
 }
 .leaflet-control-geocoder .leaflet-control-geocoder-alternatives a {
@@ -89,4 +90,28 @@ position: inherit;
 }
 .accordion-body {
 height: 35vh;
+    padding: 0;
+}
+.img-thumbnail{
+    height: 100px;
+    border: none;
+}
+.accordion-button:not(.collapsed) {
+    background-color:white;
+color: gray;
+}
+.accordion-button {
+color: gray;
+}
+
+p{
+    color: gray;
+}
+.leaflet-control, .leaflet-control-geocoder-alternatives {
+    width: 100%;
+}
+
+
+.leaflet-control-geocoder {
+    width: 100%;
 }
