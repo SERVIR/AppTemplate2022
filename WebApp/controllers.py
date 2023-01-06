@@ -37,7 +37,11 @@ def get_timeseries_netcdf(request):
         ts_plot = []
 
         # Defining the lat and lon from the coords string
-        poly_geojson = Polygon(json.loads(geom_data))
+        if geom_data[0] == '{':
+            geom = json.loads(geom_data)['features'][0]['geometry']['coordinates'][0]
+            poly_geojson = Polygon(geom)
+        else:
+            poly_geojson = Polygon(json.loads(geom_data))
         shape_obj = shapely.geometry.asShape(poly_geojson)
         bounds = poly_geojson.bounds
         miny = float(bounds[0])
@@ -91,12 +95,17 @@ def get_timeseries_climateserv(request):
             EarliestDate = request.POST["startdate"]
             LatestDate = request.POST["enddate"]
             GeometryCoords=request.POST["geom_data"]
+
             SeasonalEnsemble = ''  # only used for Seasonal_Forecast
             SeasonalVariable = ''  # only used for Seasonal_Forecast
-            print(OperationType)
-            print(GeometryCoords)
+            if GeometryCoords[0]=='{':
+                geom =json.loads(GeometryCoords)['features'][0]['geometry']['coordinates'][0]
+                result = (climateserv.api.request_data(dataset, OperationType,
+                                                       EarliestDate, LatestDate, geom,
+                                                       SeasonalEnsemble, SeasonalVariable, 'memory_object'))
+            else:
 
-            result =(climateserv.api.request_data(dataset, OperationType,
+                result =(climateserv.api.request_data(dataset, OperationType,
                                          EarliestDate, LatestDate, GeometryCoords,
                                          SeasonalEnsemble, SeasonalVariable, 'memory_object'))
             ts_plot=[]
