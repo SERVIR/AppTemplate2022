@@ -29,7 +29,17 @@ Please follow the instructions to set up the project
 ```  
   pip install -r requirements.txt
 ```
-* Edit the data.json with the details 
+* Create data.json Copy and paste the json object below into the file, then edit the values.
+```json
+{
+  "SECRET_KEY": "your_secret_key",
+  "ALLOWED_HOSTS": ["localhost", "127.0.0.1"],
+  "CSRF_TRUSTED_ORIGINS": ["http://localhost:8000","http://127.0.0.1:8000"],
+  "private_key_json" : "your_json_key",
+  "DATA_DIR" : "your_data_path",
+  "service_account" : "your_service_acccount"
+}
+```
 * Edit the WebApp/config.py with respective details
 * Start the app using "python manage.py runserver" from the root directory
 
