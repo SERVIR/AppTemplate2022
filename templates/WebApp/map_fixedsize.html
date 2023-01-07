@@ -76,7 +76,7 @@
                                                                 data-bs-target="#basemaps" type="button"
                                                                 role="tab"
                                                                 aria-controls="basemaps"
-                                                                aria-selected="false"></i> Basemaps
+                                                                aria-selected="false"> Basemaps
                                                         </button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
@@ -85,7 +85,7 @@
                                                                 data-bs-target="#legends" type="button"
                                                                 role="tab"
                                                                 aria-controls="legends"
-                                                                aria-selected="false"></i> Legends
+                                                                aria-selected="false"> Legends
                                                         </button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
@@ -94,7 +94,7 @@
                                                                 data-bs-target="#location" type="button"
                                                                 role="tab"
                                                                 aria-controls="location"
-                                                                aria-selected="false"></i> Location
+                                                                aria-selected="false"> Location
                                                         </button>
                                                     </li>
 
@@ -110,7 +110,7 @@
                                                                 id="chirps" type="checkbox"/>CHIRPS
                                                             Layer</label>
 
-                                                        <a role="button" href=#" data-bs-toggle="popover"
+                                                        <a role="button" href="#" data-bs-toggle="popover"
                                                            title="CHIRPS dataset Info"
                                                            data-bs-trigger="focus"
                                                            data-bs-content="Use this space to offer a description of the dataset.
@@ -122,8 +122,11 @@
 
                                                         <input id="opacity_chirps" type="range"
                                                                max="1"
-                                                               min="0" step="0.01"/><label class="ml-1"
-                                                                                           id="chirps_opacity"></label>
+                                                               min="0" step="0.01"/>
+                                                        <label
+                                                                class="ml-1"
+                                                                for="opacity_chirps"
+                                                                id="chirps_opacity"></label>
 
                                                         <p>
 
@@ -131,7 +134,7 @@
                                                                    for="esi"> <input class="form-check-input"
                                                                                      id="esi" type="checkbox"/>ESI
                                                                 Layer</label>
-                                                            <a role="button" href=#" data-bs-toggle="popover"
+                                                            <a role="button" href="#" data-bs-toggle="popover"
                                                                data-bs-trigger="focus" title="ESI dataset Info"
                                                                data-bs-content="Use this space to offer a description of the dataset.
                                                    For this template we are using ESI Dataset.
@@ -141,8 +144,11 @@
 
                                                         <input id="opacity_esi" type="range"
                                                                max="1" min="0"
-                                                               step="0.01"/><label class="ml-1"
-                                                                                   id="esi_opacity"></label>
+                                                               step="0.01"/>
+                                                        <label
+                                                                class="ml-1"
+                                                                for="opacity_esi"
+                                                                id="esi_opacity"></label>
 
 
                                                     </div>
