@@ -2,6 +2,7 @@ const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]
 
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 var map = L.map('map3', {
+    zoomControl: false,
     fullscreenControl: true,
     timeDimension: true,
     timeDimensionOptions: {
@@ -24,6 +25,10 @@ var map = L.map('map3', {
     }, center: [42.35, -71.08], zoom: 3
 });
 
+L.control.zoom({
+    position: 'topright'
+}).addTo(map);
+
 var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
@@ -44,7 +49,7 @@ osm.addTo(map);
 
 var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
     layers: 'precipitation_amount',
-    transparency: 'true',
+    transparent: 'true',
     format: 'image/png',
     style: 'boxfill/apcp_surface',
     maxZoom: 21,
@@ -53,7 +58,7 @@ var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/u
 });
 let esi = L.esri.dynamicMapLayer({
     url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
-    transparency: 'true',
+    transparent: 'true',
     format: 'image/png',
     style: 'boxfill/apcp_surface',
     maxZoom: 21,
