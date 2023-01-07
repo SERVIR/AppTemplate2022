@@ -12,6 +12,14 @@
     right: 20px;
 }
 
+.app-copy a {
+    color: #ffffff;
+}
+
+.app-copy a:hover {
+    text-decoration: none;
+}
+
 .app-power {
     margin: 0;
     position: absolute;
