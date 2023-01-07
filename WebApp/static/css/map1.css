@@ -26,6 +26,9 @@
     max-width: 75%;
 }
 
+.leaflet-control-zoom.leaflet-bar.leaflet-control{
+    width:36px;
+}
 
 .nav-tabs .nav-item .nav-link.active {
     color: #0080FF;
