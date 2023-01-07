@@ -1,33 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "WebApp/app_base.html" %}
 {% load static %}
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{% static '/images/logo.png' %}" type="image/png">
-    <title>SERVIR AppTemplate</title>
-    <!-- Custom fonts-->
-    <link href="{% static '/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">
-    <!-- Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+{% block title %}SERVIR AppTemplate - Home{% endblock %}
+{% block script %}
     <!-- Custom styles-->
-    <link href="{% static '/css/basic.css' %}" rel="stylesheet">
-    <script src="{% static '/js/ajax_calls.js' %}"></script>
-</head>
-<body id="page-top">
-<div id="wrapper">
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
-        <div id="content">
-            {% include "WebApp/topbar.html" %}
+
+    <!-- Custom scripts-->
+
+{% endblock %}
+
+
+<!-- Begin Page Content -->
+{% block content %}
             <div class="container-fluid">
 
                 <div class="card shadow mt-4 mb-4">
@@ -36,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         {% if user.is_authenticated %}
-                            {% block content %}
+
 
 
                                 <form method="POST" action="">
@@ -63,7 +47,7 @@
                                     <input type="submit" value="Submit" class="btn btn-primary">
                                     
                                 </form>
-                            {% endblock %}
+
                         {% else %}
                             <div class="row">
                                 <div class="col-lg-12 mb-4">
@@ -96,8 +80,4 @@
                     <script src="{% static '/js/update_datamodel.js' %}"></script>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-</body>
-</html>
+{% endblock %}
