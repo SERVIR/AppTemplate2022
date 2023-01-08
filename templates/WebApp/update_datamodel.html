@@ -4,7 +4,11 @@
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
 {% block script %}
     <!-- Custom styles-->
-
+    <style>
+        #wrapper {
+            min-height: calc(100vh - 50px);
+        }
+    </style>
     <!-- Custom scripts-->
 
 {% endblock %}
@@ -12,72 +16,72 @@
 
 <!-- Begin Page Content -->
 {% block content %}
-            <div class="container-fluid">
+    <div class="container-fluid">
 
-                <div class="card shadow mt-4 mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Add records to Measurements Table</h6>
-                    </div>
-                    <div class="card-body">
-                        {% if user.is_authenticated %}
+        <div class="card shadow mt-4 mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add records to Measurements Table</h6>
+            </div>
+            <div class="card-body">
+                {% if user.is_authenticated %}
 
 
 
-                                <form method="POST" action="">
-                                    {% csrf_token %}
-                                    <div class="mb-3">
-                                        <label class="form-label">{{ form.stations.help_text }}</label>
-                                        {{ form.stations }}
-                                    </div>
-                                    <div class="mb-3">
-                                       <label class="form-label"> {{ form.measurement_date.help_text }}</label>
-                                       {{ form.measurement_date }}
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">{{ form.measurement_precip.help_text }}</label>
-                                        {{ form.measurement_precip }}
-                                    </div>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">{{ form.stations.help_text }}</label>
+                            {{ form.stations }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"> {{ form.measurement_date.help_text }}</label>
+                            {{ form.measurement_date }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">{{ form.measurement_precip.help_text }}</label>
+                            {{ form.measurement_precip }}
+                        </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label">{{ form.measurement_temp.help_text }}</label>
-                                        {{ form.measurement_temp }}
-                                    </div>
+                        <div class="mb-3">
+                            <label class="form-label">{{ form.measurement_temp.help_text }}</label>
+                            {{ form.measurement_temp }}
+                        </div>
 
-                                    <br>
-                                    <input type="submit" value="Submit" class="btn btn-primary">
-                                    
-                                </form>
+                        <br>
+                        <input type="submit" value="Submit" class="btn btn-primary">
 
-                        {% else %}
-                            <div class="row">
-                                <div class="col-lg-12 mb-4">
-                                    <div class="card-body text-center">
-                                        <h3>Please login and retry loading this page.</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 mb-4">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="alert alert-info">
-                                    <strong>templates\WebApp\update_datamodel.html</strong> contains the HTML code to modify
-                                    the text and graphics in this page.<br>
-                                    <strong>WebApp\forms.py</strong> contains the form definition.
-                                    <br>
-                                    The code for this application is available <a
-                                        href="https://github.com/SERVIR/AppTemplate2022">here</a>
-                                </div>
+                    </form>
+
+                {% else %}
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="card-body text-center">
+                                <h3>Please login and retry loading this page.</h3>
                             </div>
                         </div>
                     </div>
-                    <script src="{% static '/js/update_datamodel.js' %}"></script>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <strong>templates\WebApp\update_datamodel.html</strong> contains the HTML code to modify
+                            the text and graphics in this page.<br>
+                            <strong>WebApp\forms.py</strong> contains the form definition.
+                            <br>
+                            The code for this application is available <a
+                                href="https://github.com/SERVIR/AppTemplate2022">here</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <script src="{% static '/js/update_datamodel.js' %}"></script>
+        </div>
+    </div>
 {% endblock %}
