@@ -43,7 +43,7 @@ $("#collection").change(function() {
     if (this.checked) {
         gee_layer.addTo(map);
         $('#opacity_collection').show();
-        var val=$('#opacity_collection').val()*100;
+        var val=Math.round($('#opacity_collection').val()*100);
                 $('#collection_opacity').text(val+"%");
                   $('#collection_opacity').show();
     } else {
@@ -57,7 +57,7 @@ $("#asset").change(function() {
     if (this.checked) {
        user_layer.addTo(map);
        $('#opacity_asset').show();
-       var val=$('#opacity_asset').val()*100;
+       var val=Math.round($('#opacity_asset').val()*100);
                   $('#asset_opacity').text(val+"%");
                    $('#asset_opacity').show();
 
@@ -71,12 +71,12 @@ $("#asset").change(function() {
 
 $('#opacity_collection').change(function() {
                 gee_layer.setOpacity($(this).val());
-                  var val=$(this).val()*100;
+                  var val=Math.round($(this).val()*100);
                 $('#collection_opacity').text(val+"%");
             });
 $('#opacity_asset').change(function() {
                 user_layer.setOpacity($(this).val());
-                var val=$(this).val()*100;
+                var val=Math.round($(this).val()*100);
                   $('#asset_opacity').text(val+"%");
             });
 

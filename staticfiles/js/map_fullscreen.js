@@ -1,3 +1,5 @@
+ $('#opacity_esi_full').hide();
+ $('#opacity_chirps_full').hide();
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
@@ -54,7 +56,7 @@ var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/u
     style: 'boxfill/apcp_surface',
     maxZoom: 21,
     zIndex: 400,
-    opacity: $("#opacity_chirps_full").val()
+    opacity: 0.5
 });
 let esi = L.esri.dynamicMapLayer({
     url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
@@ -62,7 +64,7 @@ let esi = L.esri.dynamicMapLayer({
     format: 'image/png',
     style: 'boxfill/apcp_surface',
     maxZoom: 21,
-    opacity: $("#opacity_esi_full").val()
+    opacity:0.5
 });
 
 var testTimeLayer = L.timeDimension.layer.wms(chirps, {
@@ -75,8 +77,14 @@ $("#chirps_full").change(function () {
 
         testTimeLayer.addTo(map);
         testTimeLayer.bringToFront();
+         var val=Math.round($('#opacity_chirps_full').val()*100);
+                $('#chirps_full_opacity').text(val+"%");
+                  $('#chirps_full_opacity').show();
+                   $('#opacity_chirps_full').show();
     } else {
         testTimeLayer.remove();
+         $('#chirps_full_opacity').hide();
+         $('#opacity_chirps_full').hide();
     }
 });
 
@@ -86,18 +94,28 @@ $("#esi_full").change(function () {
 
         esi.addTo(map);
         esi.bringToFront();
+         var val=Math.round($('#opacity_esi_full').val()*100);
+                $('#esi_full_opacity').text(val+"%");
+                  $('#esi_full_opacity').show();
+                   $('#opacity_esi_full').show();
 
     } else {
         esi.remove();
+         $('#esi_full_opacity').hide();
+          $('#opacity_esi_full').hide();
     }
 });
 
 $('#opacity_chirps_full').change(function () {
     testTimeLayer.setOpacity($(this).val());
+      var val=Math.round($(this).val()*100);
+                $('#chirps_full_opacity').text(val+"%");
 });
 
 $('#opacity_esi_full').change(function () {
     esi.setOpacity($(this).val());
+    var val=Math.round($(this).val()*100);
+                $('#esi_full_opacity').text(val+"%");
 });
 
 // Finally append that node to the new parent, recursively searching out and re-parenting nodes.

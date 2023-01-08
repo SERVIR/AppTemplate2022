@@ -110,7 +110,7 @@ $("#chirps").change(function () {
 
         testTimeLayer.addTo(map);
         testTimeLayer.bringToFront();
-         var val=$('#opacity_chirps').val()*100;
+         var val=Math.round($('#opacity_chirps').val()*100);
                 $('#chirps_opacity').text(val+"%");
                   $('#chirps_opacity').show();
                                               $('#opacity_chirps').show();
@@ -127,7 +127,7 @@ $("#esi").change(function () {
     if (this.checked) {
         esi.addTo(map);
         esi.bringToFront();
-        var val = $('#opacity_esi').val() * 100;
+        var val = Math.round($('#opacity_esi').val() * 100);
         $('#esi_opacity').text(val + "%");
         $('#esi_opacity').show();
         $('#opacity_esi').show();
@@ -142,13 +142,13 @@ $("#esi").change(function () {
 
 $('#opacity_chirps').change(function () {
     testTimeLayer.setOpacity($(this).val());
-     var val=$(this).val()*100;
+     var val=Math.round($(this).val()*100);
                   $('#chirps_opacity').text(val+"%");
 });
 
 $('#opacity_esi').change(function () {
     esi.setOpacity($(this).val());
-     var val=$(this).val()*100;
+     var val=Math.round($(this).val()*100);
                   $('#esi_opacity').text(val+"%");
 });
 
