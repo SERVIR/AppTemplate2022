@@ -9,13 +9,13 @@ xhr.done(function (result) {
     let series = [
         {
             data: result['plot'],
-            name: "1st",
+            name: "Measurement Temperature",
             color: "blue",
             yAxis: 0
         },
         {
             data: result['plot1'],
-            name: "2nd",
+            name: "Measurement Precipitation",
             color: "blue",
             yAxis: 1
         }];
@@ -72,6 +72,7 @@ xhr.done(function (result) {
             },
             title: {
                 text: 'Date'
+
             }
         },
         legend: {
@@ -79,7 +80,18 @@ xhr.done(function (result) {
             verticalAlign: 'bottom',
             y: -25
         },
-        yAxis: [{}, {}],
+        yAxis: [{
+             title: {
+                text: 'Temperature'
+
+            }
+        }, {
+             title: {
+                text: 'Precipitation'
+
+            }
+
+        }],
         plotOptions: {
             series: {
                 color: "black"

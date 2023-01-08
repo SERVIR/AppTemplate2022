@@ -77,7 +77,7 @@ function get_chart() {
                 borderWidth: 3
             },
             title: {
-                text: "test",
+                text: "Timeseries Data",
                 style: {
                     fontSize: '14px'
                 }
@@ -101,7 +101,7 @@ function get_chart() {
             yAxis: {
                 title: {
                     useHTML: true,
-                    text: "jj/mm"
+                    text: "Units"
                 },
                 plotBands: [],
 
