@@ -85,7 +85,7 @@ osm.addTo(map);
 
 var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
     layers: 'precipitation_amount',
-    transparency: 'true',
+    transparent: 'true',
     format: 'image/png',
     style: 'boxfill/apcp_surface',
     maxZoom: 21,
@@ -94,7 +94,7 @@ var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/u
 });
 let esi = L.esri.dynamicMapLayer({
     url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
-    transparency: 'true',
+    transparent: 'true',
     format: 'image/png',
     style: 'boxfill/apcp_surface',
     maxZoom: 21,
