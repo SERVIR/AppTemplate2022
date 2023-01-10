@@ -15,15 +15,21 @@
 }
 
 #layer_manager, #layer_manager_gee {
-    width: 50vh;
+
     position: absolute;
-    /*background: white;*/
-    /*top:12vh;*/
     z-index: 400;
     right: 3vh;
-    height: 40vh;
-    /*overflow-y: scroll;*/
     max-width: 75%;
+}
+
+.accordion-collapse.collapse.show {
+    width: 50vh;
+    height: 40vh;
+    max-width: 100%;
+}
+
+#legend svg {
+    margin: 10px 5px 10px 0;
 }
 
 .leaflet-top.leaflet-right {
