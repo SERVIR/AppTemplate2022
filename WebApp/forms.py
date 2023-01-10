@@ -12,7 +12,7 @@ class MeasurementForm(forms.Form):
     measurement_precip = forms.FloatField(label="Precipitation", help_text="Enter the precipitation in mm",widget=widgets.NumberInput(attrs={'class': 'form-control'}))
 
 
-""" # Station Form
+# Station Form
 class StationForm(forms.Form):
     station_id = forms.CharField(max_length=10)
     station_name = forms.CharField(max_length=100)
@@ -23,7 +23,7 @@ class StationForm(forms.Form):
     station_organization = forms.CharField(max_length=10)
     station_year_established = forms.IntegerField(required=False)
 
-# Organization Form
+""" # Organization Form
 class OrganizationForm(forms.Form):
     organization_id = forms.CharField(max_length=10)
     organization_name = forms.CharField(max_length=100)
