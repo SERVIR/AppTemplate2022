@@ -23,62 +23,61 @@ var datamaps = {
     "ImageCollection": gee_layer,
     "UserAsset": user_layer
 };
- ajax_call("get-gee-user-layer", {}).done(function (data) {
-     console.log(data['url']);
-     user_layer = L.tileLayer(data['url'], {
-         zoom: 3,
-         zIndex:400,
-         opacity:0.5
-     });
- });
+ajax_call("get-gee-user-layer", {}).done(function (data) {
+    console.log(data['url']);
+    user_layer = L.tileLayer(data['url'], {
+        zoom: 3,
+        zIndex: 400,
+        opacity: 0.5
+    });
+});
 ajax_call("get-gee-layer", {}).done(function (data) {
-     gee_layer = L.tileLayer(data['url'], {
-         zoom: 3,
-         zIndex: 400,
-         opacity:0.5
-     });
- });
+    gee_layer = L.tileLayer(data['url'], {
+        zoom: 3,
+        zIndex: 400,
+        opacity: 0.5
+    });
+});
 
-$("#collection").change(function() {
+$("#collection").change(function () {
     if (this.checked) {
         gee_layer.addTo(map);
         $('#opacity_collection').show();
-        var val=Math.round($('#opacity_collection').val()*100);
-                $('#collection_opacity').text(val+"%");
-                  $('#collection_opacity').show();
+        var val = Math.round($('#opacity_collection').val() * 100);
+        $('#collection_opacity').text(val + "%");
+        $('#collection_opacity').show();
     } else {
         gee_layer.remove();
-         $('#collection_opacity').hide();
+        $('#collection_opacity').hide();
         $('#opacity_collection').hide();
     }
 });
 
-$("#asset").change(function() {
+$("#asset").change(function () {
     if (this.checked) {
-       user_layer.addTo(map);
-       $('#opacity_asset').show();
-       var val=Math.round($('#opacity_asset').val()*100);
-                  $('#asset_opacity').text(val+"%");
-                   $('#asset_opacity').show();
+        user_layer.addTo(map);
+        $('#opacity_asset').show();
+        var val = Math.round($('#opacity_asset').val() * 100);
+        $('#asset_opacity').text(val + "%");
+        $('#asset_opacity').show();
 
-    }
-    else{
+    } else {
         user_layer.remove();
-         $('#asset_opacity').hide();
-         $('#opacity_asset').hide();
+        $('#asset_opacity').hide();
+        $('#opacity_asset').hide();
     }
 });
 
-$('#opacity_collection').change(function() {
-                gee_layer.setOpacity($(this).val());
-                  var val=Math.round($(this).val()*100);
-                $('#collection_opacity').text(val+"%");
-            });
-$('#opacity_asset').change(function() {
-                user_layer.setOpacity($(this).val());
-                var val=Math.round($(this).val()*100);
-                  $('#asset_opacity').text(val+"%");
-            });
+$('#opacity_collection').change(function () {
+    gee_layer.setOpacity($(this).val());
+    var val = Math.round($(this).val() * 100);
+    $('#collection_opacity').text(val + "%");
+});
+$('#opacity_asset').change(function () {
+    user_layer.setOpacity($(this).val());
+    var val = Math.round($(this).val() * 100);
+    $('#asset_opacity').text(val + "%");
+});
 
 osm.addTo(map);
 
@@ -94,9 +93,6 @@ var baseMaps = {
 function setParent(el, newParent) {
     newParent.appendChild(el);
 }
-
-
-
 
 
 var control1 = L.Control.geocoder({collapsed: false});
@@ -215,7 +211,7 @@ add_basemap = function (map_name) {
     }
 }
 
-function add_legend(layer_vis_params){
+function add_legend(layer_vis_params) {
 
     // append a defs (for definition) element to your SVG
     var svgLegend = d3.select('#legend').append('svg')
@@ -251,10 +247,10 @@ function add_legend(layer_vis_params){
             {offset: "100%", color: "#ff5d0f"}
         ])
         .enter().append("stop")
-        .attr("offset", function(d) {
+        .attr("offset", function (d) {
             return d.offset;
         })
-        .attr("stop-color", function(d) {
+        .attr("stop-color", function (d) {
             return d.color;
         });
 
@@ -262,40 +258,46 @@ function add_legend(layer_vis_params){
     svgLegend.append("text")
         .attr("class", "legendTitle")
         .style("fill", "#FFFFFF")
+        .style("font-size", "12px")
         .attr("x", 3)
         .attr("y", 20)
+        .attr("transform", "translate(100,10) rotate(90)")
         .style("text-anchor", "left")
-        .text("Legend title");
+        .text("Legend title"); //***replace Legend title with title passed in layer_vis_params***
 
     // draw the rectangle and fill with gradient
     svgLegend.append("rect")
-        .attr("x", 0)
-        .attr("y", 40)
+        .attr("x", 2)
+        .attr("y", 10)
         .attr("width", 20)
-        .attr("height", 200)
+        .attr("height", 230)
         .style("fill", "url(#Gradient2)");
 
     //create tick marks
     var xLeg = d3.scaleLinear()
         .domain([258, 316]) // This is the min and max from the layer_vis_params
-        .range([40, 240]);
+        .range([10, 240]);
 
     var axisLeg = d3.axisRight(xLeg);
 
     // I based this off of how many colors there are, both the number of ticks
     // and the tick values.  The tick values again will need a little math...
     axisLeg.ticks(4);
-    axisLeg.tickValues([258,277,296,316]);
+    axisLeg.tickValues([258, 277, 296, 316]);
 
 
     svgLegend
         .attr("class", "axis")
         .append("g")
-        .attr("transform", "translate(20, 0)")
+        .attr("transform", "translate(16, 0)")
         .call(axisLeg);
 
     svgLegend.selectAll(".tick line")
-        .attr("stroke","#ffffff");
+        .attr("stroke-opacity", "0.0")
+        .attr("stroke", "#000000");
+    svgLegend.selectAll(".domain")
+        .attr("stroke-opacity", "0.0")
+        .attr("stroke", "#000000");
     svgLegend.selectAll(".tick text")
-        .attr("fill","#ffffff");
+        .attr("fill", "#ffffff");
 }

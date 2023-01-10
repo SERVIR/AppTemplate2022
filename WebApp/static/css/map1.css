@@ -26,6 +26,10 @@
     max-width: 75%;
 }
 
+#legend svg {
+    margin: 10px 5px 10px 0;
+}
+
 .leaflet-top.leaflet-right {
     margin-right: 10px;
 }
