@@ -214,3 +214,88 @@ add_basemap = function (map_name) {
 
     }
 }
+
+function add_legend(layer_vis_params){
+
+    // append a defs (for definition) element to your SVG
+    var svgLegend = d3.select('#legend').append('svg')
+        .attr("height", 250)
+        .attr("width", 100)
+        .attr("style", "background-color:#000000");
+    var defs = svgLegend.append('defs');
+
+    // append a linearGradient element to the defs and give it a unique id
+    var linearGradient = defs.append('linearGradient')
+        .attr('id', 'linear-gradient');
+
+    // horizontal gradient
+    linearGradient
+        .attr('id', 'Gradient2')
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "0%")
+        .attr("y2", "100%");
+
+
+    // append multiple color stops by using D3's data/enter step
+    // these would have to be calculated from the layer_vis_params
+    // this particular one has 4 colors in the palette, so the breaks
+    // are 0, 33, 66, 100.  you would have to do a little math
+    // to calculate the percentage for different number of colors
+    // in a palette and assign the offset and color
+    linearGradient.selectAll("stop")
+        .data([
+            {offset: "0%", color: "#1303ff"},
+            {offset: "33%", color: "#42fff6"},
+            {offset: "66%", color: "#f3ff40"},
+            {offset: "100%", color: "#ff5d0f"}
+        ])
+        .enter().append("stop")
+        .attr("offset", function(d) {
+            return d.offset;
+        })
+        .attr("stop-color", function(d) {
+            return d.color;
+        });
+
+    // append title
+    svgLegend.append("text")
+        .attr("class", "legendTitle")
+        .style("fill", "#FFFFFF")
+        .attr("x", 3)
+        .attr("y", 20)
+        .style("text-anchor", "left")
+        .text("Legend title");
+
+    // draw the rectangle and fill with gradient
+    svgLegend.append("rect")
+        .attr("x", 0)
+        .attr("y", 40)
+        .attr("width", 20)
+        .attr("height", 200)
+        .style("fill", "url(#Gradient2)");
+
+    //create tick marks
+    var xLeg = d3.scaleLinear()
+        .domain([258, 316]) // This is the min and max from the layer_vis_params
+        .range([40, 240]);
+
+    var axisLeg = d3.axisRight(xLeg);
+
+    // I based this off of how many colors there are, both the number of ticks
+    // and the tick values.  The tick values again will need a little math...
+    axisLeg.ticks(4);
+    axisLeg.tickValues([258,277,296,316]);
+
+
+    svgLegend
+        .attr("class", "axis")
+        .append("g")
+        .attr("transform", "translate(20, 0)")
+        .call(axisLeg);
+
+    svgLegend.selectAll(".tick line")
+        .attr("stroke","#ffffff");
+    svgLegend.selectAll(".tick text")
+        .attr("fill","#ffffff");
+}

@@ -25,6 +25,7 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/leaflet-providers.js' %}"></script>
     <script src="{% static '/js/ajax_calls.js' %}"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -191,8 +192,11 @@
 
 
                                                             </div>
-                                                            <div class="tab-pane" id="messages" role="tabpanel"
-                                                                 aria-labelledby="legends_gee-tab"></div>
+                                                            <div class="tab-pane" id="legends_gee" role="tabpanel"
+                                                                 aria-labelledby="legends_gee-tab">
+
+                                                                <div id='legend'></div>
+                                                            </div>
                                                             <div class="tab-pane p-3 ml-3" id="location_gee"
                                                                  role="tabpanel"
                                                                  aria-labelledby="location_gee-tab"><p>Enter location
