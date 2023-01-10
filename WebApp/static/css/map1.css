@@ -147,15 +147,30 @@ p {
     display: contents;
 }
 
-#legend_chirps,#legend_esi,#legend_asset,#legend_coll{
+#legend_chirps,#legend_asset,#legend_coll{
     background: black;
     width: fit-content;
     left: 10px;
 }
+#legend_chirps img{
+    background: black;
+    width: fit-content;
+    left: 10px;
+}
+#legend_esi img{
+    background: white;
+    width: fit-content;
+    left: 10px;
 
+}
+#legend_chirps,#legend_esi{
+     display: inline-flex;
+    margin: 10px;
+}
 label{
     color: gray;
 }
 #legend_asset,#legend_coll{
     display: contents;
+
 }
