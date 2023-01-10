@@ -1,38 +1,43 @@
-$('#opacity_asset').hide();
-$('#opacity_collection').hide();
+const opacity_asset = $('#opacity_asset');
+opacity_asset.hide();
+const opacity_collection = $('#opacity_collection');
+opacity_collection.hide();
+const collection_opacity = $('#collection_opacity');
+const asset_opacity = $('#asset_opacity');
+
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
 
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
-var map = L.map('map2', {center: [42.35, -71.08], zoom: 3});
+[...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+const map = L.map('map2', {center: [42.35, -71.08], zoom: 3});
 
-var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
 });
-let streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map)
+let streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 // create a satellite imagery layer
 let satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
-var baseMaps = {
+const baseMaps = {
 
     "OpenStreetMap": osm,
     "Satellite": satellite
 };
-var gee_layer, user_layer;
-var datamaps = {
+let gee_layer, user_layer;
+const datamaps = {
     "ImageCollection": gee_layer,
     "UserAsset": user_layer
 };
 ajax_call("get-gee-user-layer", {}).done(function (data) {
-    console.log(data['url']);
-    user_layer = L.tileLayer(data['url'], {
+    console.log(data.url);
+    user_layer = L.tileLayer(data.url, {
         zoom: 3,
         zIndex: 400,
         opacity: 0.5
     });
 });
 ajax_call("get-gee-layer", {}).done(function (data) {
-    gee_layer = L.tileLayer(data['url'], {
+    gee_layer = L.tileLayer(data.url, {
         zoom: 3,
         zIndex: 400,
         opacity: 0.5
@@ -42,51 +47,40 @@ ajax_call("get-gee-layer", {}).done(function (data) {
 $("#collection").change(function () {
     if (this.checked) {
         gee_layer.addTo(map);
-        $('#opacity_collection').show();
-        var val = Math.round($('#opacity_collection').val() * 100);
-        $('#collection_opacity').text(val + "%");
-        $('#collection_opacity').show();
+        opacity_collection.show();
+        collection_opacity.text(Math.round(opacity_collection.val() * 100) + "%");
+        collection_opacity.show();
     } else {
         gee_layer.remove();
-        $('#collection_opacity').hide();
-        $('#opacity_collection').hide();
+        collection_opacity.hide();
+        opacity_collection.hide();
     }
 });
 
 $("#asset").change(function () {
     if (this.checked) {
         user_layer.addTo(map);
-        $('#opacity_asset').show();
-        var val = Math.round($('#opacity_asset').val() * 100);
-        $('#asset_opacity').text(val + "%");
-        $('#asset_opacity').show();
+        opacity_asset.show();
+        asset_opacity.text(Math.round(opacity_asset.val() * 100) + "%");
+        asset_opacity.show();
 
     } else {
         user_layer.remove();
-        $('#asset_opacity').hide();
-        $('#opacity_asset').hide();
+        asset_opacity.hide();
+        opacity_asset.hide();
     }
 });
 
-$('#opacity_collection').change(function () {
+opacity_collection.change(function () {
     gee_layer.setOpacity($(this).val());
-    var val = Math.round($(this).val() * 100);
-    $('#collection_opacity').text(val + "%");
+    collection_opacity.text(Math.round($(this).val() * 100) + "%");
 });
-$('#opacity_asset').change(function () {
+opacity_asset.change(function () {
     user_layer.setOpacity($(this).val());
-    var val = Math.round($(this).val() * 100);
-    $('#asset_opacity').text(val + "%");
+    asset_opacity.text(Math.round($(this).val() * 100) + "%");
 });
 
 osm.addTo(map);
-
-
-var baseMaps = {
-    "OpenStreetMap": osm,
-    "Satellite": satellite,
-
-};
 
 
 // Finally append that node to the new parent, recursively searching out and re-parenting nodes.
@@ -177,7 +171,7 @@ removeLayers = function () {
     terrainLayer.remove();
     deLormeLayer.remove();
     gSatLayer.remove();
-}
+};
 
 add_basemap = function (map_name) {
     removeLayers();
@@ -209,7 +203,7 @@ add_basemap = function (map_name) {
             osm.addTo(map);
 
     }
-}
+};
 
 function add_legend(layer_vis_params) {
 
