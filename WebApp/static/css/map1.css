@@ -147,7 +147,7 @@ p {
     display: contents;
 }
 
-#legend_chirps,#legend_esi{
+#legend_chirps,#legend_esi,#legend_asset,#legend_coll{
     background: black;
     width: fit-content;
     left: 10px;
@@ -155,4 +155,7 @@ p {
 
 label{
     color: gray;
+}
+#legend_asset,#legend_coll{
+    display: contents;
 }
