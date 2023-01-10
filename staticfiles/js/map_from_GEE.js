@@ -44,30 +44,42 @@ ajax_call("get-gee-layer", {}).done(function (data) {
     });
 });
 
+
+
+
 $("#collection").change(function () {
+    var coll_json={'min': 258, 'max': 316, 'palette': ['#1303ff', '#42fff6', '#f3ff40', '#ff5d0f'],'title':'ImageCollection' };
+
     if (this.checked) {
         gee_layer.addTo(map);
         opacity_collection.show();
         collection_opacity.text(Math.round(opacity_collection.val() * 100) + "%");
         collection_opacity.show();
+        add_legend("coll",coll_json);
     } else {
         gee_layer.remove();
         collection_opacity.hide();
         opacity_collection.hide();
+        remove_legend("legend_coll");
     }
 });
 
 $("#asset").change(function () {
+    var asset_json={'min': 1000, 'max': 3000,'bands':['b1'] ,'palette': ['#fcffe7', '#d2ffba', '#70d7ff', '#423fff'], 'title':'UserAsset'};
+
     if (this.checked) {
         user_layer.addTo(map);
         opacity_asset.show();
         asset_opacity.text(Math.round(opacity_asset.val() * 100) + "%");
         asset_opacity.show();
+                add_legend("asset",asset_json);
+
 
     } else {
         user_layer.remove();
         asset_opacity.hide();
         opacity_asset.hide();
+        remove_legend("legend_asset");
     }
 });
 
@@ -205,31 +217,36 @@ add_basemap = function (map_name) {
     }
 };
 
-function split(left, right, parts) {
+function splitnumbers(left, right, parts) {
     var result = [],
-        delta = (right - left) / (parts - 1);
-    while (left < right) {
-        result.push(left);
-        left += delta;
+        delta = right - left,
+        percent = (100 / (parts - 1) / 100);
+    adjust = delta * percent;
+    while (Math.round(left) < right) {
+        result.push(Math.round(left));
+        left += adjust;
     }
-    result.push(Math.floor(right));
+    result.push(Math.round(right));
     return result;
 }
 
-function add_legend(layer_vis_params) {
-    var color_count = $('#colors_coll').val();
+function add_legend(element,params) {
+    var g = document.createElement('div');
+    g.setAttribute("id", "legend_"+element);
+    var color_count = params.palette.length;
     var percentages = [];
-    for (var i = 1; i <= color_count; i++)
-        percentages.push(str(MAth.round(i * 100 / num)) + '%');
-    console.log(percentages);
+    var color_percent_count=color_count-1;
+    for (var i = 0; i < color_count; i++)
+        percentages.push(Math.round(i * 100 / color_percent_count) + '%');
     var gradientArray = [];
 
-    for (var j = 0; j < percentages; j++) {
-        gradientArray.push({offset: percentages[j], color: $('#color' + (j + 1) + '_coll')});
+    for (var j = 0; j < percentages.length; j++) {
+        gradientArray.push({offset: percentages[j], color: params.palette[j]});
     }
+    console.log(gradientArray);
 
     // append a defs (for definition) element to your SVG
-    var svgLegend = d3.select('#legend').append('svg')
+    var svgLegend = d3.select(g).append('svg')
         .attr("height", 250)
         .attr("width", 100)
         .attr("style", "background-color:#000000");
@@ -237,11 +254,11 @@ function add_legend(layer_vis_params) {
 
     // append a linearGradient element to the defs and give it a unique id
     var linearGradient = defs.append('linearGradient')
-        .attr('id', 'linear-gradient');
+        .attr('id', 'linear-gradient_legends_'+element);
 
     // horizontal gradient
     linearGradient
-        .attr('id', 'Gradient2')
+        .attr('id', 'Gradient2'+element)
         .attr("x1", "0%")
         .attr("y1", "0%")
         .attr("x2", "0%")
@@ -273,7 +290,7 @@ function add_legend(layer_vis_params) {
         .attr("y", 20)
         .attr("transform", "translate(100,10) rotate(90)")
         .style("text-anchor", "left")
-        .text("Legend title"); //***replace Legend title with title passed in layer_vis_params***
+        .text(params.title); //***replace Legend title with title passed in layer_vis_params***
 
     // draw the rectangle and fill with gradient
     svgLegend.append("rect")
@@ -281,20 +298,21 @@ function add_legend(layer_vis_params) {
         .attr("y", 10)
         .attr("width", 20)
         .attr("height", 230)
-        .style("fill", "url(#Gradient2)");
+        .style("fill", "url(#Gradient2"+element+")");
 
     //create tick marks
     var xLeg = d3.scaleLinear()
-        .domain([$('#coll_min'), $('#coll_max')]) // This is the min and max from the layer_vis_params
+        .domain([params.min, params.max]) // This is the min and max from the layer_vis_params
         .range([10, 240]);
 
     var axisLeg = d3.axisRight(xLeg);
 
     // I based this off of how many colors there are, both the number of ticks
     // and the tick values.  The tick values again will need a little math...
-    axisLeg.ticks(4);
+    axisLeg.ticks(parseInt(color_count));
 
-    var range_arr = split($('#coll_min'), $('#coll_max'))
+    var range_arr = splitnumbers(params.min, params.max,params.palette.length);
+    console.log(range_arr);
 
     axisLeg.tickValues(range_arr);
 
@@ -313,6 +331,11 @@ function add_legend(layer_vis_params) {
         .attr("stroke", "#000000");
     svgLegend.selectAll(".tick text")
         .attr("fill", "#ffffff");
-}
+      document.getElementById('legends_gee').appendChild(g);
 
-add_legend();
+
+
+}
+function remove_legend(ele) {
+    document.getElementById(ele).remove();
+}
