@@ -34,6 +34,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('feedback/', views.feedback, name='feedback'),
     path('updates/', views.updates, name='updates'),
+    path('chart_sqlite/stations/', controllers.stations, name='stations'),
     path('updates/update-record/', controllers.update_record, name='update-record'),
     path('chart_fromNetcdf/get-timeseries-netcdf/', controllers.get_timeseries_netcdf, name='get-timeseries-netcdf'),
     path('chart_climateserv/get-timeseries-climateserv/', controllers.get_timeseries_climateserv, name='get-timeseries-climateserv'),

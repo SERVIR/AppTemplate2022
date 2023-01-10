@@ -129,27 +129,29 @@ def get_timeseries_sqlite(request):
         cur = conn.cursor()
 
         cur1 = conn.cursor()
-        cur.execute("SELECT measurement_date,measurement_temp FROM WebApp_measurement LIMIT 10")
-        cur1.execute("SELECT measurement_date,measurement_precip FROM WebApp_measurement LIMIT 10")
+        station=request.POST["station"]
+        if station!="default":
+            cur.execute("SELECT measurement_date,measurement_temp FROM WebApp_measurement where station_id='"+station+"' LIMIT 10")
+            cur1.execute("SELECT measurement_date,measurement_precip FROM WebApp_measurement where station_id='"+station+"' LIMIT 10")
 
-        rows = cur.fetchall()
-        rows1 = cur1.fetchall()
+            rows = cur.fetchall()
+            rows1 = cur1.fetchall()
 
 
-        for row in rows:
-            dt = datetime.strptime(row[0], '%Y-%m-%d')
-            time_stamp = calendar.timegm(dt.timetuple()) * 1000
-            val=row[1]
-            ts_plot.append([time_stamp,float(val)])
-        for row in rows1:
-            dt = datetime.strptime(row[0], '%Y-%m-%d')
-            time_stamp = calendar.timegm(dt.timetuple()) * 1000
-            val = row[1]
+            for row in rows:
+                dt = datetime.strptime(row[0], '%Y-%m-%d')
+                time_stamp = calendar.timegm(dt.timetuple()) * 1000
+                val=row[1]
+                ts_plot.append([time_stamp,float(val)])
+            for row in rows1:
+                dt = datetime.strptime(row[0], '%Y-%m-%d')
+                time_stamp = calendar.timegm(dt.timetuple()) * 1000
+                val = row[1]
 
-            ts_plot1.append([time_stamp,float(val)])
-        ts_plot.sort()
-        json_obj["plot"] = ts_plot
-        json_obj["plot1"] = ts_plot1
+                ts_plot1.append([time_stamp,float(val)])
+            ts_plot.sort()
+            json_obj["plot"] = ts_plot
+            json_obj["plot1"] = ts_plot1
     except Exception as e:
         print(e)
     return JsonResponse(json_obj)
@@ -199,5 +201,18 @@ def update_record(request):
 
     return JsonResponse(json_obj)
 
+@csrf_exempt
+def stations(request):
+    json_obj = {}
+    try:
+        station_ids=list(Station.objects.values_list('station_id',flat=True))
+        stations=[]
+        for s in station_ids:
+            stations.append({'station_name':list(Station.objects.filter(station_id=s).values_list('station_name',flat=True))[0],'station_id':s})
+
+        json_obj = {"stations":stations}
+    except:
+        json_obj = {}
+    return JsonResponse(json_obj)
 
 
