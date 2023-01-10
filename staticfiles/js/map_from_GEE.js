@@ -205,7 +205,28 @@ add_basemap = function (map_name) {
     }
 };
 
+function split(left, right, parts) {
+    var result = [],
+        delta = (right - left) / (parts - 1);
+    while (left < right) {
+        result.push(left);
+        left += delta;
+    }
+    result.push(Math.floor(right));
+    return result;
+}
+
 function add_legend(layer_vis_params) {
+    var color_count = $('#colors_coll').val();
+    var percentages = [];
+    for (var i = 1; i <= color_count; i++)
+        percentages.push(str(MAth.round(i * 100 / num)) + '%');
+    console.log(percentages);
+    var gradientArray = [];
+
+    for (var j = 0; j < percentages; j++) {
+        gradientArray.push({offset: percentages[j], color: $('#color' + (j + 1) + '_coll')});
+    }
 
     // append a defs (for definition) element to your SVG
     var svgLegend = d3.select('#legend').append('svg')
@@ -234,12 +255,7 @@ function add_legend(layer_vis_params) {
     // to calculate the percentage for different number of colors
     // in a palette and assign the offset and color
     linearGradient.selectAll("stop")
-        .data([
-            {offset: "0%", color: "#1303ff"},
-            {offset: "33%", color: "#42fff6"},
-            {offset: "66%", color: "#f3ff40"},
-            {offset: "100%", color: "#ff5d0f"}
-        ])
+        .data(gradientArray)
         .enter().append("stop")
         .attr("offset", function (d) {
             return d.offset;
@@ -269,7 +285,7 @@ function add_legend(layer_vis_params) {
 
     //create tick marks
     var xLeg = d3.scaleLinear()
-        .domain([258, 316]) // This is the min and max from the layer_vis_params
+        .domain([$('#coll_min'), $('#coll_max')]) // This is the min and max from the layer_vis_params
         .range([10, 240]);
 
     var axisLeg = d3.axisRight(xLeg);
@@ -277,7 +293,10 @@ function add_legend(layer_vis_params) {
     // I based this off of how many colors there are, both the number of ticks
     // and the tick values.  The tick values again will need a little math...
     axisLeg.ticks(4);
-    axisLeg.tickValues([258, 277, 296, 316]);
+
+    var range_arr = split($('#coll_min'), $('#coll_max'))
+
+    axisLeg.tickValues(range_arr);
 
 
     svgLegend
@@ -295,3 +314,5 @@ function add_legend(layer_vis_params) {
     svgLegend.selectAll(".tick text")
         .attr("fill", "#ffffff");
 }
+
+add_legend();

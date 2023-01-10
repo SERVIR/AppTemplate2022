@@ -146,3 +146,13 @@ p {
 #chirps_opacity, #esi_opacity, #collection_opacity, #asset_opacity {
     display: contents;
 }
+
+#legend_chirps,#legend_esi{
+    background: black;
+    width: fit-content;
+    left: 10px;
+}
+
+label{
+    color: gray;
+}

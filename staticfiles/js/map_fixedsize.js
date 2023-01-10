@@ -285,3 +285,19 @@ add_basemap = function (map_name) {
 
     }
 }
+
+ var legend = L.control({
+            position: 'bottomleft'
+        });
+
+            link = chirps + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=precipitation_amount&colorscalerange&PALETTE=boxfill/adpc&transparent=TRUE";
+            imgsrc = link;
+            console.log(imgsrc)
+            legend.onAdd = function (map) {
+            var src = imgsrc;
+            var div = L.DomUtil.create('div', 'info legend');
+            div.innerHTML +=
+                '<img src="' + src + '" alt="legend">';
+            return div;
+        };
+        legend.addTo(map);

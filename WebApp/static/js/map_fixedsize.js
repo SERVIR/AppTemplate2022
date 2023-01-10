@@ -1,5 +1,5 @@
- $('#opacity_chirps').hide();
- $('#opacity_esi').hide();
+$('#opacity_chirps').hide();
+$('#opacity_esi').hide();
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
@@ -82,9 +82,12 @@ osm.addTo(map);
 //     map.fitBounds(poly.getBounds());
 //   })
 
-
+var chirps_wms = 'https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4';
+var chirps_variable = 'precipitation_amount';
+var style = 'boxfill/apcp_surface';
+var colorscalerange = '0,5';
 var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
-    layers: 'precipitation_amount',
+    layers: chirps_variable,
     transparent: 'true',
     format: 'image/png',
     style: 'boxfill/apcp_surface',
@@ -92,6 +95,7 @@ var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/u
     zIndex: 400,
     opacity: $("#opacity_chirps").val()
 });
+var esi_wms = 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer';
 let esi = L.esri.dynamicMapLayer({
     url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
     transparent: 'true',
@@ -110,16 +114,17 @@ $("#chirps").change(function () {
 
         testTimeLayer.addTo(map);
         testTimeLayer.bringToFront();
-         var val=Math.round($('#opacity_chirps').val()*100);
-                $('#chirps_opacity').text(val+"%");
-                  $('#chirps_opacity').show();
-                                              $('#opacity_chirps').show();
+        var val = Math.round($('#opacity_chirps').val() * 100);
+        $('#chirps_opacity').text(val + "%");
+        $('#chirps_opacity').show();
+        $('#opacity_chirps').show();
+        add_legend_fixed_size("chirps", chirps_wms, chirps_variable, colorscalerange, style, 'legends');
 
     } else {
         testTimeLayer.remove();
         $('#chirps_opacity').hide();
-                                                      $('#opacity_chirps').hide();
-
+        $('#opacity_chirps').hide();
+        remove_legend_fixed_size("chirps");
     }
 });
 
@@ -131,25 +136,27 @@ $("#esi").change(function () {
         $('#esi_opacity').text(val + "%");
         $('#esi_opacity').show();
         $('#opacity_esi').show();
+        add_legend_fixed_size("esi", esi_wms, "", colorscalerange, style, 'legends');
 
 
     } else {
         esi.remove();
         $('#esi_opacity').hide();
         $('#opacity_esi').hide();
+        remove_legend_fixed_size("esi");
     }
 });
 
 $('#opacity_chirps').change(function () {
     testTimeLayer.setOpacity($(this).val());
-     var val=Math.round($(this).val()*100);
-                  $('#chirps_opacity').text(val+"%");
+    var val = Math.round($(this).val() * 100);
+    $('#chirps_opacity').text(val + "%");
 });
 
 $('#opacity_esi').change(function () {
     esi.setOpacity($(this).val());
-     var val=Math.round($(this).val()*100);
-                  $('#esi_opacity').text(val+"%");
+    var val = Math.round($(this).val() * 100);
+    $('#esi_opacity').text(val + "%");
 });
 
 var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
@@ -284,4 +291,25 @@ add_basemap = function (map_name) {
             osm.addTo(map);
 
     }
+}
+
+function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette, element) {
+    var legend = L.control({});
+    var link = wms + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=" + variable + "&colorscalerange=" + colorscalerange + "&PALETTE=" + palette + "&transparent=TRUE";
+    legend.onAdd = function (map) {
+        var src = link;
+        var div = L.DomUtil.create('div', 'info legend');
+        div.innerHTML +=
+            '<img src="' + src + '" alt="legend">';
+        div.id = "legend_" + dataset;
+        return div;
+    };
+    legend.addTo(map);
+    var htmlObject = legend.getContainer();
+    var a = document.getElementById(element);
+    setParent(htmlObject, a);
+}
+
+function remove_legend_fixed_size(val) {
+    document.getElementById("legend_" + val).remove();
 }

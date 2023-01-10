@@ -25,14 +25,14 @@ xhr.done(function (result) {
     let series = [
         {
             data: result['plot'],
-            name: "Measurement Temperature",
-            color: "blue",
+            name: "Temperature",
+            color: "green",
             yAxis: 0
         },
         {
             data: result['plot1'],
-            name: "Measurement Precipitation",
-            color: "blue",
+            name: "Precipitation",
+            color: "lightblue",
             yAxis: 1
         }];
 
@@ -41,30 +41,6 @@ xhr.done(function (result) {
         chart: {
             type: 'spline',
             zoomType: 'x',
-            events: {
-                load: function () {
-                    var label = this.renderer.label("Graph dates and times are in UTC time")
-                        .css({
-                            width: '400px',
-                            fontSize: '12px'
-                        })
-                        .attr({
-                            'stroke': 'silver',
-                            'stroke-width': 1,
-                            'r': 2,
-                            'padding': 5
-                        })
-                        .add();
-
-                    label.align(Highcharts.extend(label.getBBox(), {
-                        align: 'center',
-                        x: 20, // offset
-                        verticalAlign: 'bottom',
-                        y: 0 // offset
-                    }), null, 'spacingBox');
-
-                }
-            },
             paddingBottom: 50
         },
         tooltip: {
@@ -74,7 +50,7 @@ xhr.done(function (result) {
             borderWidth: 3
         },
         title: {
-            text: "Data from SQLite",
+            text: "Temperature & Precipitation (sample data)",
             style: {
                 fontSize: '14px'
             }
@@ -98,11 +74,11 @@ xhr.done(function (result) {
         },
         yAxis: [{
             title: {
-                text: 'Temperature'
+                text: 'Temperature (\u00B0C)'
             }
         }, {
             title: {
-                text: 'Precipitation'
+                text: 'Precipitation (mm)'
             },
             gridLineWidth: 0,
             opposite: true
