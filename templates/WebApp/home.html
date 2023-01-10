@@ -106,7 +106,9 @@
                             <h6 class="m-0 font-weight-bold text-primary">Chart from NetCDF</h6>
                         </div>
                         <div class="card-body"
-                             style="background: url({% static "images/cards/netcdf.PNG" %});background-size: cover">
+                             style="background: url({% static "images/cards/netcdf.PNG" %});background-size: contain;
+                                     background-repeat: no-repeat;
+                                     background-position: center;">
                             <div class="text-center">
                                 <a href="{% url 'chart_fromNetcdf' %}" class="stretched-link"></a>
 
@@ -125,7 +127,9 @@
                             <h6 class="m-0 font-weight-bold text-primary">Chart ClimateSERV</h6>
                         </div>
                         <div class="card-body"
-                             style="background: url({% static "images/cards/cserv.PNG" %});background-size: cover">
+                             style="background: url({% static "images/cards/cserv.PNG" %});background-size: contain;
+                                     background-repeat: no-repeat;
+                                     background-position: center;">
                             <div class="text-center">
                                 <a href="{% url 'chart_climateserv' %}" class="stretched-link"></a>
 
@@ -142,7 +146,9 @@
                             <h6 class="m-0 font-weight-bold text-primary">Chart Data Model</h6>
                         </div>
                         <div class="card-body"
-                             style="background: url({% static "images/cards/dm.PNG" %});background-size: cover">
+                             style="background: url({% static "images/cards/dm.PNG" %});;background-size: contain;
+                                     background-repeat: no-repeat;
+                                     background-position: center;">
                             <div class="text-center">
                                 <a href="{% url 'chart_sqlite' %}" class="stretched-link"></a>
 
