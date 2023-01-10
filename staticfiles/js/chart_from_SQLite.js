@@ -1,9 +1,25 @@
+
+const xhr_stations = ajax_call("stations",{});
+xhr_stations.done(function (result) {
+    console.log(result.stations);
+                    $('#stations').append("<option value='default'>Select</option>");
+
+    result.stations.map(function (st){
+                $('#stations').append("<option value='" + st.station_id + "'>" + st.station_name + "</option>");
+
+    });
+
+
+}
+);
+ $("#stations").change(function () {
 const xhr = ajax_call("get-timeseries-sqlite", {
     "variable": "BC_MLPM25",
     "dataset": "geos",
     "date": "20191123",
     "interaction": "polygon",
-    "geom_data": "[[95.734863,18.16673],[95.734863,18.646245],[96.174316,18.646245],[96.174316,18.16673],[95.734863,18.16673]]"
+    "geom_data": "[[95.734863,18.16673],[95.734863,18.646245],[96.174316,18.646245],[96.174316,18.16673],[95.734863,18.16673]]",
+    "station":this.value
 });
 xhr.done(function (result) {
     let series = [
@@ -81,16 +97,15 @@ xhr.done(function (result) {
             y: -25
         },
         yAxis: [{
-             title: {
+            title: {
                 text: 'Temperature'
-
             }
         }, {
-             title: {
+            title: {
                 text: 'Precipitation'
-
-            }
-
+            },
+            gridLineWidth: 0,
+            opposite: true
         }],
         plotOptions: {
             series: {
@@ -103,4 +118,5 @@ xhr.done(function (result) {
         series: series
 
     });
+});
 });
