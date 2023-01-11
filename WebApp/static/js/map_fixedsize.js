@@ -27,6 +27,14 @@ var map = L.map('map', {
     }, center: [42.35, -71.08], zoom: 3
 });
 
+// wmsLayer.on('tileload', function(eventlayer){console.log("added");});
+map.on('layeradd', function (data) {
+    data.layer.on('load', function () {
+        console.log('layer loaded');
+        $('#loading_fixed').hide();
+    });
+});
+
 var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
@@ -109,6 +117,14 @@ let esi = L.esri.dynamicMapLayer({
 var testTimeLayer = L.timeDimension.layer.wms(chirps, {
     updateTimeDimension: true
 });
+
+testTimeLayer.on('load', function (event) {
+    $('#loading_fixed').hide();
+});
+esi.on('load', function (event) {
+    $('#loading_fixed').hide();
+});
+
 $("#chirps").change(function () {
     if (this.checked) {
         // chirps.addTo(map);
@@ -121,7 +137,8 @@ $("#chirps").change(function () {
         $('#chirps_opacity').show();
         $('#opacity_chirps').show();
         add_legend_fixed_size("chirps", chirps_wms, chirps_variable, colorscalerange, style, 'legends');
-        $('#loading_fixed').hide();
+
+        //    $('#loading_fixed').hide();
 
 
     } else {
@@ -142,7 +159,7 @@ $("#esi").change(function () {
         $('#esi_opacity').show();
         $('#opacity_esi').show();
         add_legend_fixed_size("esi", esi_wms, "", colorscalerange, style, 'legends');
-        $('#loading_fixed').hide();
+
 
     } else {
         esi.remove();
