@@ -45,7 +45,12 @@ $("#collection").change(function () {
                     zIndex: 400,
                     opacity: 0.5
                 });
-                window.localStorage.setItem("gee_layer", gee_layer);
+                const now = new Date();
+                const item = {
+                    gee_layer: gee_layer,
+                    time: now.getTime(),
+                };
+                window.localStorage.setItem("gee_layer", JSON.stringify(item));
 
                 gee_layer.on('load', function (event) {
                     $('#loading_gee').hide();
@@ -73,7 +78,13 @@ $("#asset").change(function () {
     };
     if (this.checked) {
         $('#loading_gee').show();
-        user_layer = window.localStorage.getItem("user_layer");
+        const item = JSON.parse(localStorage.getItem(user_layer));
+        const now = new Date();
+        if (now.getTime() - item.time < 24) {
+            user_layer = item.layer;
+        } else {
+            localStorage.removeItem(user_layer);
+        }
         if (user_layer) {
             user_layer.addTo(map);
             opacity_asset.show();
@@ -88,8 +99,12 @@ $("#asset").change(function () {
                     zIndex: 400,
                     opacity: 0.5
                 });
-                window.localStorage.setItem("user_layer", user_layer);
-
+                const now = new Date();
+                const item = {
+                    layer: user_layer,
+                    time: now.getTime(),
+                };
+                window.localStorage.setItem("user_layer", JSON.stringify(item));
                 user_layer.on('load', function (event) {
                     $('#loading_gee').hide();
                 });
@@ -360,9 +375,4 @@ function add_legend(element, params) {
 
 function remove_legend(ele) {
     document.getElementById(ele).remove();
-}
-
-setTimeout(function () {
-    window.localStorage.removeItem('user_layer');
-    window.localStorage.removeItem('gee_layer');
-}, 1000 * 60 * 60 * 24);
+};
