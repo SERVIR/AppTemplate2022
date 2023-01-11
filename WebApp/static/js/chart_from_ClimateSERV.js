@@ -26,8 +26,8 @@ function get_chart(geom_data) {
     const xhr = ajax_call("get-timeseries-climateserv", {
         "dataset": ["CHIRP", "CHIRPS", "IMERG"],
         "operation": "Average",
-        "startdate": "01/03/18",
-        "enddate": "01/10/18",
+        "startdate": "01/03/2018",
+        "enddate": "01/10/2018",
         "interaction": "polygon",
         "geom_data": geom_data
     });
