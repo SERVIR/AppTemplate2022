@@ -190,7 +190,7 @@ label {
 
 }
 
-#loading, #loading_gee, #loading_fixed, #loading_full ,#loading_nc ,#loading_sql, #loading_cserv {
+#loading, #loading_gee, #loading_fixed, #loading_full, #loading_nc, #loading_sql, #loading_cserv {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -204,6 +204,6 @@ label {
     z-index: 500;
 }
 
-#loading-image, #loading-image-gee, #loading-image-fixed, #loading-image-full,#loading-image-nc,#loading-image-cserv,#loading-image-sql {
+#loading-image, #loading-image-gee, #loading-image-fixed, #loading-image-full, #loading-image-nc, #loading-image-cserv, #loading-image-sql {
     z-index: 500;
 }

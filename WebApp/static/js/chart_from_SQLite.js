@@ -1,4 +1,4 @@
-    $('#loading_sql').hide();
+$('#loading_sql').hide();
 
 const xhr_stations = ajax_call("stations", {});
 xhr_stations.done(function (result) {
@@ -14,7 +14,7 @@ xhr_stations.done(function (result) {
     }
 );
 $("#stations").change(function () {
-        $('#loading_sql').show();
+    $('#loading_sql').show();
 
     const xhr = ajax_call("get-timeseries-sqlite", {
         "variable": "BC_MLPM25",

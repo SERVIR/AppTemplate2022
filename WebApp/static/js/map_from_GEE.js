@@ -19,41 +19,7 @@ let streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').
 
 // create a satellite imagery layer
 let satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
-const baseMaps = {
-
-    "OpenStreetMap": osm,
-    "Satellite": satellite
-};
 let gee_layer, user_layer;
-const datamaps = {
-    "ImageCollection": gee_layer,
-    "UserAsset": user_layer
-};
-ajax_call("get-gee-user-layer", {}).done(function (data) {
-    console.log(data.url);
-    user_layer = L.tileLayer(data.url, {
-        zoom: 3,
-        zIndex: 400,
-        opacity: 0.5
-    });
-
-user_layer.on('load', function (event) {
-    $('#loading_gee').hide();
-});
-});
-ajax_call("get-gee-layer", {}).done(function (data) {
-    gee_layer = L.tileLayer(data.url, {
-        zoom: 3,
-        zIndex: 400,
-        opacity: 0.5
-    });
-    gee_layer.on('load', function (event) {
-    $('#loading_gee').hide();
-});
-});
-
-
-
 
 $("#collection").change(function () {
     var coll_json = {
@@ -62,16 +28,35 @@ $("#collection").change(function () {
         'palette': ['#1303ff', '#42fff6', '#f3ff40', '#ff5d0f'],
         'title': 'ImageCollection'
     };
-
     if (this.checked) {
         $('#loading_gee').show();
-        gee_layer.addTo(map);
-        opacity_collection.show();
-        collection_opacity.text(Math.round(opacity_collection.val() * 100) + "%");
-        collection_opacity.show();
-        add_legend("coll", coll_json);
+        gee_layer = window.localStorage.getItem("gee_layer");
+
+        if (gee_layer) {
+            gee_layer.addTo(map);
+            opacity_collection.show();
+            collection_opacity.text(Math.round(opacity_collection.val() * 100) + "%");
+            collection_opacity.show();
+            add_legend("coll", coll_json);
+        } else {
+            ajax_call("get-gee-layer", {}).done(function (data) {
+                gee_layer = L.tileLayer(data.url, {
+                    zoom: 3,
+                    zIndex: 400,
+                    opacity: 0.5
+                });
+                window.localStorage.setItem("gee_layer", gee_layer);
+
+                gee_layer.on('load', function (event) {
+                    $('#loading_gee').hide();
+                });
+                gee_layer.addTo(map);
+            });
+        }
     } else {
-        gee_layer.remove();
+        if (gee_layer) {
+            gee_layer.remove();
+        }
         collection_opacity.hide();
         opacity_collection.hide();
         remove_legend("legend_coll");
@@ -86,17 +71,34 @@ $("#asset").change(function () {
         'palette': ['#fcffe7', '#d2ffba', '#70d7ff', '#423fff'],
         'title': 'UserAsset'
     };
-
     if (this.checked) {
         $('#loading_gee').show();
-        user_layer.addTo(map);
-        opacity_asset.show();
-        asset_opacity.text(Math.round(opacity_asset.val() * 100) + "%");
-        asset_opacity.show();
-        add_legend("asset", asset_json);
+        user_layer = window.localStorage.getItem("user_layer");
+        if (user_layer) {
+            user_layer.addTo(map);
+            opacity_asset.show();
+            asset_opacity.text(Math.round(opacity_asset.val() * 100) + "%");
+            asset_opacity.show();
+            add_legend("asset", asset_json);
+        } else {
+            ajax_call("get-gee-user-layer", {}).done(function (data) {
+                console.log(data.url);
+                user_layer = L.tileLayer(data.url, {
+                    zoom: 3,
+                    zIndex: 400,
+                    opacity: 0.5
+                });
+                window.localStorage.setItem("user_layer", user_layer);
 
+                user_layer.on('load', function (event) {
+                    $('#loading_gee').hide();
+                });
+            });
+        }
     } else {
-        user_layer.remove();
+        if (user_layer) {
+            user_layer.remove();
+        }
         asset_opacity.hide();
         opacity_asset.hide();
         remove_legend("legend_asset");
@@ -359,3 +361,8 @@ function add_legend(element, params) {
 function remove_legend(ele) {
     document.getElementById(ele).remove();
 }
+
+setTimeout(function () {
+    window.localStorage.removeItem('user_layer');
+    window.localStorage.removeItem('gee_layer');
+}, 1000 * 60 * 60 * 24);

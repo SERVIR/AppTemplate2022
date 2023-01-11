@@ -52,38 +52,6 @@ var datamaps = {
     "ESI": ms
 };
 osm.addTo(map);
-// L.control.layers(baseMaps).addTo(map);
-// L.control
-//     .opacity(datamaps, {
-//         label: 'Layers Opacity',
-//     })
-//     .addTo(map);
-
-
-//   var wmsLayer = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
-//             layers: 'precipitation_amount',
-//             format: 'image/png',
-//             transparent: true,
-//             style: 'boxfill/apcp_surface',
-//       zIndex:200
-//         });
-// wmsLayer.addTo(map);
-// spinner.stop();
-
-// var geocoder = L.Control.geocoder({
-//   defaultMarkGeocode: false
-// })
-//   .on('markgeocode', function(e) {
-//     var bbox = e.geocode.bbox;
-//     var poly = L.polygon([
-//       bbox.getSouthEast(),
-//       bbox.getNorthEast(),
-//       bbox.getNorthWest(),
-//       bbox.getSouthWest()
-//     ]).addTo(map);
-//     map.fitBounds(poly.getBounds());
-//   })
-
 var chirps_wms = 'https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4';
 var chirps_variable = 'precipitation_amount';
 var style = 'boxfill/apcp_surface';
@@ -131,10 +99,6 @@ $("#chirps").change(function () {
         $('#chirps_opacity').show();
         $('#opacity_chirps').show();
         add_legend_fixed_size("chirps", chirps_wms, chirps_variable, colorscalerange, style, 'legends');
-
-        //    $('#loading_fixed').hide();
-
-
     } else {
         testTimeLayer.remove();
         $('#chirps_opacity').hide();
@@ -153,8 +117,6 @@ $("#esi").change(function () {
         $('#esi_opacity').show();
         $('#opacity_esi').show();
         add_legend_fixed_size("esi", esi_wms, "", colorscalerange, style, 'legends');
-
-
     } else {
         esi.remove();
         $('#esi_opacity').hide();
@@ -180,25 +142,9 @@ var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 });
 
-
-var baseMaps = {
-    "OpenStreetMap": osm,
-    "Satellite": satellite,
-    "OpenTopoMap": OpenTopoMap
-
-};
-//
-// var control = L.control.layers(baseMaps, null, {collapsed: false}).addTo(map);
-// var a = document.getElementById('basemaps');
-//
-// var htmlObject = control.getContainer();
-
-// Finally append that node to the new parent, recursively searching out and re-parenting nodes.
 function setParent(el, newParent) {
     newParent.appendChild(el);
 }
-
-// setParent(htmlObject, a);
 
 var control1 = L.Control.geocoder({collapsed: false});
 
@@ -275,7 +221,7 @@ removeLayers = function () {
     terrainLayer.remove();
     deLormeLayer.remove();
     gSatLayer.remove();
-}
+};
 
 add_basemap = function (map_name) {
     removeLayers();
@@ -307,7 +253,7 @@ add_basemap = function (map_name) {
             osm.addTo(map);
 
     }
-}
+};
 
 function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette, element) {
     if (variable === "") {
