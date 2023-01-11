@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('WebApp', '0001_initial'),
     ]
@@ -13,7 +12,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='station',
             name='station_elev',
-            field=models.FloatField(blank=True, help_text='Station Elevation in meters above sea level - Optional', null=True),
+            field=models.FloatField(blank=True, help_text='Station Elevation in meters above sea level - Optional',
+                                    null=True),
         ),
         migrations.AlterField(
             model_name='station',

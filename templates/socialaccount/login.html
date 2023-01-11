@@ -1,6 +1,6 @@
 {% extends "WebApp/app_base.html" %}
 {% load static %}
- {% load i18n account %}
+{% load i18n account %}
 {% block script %}
     <style lang="text/css">
         .customGPlusSignIn {
@@ -37,14 +37,14 @@
 
 {% block content %}
     <div style="min-height: calc(100vh - 190px)">
-    <form method="post">
-        {% csrf_token %}
-          <h2 class="m-4 text-center">Geospatial App Authentication</h2>
-        <div class="customGPlusSignIn text-center mt-3" onclick="document.forms[0].submit();">
-            <span class="icon"></span>
-            <span class="buttonText">{% trans "Google Login" %}</span>
-        </div>
+        <form method="post">
+            {% csrf_token %}
+            <h2 class="m-4 text-center">Geospatial App Authentication</h2>
+            <div class="customGPlusSignIn text-center mt-3" onclick="document.forms[0].submit();">
+                <span class="icon"></span>
+                <span class="buttonText">{% trans "Google Login" %}</span>
+            </div>
 
-    </form>
+        </form>
     </div>
 {% endblock %}

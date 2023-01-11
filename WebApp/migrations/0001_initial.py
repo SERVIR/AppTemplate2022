@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,24 +14,35 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Organization',
             fields=[
-                ('organization_id', models.CharField(help_text='Organization ID, usually the Accronym', max_length=10, primary_key=True, serialize=False)),
+                ('organization_id',
+                 models.CharField(help_text='Organization ID, usually the Accronym', max_length=10, primary_key=True,
+                                  serialize=False)),
                 ('organization_name', models.CharField(help_text='Organization Name (No Accronym)', max_length=100)),
-                ('organization_address', models.CharField(blank=True, help_text='Organization physical address - Optional', max_length=100)),
-                ('organization_city', models.CharField(blank=True, help_text='Organization City - Optional', max_length=100)),
-                ('organization_country', models.CharField(blank=True, help_text='Organization Country ISO Code - Optional', max_length=2)),
+                ('organization_address',
+                 models.CharField(blank=True, help_text='Organization physical address - Optional', max_length=100)),
+                ('organization_city',
+                 models.CharField(blank=True, help_text='Organization City - Optional', max_length=100)),
+                ('organization_country',
+                 models.CharField(blank=True, help_text='Organization Country ISO Code - Optional', max_length=2)),
             ],
         ),
         migrations.CreateModel(
             name='Station',
             fields=[
-                ('station_id', models.CharField(help_text='Station ID, unique identifier code', max_length=10, primary_key=True, serialize=False)),
+                ('station_id',
+                 models.CharField(help_text='Station ID, unique identifier code', max_length=10, primary_key=True,
+                                  serialize=False)),
                 ('station_name', models.CharField(help_text='Station Name, a human readable name', max_length=100)),
                 ('station_lat', models.FloatField(help_text='Station Latitude in decimal degrees')),
                 ('station_lon', models.FloatField(help_text='Station Longitude in decimal degrees')),
-                ('station_elev', models.FloatField(blank=True, help_text='Station Elevation in meters above sea level - Optional')),
-                ('station_location', models.CharField(blank=True, help_text='Station Location - Optional', max_length=100)),
-                ('station_year_established', models.IntegerField(blank=True, help_text='Year the station was established - Optional')),
-                ('station_organization', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='WebApp.organization')),
+                ('station_elev',
+                 models.FloatField(blank=True, help_text='Station Elevation in meters above sea level - Optional')),
+                ('station_location',
+                 models.CharField(blank=True, help_text='Station Location - Optional', max_length=100)),
+                ('station_year_established',
+                 models.IntegerField(blank=True, help_text='Year the station was established - Optional')),
+                ('station_organization',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='WebApp.organization')),
             ],
         ),
         migrations.CreateModel(

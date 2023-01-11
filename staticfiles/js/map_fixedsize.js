@@ -1,5 +1,6 @@
 $('#opacity_chirps').hide();
 $('#opacity_esi').hide();
+$('#loading_fixed').hide();
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
@@ -111,6 +112,7 @@ var testTimeLayer = L.timeDimension.layer.wms(chirps, {
 $("#chirps").change(function () {
     if (this.checked) {
         // chirps.addTo(map);
+        $('#loading_fixed').show();
 
         testTimeLayer.addTo(map);
         testTimeLayer.bringToFront();
@@ -119,6 +121,8 @@ $("#chirps").change(function () {
         $('#chirps_opacity').show();
         $('#opacity_chirps').show();
         add_legend_fixed_size("chirps", chirps_wms, chirps_variable, colorscalerange, style, 'legends');
+        $('#loading_fixed').hide();
+
 
     } else {
         testTimeLayer.remove();
@@ -130,6 +134,7 @@ $("#chirps").change(function () {
 
 $("#esi").change(function () {
     if (this.checked) {
+        $('#loading_fixed').show();
         esi.addTo(map);
         esi.bringToFront();
         var val = Math.round($('#opacity_esi').val() * 100);
@@ -137,7 +142,7 @@ $("#esi").change(function () {
         $('#esi_opacity').show();
         $('#opacity_esi').show();
         add_legend_fixed_size("esi", esi_wms, "", colorscalerange, style, 'legends');
-
+        $('#loading_fixed').hide();
 
     } else {
         esi.remove();
@@ -294,8 +299,8 @@ add_basemap = function (map_name) {
 }
 
 function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette, element) {
-    if (variable===""){
-         var base_service_url = wms;
+    if (variable === "") {
+        var base_service_url = wms;
 
         $.ajax({
             url: base_service_url + "/legend?f=json",
@@ -308,11 +313,10 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
             if (data.errMsg) {
                 console.info(data.errMsg);
             } else {
-                add_other_legend(data,dataset,wms);
+                add_other_legend(data, dataset, wms);
             }
         });
-    }
-    else {
+    } else {
         var legend = L.control({});
         var link = wms + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=" + variable + "&colorscalerange=" + colorscalerange + "&PALETTE=" + palette + "&transparent=TRUE";
         legend.onAdd = function (map) {
@@ -334,35 +338,30 @@ function remove_legend_fixed_size(val) {
     document.getElementById("legend_" + val).remove();
 }
 
-
-
-
-
-
-        function add_other_legend(response,dataset,base_service_url) {
-            var htmlString = "<table>";
-            for (var iCnt = 0; iCnt < response.layers.length; iCnt++) {
-                lyr = response.layers[iCnt];
-                if (lyr.layerId == 3) {
-                    if (lyr.legend.length > 1) {
-                        htmlString += "<tr><td colspan='2' style='font-weight:bold;'>" + lyr.layerName + "</td></tr>";
-                        for (var jCnt = 0; jCnt < lyr.legend.length; jCnt++) {
-                            var src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[jCnt].url;
-                            var strlbl = lyr.legend[jCnt].label.replace("<Null>", "Null");
-                            htmlString += "<tr><td align='left'><img src=\"" + src + "\" alt ='' /></td><td>" + strlbl + "</td></tr>";
-                        }
-                    } else {
-                        htmlString += "<tr><td colspan='2' class='tdLayerHeader' style='font-weight:bold;'>" + lyr.layerName + "</td></tr>";
-                        var src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[0].url;
-                        htmlString += "<tr><td colspan='2' ><img src=\"" + src + "\" alt ='' /></td></tr>";
-                    }
+function add_other_legend(response, dataset, base_service_url) {
+    var htmlString = "<table>";
+    for (var iCnt = 0; iCnt < response.layers.length; iCnt++) {
+        lyr = response.layers[iCnt];
+        if (lyr.layerId == 3) {
+            if (lyr.legend.length > 1) {
+                htmlString += "<tr><td colspan='2' style='font-weight:bold;'>" + lyr.layerName + "</td></tr>";
+                for (var jCnt = 0; jCnt < lyr.legend.length; jCnt++) {
+                    var src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[jCnt].url;
+                    var strlbl = lyr.legend[jCnt].label.replace("<Null>", "Null");
+                    htmlString += "<tr><td align='left'><img src=\"" + src + "\" alt ='' /></td><td>" + strlbl + "</td></tr>";
                 }
+            } else {
+                htmlString += "<tr><td colspan='2' class='tdLayerHeader' style='font-weight:bold;'>" + lyr.layerName + "</td></tr>";
+                var src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[0].url;
+                htmlString += "<tr><td colspan='2' ><img src=\"" + src + "\" alt ='' /></td></tr>";
             }
-            htmlString += "</table>";
-            var div = document.createElement('div');
-            div.innerHTML += htmlString
-
-            div.id = "legend_" + dataset;
-            document.getElementById("legends").appendChild(div);
-
         }
+    }
+    htmlString += "</table>";
+    var div = document.createElement('div');
+    div.innerHTML += htmlString
+
+    div.id = "legend_" + dataset;
+    document.getElementById("legends").appendChild(div);
+
+}

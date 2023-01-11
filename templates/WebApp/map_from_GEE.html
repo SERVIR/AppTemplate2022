@@ -43,9 +43,15 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
+
+
                         <link rel="stylesheet" href="{% static 'css/map1.css' %}">
 
-                        <div id="map2"></div>
+                        <div id="map2">
+                            <div id="loading_gee">
+                                <img id="loading-image-gee" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
+                            </div>
+                        </div>
                         <div class="accordion" id="layer_manager_gee" style="top:12vh">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -199,8 +205,8 @@
 
                                                         <p class="mt-1 ml-2">Legend for
                                                             the layer(s) selected</p>
-{#                                                        <div id='legend_coll'></div>#}
-{#                                                        <div id='legend_asset'></div>#}
+                                                        {#                                                        <div id='legend_coll'></div>#}
+                                                        {#                                                        <div id='legend_asset'></div>#}
                                                     </div>
                                                     <div class="tab-pane p-3 ml-3" id="location_gee"
                                                          role="tabpanel"

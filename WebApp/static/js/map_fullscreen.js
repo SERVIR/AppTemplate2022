@@ -1,5 +1,7 @@
- $('#opacity_esi_full').hide();
- $('#opacity_chirps_full').hide();
+$('#opacity_esi_full').hide();
+$('#opacity_chirps_full').hide();
+$('#loading_full').hide();
+
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
@@ -48,7 +50,6 @@ osm.addTo(map);
 // L.Control.geocoder().addTo(map);
 
 
-
 var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
     layers: 'precipitation_amount',
     transparent: 'true',
@@ -64,7 +65,7 @@ let esi = L.esri.dynamicMapLayer({
     format: 'image/png',
     style: 'boxfill/apcp_surface',
     maxZoom: 21,
-    opacity:0.5
+    opacity: 0.5
 });
 
 var testTimeLayer = L.timeDimension.layer.wms(chirps, {
@@ -72,50 +73,51 @@ var testTimeLayer = L.timeDimension.layer.wms(chirps, {
 });
 $("#chirps_full").change(function () {
     if (this.checked) {
-        console.log("checked");
+        $('#loading_full').show();
+        console.log("before laoding");
         // chirps.addTo(map);
 
         testTimeLayer.addTo(map);
         testTimeLayer.bringToFront();
-         var val=Math.round($('#opacity_chirps_full').val()*100);
-                $('#chirps_full_opacity').text(val+"%");
-                  $('#chirps_full_opacity').show();
-                   $('#opacity_chirps_full').show();
+        var val = Math.round($('#opacity_chirps_full').val() * 100);
+        $('#chirps_full_opacity').text(val + "%");
+        $('#chirps_full_opacity').show();
+        $('#opacity_chirps_full').show();
+        $('#loading_full').hide();
     } else {
         testTimeLayer.remove();
-         $('#chirps_full_opacity').hide();
-         $('#opacity_chirps_full').hide();
+        $('#chirps_full_opacity').hide();
+        $('#opacity_chirps_full').hide();
     }
 });
 
 $("#esi_full").change(function () {
     if (this.checked) {
-
+        $('#loading_full').show();
 
         esi.addTo(map);
         esi.bringToFront();
-         var val=Math.round($('#opacity_esi_full').val()*100);
-                $('#esi_full_opacity').text(val+"%");
-                  $('#esi_full_opacity').show();
-                   $('#opacity_esi_full').show();
-
+        var val = Math.round($('#opacity_esi_full').val() * 100);
+        $('#esi_full_opacity').text(val + "%");
+        $('#esi_full_opacity').show();
+        $('#opacity_esi_full').show();
     } else {
         esi.remove();
-         $('#esi_full_opacity').hide();
-          $('#opacity_esi_full').hide();
+        $('#esi_full_opacity').hide();
+        $('#opacity_esi_full').hide();
     }
 });
 
 $('#opacity_chirps_full').change(function () {
     testTimeLayer.setOpacity($(this).val());
-      var val=Math.round($(this).val()*100);
-                $('#chirps_full_opacity').text(val+"%");
+    var val = Math.round($(this).val() * 100);
+    $('#chirps_full_opacity').text(val + "%");
 });
 
 $('#opacity_esi_full').change(function () {
     esi.setOpacity($(this).val());
-    var val=Math.round($(this).val()*100);
-                $('#esi_full_opacity').text(val+"%");
+    var val = Math.round($(this).val() * 100);
+    $('#esi_full_opacity').text(val + "%");
 });
 
 // Finally append that node to the new parent, recursively searching out and re-parenting nodes.

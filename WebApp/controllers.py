@@ -19,10 +19,12 @@ from shapely.errors import ShapelyDeprecationWarning
 
 warnings.filterwarnings("ignore", category=ShapelyDeprecationWarning)
 from pathlib import Path
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 f = open(str(BASE_DIR) + '/data.json', )
 data = json.load(f)
+
 
 @csrf_exempt
 def get_timeseries_netcdf(request):
@@ -78,37 +80,38 @@ def get_timeseries_netcdf(request):
 
         ts_plot.sort()
         geom = [round(minx, 2), round(miny, 2), round(maxx, 2), round(maxy, 2)]
-        json_obj['plot']= ts_plot
-        json_obj['geom']= geom
+        json_obj['plot'] = ts_plot
+        json_obj['geom'] = geom
         return JsonResponse(json_obj)
+
 
 @csrf_exempt
 def get_timeseries_climateserv(request):
-    json_obj={}
-    return_obj=[]
+    json_obj = {}
+    return_obj = []
 
     if request.method == 'POST':
-        DatasetType =request.POST.getlist("dataset[]")
+        DatasetType = request.POST.getlist("dataset[]")
         print(DatasetType)
         for dataset in DatasetType:
             OperationType = request.POST["operation"]
             EarliestDate = request.POST["startdate"]
             LatestDate = request.POST["enddate"]
-            GeometryCoords=request.POST["geom_data"]
+            GeometryCoords = request.POST["geom_data"]
 
             SeasonalEnsemble = ''  # only used for Seasonal_Forecast
             SeasonalVariable = ''  # only used for Seasonal_Forecast
-            if GeometryCoords[0]=='{':
-                geom =json.loads(GeometryCoords)['features'][0]['geometry']['coordinates'][0]
+            if GeometryCoords[0] == '{':
+                geom = json.loads(GeometryCoords)['features'][0]['geometry']['coordinates'][0]
                 result = (climateserv.api.request_data(dataset, OperationType,
                                                        EarliestDate, LatestDate, geom,
                                                        SeasonalEnsemble, SeasonalVariable, 'memory_object'))
             else:
 
-                result =(climateserv.api.request_data(dataset, OperationType,
-                                         EarliestDate, LatestDate, GeometryCoords,
-                                         SeasonalEnsemble, SeasonalVariable, 'memory_object'))
-            ts_plot=[]
+                result = (climateserv.api.request_data(dataset, OperationType,
+                                                       EarliestDate, LatestDate, GeometryCoords,
+                                                       SeasonalEnsemble, SeasonalVariable, 'memory_object'))
+            ts_plot = []
             data = result['data']
             for d in data:
                 dt = datetime.strptime(d['date'], '%m/%d/%Y')
@@ -118,43 +121,46 @@ def get_timeseries_climateserv(request):
             json_obj[dataset] = ts_plot
     return JsonResponse(json_obj)
 
+
 @csrf_exempt
 def get_timeseries_sqlite(request):
     conn = None
-    ts_plot=[]
+    ts_plot = []
     ts_plot1 = []
-    json_obj={}
+    json_obj = {}
     try:
         conn = sqlite3.connect('db.sqlite3')
         cur = conn.cursor()
 
         cur1 = conn.cursor()
-        station=request.POST["station"]
-        if station!="default":
-            cur.execute("SELECT measurement_date,measurement_temp FROM WebApp_measurement where station_id='"+station+"' LIMIT 10")
-            cur1.execute("SELECT measurement_date,measurement_precip FROM WebApp_measurement where station_id='"+station+"' LIMIT 10")
+        station = request.POST["station"]
+        if station != "default":
+            cur.execute(
+                "SELECT measurement_date,measurement_temp FROM WebApp_measurement where station_id='" + station + "' LIMIT 10")
+            cur1.execute(
+                "SELECT measurement_date,measurement_precip FROM WebApp_measurement where station_id='" + station + "' LIMIT 10")
 
             rows = cur.fetchall()
             rows1 = cur1.fetchall()
 
-
             for row in rows:
                 dt = datetime.strptime(row[0], '%Y-%m-%d')
                 time_stamp = calendar.timegm(dt.timetuple()) * 1000
-                val=row[1]
-                ts_plot.append([time_stamp,float(val)])
+                val = row[1]
+                ts_plot.append([time_stamp, float(val)])
             for row in rows1:
                 dt = datetime.strptime(row[0], '%Y-%m-%d')
                 time_stamp = calendar.timegm(dt.timetuple()) * 1000
                 val = row[1]
 
-                ts_plot1.append([time_stamp,float(val)])
+                ts_plot1.append([time_stamp, float(val)])
             ts_plot.sort()
             json_obj["plot"] = ts_plot
             json_obj["plot1"] = ts_plot1
     except Exception as e:
         print(e)
     return JsonResponse(json_obj)
+
 
 @csrf_exempt
 def get_gee_layer(request):
@@ -165,7 +171,7 @@ def get_gee_layer(request):
     collection = ee.ImageCollection('NASA/GLDAS/V022/CLSM/G025/DA1D').filter(ee.Filter.date('2010-06-01', '2010-06-02'))
     image = collection.select('AvgSurfT_tavg')
     imgId = image.getMapId(params)
-    json_obj={"url":imgId['tile_fetcher'].url_format}
+    json_obj = {"url": imgId['tile_fetcher'].url_format}
     return JsonResponse(json_obj)
 
 
@@ -175,11 +181,10 @@ def get_gee_user_layer(request):
     credentials = ee.ServiceAccountCredentials(service_account, data['private_key_json'])
     ee.Initialize(credentials)
     user_asset = ee.Image("projects/servir-sco-assets/assets/tmp_servir_cms/factors_t1/f2_pcp_x1k")
-    params = {'min': 1000, 'max': 3000,'bands':['b1'] ,'palette': ['fcffe7', 'd2ffba', '70d7ff', '423fff'], }
+    params = {'min': 1000, 'max': 3000, 'bands': ['b1'], 'palette': ['fcffe7', 'd2ffba', '70d7ff', '423fff'], }
     user_img = user_asset.getMapId(params)
-    json_obj={"url":user_img['tile_fetcher'].url_format}
+    json_obj = {"url": user_img['tile_fetcher'].url_format}
     return JsonResponse(json_obj)
-
 
 
 @csrf_exempt
@@ -201,18 +206,19 @@ def update_record(request):
 
     return JsonResponse(json_obj)
 
+
 @csrf_exempt
 def stations(request):
     json_obj = {}
     try:
-        station_ids=list(Station.objects.values_list('station_id',flat=True))
-        stations=[]
+        station_ids = list(Station.objects.values_list('station_id', flat=True))
+        stations = []
         for s in station_ids:
-            stations.append({'station_name':list(Station.objects.filter(station_id=s).values_list('station_name',flat=True))[0],'station_id':s})
+            stations.append(
+                {'station_name': list(Station.objects.filter(station_id=s).values_list('station_name', flat=True))[0],
+                 'station_id': s})
 
-        json_obj = {"stations":stations}
+        json_obj = {"stations": stations}
     except:
         json_obj = {}
     return JsonResponse(json_obj)
-
-

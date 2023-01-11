@@ -1,3 +1,4 @@
+$('#loading_gee').hide();
 const opacity_asset = $('#opacity_asset');
 opacity_asset.hide();
 const opacity_collection = $('#opacity_collection');
@@ -45,17 +46,22 @@ ajax_call("get-gee-layer", {}).done(function (data) {
 });
 
 
-
-
 $("#collection").change(function () {
-    var coll_json={'min': 258, 'max': 316, 'palette': ['#1303ff', '#42fff6', '#f3ff40', '#ff5d0f'],'title':'ImageCollection' };
+    var coll_json = {
+        'min': 258,
+        'max': 316,
+        'palette': ['#1303ff', '#42fff6', '#f3ff40', '#ff5d0f'],
+        'title': 'ImageCollection'
+    };
 
     if (this.checked) {
+        $('#loading_gee').show();
         gee_layer.addTo(map);
         opacity_collection.show();
         collection_opacity.text(Math.round(opacity_collection.val() * 100) + "%");
         collection_opacity.show();
-        add_legend("coll",coll_json);
+        add_legend("coll", coll_json);
+        $('#loading_gee').hide();
     } else {
         gee_layer.remove();
         collection_opacity.hide();
@@ -65,15 +71,22 @@ $("#collection").change(function () {
 });
 
 $("#asset").change(function () {
-    var asset_json={'min': 1000, 'max': 3000,'bands':['b1'] ,'palette': ['#fcffe7', '#d2ffba', '#70d7ff', '#423fff'], 'title':'UserAsset'};
+    var asset_json = {
+        'min': 1000,
+        'max': 3000,
+        'bands': ['b1'],
+        'palette': ['#fcffe7', '#d2ffba', '#70d7ff', '#423fff'],
+        'title': 'UserAsset'
+    };
 
     if (this.checked) {
+        $('#loading_gee').show();
         user_layer.addTo(map);
         opacity_asset.show();
         asset_opacity.text(Math.round(opacity_asset.val() * 100) + "%");
         asset_opacity.show();
-                add_legend("asset",asset_json);
-
+        add_legend("asset", asset_json);
+        $('#loading_gee').hide();
 
     } else {
         user_layer.remove();
@@ -230,12 +243,12 @@ function splitnumbers(left, right, parts) {
     return result;
 }
 
-function add_legend(element,params) {
+function add_legend(element, params) {
     var g = document.createElement('div');
-    g.setAttribute("id", "legend_"+element);
+    g.setAttribute("id", "legend_" + element);
     var color_count = params.palette.length;
     var percentages = [];
-    var color_percent_count=color_count-1;
+    var color_percent_count = color_count - 1;
     for (var i = 0; i < color_count; i++)
         percentages.push(Math.round(i * 100 / color_percent_count) + '%');
     var gradientArray = [];
@@ -254,11 +267,11 @@ function add_legend(element,params) {
 
     // append a linearGradient element to the defs and give it a unique id
     var linearGradient = defs.append('linearGradient')
-        .attr('id', 'linear-gradient_legends_'+element);
+        .attr('id', 'linear-gradient_legends_' + element);
 
     // horizontal gradient
     linearGradient
-        .attr('id', 'Gradient2'+element)
+        .attr('id', 'Gradient2' + element)
         .attr("x1", "0%")
         .attr("y1", "0%")
         .attr("x2", "0%")
@@ -298,7 +311,7 @@ function add_legend(element,params) {
         .attr("y", 10)
         .attr("width", 20)
         .attr("height", 230)
-        .style("fill", "url(#Gradient2"+element+")");
+        .style("fill", "url(#Gradient2" + element + ")");
 
     //create tick marks
     var xLeg = d3.scaleLinear()
@@ -311,7 +324,7 @@ function add_legend(element,params) {
     // and the tick values.  The tick values again will need a little math...
     axisLeg.ticks(parseInt(color_count));
 
-    var range_arr = splitnumbers(params.min, params.max,params.palette.length);
+    var range_arr = splitnumbers(params.min, params.max, params.palette.length);
     console.log(range_arr);
 
     axisLeg.tickValues(range_arr);
@@ -331,11 +344,11 @@ function add_legend(element,params) {
         .attr("stroke", "#000000");
     svgLegend.selectAll(".tick text")
         .attr("fill", "#ffffff");
-      document.getElementById('legends_gee').appendChild(g);
-
+    document.getElementById('legends_gee').appendChild(g);
 
 
 }
+
 function remove_legend(ele) {
     document.getElementById(ele).remove();
 }
