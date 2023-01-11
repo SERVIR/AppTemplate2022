@@ -30,7 +30,15 @@ $("#collection").change(function () {
     };
     if (this.checked) {
         $('#loading_gee').show();
-        gee_layer = window.localStorage.getItem("gee_layer");
+        if (localStorage.getItem("gee_layer")) {
+            const item = JSON.parse(localStorage.getItem("gee_layer"));
+            const now = new Date();
+            if (now.getTime() - item.time < 24) {
+                gee_layer = item.layer;
+            } else {
+                localStorage.removeItem(gee_layer);
+            }
+        }
 
         if (gee_layer) {
             gee_layer.addTo(map);
@@ -45,9 +53,9 @@ $("#collection").change(function () {
                     zIndex: 400,
                     opacity: 0.5
                 });
-                const now = new Date();
+                 const now = new Date();
                 const item = {
-                    gee_layer: gee_layer,
+                    layer: gee_layer,
                     time: now.getTime(),
                 };
                 window.localStorage.setItem("gee_layer", JSON.stringify(item));
