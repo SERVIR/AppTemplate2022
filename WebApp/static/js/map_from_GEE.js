@@ -64,6 +64,10 @@ $("#collection").change(function () {
                     $('#loading_gee').hide();
                 });
                 gee_layer.addTo(map);
+                opacity_collection.show();
+                collection_opacity.text(Math.round(opacity_collection.val() * 100) + "%");
+                collection_opacity.show();
+                add_legend("coll", coll_json);
             });
         }
     } else {
