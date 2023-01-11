@@ -1,3 +1,4 @@
+$('#loading_cserv').hide();
 $("#selectFiles").change(function (event) {
     var uploadedFile = event.target.files[0];
     var ext = uploadedFile.name.split('.')[1];
@@ -7,6 +8,7 @@ $("#selectFiles").change(function (event) {
     }
 
     if (uploadedFile) {
+        $('#loading_cserv').show();
         var readFile = new FileReader();
         readFile.onload = function (e) {
             var contents = e.target.result;
@@ -129,4 +131,5 @@ function get_chart(geom_data) {
 
         });
     });
+    $('#loading_cserv').hide();
 }

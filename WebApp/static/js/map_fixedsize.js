@@ -27,13 +27,6 @@ var map = L.map('map', {
     }, center: [42.35, -71.08], zoom: 3
 });
 
-// wmsLayer.on('tileload', function(eventlayer){console.log("added");});
-map.on('layeradd', function (data) {
-    data.layer.on('load', function () {
-        console.log('layer loaded');
-        $('#loading_fixed').hide();
-    });
-});
 
 var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,

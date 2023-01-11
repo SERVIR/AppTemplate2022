@@ -1,4 +1,4 @@
-$('#loading').hide();
+$('#loading_nc').hide();
 let geom_data = "";
 
 $("#selectFiles").change(function (event) {
@@ -11,7 +11,7 @@ $("#selectFiles").change(function (event) {
     }
 
     if (uploadedFile) {
-        $('#loading').show();
+        $('#loading_nc').show();
         var readFile = new FileReader();
         readFile.onload = function (e) {
             var contents = e.target.result;
@@ -120,5 +120,5 @@ function get_chart() {
 
         });
     });
-    $('#loading').hide();
+    $('#loading_nc').hide();
 }

@@ -44,12 +44,13 @@
                         <link rel="stylesheet" href="{% static 'css/map1.css' %}">
 
                         <div id="map">
-                            <div id="loading_fixed">
-                                <img id="loading-image-fixed" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
-                            </div>
+
                         </div>
                         {#                                    <button id="settings"><i class="fa fa-cog" aria-hidden="true"></i></button>#}
                         <div class="accordion" id="layer_manager" style="top:12vh">
+                                   <div id="loading_fixed">
+                                <img id="loading-image-fixed" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
+                            </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
