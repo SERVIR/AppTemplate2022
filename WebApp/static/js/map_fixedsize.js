@@ -111,9 +111,10 @@ var testTimeLayer = L.timeDimension.layer.wms(chirps, {
     updateTimeDimension: true
 });
 
-testTimeLayer.on('load', function (event) {
+testTimeLayer.on('timeload', function (event) {
     $('#loading_fixed').hide();
 });
+
 esi.on('load', function (event) {
     $('#loading_fixed').hide();
 });
