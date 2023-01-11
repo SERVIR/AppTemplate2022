@@ -36,6 +36,10 @@ ajax_call("get-gee-user-layer", {}).done(function (data) {
         zIndex: 400,
         opacity: 0.5
     });
+
+user_layer.on('load', function (event) {
+    $('#loading_gee').hide();
+});
 });
 ajax_call("get-gee-layer", {}).done(function (data) {
     gee_layer = L.tileLayer(data.url, {
@@ -43,7 +47,12 @@ ajax_call("get-gee-layer", {}).done(function (data) {
         zIndex: 400,
         opacity: 0.5
     });
+    gee_layer.on('load', function (event) {
+    $('#loading_gee').hide();
 });
+});
+
+
 
 
 $("#collection").change(function () {
@@ -61,7 +70,6 @@ $("#collection").change(function () {
         collection_opacity.text(Math.round(opacity_collection.val() * 100) + "%");
         collection_opacity.show();
         add_legend("coll", coll_json);
-        $('#loading_gee').hide();
     } else {
         gee_layer.remove();
         collection_opacity.hide();
@@ -86,7 +94,6 @@ $("#asset").change(function () {
         asset_opacity.text(Math.round(opacity_asset.val() * 100) + "%");
         asset_opacity.show();
         add_legend("asset", asset_json);
-        $('#loading_gee').hide();
 
     } else {
         user_layer.remove();

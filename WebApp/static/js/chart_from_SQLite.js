@@ -1,3 +1,5 @@
+    $('#loading_sql').hide();
+
 const xhr_stations = ajax_call("stations", {});
 xhr_stations.done(function (result) {
         console.log(result.stations);
@@ -12,6 +14,8 @@ xhr_stations.done(function (result) {
     }
 );
 $("#stations").change(function () {
+        $('#loading_sql').show();
+
     const xhr = ajax_call("get-timeseries-sqlite", {
         "variable": "BC_MLPM25",
         "dataset": "geos",
@@ -21,6 +25,7 @@ $("#stations").change(function () {
         "station": this.value
     });
     xhr.done(function (result) {
+
         let series = [
             {
                 data: result['plot'],
@@ -94,4 +99,5 @@ $("#stations").change(function () {
 
         });
     });
+    $('#loading_sql').hide();
 });

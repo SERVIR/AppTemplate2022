@@ -1,6 +1,5 @@
 $('#opacity_esi_full').hide();
 $('#opacity_chirps_full').hide();
-$('#loading_full').hide();
 
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 
@@ -28,6 +27,7 @@ var map = L.map('map3', {
         }
     }, center: [42.35, -71.08], zoom: 3
 });
+
 
 L.control.zoom({
     position: 'topright'
@@ -73,17 +73,12 @@ var testTimeLayer = L.timeDimension.layer.wms(chirps, {
 });
 $("#chirps_full").change(function () {
     if (this.checked) {
-        $('#loading_full').show();
-        console.log("before laoding");
-        // chirps.addTo(map);
-
         testTimeLayer.addTo(map);
         testTimeLayer.bringToFront();
         var val = Math.round($('#opacity_chirps_full').val() * 100);
         $('#chirps_full_opacity').text(val + "%");
         $('#chirps_full_opacity').show();
         $('#opacity_chirps_full').show();
-        $('#loading_full').hide();
     } else {
         testTimeLayer.remove();
         $('#chirps_full_opacity').hide();
@@ -93,8 +88,6 @@ $("#chirps_full").change(function () {
 
 $("#esi_full").change(function () {
     if (this.checked) {
-        $('#loading_full').show();
-
         esi.addTo(map);
         esi.bringToFront();
         var val = Math.round($('#opacity_esi_full').val() * 100);
