@@ -58,25 +58,25 @@ Please follow the instructions to set up the project
 
 * There are three types of maps
     * WMS fixed size
-      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/fixed.PNG?raw=true)
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/fixed.png?raw=true)
 
     * WMS full page
-      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/full.PNG?raw=true)
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/full.png?raw=true)
 
     * GEE layers
-      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/gee.PNG?raw=true)
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/gee.png?raw=true)
 
 #### Charts
 
 * There are three types of charts
     * Chart from netCDF
-      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/netcdf.PNG?raw=true)
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/netcdf.png?raw=true)
 
     * Chart from data model
-      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/dm.PNG?raw=true)
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/dm.png?raw=true)
 
     * Chart from ClimateSERV API
-      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/cserv.PNG?raw=true)
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/cserv.png?raw=true)
 
 
 #### About
