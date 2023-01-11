@@ -9,7 +9,7 @@ interfaces addressing complex use-cases.
 * Python 3.10
 * Django 4.1.3
 * Bootstrap 5.2.2
-* Google Earth Engine Python API ()
+* Google Earth Engine Python API
 
 ### Google Earth Engine Authentication
 
@@ -26,10 +26,10 @@ You need the following in order to set up this project.
 Please follow the instructions to set up the project
 
 * Clone the project from the Github repository
-* From the root directory install the requirements by running the following command
+* From the root directory, create the environment by running the following command
 
 ```  
-  pip install -r requirements.txt
+  conda env create -f environment.yml
 ```
 
 * Create data.json Copy and paste the json object below into the file, then edit the values.
@@ -58,15 +58,26 @@ Please follow the instructions to set up the project
 
 * There are three types of maps
     * WMS fixed size
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/cards/fixed.PNG?raw=true)
+
     * WMS full page
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/cards/full.PNG?raw=true)
+
     * GEE layers
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/cards/gee.PNG?raw=true)
 
 #### Charts
 
 * There are three types of charts
     * Chart from netCDF
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/cards/netcdf.PNG?raw=true)
+
     * Chart from data model
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/cards/dm.PNG?raw=true)
+
     * Chart from ClimateSERV API
+      ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/cards/cserv.PNG?raw=true)
+
 
 #### About
 
@@ -82,6 +93,8 @@ This application template is built using Bootstrap, based
 on [https://startbootstrap.com/theme/sb-admin-2](https://startbootstrap.com/theme/sb-admin-2)
 
 ## Contact
+
+Please feel free to contact us if you have any questions.
 
 ### Authors
 
