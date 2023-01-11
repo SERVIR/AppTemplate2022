@@ -78,6 +78,8 @@ Please follow the instructions to set up the project
     * Chart from ClimateSERV API
       ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/cserv.png?raw=true)
 
+#### Update Data Model
+* To update data model details, please login using the 'Login' button in the menu bar. It will redirect you to your Google(Gmail) login page. After you are authenticated, navigate to the "Update Data Model" page from the home page. Here, you will see the form that allows you to enter details and submit to the server.
 
 #### About
 
