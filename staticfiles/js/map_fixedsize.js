@@ -27,6 +27,7 @@ var map = L.map('map', {
     }, center: [42.35, -71.08], zoom: 3
 });
 
+
 var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
@@ -109,6 +110,14 @@ let esi = L.esri.dynamicMapLayer({
 var testTimeLayer = L.timeDimension.layer.wms(chirps, {
     updateTimeDimension: true
 });
+
+testTimeLayer.on('load', function (event) {
+    $('#loading_fixed').hide();
+});
+esi.on('load', function (event) {
+    $('#loading_fixed').hide();
+});
+
 $("#chirps").change(function () {
     if (this.checked) {
         // chirps.addTo(map);
@@ -121,7 +130,8 @@ $("#chirps").change(function () {
         $('#chirps_opacity').show();
         $('#opacity_chirps').show();
         add_legend_fixed_size("chirps", chirps_wms, chirps_variable, colorscalerange, style, 'legends');
-        $('#loading_fixed').hide();
+
+        //    $('#loading_fixed').hide();
 
 
     } else {
@@ -142,7 +152,7 @@ $("#esi").change(function () {
         $('#esi_opacity').show();
         $('#opacity_esi').show();
         add_legend_fixed_size("esi", esi_wms, "", colorscalerange, style, 'legends');
-        $('#loading_fixed').hide();
+
 
     } else {
         esi.remove();
@@ -325,6 +335,7 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
             div.innerHTML +=
                 '<img src="' + src + '" alt="legend">';
             div.id = "legend_" + dataset;
+            div.className = "thredds-legend";
             return div;
         };
         legend.addTo(map);
@@ -344,24 +355,25 @@ function add_other_legend(response, dataset, base_service_url) {
         lyr = response.layers[iCnt];
         if (lyr.layerId == 3) {
             if (lyr.legend.length > 1) {
-                htmlString += "<tr><td colspan='2' style='font-weight:bold;'>" + lyr.layerName + "</td></tr>";
+                htmlString += "<tr><td colspan='2' style='font-weight:bold;'>" + dataset + "</td></tr>";
                 for (var jCnt = 0; jCnt < lyr.legend.length; jCnt++) {
                     var src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[jCnt].url;
                     var strlbl = lyr.legend[jCnt].label.replace("<Null>", "Null");
                     htmlString += "<tr><td align='left'><img src=\"" + src + "\" alt ='' /></td><td>" + strlbl + "</td></tr>";
                 }
             } else {
-                htmlString += "<tr><td colspan='2' class='tdLayerHeader' style='font-weight:bold;'>" + lyr.layerName + "</td></tr>";
-                var src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[0].url;
-                htmlString += "<tr><td colspan='2' ><img src=\"" + src + "\" alt ='' /></td></tr>";
+                htmlString += "<tr><td colspan='2' class='tdLayerHeader' style='font-weight:bold;'>" + dataset + "</td></tr>";
+                var img_src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[0].url;
+                htmlString += "<tr><td colspan='2' ><img src=\"" + img_src + "\" alt ='' /></td></tr>";
             }
         }
     }
     htmlString += "</table>";
     var div = document.createElement('div');
-    div.innerHTML += htmlString
+    div.innerHTML += htmlString;
 
     div.id = "legend_" + dataset;
+    div.className = "arcgis-legend";
     document.getElementById("legends").appendChild(div);
 
 }
