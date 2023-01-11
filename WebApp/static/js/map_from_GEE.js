@@ -78,12 +78,14 @@ $("#asset").change(function () {
     };
     if (this.checked) {
         $('#loading_gee').show();
-        const item = JSON.parse(localStorage.getItem(user_layer));
-        const now = new Date();
-        if (now.getTime() - item.time < 24) {
-            user_layer = item.layer;
-        } else {
-            localStorage.removeItem(user_layer);
+        if (localStorage.getItem("user_layer")) {
+            const item = JSON.parse(localStorage.getItem("user_layer"));
+            const now = new Date();
+            if (now.getTime() - item.time < 24) {
+                user_layer = item.layer;
+            } else {
+                localStorage.removeItem(user_layer);
+            }
         }
         if (user_layer) {
             user_layer.addTo(map);
@@ -108,6 +110,11 @@ $("#asset").change(function () {
                 user_layer.on('load', function (event) {
                     $('#loading_gee').hide();
                 });
+                user_layer.addTo(map);
+                opacity_asset.show();
+                asset_opacity.text(Math.round(opacity_asset.val() * 100) + "%");
+                asset_opacity.show();
+                add_legend("asset", asset_json);
             });
         }
     } else {
