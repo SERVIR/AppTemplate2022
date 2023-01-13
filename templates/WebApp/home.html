@@ -54,7 +54,7 @@
                     <!-- Illustrations -->
                     <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Map Fixed Size</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Display WMS data (fixed-size view)</h6>
                         </div>
                         <div class="card-body"
                              style="background: url({% static "images/cards/fixed.PNG" %});background-size: cover">
@@ -69,7 +69,7 @@
                     <!-- Illustrations -->
                     <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Map Fullscreen</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Display WMS data (full-screen view)</h6>
                         </div>
                         <div class="card-body"
                              style="background: url({% static "images/cards/full.PNG" %});background-size: cover">
@@ -85,7 +85,7 @@
                     <!-- Illustrations -->
                     <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">GEE Map</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Display GEE data (fixed-size view)</h6>
                         </div>
                         <div class="card-body"
                              style="background: url({% static "images/cards/gee.PNG" %});background-size: cover">
@@ -102,12 +102,10 @@
                     <!-- Illustrations -->
                     <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Chart from NetCDF</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Chart from NetCDF file</h6>
                         </div>
                         <div class="card-body"
-                             style="background: url({% static "images/cards/netcdf.PNG" %});background-size: contain;
-                                     background-repeat: no-repeat;
-                                     background-position: center;">
+                             style="background: url({% static "images/cards/netCDF.jpg" %});background-size: cover;">
                             <div class="text-center">
                                 <a href="{% url 'chart_fromNetcdf' %}" class="stretched-link"></a>
 
@@ -123,12 +121,10 @@
                     <!-- Illustrations -->
                     <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Chart ClimateSERV</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Chart from ClimaSERV API</h6>
                         </div>
                         <div class="card-body"
-                             style="background: url({% static "images/cards/cserv.PNG" %});background-size: contain;
-                                     background-repeat: no-repeat;
-                                     background-position: center;">
+                             style="background: url({% static "images/cards/ClimateSERV.jpg" %});background-size: cover;">
                             <div class="text-center">
                                 <a href="{% url 'chart_climateserv' %}" class="stretched-link"></a>
 
@@ -142,12 +138,10 @@
                     <!-- Illustrations -->
                     <div class="card shadow mb-4   mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Chart Data Model</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Chart from SQL Database</h6>
                         </div>
                         <div class="card-body"
-                             style="background: url({% static "images/cards/dm.PNG" %});;background-size: contain;
-                                     background-repeat: no-repeat;
-                                     background-position: center;">
+                             style="background: url({% static "images/cards/SQLite.jpg" %});background-size: cover;">
                             <div class="text-center">
                                 <a href="{% url 'chart_sqlite' %}" class="stretched-link"></a>
 
@@ -161,10 +155,10 @@
                     <!-- Illustrations -->
                     <div class="card shadow mb-4  mr-4  h-100 img-thumbnail">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Update Data Model</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Use forms to enter data</h6>
                         </div>
                         <div class="card-body"
-                             style="background: url({% static "images/cards/update_dm.PNG" %});background-size: cover">
+                             style="background: url({% static "images/cards/EnterData.jpg" %});background-size: cover">
                             <div class="text-center">
                                 <a href="{% url 'updates' %}" class="stretched-link"></a>
                             </div>
