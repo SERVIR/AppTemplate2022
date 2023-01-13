@@ -1,5 +1,8 @@
 $('#loading_cserv').hide();
 $("#selectFiles").change(function (event) {
+
+
+
     var uploadedFile = event.target.files[0];
     var ext = uploadedFile.name.split('.')[1];
     if (ext in ["geojson", "json"]) {
@@ -8,12 +11,15 @@ $("#selectFiles").change(function (event) {
     }
 
     if (uploadedFile) {
-        $('#loading_cserv').show();
         var readFile = new FileReader();
         readFile.onload = function (e) {
+
             var contents = e.target.result;
             var geom_data = contents;
+             $('#loading_cserv').show();
             get_chart(geom_data);
+                $('#loading_cserv').hide();
+
         };
         readFile.readAsText(uploadedFile);
     } else {
@@ -23,6 +29,7 @@ $("#selectFiles").change(function (event) {
 
 
 function get_chart(geom_data) {
+
     const xhr = ajax_call("get-timeseries-climateserv", {
         "dataset": ["CHIRP", "CHIRPS", "IMERG"],
         "operation": "Average",
@@ -129,7 +136,8 @@ function get_chart(geom_data) {
             },
             series: series
 
-        });
+        },
+            );
     });
-    $('#loading_cserv').hide();
+
 }

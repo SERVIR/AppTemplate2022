@@ -69,7 +69,7 @@ let esi = L.esri.dynamicMapLayer({
 });
 
 var testTimeLayer = L.timeDimension.layer.wms(chirps, {
-    updateTimeDimension: true
+    updateTimeDimension: true,
 });
 var chirps_wms = 'https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4';
 var esi_wms = 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer';

@@ -6,7 +6,7 @@
 #map3 {
     height: 90vh;
     z-index: 99;
-
+margin-left: 5px;
 }
 
 #charts, #maps, #details {
@@ -215,7 +215,4 @@ label {
 #map_nc{
     height:300px;
     width: 300px;
-}
-.leaflet-bar .leaflet-bar-horizontal .leaflet-bar-timecontrol .leaflet-control{
-    left: 100px;
 }
