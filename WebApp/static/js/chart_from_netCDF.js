@@ -1,5 +1,14 @@
 $('#loading_nc').hide();
-let geom_data = "";
+// var map = new L.Map('map_nc', {center: [42.35, -71.08], zoom: 3});
+// var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 19,
+//     attribution: '© OpenStreetMap'
+// }).addTo(map);
+// var southWest = new L.LatLng(parseFloat(bounds_nc[2]).toFixed(2), parseFloat(bounds_nc[0]).toFixed(2));
+//   var northEast = new L.LatLng(parseFloat(bounds_nc[3]).toFixed(2),parseFloat(bounds_nc[1]).toFixed(2));
+//  var bounds = new L.LatLngBounds(southWest, northEast);
+
+// map.fitBounds(bounds);
 
 $("#selectFiles").change(function (event) {
     var uploadedFile = event.target.files[0];

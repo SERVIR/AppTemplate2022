@@ -6,7 +6,7 @@ interfaces addressing complex use-cases.
 
 ### Technology stack
 
-* Python 3.10
+* Python 3.9
 * Django 4.1.3
 * Bootstrap 5.2.2
 * Google Earth Engine Python API
@@ -41,7 +41,8 @@ Please follow the instructions to set up the project
   "CSRF_TRUSTED_ORIGINS": ["http://localhost:8000","http://127.0.0.1:8000"],
   "private_key_json" : "your_json_key",
   "DATA_DIR" : "your_data_path",
-  "service_account" : "your_service_acccount"
+  "service_account" : "your_service_acccount",
+  "sample_netCDF": "path_to_netCDF_file"
 }
 ```
 

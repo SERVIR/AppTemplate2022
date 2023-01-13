@@ -1,8 +1,22 @@
+import json
+import os
+import urllib
+from pathlib import Path
+
+import netCDF4
+import numpy as np
+import requests
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from WebApp.forms import MeasurementForm
 from WebApp.models import Measurement
+import requests
+from bs4 import BeautifulSoup
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+f = open(str(BASE_DIR) + '/data.json', )
+data = json.load(f)
 
 
 def home(request):
@@ -26,7 +40,18 @@ def map_fullScreen(request):
 
 
 def chart_fromNetcdf(request):
-    return render(request, 'WebApp/chart_from_netCDF.html', {})
+    # url = 'https://thredds.servirglobal.net/thredds/wms/mk_aqx/geos/20191123.nc?service=WMS&version=1.3.0&request=GetCapabilities'
+    # document = requests.get(url)
+    # soup = BeautifulSoup(document.content, "lxml-xml")
+    # bounds=soup.find("EX_GeographicBoundingBox")
+    # children = bounds.findChildren()
+    # bounds_nc=[float(children[0].get_text()),float(children[1].get_text()),float(children[2].get_text()),float(children[3].get_text())]
+
+    context = {
+        "netcdf_path":data["sample_netCDF"],
+        # "netcdf_bounds":bounds_nc
+    }
+    return render(request, 'WebApp/chart_from_netCDF.html', context)
 
 
 def chart_climateserv(request):
@@ -57,7 +82,6 @@ def updates(request):
         member.save()
 
     return render(request, 'WebApp/update_datamodel.html', context)
-
 
 """ @csrf_exempt
 def updates2(request):

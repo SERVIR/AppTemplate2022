@@ -25,7 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 f = open(str(BASE_DIR) + '/data.json', )
 data = json.load(f)
 
-
 @csrf_exempt
 def get_timeseries_netcdf(request):
     json_obj = {}
@@ -44,7 +43,6 @@ def get_timeseries_netcdf(request):
             poly_geojson = Polygon(geom)
         else:
             poly_geojson = Polygon(json.loads(geom_data))
-        shape_obj = shapely.geometry.asShape(poly_geojson)
         bounds = poly_geojson.bounds
         miny = float(bounds[0])
         minx = float(bounds[1])

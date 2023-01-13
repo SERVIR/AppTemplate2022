@@ -3,6 +3,18 @@
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
 {% block script %}
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+          integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+            integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <script src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js"
+            integrity="sha512-E0DKVahIg0p1UHR2Kf9NX7x7TUewJb30mxkxEm2qOYTVJObgsAGpEol9F6iK6oefCbkJiA4/i6fnTHzM6H1kEA=="
+            crossorigin=""></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
     <!-- Highcharts-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
@@ -12,6 +24,9 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <!-- Custom styles-->
     <script src="{% static '/js/ajax_calls.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"
+            integrity="sha512-WL3nAJlWFKoDShduxQRyY3wkBnQsINXdIfWIW48ZaPgYz1wYNnxIwFMMgigzSgjNBC2WWZ8Y8/sSyUU6abuF0g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         html {
             height: 100%;
@@ -31,11 +46,8 @@
         <div class="row d-flex justify-content-center">
             <!-- Line Chart -->
             <div class="col-xl-12 col-lg-12 text-center mt-4">
-                <label class="form-label" for="customFile">Upload a json file with polygon geometry.</label> <label
-                    class="form-label" for="sampleFile">Please download a sample geojson file <a
-                    href="{% static 'js/sample.geojson' %}" download>here</a></label>
 
-                <input type="file" class="form-control" id="selectFiles"/>
+
                 <hr>
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
@@ -59,14 +71,28 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
+                        <div id="map_nc_img" class="m-auto">
+                            <img src="{% static 'images/static_nc.PNG' %}" height="250px">
+                        </div>
+                        <br>
+
+                        <label
+                                class="form-label" for="selectFiles">Upload your json file <input type="file"
+                                                                                                  class="form-control"
+                                                                                                  id="selectFiles"/>
+                        </label>
+                        <link rel="stylesheet" href="{% static 'css/map1.css' %}">
+
+
                         <div id="loading_nc">
-                            <img id="loading-image-nc" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
+                            <img id="loading-image-nc" class="im" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
                         </div>
                         <figure class="highcharts-figure">
                             <div id="chart-container"></div>
                             <p class="highcharts-description">
                                 This chart shows the use of a Line charts.
                         </figure>
+
                     </div>
                 </div>
             </div>
@@ -78,6 +104,13 @@
                         <h6 class="m-0 font-weight-bold text-primary">Modifying this page</h6>
                     </div>
                     <div class="card-body">
+                        <label
+                                class="form-label" for="sampleFile">Please download a sample geojson file <a
+                                href="{% static 'js/sample.geojson' %}" download>here</a></label>
+                        <br>
+                        <label
+                                class="form-label" for="sampleFile">Please download a sample netCDF file <a
+                                href="{{ netcdf_path }}" download>here</a></label>
                         <div class="text-left text-dark alert alert-info">
                             <strong>templates/WebApp/chart_from_netCDF.html</strong> contains the HTML code to modify
                             the text and graphics in this page.
@@ -87,5 +120,9 @@
             </div>
         </div>
     </div>
+    {#    <script>#}
+    {#    var bounds_nc={{ netcdf_bounds }};#}
+    {#    </script>#}
     <script src="{% static '/js/chart_from_netCDF.js' %}"></script>
+
 {% endblock %}
