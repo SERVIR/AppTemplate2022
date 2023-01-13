@@ -24,7 +24,7 @@
 
 .accordion-collapse.collapse.show {
     width: 50vh;
-    height: 40vh;
+    /*height: 40vh;*/
     max-width: 100%;
 }
 
@@ -80,7 +80,7 @@
 #layer-control-id-full {
     margin: 0px;
     padding: 0px;
-    border: 1px solid gray;
+    /*border: 1px solid gray;*/
     background: none;
     box-shadow: none;
     width: 20vh;
@@ -91,6 +91,11 @@
 
 #layer-control-parent-id-full {
     padding: 0px;
+    border: 1px solid gray;
+    margin: 10px;
+    width: 90%;
+    border-radius: 0.2em;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #location_full {
@@ -210,4 +215,7 @@ label {
 #map_nc{
     height:300px;
     width: 300px;
+}
+.leaflet-bar .leaflet-bar-horizontal .leaflet-bar-timecontrol .leaflet-control{
+    left: 100px;
 }

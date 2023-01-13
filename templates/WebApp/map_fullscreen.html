@@ -39,7 +39,7 @@
             background-color: white;
             overflow-x: hidden;
             transition: 0.5s;
-            padding-top: 60px;
+            {#padding-top: 60px;#}
         }
 
         .sidenav a {
@@ -52,7 +52,7 @@
         }
 
         .sidenav a:hover {
-            color: #f1f1f1;
+            color: #818181;
         }
 
         .sidenav .closebtn {
@@ -101,8 +101,12 @@
                             style="font-size:30px;cursor:pointer;position: absolute;left: 0px;z-index: 999;background-color: #ffffff;width: 50px;"
                             onclick="openNav()">&#9776;</span>
             <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
+                <div style=" display: flex;    align-items: center;    padding-top: 10px;
+    padding-left: 10px;
+  justify-content: space-between;">
+<label style="font-size: 20px">Map Control</label>
+                <a href="javascript:void(0)" onclick="closeNav()"> &times;</a>
+</div>
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
@@ -129,6 +133,8 @@
                                     <input id="opacity_chirps_full" type="range" value="contrast" max="0.5"
                                            min="0" step="0.01"/><label class="ml-1"
                                                                        id="chirps_full_opacity"></label>
+                                             <div id="legend_full_chirps"></div>
+
 
 
                                     <div class="d-inline-flex"><input class="form-check-input" id="esi_full"
@@ -144,6 +150,8 @@
                                     <input id="opacity_esi_full" type="range" value="contrast" max="0.5" min="0"
                                            step="0.01"/><label class="ml-1"
                                                                id="esi_full_opacity"></label>
+                                      <div id="legend_full_esi"></div>
+
 
                                 </div>
                             </div>
@@ -167,21 +175,21 @@
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/osm.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                <p>OSM</p></a>
+                                                </a>
                                         </div>
                                         <div class="col-sm-6">
                                             <a style="padding: 0;font-size: 15px;" id="topo" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/topo.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                <p>TOPO</p></a>
+                                               </a>
                                         </div>
                                         <div class="col-sm-6">
                                             <a style="padding: 0;font-size: 15px;" id="gsatellite" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                <p>GOOGLE</p></a>
+                                                </a>
                                         </div>
 
                                         <div class="col-sm-6">
@@ -189,39 +197,24 @@
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/satellite.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                <p>SATELLITE</p></a>
+                                                </a>
                                         </div>
                                         <div class="col-sm-6">
                                             <a style="padding: 0;font-size: 15px;" id="terrain" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/terrain.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                <p>TERRAIN</p></a>
+                                            </a>
                                         </div>
                                         <div class="col-sm-6">
                                             <a style="padding: 0;font-size: 15px;" id="delorme" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/delorme.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                <p>DELORME</p></a>
+                                                </a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">
-                                Legends
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse"
-                             aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                This accordion is under construction
                             </div>
                         </div>
                     </div>
@@ -236,7 +229,7 @@
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body" id="location_full">
-                                <p class="p-3">Enter location name and hit Enter to recenter the map</p>
+                                <p class="p-3 mb-0">Enter location name and hit Enter to recenter the map</p>
                             </div>
                         </div>
                     </div>
