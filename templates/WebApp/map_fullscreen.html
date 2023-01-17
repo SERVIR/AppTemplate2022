@@ -1,4 +1,5 @@
 {% extends "WebApp/app_base.html" %}
+
 {% load static %}
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
@@ -118,7 +119,7 @@
                         <div id="collapseOne" class="accordion-collapse collapse show"
                              aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <div style="padding-left: 30px">
+                                <div style="padding-left: 30px;margin-top: 15px">
                                     <div class="d-inline-flex">
                                         <input class="form-check-input" id="chirps_full" type="checkbox"/>
 
@@ -234,16 +235,14 @@
                     </div>
                 </div>
                 <br>
-                <br>
-                <div class="text-left text-dark alert alert-info text-center text-break m-auto"
-                     style="bottom:0;width: 230px;">
-                    <strong>templates/WebApp/map_fullscreen.html</strong> contains the HTML code
-                    to modify
-                    the text and graphics in this page.
-                    <strong>staticfiles/js/map_fullscreen.js</strong> controls the behavior of
-                    the map.
+                <div class="m-auto text-center">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  About this page
+</button>
 
                 </div>
+
+
             </div>
             <div id="map3" style="height:calc(100vh - 166px);">
             </div>
@@ -254,4 +253,5 @@
 
         </div>
     </div>
+    {% include 'WebApp/fullscreen_help.html' %}
 {% endblock %}

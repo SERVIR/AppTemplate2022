@@ -52,7 +52,7 @@
                                 <img id="loading-image-fixed" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
                             </div>
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
+                                <h2 class="accordion-header d-flex" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#collapseOne" aria-expanded="true"
                                             aria-controls="collapseOne">
@@ -102,7 +102,15 @@
                                                                 aria-selected="false"> Location
                                                         </button>
                                                     </li>
-
+     <li class="nav-item" role="presentation">
+                                                        <button class="nav-link p-0" id="help-tab"
+                                                                data-bs-toggle="tab"
+                                                                data-bs-target="#help" type="button"
+                                                                role="tab"
+                                                                aria-controls="help"
+                                                                aria-selected="false"> <i class="fa fa-question-circle"></i>
+                                                        </button>
+                                                    </li>
                                                 </ul>
                                                 <div class="border-grey bg-white tab-content"
                                                      style="height: 30vh;overflow: auto;">
@@ -209,12 +217,19 @@
                                                          role="tabpanel"
                                                          aria-labelledby="location_tab"><p>Enter location
                                                         name and hit Enter to recenter the map</p></div>
+                                                      <div class="tab-pane p-3 ml-3" id="help"
+                                                         role="tabpanel"
+                                                         aria-labelledby="help_tab">Please click the following button to know more about updating the page.
+                                                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fixedModal">
+  About this page
+</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
 
@@ -248,30 +263,31 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">About this page</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-left text-dark alert alert-info">
-                            <ul>
-                                <li><strong>templates/WebApp/map_fixedsize.html</strong> contains the HTML code
-                                    to modify
-                                    the text and graphics in this page.
-                                </li>
-                                <li><strong>staticfiles/js/map_fixedsize.js</strong> controls the behavior of
-                                    the map.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+{#        <div class="row">#}
+{#            <div class="col-lg-12 mb-4">#}
+{#                <div class="card shadow mb-4">#}
+{#                    <div class="card-header py-3">#}
+{#                        <h6 class="m-0 font-weight-bold text-primary">About this page</h6>#}
+{#                    </div>#}
+{#                    <div class="card-body">#}
+{#                        <div class="text-left text-dark alert alert-info">#}
+{#                            <ul>#}
+{#                                <li><strong>templates/WebApp/map_fixedsize.html</strong> contains the HTML code#}
+{#                                    to modify#}
+{#                                    the text and graphics in this page.#}
+{#                                </li>#}
+{#                                <li><strong>staticfiles/js/map_fixedsize.js</strong> controls the behavior of#}
+{#                                    the map.#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
 
     </div>
+    {% include 'WebApp/fixedsize_help.html' %}
 
 {% endblock %}
 
