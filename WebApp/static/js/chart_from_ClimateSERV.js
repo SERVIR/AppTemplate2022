@@ -2,7 +2,6 @@ $('#loading_cserv').hide();
 $("#selectFiles").change(function (event) {
 
 
-
     var uploadedFile = event.target.files[0];
     var ext = uploadedFile.name.split('.')[1];
     if (ext in ["geojson", "json"]) {
@@ -16,9 +15,9 @@ $("#selectFiles").change(function (event) {
 
             var contents = e.target.result;
             var geom_data = contents;
-             $('#loading_cserv').show();
+            $('#loading_cserv').show();
             get_chart(geom_data);
-                $('#loading_cserv').hide();
+            $('#loading_cserv').hide();
 
         };
         readFile.readAsText(uploadedFile);
@@ -61,83 +60,83 @@ function get_chart(geom_data) {
             }];
 
         $('#chart-container2').highcharts({
-            chart: {
-                type: 'spline',
-                zoomType: 'x',
-                events: {
-                    load: function () {
-                        var label = this.renderer.label("Graph dates and times are in UTC time")
-                            .css({
-                                width: '400px',
-                                fontSize: '12px'
-                            })
-                            .attr({
-                                'stroke': 'silver',
-                                'stroke-width': 1,
-                                'r': 2,
-                                'padding': 5
-                            })
-                            .add();
+                chart: {
+                    type: 'spline',
+                    zoomType: 'x',
+                    events: {
+                        load: function () {
+                            var label = this.renderer.label("Graph dates and times are in UTC time")
+                                .css({
+                                    width: '400px',
+                                    fontSize: '12px'
+                                })
+                                .attr({
+                                    'stroke': 'silver',
+                                    'stroke-width': 1,
+                                    'r': 2,
+                                    'padding': 5
+                                })
+                                .add();
 
-                        label.align(Highcharts.extend(label.getBBox(), {
-                            align: 'center',
-                            x: 20, // offset
-                            verticalAlign: 'bottom',
-                            y: 0 // offset
-                        }), null, 'spacingBox');
+                            label.align(Highcharts.extend(label.getBBox(), {
+                                align: 'center',
+                                x: 20, // offset
+                                verticalAlign: 'bottom',
+                                y: 0 // offset
+                            }), null, 'spacingBox');
 
+                        }
+                    },
+                    paddingBottom: 50
+                },
+                tooltip: {
+                    backgroundColor: '#FCFFC5',
+                    borderColor: 'black',
+                    borderRadius: 10,
+                    borderWidth: 3
+                },
+                title: {
+                    text: "Data from ClimateSERV",
+                    style: {
+                        fontSize: '14px'
                     }
                 },
-                paddingBottom: 50
-            },
-            tooltip: {
-                backgroundColor: '#FCFFC5',
-                borderColor: 'black',
-                borderRadius: 10,
-                borderWidth: 3
-            },
-            title: {
-                text: "Data from ClimateSERV",
-                style: {
-                    fontSize: '14px'
-                }
-            },
-            xAxis: {
-                type: 'datetime',
-                labels: {
-                    format: '{value: %Y-%m-%d}'
-                    // rotation: 45,
-                    // align: 'left'
+                xAxis: {
+                    type: 'datetime',
+                    labels: {
+                        format: '{value: %Y-%m-%d}'
+                        // rotation: 45,
+                        // align: 'left'
+                    },
+                    title: {
+                        text: 'Date'
+                    }
                 },
-                title: {
-                    text: 'Date'
-                }
-            },
-            legend: {
-                align: 'center',
-                verticalAlign: 'bottom',
-                y: -25
-            },
-            yAxis: {
-                title: {
-                    useHTML: true,
-                    text: "values"
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    y: -25
                 },
-                plotBands: [],
+                yAxis: {
+                    title: {
+                        useHTML: true,
+                        text: "values"
+                    },
+                    plotBands: [],
+
+                },
+                plotOptions: {
+                    series: {
+                        color: "black"
+                    }
+                },
+                exporting: {
+                    enabled: true
+                },
+                series: series
 
             },
-            plotOptions: {
-                series: {
-                    color: "black"
-                }
-            },
-            exporting: {
-                enabled: true
-            },
-            series: series
-
-        },
-            );
+        );
     });
 
 }

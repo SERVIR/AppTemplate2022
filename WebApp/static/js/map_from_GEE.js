@@ -53,7 +53,7 @@ $("#collection").change(function () {
                     zIndex: 400,
                     opacity: 0.5
                 });
-                 const now = new Date();
+                const now = new Date();
                 const item = {
                     layer: gee_layer,
                     time: now.getTime(),

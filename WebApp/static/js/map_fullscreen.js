@@ -84,14 +84,14 @@ $("#chirps_full").change(function () {
         $('#chirps_full_opacity').text(val + "%");
         $('#chirps_full_opacity').show();
         $('#opacity_chirps_full').show();
-                add_legend_fixed_size("chirps", chirps_wms, chirps_variable, colorscalerange, style, 'legend_full_chirps');
+        add_legend_fixed_size("chirps", chirps_wms, chirps_variable, colorscalerange, style, 'legend_full_chirps');
 
 
     } else {
         testTimeLayer.remove();
         $('#chirps_full_opacity').hide();
         $('#opacity_chirps_full').hide();
-                remove_legend_fixed_size("chirps");
+        remove_legend_fixed_size("chirps");
 
     }
 });
@@ -104,13 +104,13 @@ $("#esi_full").change(function () {
         $('#esi_full_opacity').text(val + "%");
         $('#esi_full_opacity').show();
         $('#opacity_esi_full').show();
-                        add_legend_fixed_size("esi", esi_wms, "", colorscalerange, style, 'legend_full_esi');
+        add_legend_fixed_size("esi", esi_wms, "", colorscalerange, style, 'legend_full_esi');
 
     } else {
         esi.remove();
         $('#esi_full_opacity').hide();
         $('#opacity_esi_full').hide();
-                remove_legend_fixed_size("esi");
+        remove_legend_fixed_size("esi");
 
     }
 });
@@ -316,6 +316,6 @@ function add_other_legend(response, dataset, base_service_url) {
 
     div.id = "legend_" + dataset;
     div.className = "arcgis-legend";
-    document.getElementById("legend_full_"+dataset).appendChild(div);
+    document.getElementById("legend_full_" + dataset).appendChild(div);
 
 }

@@ -1,0 +1,27 @@
+{% block content %}
+    {% load static %}
+    <div class="modal fade" id="cservModal" tabindex="-1" aria-labelledby="cservModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="cservModalLabel">About this page</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="text-left text-dark alert">
+                        <label class="form-label" for="sampleFile">Please download a sample geojson file <a
+                                href="{% static 'js/sample.geojson' %}" download>here</a></label><br>
+                        <strong>templates/WebApp/chart_from_ClimateSERV.html</strong> contains the HTML code to
+                        modify
+                        the text and graphics in this page.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

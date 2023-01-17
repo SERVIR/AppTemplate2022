@@ -6,7 +6,7 @@
 #map3 {
     height: 90vh;
     z-index: 99;
-margin-left: 5px;
+    margin-left: 5px;
 }
 
 #charts, #maps, #details {
@@ -212,7 +212,8 @@ label {
 #loading-image, #loading-image-gee, #loading-image-fixed, #loading-image-full, #loading-image-nc, #loading-image-cserv, #loading-image-sql {
     z-index: 500;
 }
-#map_nc{
-    height:300px;
+
+#map_nc {
+    height: 300px;
     width: 300px;
 }

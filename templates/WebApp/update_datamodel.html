@@ -59,25 +59,12 @@
                 {% endif %}
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">About this page</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-info">
-                            <strong>templates\WebApp\update_datamodel.html</strong> contains the HTML code to modify
-                            the text and graphics in this page.<br>
-                            <strong>WebApp\forms.py</strong> contains the form definition.
-                            <br>
-                            The code for this application is available <a
-                                href="https://github.com/SERVIR/AppTemplate2022">here</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script src="{% static '/js/update_datamodel.js' %}"></script>
-        </div>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                data-bs-target="#datamodelModal">
+            Click here to modify the page
+        </button>
+        <script src="{% static '/js/update_datamodel.js' %}"></script>
+
     </div>
+    {% include 'WebApp/datamodel_about.html' %}
 {% endblock %}

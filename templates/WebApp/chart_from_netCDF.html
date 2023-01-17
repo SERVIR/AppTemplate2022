@@ -86,35 +86,24 @@
 
 
                         <div id="loading_nc">
-                            <img id="loading-image-nc" class="im" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
+                            <img id="loading-image-nc" class="im" src="{% static 'images/loading.gif' %}"
+                                 alt="Loading..."/>
                         </div>
                         <figure class="highcharts-figure">
                             <div id="chart-container"></div>
                             <p class="highcharts-description">
-                                This example extracts and summarizes Air Quality data from a NetCDF file according to the boundary provided by the uploaded geojson file.
+                                This example extracts and summarizes Air Quality data from a NetCDF file according to
+                                the boundary provided by the uploaded geojson file.
                         </figure>
 
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">About this page</h6>
-                    </div>
-                   <div class="card-body">
-                        <div class="text-left text-dark alert alert-info">
-                            <strong>templates/WebApp/chart_from_netCDF.html</strong> contains the HTML code to modify
-                            the text and graphics in this page.
-                            <hr>
-                            Download Resources: <a href="/static/js/sample.geojson" class="btn btn-light">Sample geojson file</a> <a href="/servir_apps/data/app_template/20191123.nc" class="btn btn-light">NetCDF file used in the example</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                data-bs-target="#netcdfModal">
+            Click here to modify the page
+        </button>
     </div>
     {#    <script>#}
     {#    var bounds_nc={{ netcdf_bounds }};#}

@@ -13,6 +13,7 @@ from WebApp.forms import MeasurementForm
 from WebApp.models import Measurement
 import requests
 from bs4 import BeautifulSoup
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 f = open(str(BASE_DIR) + '/data.json', )
@@ -48,7 +49,7 @@ def chart_fromNetcdf(request):
     # bounds_nc=[float(children[0].get_text()),float(children[1].get_text()),float(children[2].get_text()),float(children[3].get_text())]
 
     context = {
-        "netcdf_path":data["sample_netCDF"],
+        "netcdf_path": data["sample_netCDF"],
         # "netcdf_bounds":bounds_nc
     }
     return render(request, 'WebApp/chart_from_netCDF.html', context)
@@ -82,6 +83,7 @@ def updates(request):
         member.save()
 
     return render(request, 'WebApp/update_datamodel.html', context)
+
 
 """ @csrf_exempt
 def updates2(request):

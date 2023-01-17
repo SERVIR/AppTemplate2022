@@ -25,11 +25,11 @@
                 <div class="layer">
                 </div>
                 <div class="card-img-overlay">
-                    <div class="text-center text-white">
-                        <p style="padding-top:12vb;width:50%;margin:auto;font-size:3vb; font-family: Arial,serif; text-shadow: black 0.1em 0.1em 0.2em;">
+                    <div class="text-center text-white align-content-center">
+                        <p id="title_class">
                             SERVIR
                             Geospatial Application Template 2022 </p>
-                        <p style="padding-top:2vb;width:50%;margin:auto;font-size:1.5vb; font-family: Arial,serif; text-shadow: black 0.1em 0.1em 0.2em;">
+                        <p id="tagline_class">
                             This web application shows simple implementation of common user interface elements in
                             geospatial
                             information delivery. It is intended to be used as a starting point for building new
@@ -172,7 +172,7 @@
                     <div class="col-lg-12 mb-4">
                         <br>
                         <!-- Illustrations -->
-                        <div class="card shadow mb-4">
+                        <div class="card shadow">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Description</h6>
                             </div>
@@ -193,25 +193,20 @@
 
 
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 mb-4">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">About this page</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="text-left text-dark alert alert-info">
-                                    <strong>templates/WebApp/home.html</strong> contains the HTML code to modify
-                                    the text and graphics in this page.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
+            <div class="col-3 mb-3">
+                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#homeModal">
+                    Click here to modify the page
+                </button>
+            </div>
         </div>
-        <!-- End of Main Content -->
     </div>
+    <!-- End of Main Content -->
+
+
     <script src="{% static '/js/home.js' %}"></script>
+    {% include 'WebApp/home_about.html' %}
 {% endblock %}

@@ -35,12 +35,11 @@
             width: 0;
             position: fixed;
             z-index: 100;
-            {#top: 115px;#}
-            left: 0;
+        {#top: 115px;#} left: 0;
             background-color: white;
             overflow-x: hidden;
             transition: 0.5s;
-            {#padding-top: 60px;#}
+        {#padding-top: 60px;#}
         }
 
         .sidenav a {
@@ -104,9 +103,9 @@
                 <div style=" display: flex;    align-items: center;    padding-top: 10px;
     padding-left: 10px;
   justify-content: space-between;">
-<label style="font-size: 20px">Map Control</label>
-                <a href="javascript:void(0)" onclick="closeNav()"> &times;</a>
-</div>
+                    <label style="font-size: 20px">Map Control</label>
+                    <a href="javascript:void(0)" onclick="closeNav()"> &times;</a>
+                </div>
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
@@ -133,8 +132,7 @@
                                     <input id="opacity_chirps_full" type="range" value="contrast" max="0.5"
                                            min="0" step="0.01"/><label class="ml-1"
                                                                        id="chirps_full_opacity"></label>
-                                             <div id="legend_full_chirps"></div>
-
+                                    <div id="legend_full_chirps"></div>
 
 
                                     <div class="d-inline-flex"><input class="form-check-input" id="esi_full"
@@ -150,7 +148,7 @@
                                     <input id="opacity_esi_full" type="range" value="contrast" max="0.5" min="0"
                                            step="0.01"/><label class="ml-1"
                                                                id="esi_full_opacity"></label>
-                                      <div id="legend_full_esi"></div>
+                                    <div id="legend_full_esi"></div>
 
 
                                 </div>
@@ -175,21 +173,21 @@
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/osm.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                </a>
+                                            </a>
                                         </div>
                                         <div class="col-sm-6">
                                             <a style="padding: 0;font-size: 15px;" id="topo" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/topo.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                               </a>
+                                            </a>
                                         </div>
                                         <div class="col-sm-6">
                                             <a style="padding: 0;font-size: 15px;" id="gsatellite" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                </a>
+                                            </a>
                                         </div>
 
                                         <div class="col-sm-6">
@@ -197,7 +195,7 @@
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/satellite.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                </a>
+                                            </a>
                                         </div>
                                         <div class="col-sm-6">
                                             <a style="padding: 0;font-size: 15px;" id="terrain" href="#"
@@ -211,7 +209,7 @@
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/delorme.png' %}" alt="img1"
                                                     class="img-thumbnail">
-                                                </a>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -236,9 +234,10 @@
                 </div>
                 <br>
                 <div class="m-auto text-center">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  About this page
-</button>
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                            data-bs-target="#fullModal">
+                        Modify the page
+                    </button>
 
                 </div>
 
@@ -253,5 +252,5 @@
 
         </div>
     </div>
-    {% include 'WebApp/fullscreen_help.html' %}
+    {% include 'WebApp/fullscreen_about.html' %}
 {% endblock %}

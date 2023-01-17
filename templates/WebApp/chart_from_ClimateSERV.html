@@ -47,28 +47,14 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">About this page</h6>
-                    </div>
-                    <div class="card-body">
-                        <label class="form-label" for="sampleFile">Please download a sample geojson file <a
-                                href="{% static 'js/sample.geojson' %}" download>here</a></label>
-
-                        <div class="text-left text-dark alert alert-info">
-                            <strong>templates/WebApp/chart_from_ClimateSERV.html</strong> contains the HTML code to
-                            modify
-                            the text and graphics in this page.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                data-bs-target="#cservModal">
+            Click here to modify the page
+        </button>
     </div>
 
     <script src="{% static '/js/chart_from_ClimateSERV.js' %}"></script>
+    {% include 'WebApp/cserv_about.html' %}
 
 {% endblock %}
 
