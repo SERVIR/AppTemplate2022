@@ -12185,4 +12185,12 @@ body.sidebar-toggled footer.sticky-footer {
 .modal-dialog,
 .modal-content {
     min-width: 75%;
+
+}
+.vertical_center{
+      margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
