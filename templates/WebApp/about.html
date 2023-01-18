@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 mb-4">
+            <div class="col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Logos</h6>
@@ -107,22 +107,15 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-12 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">About this page</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-info">
-                            <strong>templates/WebApp/about.html</strong> contains the HTML code to modify
-                            the text and graphics in this page.
-                            <br>
-                            The code for this application is available <a
-                                href="https://github.com/SERVIR/AppTemplate2022">here</a>
-                        </div>
-                    </div>
-                </div>
+                <div class="col">
+                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#aboutModal">
+                    Learn how to modify this page
+                </button>
             </div>
         </div>
+    <br>
     </div>
+        {% include 'WebApp/about_about.html' %}
+
 {% endblock %}

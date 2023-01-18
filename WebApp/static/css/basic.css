@@ -12182,3 +12182,7 @@ body.sidebar-toggled footer.sticky-footer {
     font-family: Arial, serif;
     text-shadow: black 0.1em 0.1em 0.2em;
 }
+.modal-dialog,
+.modal-content {
+    min-width: 75%;
+}

@@ -1,26 +1,19 @@
 {% block content %}
-    <div class="modal fade" id="geeModal" tabindex="-1" aria-labelledby="geeModalLabel" aria-hidden="true">
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="geeModalLabel">About this page</h1>
+                    <h1 class="modal-title fs-5" id="aboutModalLabel">About this page</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="alert">
-                        <ul>
-                            <li><strong>templates/WebApp/map_from_GEE.html</strong> contains the HTML code
-                                to modify
-                                the text and graphics in this page.
-                            </li>
-                            <li><strong>staticfiles/js/map_from_GEE.js</strong> controls the behavior of the
-                                map.
-                            </li>
+                     <div class="alert">
+                            <strong>templates/WebApp/about.html</strong> contains the HTML code to modify
+                            the text and graphics in this page.
                             <br>
                             The code for this application is available <a
                                 href="https://github.com/SERVIR/AppTemplate2022">here</a>
-                        </ul>
-                    </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

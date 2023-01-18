@@ -99,15 +99,20 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+            <div class="col">
+                  <button type="button" class="btn btn-info" data-bs-toggle="modal"
                 data-bs-target="#netcdfModal">
-            Click here to modify the page
+            Learn how to modify this page
         </button>
+            </div>
+        </div>
+    <br>
+
     </div>
     {#    <script>#}
     {#    var bounds_nc={{ netcdf_bounds }};#}
     {#    </script>#}
     <script src="{% static '/js/chart_from_netCDF.js' %}"></script>
+    {% include 'WebApp/netcdf_about.html' %}
 
 {% endblock %}
