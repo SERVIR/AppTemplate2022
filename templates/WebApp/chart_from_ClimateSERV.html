@@ -12,12 +12,12 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <!-- Custom styles-->
     <script src="{% static '/js/ajax_calls.js' %}"></script>
-
+    <link rel="stylesheet" src="{% static '/css/chart_cserv.css' %}">
 
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid" style="background: #e1e3e5">
+    <div class="container-fluid bg-gray-300">
         <div class="row d-flex justify-content-center">
             <!-- Line Chart -->
             <div class="col-xl-12 col-lg-12 text-center mt-4">
@@ -47,13 +47,13 @@
                 </div>
             </div>
             <div class="col">
-                   <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                data-bs-target="#cservModal">
-            Learn how to modify this page
-        </button>
-                </div>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#cservModal">
+                    Learn how to modify this page
+                </button>
+            </div>
         </div>
- <br>
+        <br>
     </div>
 
     <script src="{% static '/js/chart_from_ClimateSERV.js' %}"></script>

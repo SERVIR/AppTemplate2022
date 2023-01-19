@@ -29,9 +29,10 @@
 {% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/gee_map.css' %}">
 
 
-    <div class="container-fluid" style="background: #e1e3e5">
+    <div class="container-fluid bg-gray-300">
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <br>
@@ -45,12 +46,12 @@
                     <div class="card-body">
 
 
-                        <link rel="stylesheet" href="{% static 'css/map1.css' %}">
+                        <link rel="stylesheet" href="{% static 'css/common.css' %}">
 
                         <div id="map2">
 
                         </div>
-                        <div class="accordion" id="layer_manager_gee" style="top:12vh">
+                        <div class="accordion" id="layer_manager_gee">
                             <div id="loading_gee">
                                 <img id="loading-image-gee" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
                             </div>
@@ -65,10 +66,10 @@
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                      aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <div id="layer_manager_gee1">
+                                        <div>
                                             <div class="container mt-3">
                                                 <ul class="m-0 nav nav-fill nav-justified nav-tabs"
-                                                    style="font-size:smaller;" id="myTab1" role="tablist">
+                                                    id="gee_tab_list" role="tablist">
                                                     <li class="nav-item" role="presentation">
                                                         <button class="active nav-link p-0" id="layers-tab"
                                                                 data-bs-toggle="tab"
@@ -107,8 +108,8 @@
                                                     </li>
 
                                                 </ul>
-                                                <div class="border-grey bg-white tab-content"
-                                                     style="height: 30vh;overflow: auto;">
+                                                <div class="border-grey bg-white tab-content" id="layer_tab_content_gee"
+                                                >
                                                     <div class="tab-pane active  p-3 ml-3" id="layers"
                                                          role="tabpanel"
                                                          aria-labelledby="layers-tab"><p>
@@ -153,8 +154,6 @@
                                                                max="1" min="0"
                                                                step="0.01"/><label class="ml-1"
                                                                                    id="asset_opacity"></label>
-
-
                                                     </div>
                                                     <div class="tab-pane" id="basemaps_gee" role="tabpanel"
                                                          aria-labelledby="basemaps_gee-tab">
@@ -206,8 +205,6 @@
 
                                                         <p class="mt-1 ml-2">Legend for
                                                             the layer(s) selected</p>
-                                                        {#                                                        <div id='legend_coll'></div>#}
-                                                        {#                                                        <div id='legend_asset'></div>#}
                                                     </div>
                                                     <div class="tab-pane p-3 ml-3" id="location_gee"
                                                          role="tabpanel"
@@ -220,7 +217,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <script src="{% static 'js/map_from_GEE.js' %}"></script>
                     </div>
                 </div>
@@ -254,11 +250,11 @@
 
             </div>
             <div class="col">
-        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                data-bs-target="#geeModal">
-            Learn how to modify this page
-        </button>
-          </div>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#geeModal">
+                    Learn how to modify this page
+                </button>
+            </div>
 
 
         </div>

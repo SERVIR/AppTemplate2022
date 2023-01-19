@@ -25,55 +25,7 @@
             integrity="sha512-PDM7dpetuBcPp2fV/ZyCj9BGV8ybPchsrSzQqVZ3WoM8YcxEa2lAj0n1+4MCRzgsEROmVTwQXGw0IrXCCgH+/Q=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/leaflet-providers.js' %}"></script>
-
-    <style>
-
-        .sidenav {
-            height: calc(100vh - 165px);
-            padding: 0px;
-
-            width: 0;
-            position: fixed;
-            z-index: 100;
-        {#top: 115px;#} left: 0;
-            background-color: white;
-            overflow-x: hidden;
-            transition: 0.5s;
-        {#padding-top: 60px;#}
-        }
-
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidenav a:hover {
-            color: #818181;
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-
-            .sidenav a {
-                font-size: 18px;
-            }
-        }
-
-    </style>
+    <link href="{% static '/css/full_map.css' %}" rel="stylesheet"/>
 
     <script>
         function openNav() {
@@ -91,39 +43,34 @@
 
 {% block content %}
 
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0  bg-gray-300">
 
         <div class="row">
-
                     <span
                             id="nav_opener"
-                            style="font-size:30px;cursor:pointer;position: absolute;left: 0px;z-index: 999;background-color: #ffffff;width: 50px;"
                             onclick="openNav()">&#9776;</span>
             <div id="mySidenav" class="sidenav">
-                <div style=" display: flex;    align-items: center;    padding-top: 10px;
-    padding-left: 10px;
-  justify-content: space-between;">
-                    <label style="font-size: 20px">Map Control</label>
+                <div class="map_control_style">
+                    <label id="control_label">Map Control</label>
                     <a href="javascript:void(0)" onclick="closeNav()"> &times;</a>
                 </div>
-                <div class="accordion" id="accordionExample">
+                <div class="accordion" id="full_tab_container">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true"
-                                    aria-controls="collapseOne">
+                                    data-bs-target="#collapseFull" aria-expanded="true"
+                                    aria-controls="collapseFull">
                                 Layers
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show"
-                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div id="collapseFull" class="accordion-collapse collapse show"
+                             aria-labelledby="headingOne" data-bs-parent="#full_tab_container">
                             <div class="accordion-body">
-                                <div style="padding-left: 30px;margin-top: 15px;margin-bottom: 10px;">
+                                <div class="side_panel">
                                     <div class="d-inline-flex">
                                         <input class="form-check-input" id="chirps_full" type="checkbox"/>
-
                                         <label class="form-check-label" for="chirps_full">CHIRPS Layer</label>
-                                        <a style="PADDING-TOP: 0;DISPLAY: flex;" role="button" href=#"
+                                        <a class="fullmap_popover" role="button" href=#"
                                            data-bs-toggle="popover" title="CHIRPS"
                                            data-bs-trigger="focus" data-bs-content="Info about chirps"><i
                                                 class="fa-solid fa-circle-info info_btn"></i></a>
@@ -133,12 +80,10 @@
                                            min="0" step="0.01"/><label class="ml-1"
                                                                        id="chirps_full_opacity"></label>
                                     <div id="legend_full_chirps"></div>
-
-
                                     <div class="d-inline-flex"><input class="form-check-input" id="esi_full"
                                                                       type="checkbox"/>
                                         <label class="form-check-label" for="esi_full">ESI Layer</label>
-                                        <a style="PADDING-TOP: 0;DISPLAY: flex;" role="button" href=#"
+                                        <a class="full_map_popover" role="button" href=#"
                                            data-bs-toggle="popover"
                                            data-bs-trigger="focus" title="ESI"
                                            data-bs-content="Info about esi"><i
@@ -149,8 +94,6 @@
                                            step="0.01"/><label class="ml-1"
                                                                id="esi_full_opacity"></label>
                                     <div id="legend_full_esi"></div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -163,27 +106,28 @@
                                 Basemaps
                             </button>
                         </h2>
+
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                              data-bs-parent="#accordionExample">
                             <div class="accordion-body" id="basemaps" aria-labelledby="profile-tab">
                                 <div class="card-body text-center">
                                     <div class="row row-centered pos">
                                         <div class="col-sm-6">
-                                            <a style="padding: 0;font-size: 15px;" id="osm" href="#"
+                                            <a class="basemap_img" id="osm" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/osm.png' %}" alt="img1"
                                                     class="img-thumbnail">
                                             </a>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a style="padding: 0;font-size: 15px;" id="topo" href="#"
+                                            <a class="basemap_img" id="topo" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/topo.png' %}" alt="img1"
                                                     class="img-thumbnail">
                                             </a>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a style="padding: 0;font-size: 15px;" id="gsatellite" href="#"
+                                            <a class="basemap_img" id="gsatellite" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/gsatellite.png' %}" alt="img1"
                                                     class="img-thumbnail">
@@ -191,21 +135,21 @@
                                         </div>
 
                                         <div class="col-sm-6">
-                                            <a style="padding: 0;font-size: 15px;" id="satellite" href="#"
+                                            <a class="basemap_img" id="satellite" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/satellite.png' %}" alt="img1"
                                                     class="img-thumbnail">
                                             </a>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a style="padding: 0;font-size: 15px;" id="terrain" href="#"
+                                            <a class="basemap_img" id="terrain" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/terrain.png' %}" alt="img1"
                                                     class="img-thumbnail">
                                             </a>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a style="padding: 0;font-size: 15px;" id="delorme" href="#"
+                                            <a class="basemap_img" id="delorme" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/delorme.png' %}" alt="img1"
                                                     class="img-thumbnail">
@@ -238,18 +182,12 @@
                             data-bs-target="#fullModal">
                         Learn how to modify this page
                     </button>
-
                 </div>
-
-
             </div>
             <div id="map3" style="height:calc(100vh - 166px);">
             </div>
-
             <script src="{% static 'js/map_fullscreen.js' %}"></script>
-
-            <link rel="stylesheet" href="{% static 'css/map1.css' %}">
-
+            <link rel="stylesheet" href="{% static 'css/common.css' %}">
         </div>
     </div>
     {% include 'WebApp/fullscreen_about.html' %}

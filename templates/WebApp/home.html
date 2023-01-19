@@ -6,20 +6,16 @@
     <!-- Custom styles-->
 
     <!-- Custom scripts-->
-
 {% endblock %}
-
 
 <!-- Begin Page Content -->
 {% block content %}
-    <div class="align-items-center justify-content-between" style="background: #e1e3e5">
+    <div class="align-items-center justify-content-between bg-gray-300">
         <div class="card">
             <div>
                 <img
-                        class="img-fluid"
+                        class="img-fluid hero_style"
                         src="{% static '/images/hero.jpg' %}"
-                        style="height: 50vh;width: 100%;
-    object-fit: cover;"
                         alt="Hero Image"
                 >
                 <div class="layer">
@@ -35,7 +31,6 @@
                             information delivery. It is intended to be used as a starting point for building new
                             applications for specialized use cases.
                             This template app is created and maintanined by the SERVIR Science Coordination office</p>
-
                     </div>
                 </div>
             </div>
@@ -48,121 +43,96 @@
             </div>
 
             <!-- Page Heading -->
-            <div class="row" style="display: flex;flex-flow:row wrap;justify-content:center;box-shadow: black">
-                <div class="app-card mb-4" style="height: 300px;width:400px;">
+            <div class="row flex_cards">
+                <div class="app-card mb-4">
                     <br>
-                    <!-- Illustrations -->
                     <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Display WMS data (fixed-size view)</h6>
                         </div>
-                        <div class="card-body"
-                             style="background: url({% static "images/cards/fixed.PNG" %});background-size: cover">
+                        <div class="card-body fixed_card">
                             <div class="text-center">
                                 <a href="{% url 'map_fixedSize' %}" class="stretched-link"></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="app-card mb-4" style="height: 300px;width:400px;">
+                <div class="app-card mb-4">
                     <br>
-                    <!-- Illustrations -->
                     <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Display WMS data (full-screen view)</h6>
                         </div>
-                        <div class="card-body"
-                             style="background: url({% static "images/cards/full.PNG" %});background-size: cover">
+                        <div class="card-body full_card">
                             <div class="text-center">
                                 <a href="{% url 'map_fullScreen' %}" class="stretched-link"></a>
-
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="app-card mb-4" style="height: 300px;width:400px;">
+                <div class="app-card mb-4 ">
                     <br>
-                    <!-- Illustrations -->
                     <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Display GEE data (fixed-size view)</h6>
                         </div>
-                        <div class="card-body"
-                             style="background: url({% static "images/cards/gee.PNG" %});background-size: cover">
+                        <div class="card-body gee_card">
                             <div class="text-center">
                                 <a href="{% url 'map_fromGEE' %}" class="stretched-link"></a>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="app-card mb-4" style="height: 300px;width:400px;">
+                <div class="app-card mb-4">
                     <br>
-                    <!-- Illustrations -->
                     <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Chart from NetCDF file</h6>
                         </div>
-                        <div class="card-body"
-                             style="background: url({% static "images/cards/netCDF.jpg" %});background-size: cover;">
+                        <div class="card-body chart_netcdf_card">
                             <div class="text-center">
                                 <a href="{% url 'chart_fromNetcdf' %}" class="stretched-link"></a>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-                {#                </div>#}
-                {#                <div class="row">#}
-                <div class="app-card mb-4" style="height: 300px;width:400px;">
+                <div class="app-card mb-4">
                     <br>
-                    <!-- Illustrations -->
                     <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Chart from ClimateSERV API</h6>
                         </div>
-                        <div class="card-body"
-                             style="background: url({% static "images/cards/ClimateSERV.jpg" %});background-size: cover;">
+                        <div class="card-body chart_cserv_card">
                             <div class="text-center">
                                 <a href="{% url 'chart_climateserv' %}" class="stretched-link"></a>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="app-card mb-4" style="height: 300px;width:400px;">
+                <div class="app-card mb-4">
                     <br>
-                    <!-- Illustrations -->
                     <div class="card shadow mb-4   mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Chart from SQL Database</h6>
                         </div>
-                        <div class="card-body"
-                             style="background: url({% static "images/cards/SQLite.jpg" %});background-size: cover;">
+                        <div class="card-body chart_sqlite_card">
                             <div class="text-center">
                                 <a href="{% url 'chart_sqlite' %}" class="stretched-link"></a>
-
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="app-card" style="height: 300px;width:400px;">
+                <div class="app-card">
                     <br>
-                    <!-- Illustrations -->
-                    <div class="card shadow mb-4  mr-4  h-100 img-thumbnail">
+                    <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Use forms to enter data</h6>
                         </div>
-                        <div class="card-body"
-                             style="background: url({% static "images/cards/EnterData.jpg" %});background-size: cover">
+                        <div class="card-body update_datamodel_card">
                             <div class="text-center">
                                 <a href="{% url 'updates' %}" class="stretched-link"></a>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -171,7 +141,6 @@
                 <div class="row">`
                     <div class="col-lg-12 mb-4">
                         <br>
-                        <!-- Illustrations -->
                         <div class="card shadow">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Description</h6>
@@ -190,11 +159,7 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
-
             </div>
             <div class="col">
                 <button type="button" class="btn btn-info" data-bs-toggle="modal"
@@ -207,7 +172,7 @@
     </div>
     <!-- End of Main Content -->
 
-
     <script src="{% static '/js/home.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     {% include 'WebApp/home_about.html' %}
 {% endblock %}

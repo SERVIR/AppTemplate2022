@@ -5,12 +5,13 @@
     <!-- Custom styles-->
 
     <!-- Custom scripts-->
+    <link rel="stylesheet" src="{% static '/css/about.css' %}">
 
 {% endblock %}
 
 {% block content %}
     <br>
-    <div class="container-fluid">
+    <div class="container-fluid  bg-gray-300">
         <div class="row">
             <div class="col-lg-12 mb-4">
                 <div class="card shadow mb-4">
@@ -42,22 +43,22 @@
                         <div class="row row-centered pos">
                             <div class="col-sm-3">
                                 <div><img src="{% static 'images/teammembers/TeamMember1.jpg' %}" alt="img1"
-                                          class="img-thumbnail" style="border-radius: 7rem;">
+                                          class="img-thumbnail">
                                     <p>Team member 1</p></div>
                             </div>
                             <div class="col-sm-3">
                                 <div><img src="{% static 'images/teammembers/TeamMember2.jpg' %}" alt="img1"
-                                          class="img-thumbnail" style="border-radius: 7rem;">
+                                          class="img-thumbnail">
                                     <p>Team member 2</p></div>
                             </div>
                             <div class="col-sm-3">
                                 <div><img src="{% static 'images/teammembers/TeamMember3.jpg' %}" alt="img1"
-                                          class="img-thumbnail" style="border-radius: 7rem;">
+                                          class="img-thumbnail">
                                     <p>Team member 3</p></div>
                             </div>
                             <div class="col-sm-3">
                                 <div><img src="{% static 'images/teammembers/TeamMember4.jpg' %}" alt="img1"
-                                          class="img-thumbnail" style="border-radius: 7rem;">
+                                          class="img-thumbnail">
                                     <p>Team member 4</p></div>
                             </div>
                         </div>
@@ -107,15 +108,15 @@
         </div>
 
         <div class="row">
-                <div class="col">
+            <div class="col">
                 <button type="button" class="btn btn-info" data-bs-toggle="modal"
                         data-bs-target="#aboutModal">
                     Learn how to modify this page
                 </button>
             </div>
         </div>
-    <br>
+        <br>
     </div>
-        {% include 'WebApp/about_about.html' %}
+    {% include 'WebApp/about_about.html' %}
 
 {% endblock %}

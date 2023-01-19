@@ -1,0 +1,130 @@
+.sidenav {
+    height: calc(100vh - 165px);
+    padding: 0px;
+    width: 0;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav .basemap_img {
+    padding: 0;
+}
+
+
+.sidenav a:hover {
+    color: #818181;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#nav_opener {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: 0px;
+    z-index: 999;
+    background-color: #ffffff;
+    width: 50px;
+}
+
+.map_control_style {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-left: 10px;
+    justify-content: space-between;
+}
+
+#control_label {
+    font-size: 20px;
+}
+
+.side_panel {
+    padding-left: 30px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.full_map_popover {
+    padding-top: 0;
+    display: flex;
+}
+
+#layer-control-parent-id-full {
+    padding: 0px;
+    border: 1px solid gray;
+    margin: 10px;
+    width: 90%;
+    border-radius: 0.2em;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#layer-control-id-full {
+    margin: 0px;
+    padding: 0px;
+    /*border: 1px solid gray;*/
+    background: none;
+    box-shadow: none;
+    width: 20vh;
+    font-size: small;
+    position: absolute;
+    display: contents;
+}
+
+#location_full {
+    display: flow-root;
+    padding: 0px;
+}
+
+#map3 {
+    height: calc(100vh - 166px);
+    z-index: 99;
+    margin-left: 5px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+#loading_full {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 500;
+}
+
+#loading-image-full {
+    z-index: 500;
+}

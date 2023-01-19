@@ -1,6 +1,5 @@
 {% extends "WebApp/app_base.html" %}
 {% load static %}
-
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
 {% block script %}
     <link rel="stylesheet"
@@ -27,30 +26,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"
             integrity="sha512-WL3nAJlWFKoDShduxQRyY3wkBnQsINXdIfWIW48ZaPgYz1wYNnxIwFMMgigzSgjNBC2WWZ8Y8/sSyUU6abuF0g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-        html {
-            height: 100%;
-        }
-
-        #wrapper {
-            min-height: calc(100vh - 50px);
-        }
-    </style>
-
+    <link rel="stylesheet" src="{% static '/css/chart_netcdf.css' %}">
 {% endblock %}
 
 {% block content %}
 
 
-    <div class="container-fluid" style="background: #e1e3e5">
+    <div class="container-fluid bg-gray-300">
         <div class="row d-flex justify-content-center">
-            <!-- Line Chart -->
             <div class="col-xl-12 col-lg-12 text-center mt-4">
-
-
                 <hr>
                 <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
+                    <!-- Card Header -->
                     <div
                             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
@@ -82,7 +69,7 @@
                                                                                                   class="form-control"
                                                                                                   id="selectFiles"/>
                         </label>
-                        <link rel="stylesheet" href="{% static 'css/map1.css' %}">
+                        <link rel="stylesheet" href="{% static 'css/common.css' %}">
 
 
                         <div id="loading_nc">
@@ -100,13 +87,13 @@
                 </div>
             </div>
             <div class="col">
-                  <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                data-bs-target="#netcdfModal">
-            Learn how to modify this page
-        </button>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#netcdfModal">
+                    Learn how to modify this page
+                </button>
             </div>
         </div>
-    <br>
+        <br>
 
     </div>
     {#    <script>#}

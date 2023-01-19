@@ -29,43 +29,40 @@
 
 {% block content %}
 
-    <div class="container-fluid">
+    <div class="container-fluid bg-gray-300">
         <div class="row">
-            <!-- Area Chart -->
             <div class="col-xl-12 col-lg-12">
                 <div class="card mb-4 mt-4 shadow">
-                    <!-- Card Header - Dropdown -->
+                    <!-- Card Header -->
                     <div
                             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Display WMS Content</h6>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <link rel="stylesheet" href="{% static 'css/map1.css' %}">
-
+                        <link rel="stylesheet" href="{% static 'css/fixed_map.css' %}">
+                        <link rel="stylesheet" href="{% static 'css/common.css' %}">
                         <div id="map">
-
                         </div>
-                        {#                                    <button id="settings"><i class="fa fa-cog" aria-hidden="true"></i></button>#}
-                        <div class="accordion" id="layer_manager" style="top:12vh">
+                        <div class="accordion" id="fixed_tab_container">
                             <div id="loading_fixed">
                                 <img id="loading-image-fixed" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
                             </div>
                             <div class="accordion-item">
-                                <h2 class="accordion-header d-flex" id="headingOne">
+                                <h2 class="accordion-header d-flex" id="headingFixed">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne">
+                                            data-bs-target="#collapseFixed" aria-expanded="true"
+                                            aria-controls="collapseFixed">
                                         Map Control
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div id="collapseFixed" class="accordion-collapse collapse show"
+                                     aria-labelledby="headingFixed" data-bs-parent="#fixed_tab_container">
                                     <div class="accordion-body">
-                                        <div id="layer_manager1">
+                                        <div id="fixed_tabs">
                                             <div class="container mt-3">
-                                                <ul class="m-0 nav nav-fill nav-justified nav-tabs"
-                                                    style="font-size:smaller;" id="myTab1" role="tablist">
+                                                <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="fixed_tab_list"
+                                                    role="tablist">
                                                     <li class="nav-item" role="presentation">
                                                         <button class="active nav-link p-0" id="layers-tab"
                                                                 data-bs-toggle="tab"
@@ -104,26 +101,27 @@
                                                     </li>
 
                                                 </ul>
-                                                <div class="border-grey bg-white tab-content"
-                                                     style="height: 30vh;overflow: auto;">
-                                                    <div class="tab-pane active  p-3 ml-3" id="layers"
+                                                <div class="border-grey bg-white tab-content">
+                                                    <div class="tab-pane active p-3 ml-3" id="layers"
                                                          role="tabpanel"
-                                                         aria-labelledby="layers-tab"><p>
+                                                         aria-labelledby="layers-tab">
 
-                                                        <label class="form-check-label  mt-2 w-75" for="chirps"><input
-                                                                class="form-check-input"
-                                                                id="chirps" type="checkbox"/>CHIRPS
-                                                            Layer</label>
+                                                        <p>
 
-                                                        <a role="button" href="#" data-bs-toggle="popover"
-                                                           title="CHIRPS dataset Info"
-                                                           data-bs-trigger="focus"
-                                                           data-bs-content="Use this space to offer a description of the dataset.
+                                                            <label class="form-check-label mt-2 w-75"
+                                                                   for="chirps"><input
+                                                                    class="form-check-input"
+                                                                    id="chirps" type="checkbox"/>CHIRPS
+                                                                Layer</label>
+
+                                                            <a role="button" href="#" data-bs-toggle="popover"
+                                                               title="CHIRPS dataset Info"
+                                                               data-bs-trigger="focus"
+                                                               data-bs-content="Use this space to offer a description of the dataset.
                                                    For this template we are using CHIRPS Dataset.
                                                    This is defined in the file filename.ext">
-                                                            <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
-
-                                                    </p>
+                                                                <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                                        </p>
 
                                                         <input id="opacity_chirps" type="range"
                                                                max="1"
@@ -132,9 +130,7 @@
                                                                 class="ml-1"
                                                                 for="opacity_chirps"
                                                                 id="chirps_opacity"></label>
-
                                                         <p>
-
                                                             <label class="form-check-label  mt-2 w-75"
                                                                    for="esi"> <input class="form-check-input"
                                                                                      id="esi" type="checkbox"/>ESI
@@ -257,7 +253,6 @@
             </div>
         </div>
         <br>
-
     </div>
     {% include 'WebApp/fixedsize_about.html' %}
 

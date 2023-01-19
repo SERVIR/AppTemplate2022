@@ -1,0 +1,70 @@
+#map2 {
+    width: 100%;
+    height: 600px;
+}
+
+#layer_manager_gee {
+    top: 12vh;
+    position: absolute;
+    z-index: 400;
+    right: 3vh;
+    max-width: 75%;
+}
+
+#legends_gee svg {
+    margin: 10px 5px 10px 0;
+}
+
+#opacity_collection, #opacity_asset {
+    accent-color: #0c1a4e;
+    background: #e3e6f0;
+    width: 12vw;
+    margin-bottom: 20px;
+}
+
+#collection_opacity, #asset_opacity {
+    display: contents;
+}
+
+#legend_asset, #legend_coll {
+    background: black;
+    width: fit-content;
+    left: 10px;
+}
+
+#loading_gee {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 500;
+}
+
+#loading-image-gee {
+    z-index: 500;
+}
+
+#gee_tab_list {
+    font-size: smaller;
+}
+
+#layer_tab_content_gee {
+    height: 30vh;
+    overflow: auto;
+}
+
+#basemaps_gee, #layers_gee {
+    overflow-y: auto;
+    /*height: 20vh;*/
+}
+
+#legend_asset, #legend_coll {
+    display: contents;
+
+}

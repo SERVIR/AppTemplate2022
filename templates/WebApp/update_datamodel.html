@@ -8,11 +8,9 @@
     <!-- Custom scripts-->
 
 {% endblock %}
-
-
 <!-- Begin Page Content -->
 {% block content %}
-    <div class="container-fluid" style="background: #e1e3e5">
+    <div class="container-fluid bg-gray-300">
 
         <div class="card shadow mt-4 mb-4">
             <div class="card-header py-3">
@@ -59,15 +57,15 @@
                 {% endif %}
             </div>
         </div>
-    <div class="row">
-    <div class="col">
-        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                data-bs-target="#datamodelModal">
-            Learn how to modify this page
-        </button>
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#datamodelModal">
+                    Learn how to modify this page
+                </button>
+            </div>
         </div>
-        </div>
-    <br>
+        <br>
         <script src="{% static '/js/update_datamodel.js' %}"></script>
 
     </div>
