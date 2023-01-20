@@ -81,6 +81,10 @@
     position: absolute;
     display: contents;
 }
+.img-thumbnail {
+    height: 100px;
+    border: none;
+}
 
 #legend_chirps {
     background: black;

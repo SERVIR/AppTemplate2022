@@ -110,6 +110,9 @@
         font-size: 18px;
     }
 }
+.img-thumbnail {
+    border: none;
+}
 
 #loading_full {
     position: absolute;
