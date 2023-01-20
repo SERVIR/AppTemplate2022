@@ -1,14 +1,11 @@
 $('#loading_cserv').hide();
 $("#selectFiles").change(function (event) {
-
-
     var uploadedFile = event.target.files[0];
     var ext = uploadedFile.name.split('.')[1];
     if (ext in ["geojson", "json"]) {
         alert("Wrong file type == " + uploadedFile.type);
         return false;
     }
-
     if (uploadedFile) {
         var readFile = new FileReader();
         readFile.onload = function (e) {

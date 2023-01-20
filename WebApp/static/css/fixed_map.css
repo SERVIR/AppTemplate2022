@@ -87,3 +87,10 @@
     width: fit-content;
     left: 10px;
 }
+#legend_esi{
+    margin-left: 10px;
+}
+#legends{
+    width: 90%;
+margin:auto;
+}

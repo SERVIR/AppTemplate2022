@@ -24,7 +24,9 @@
             integrity="sha512-PDM7dpetuBcPp2fV/ZyCj9BGV8ybPchsrSzQqVZ3WoM8YcxEa2lAj0n1+4MCRzgsEROmVTwQXGw0IrXCCgH+/Q=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/leaflet-providers.js' %}"></script>
-    <script src="{% static '/js/ajax_calls.js' %}"></script>
+    <script src="{% static '/js/utils.js' %}"></script>
+
+    <script src="{% static '/js/basemaps.js' %}"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
 {% endblock %}
 
@@ -200,10 +202,10 @@
 
 
                                                     </div>
-                                                    <div class="tab-pane" id="legends_gee" role="tabpanel"
+                                                    <div class="tab-pane pl-3" id="legends_gee" role="tabpanel"
                                                          aria-labelledby="legends_gee-tab">
 
-                                                        <p class="mt-1 ml-2">Legend for
+                                                        <p class="mt-1">Legend for
                                                             the layer(s) selected</p>
                                                     </div>
                                                     <div class="tab-pane p-3 ml-3" id="location_gee"

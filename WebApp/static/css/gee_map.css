@@ -10,7 +10,10 @@
     right: 3vh;
     max-width: 75%;
 }
-
+#legends_gee{
+    width: 90%;
+    margin:auto;
+}
 #legends_gee svg {
     margin: 10px 5px 10px 0;
 }
@@ -66,5 +69,6 @@
 
 #legend_asset, #legend_coll {
     display: contents;
+    margin-left: 10px;
 
 }

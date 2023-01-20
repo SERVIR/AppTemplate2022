@@ -74,9 +74,9 @@ p {
     color: gray;
 }
 
-.leaflet-control, .leaflet-control-geocoder-alternatives {
-    width: 100%;
-}
+/*.leaflet-control, .leaflet-control-geocoder-alternatives {*/
+/*    width: 100%;*/
+/*}*/
 
 
 .leaflet-control-geocoder {

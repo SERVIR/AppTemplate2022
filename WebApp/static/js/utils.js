@@ -1,5 +1,4 @@
 function ajax_call(ajax_url, ajax_data) {
-
     if (ajax_url.substr(-1) !== "/") {
         ajax_url = ajax_url.concat("/");
     }
@@ -25,4 +24,10 @@ function ajax_call(ajax_url, ajax_data) {
 
     return xhr;
 
+}
+
+function set_parent(control, element){
+    var htmlObject = control.getContainer();
+    var newParent = document.getElementById(element);
+    newParent.appendChild(htmlObject);
 }

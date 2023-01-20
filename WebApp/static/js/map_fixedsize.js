@@ -2,7 +2,6 @@ $('#opacity_chirps').hide();
 $('#opacity_esi').hide();
 $('#loading_fixed').hide();
 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 var map = L.map('map', {
     fullscreenControl: true,
@@ -27,54 +26,11 @@ var map = L.map('map', {
     }, center: [42.35, -71.08], zoom: 3
 });
 
-
-var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-});
-let streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-
-// create a satellite imagery layer
-let satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}')
-var wmsLayer = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
-    layers: 'precipitation_amount',
-    format: 'image/png',
-    transparent: true,
-    style: 'boxfill/apcp_surface',
-    zIndex: 200
-});
-let ms = L.esri.dynamicMapLayer({
-    url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
-});
-
-var datamaps = {
-    "CHIRPS": wmsLayer,
-    "ESI": ms
-};
 osm.addTo(map);
-var chirps_wms = 'https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4';
-var esi_wms = 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer';
 
 var chirps_variable = 'precipitation_amount';
 var style = 'boxfill/apcp_surface';
 var colorscalerange = '0,5';
-var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
-    layers: chirps_variable,
-    transparent: 'true',
-    format: 'image/png',
-    style: 'boxfill/apcp_surface',
-    maxZoom: 21,
-    zIndex: 400,
-    opacity: $("#opacity_chirps").val()
-});
-let esi = L.esri.dynamicMapLayer({
-    url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
-    transparent: 'true',
-    format: 'image/png',
-    style: 'boxfill/apcp_surface',
-    maxZoom: 21,
-    opacity: $("#opacity_esi").val()
-});
 
 var testTimeLayer = L.timeDimension.layer.wms(chirps, {
     updateTimeDimension: true
@@ -90,9 +46,7 @@ esi.on('load', function (event) {
 
 $("#chirps").change(function () {
     if (this.checked) {
-        // chirps.addTo(map);
         $('#loading_fixed').show();
-
         testTimeLayer.addTo(map);
         testTimeLayer.bringToFront();
         var val = Math.round($('#opacity_chirps').val() * 100);
@@ -143,16 +97,12 @@ var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 });
 
-function setParent(el, newParent) {
-    newParent.appendChild(el);
-}
+var search_control = L.Control.geocoder({collapsed: false});
 
-var control1 = L.Control.geocoder({collapsed: false});
-
-control1.addTo(map);
+search_control.addTo(map);
 
 
-let layerControlDiv = control1.getContainer();
+let layerControlDiv = search_control.getContainer();
 
 // you can set an id for it if you want to use it to override the CSS later
 layerControlDiv.setAttribute("id", "layer-control-id");
@@ -172,9 +122,7 @@ layerControlParentLayer.onAdd = function (map) {
 };
 // add the Layer to the map
 layerControlParentLayer.addTo(map);
-var htmlObject = layerControlParentLayer.getContainer();
-var a = document.getElementById('location');
-setParent(htmlObject, a);
+set_parent(layerControlParentLayer, 'location');
 var terrainLayer = L.tileLayer(
     "https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}",
     {
@@ -287,9 +235,7 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
             return div;
         };
         legend.addTo(map);
-        var htmlObject = legend.getContainer();
-        var a = document.getElementById(element);
-        setParent(htmlObject, a);
+        set_parent(legend, element);
     }
 }
 
@@ -319,7 +265,6 @@ function add_other_legend(response, dataset, base_service_url) {
     htmlString += "</table>";
     var div = document.createElement('div');
     div.innerHTML += htmlString;
-
     div.id = "legend_" + dataset;
     div.className = "arcgis-legend";
     document.getElementById("legends").appendChild(div);
