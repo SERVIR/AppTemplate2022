@@ -22,6 +22,15 @@
 
 
                     <form method="POST" action="">
+                    {% if messages %}
+                    <ul class="messages list-group">
+                        {% for message in messages %}
+                        <li  {% if message.tags %} class="list-group-item {{ message.tags }} " {% endif %}> {{ message }} </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <label>{{ message }}</label>
                         {% csrf_token %}
                         <div class="mb-3">
                             <label class="form-label">{{ form.stations.help_text }}</label>

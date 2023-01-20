@@ -6,6 +6,7 @@ from pathlib import Path
 import netCDF4
 import numpy as np
 import requests
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -73,17 +74,25 @@ def feedback(request):
 
 @csrf_exempt
 def updates(request):
-    context = {}
-    form = MeasurementForm(request.POST)
-    context["form"] = form
-    if form.is_valid():
-        member = Measurement(station_id=request.POST["stations"], measurement_date=request.POST["measurement_date"],
-                             measurement_temp=request.POST["measurement_temp"],
-                             measurement_precip=request.POST["measurement_precip"])
-        member.save()
-
-    return render(request, 'WebApp/update_datamodel.html', context)
-
+    if request.method == "POST":
+        context = {}
+        form = MeasurementForm(request.POST)
+        context["form"] = form
+        if form.is_valid():
+            member = Measurement(station_id=request.POST["stations"], measurement_date=request.POST["measurement_date"],
+                                 measurement_temp=request.POST["measurement_temp"],
+                                 measurement_precip=request.POST["measurement_precip"])
+            member.save()
+            messages.success(request, 'Data submitted successfully.')
+            form = MeasurementForm()
+            return render(request, 'WebApp/update_datamodel.html', {"form": form})
+        else:
+            messages.error(request, 'Invalid form submission.')
+            messages.error(request, form.errors)
+            return render(request, 'WebApp/update_datamodel.html', {"form": form})
+    else:
+        form = MeasurementForm()
+        return render(request, 'WebApp/update_datamodel.html', {"form": form})
 
 """ @csrf_exempt
 def updates2(request):
