@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 import urllib
@@ -9,6 +10,7 @@ import requests
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.safestring import mark_safe
 from django.views.decorators.csrf import csrf_exempt
 from WebApp.forms import MeasurementForm
 from WebApp.models import Measurement
@@ -83,16 +85,15 @@ def updates(request):
                                  measurement_temp=request.POST["measurement_temp"],
                                  measurement_precip=request.POST["measurement_precip"])
             member.save()
-            messages.success(request, 'Data submitted successfully.')
+            url = data['CSRF_TRUSTED_ORIGINS'][0]+'/admin/WebApp/measurement/'+str(member.id)+'/change/'
+            messages.success(request, mark_safe('Data submitted! <a href="'+url+'">Go to this record in admin pages</a>'), extra_tags='form1')
             form = MeasurementForm()
-            return render(request, 'WebApp/update_datamodel.html', {"form": form})
         else:
             messages.error(request, 'Invalid form submission.')
             messages.error(request, form.errors)
-            return render(request, 'WebApp/update_datamodel.html', {"form": form})
     else:
         form = MeasurementForm()
-        return render(request, 'WebApp/update_datamodel.html', {"form": form})
+    return render(request, 'WebApp/update_datamodel.html', {"form": form})
 
 """ @csrf_exempt
 def updates2(request):

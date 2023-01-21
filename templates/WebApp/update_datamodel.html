@@ -6,7 +6,13 @@
     <!-- Custom styles-->
 
     <!-- Custom scripts-->
-
+    <script>
+    setTimeout(function(){
+      if ($('#msg').length > 0) {
+        $('#msg').remove();
+      }
+    }, 5000);
+  </script>
 {% endblock %}
 <!-- Begin Page Content -->
 {% block content %}
@@ -18,19 +24,17 @@
             </div>
             <div class="card-body">
                 {% if user.is_authenticated %}
-
+                    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 
 
                     <form method="POST" action="">
-                    {% if messages %}
-                    <ul class="messages list-group">
-                        {% for message in messages %}
-                        <li  {% if message.tags %} class="list-group-item {{ message.tags }} " {% endif %}> {{ message }} </li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
 
-                    <label>{{ message }}</label>
                         {% csrf_token %}
                         <div class="mb-3">
                             <label class="form-label">{{ form.stations.help_text }}</label>
