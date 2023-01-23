@@ -125,7 +125,17 @@ function get_chart() {
             exporting: {
                 enabled: true
             },
-            series: series
+            series: series,
+            lang: {
+                noData: "No Data Found, Please try again with different geojson."
+            },
+            noData: {
+                style: {
+                    fontWeight: 'bold',
+                    fontSize: '15px',
+                    color: '#303030'
+                }
+            }
 
         });
     });

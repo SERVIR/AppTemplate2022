@@ -67,7 +67,7 @@ def get_timeseries_netcdf(request):
         for timestep, v in enumerate(time):
             val = field[latli:latui, lonli:lonui, timestep]
             val = np.mean(val)
-            if not np.isnan(val):
+            if not np.isnan(val) and val!='Nan':
                 dt_str = netCDF4.num2date(lis_var['time'][timestep], units=lis_var['time'].units,
                                           calendar=lis_var['time'].calendar)
                 test = dt_str + timedelta(hours=5)  # local time hour

@@ -29,8 +29,8 @@ function get_chart(geom_data) {
     const xhr = ajax_call("get-timeseries-climateserv", {
         "dataset": ["CHIRP", "CHIRPS", "IMERG"],
         "operation": "Average",
-        "startdate": "01/03/2018",
-        "enddate": "01/10/2018",
+        "startdate": "07/01/2020",
+        "enddate": "07/31/2020",
         "interaction": "polygon",
         "geom_data": geom_data
     });
@@ -130,9 +130,20 @@ function get_chart(geom_data) {
                 exporting: {
                     enabled: true
                 },
-                series: series
+                series: series,
+                lang: {
+                    noData: "No Data Found, Please try again with different geojson."
+                },
+                noData: {
+                    style: {
+                        fontWeight: 'bold',
+                        fontSize: '15px',
+                        color: '#303030'
+                    }
+                }
+            }
 
-            },
+
         );
     });
 
