@@ -233,3 +233,19 @@ const search = new GeoSearch.GeoSearchControl({
         autoClose: true,
     });
     map.addControl(search);
+    $(".leaflet-bar-timecontrol").css("margin-left","50px");
+$('.leaflet-bar-timecontrol').css('display', 'inline');
+        function openNav() {
+document.getElementById("mySidenav").style.width = "250px";
+$("#nav_opener").hide();
+$(".leaflet-bar-timecontrol").css("margin-left","270px");
+$('.leaflet-bar-timecontrol').css('display', 'flex');
+}
+
+
+function closeNav() {
+document.getElementById("mySidenav").style.width = "0";
+$("#nav_opener").show();
+$(".leaflet-bar-timecontrol").css("margin-left","50px");
+$('.leaflet-bar-timecontrol').css('display', 'inline');
+}

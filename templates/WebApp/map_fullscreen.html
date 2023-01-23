@@ -28,27 +28,15 @@
 
     <script src="{% static 'js/utils.js' %}"></script>
 
-    <script src="{% static 'js/basemaps.js' %}"></script>
-    <link href="{% static '/css/full_map.css' %}" rel="stylesheet"/>
-        <link
+    <script src="{% static 'js/basemaps.js' %}"></script>   <link
   rel="stylesheet"
   href="{% static '/css/geosearch.css' %}"
 />
+
+    <link href="{% static '/css/full_map.css' %}" rel="stylesheet"/>
+
     <script src="{% static '/js/geosearch.umd.js' %}"></script>
         <script src="{% static '/js/geosearch.umd.js.map' %}"></script>
-
-
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            $("#nav_opener").hide();
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            $("#nav_opener").show();
-        }
-    </script>
 
 {% endblock %}
 
