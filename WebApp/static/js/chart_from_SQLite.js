@@ -97,7 +97,7 @@ $("#stations").change(function () {
             },
             series: series,
             lang: {
-                noData: "No Data Found, Please try again with different geojson."
+                noData: "No Data Found, Please try with a different station."
             },
             noData: {
                 style: {
