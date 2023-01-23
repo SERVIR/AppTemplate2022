@@ -332,3 +332,10 @@ function add_legend(element, params) {
 function remove_legend(ele) {
     document.getElementById(ele).remove();
 };
+const search = new GeoSearch.GeoSearchControl({
+        provider: new GeoSearch.OpenStreetMapProvider(),
+        showMarker: false, // optional: true|false  - default true
+        showPopup: false,
+        autoClose: true,
+    });
+    map.addControl(search);

@@ -225,3 +225,11 @@ function add_other_legend(response, dataset, base_service_url) {
     document.getElementById("legend_full_" + dataset).appendChild(div);
 
 }
+const search = new GeoSearch.GeoSearchControl({
+        provider: new GeoSearch.OpenStreetMapProvider(),
+        showMarker: false, // optional: true|false  - default true
+        showPopup: false,
+    position:'topright',
+        autoClose: true,
+    });
+    map.addControl(search);

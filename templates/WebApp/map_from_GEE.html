@@ -28,10 +28,18 @@
 
     <script src="{% static '/js/basemaps.js' %}"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+
 {% endblock %}
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/gee_map.css' %}">
+
+    <link
+  rel="stylesheet"
+  href="{% static '/css/geosearch.css' %}"
+/>
+    <script src="{% static '/js/geosearch.umd.js' %}"></script>
+        <script src="{% static '/js/geosearch.umd.js.map' %}"></script>
 
 
     <div class="container-fluid bg-gray-300">
