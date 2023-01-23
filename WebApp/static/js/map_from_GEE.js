@@ -141,33 +141,33 @@ opacity_asset.change(function () {
 });
 
 osm.addTo(map);
-
-var search_control = L.Control.geocoder({collapsed: false});
-
-search_control.addTo(map);
-
-
-let layerControlDiv = search_control.getContainer();
-
-// you can set an id for it if you want to use it to override the CSS later
-layerControlDiv.setAttribute("id", "layer-control-id-gee");
-
-let layerControlParentLayer = L.control({
-    position: "topright"
-});
-layerControlParentLayer.onAdd = function (map) {
-    // Create the main div that will hold all your elements
-    let parentDiv = L.DomUtil.create("a");
-
-    // you can set an id for it if you want to use it for CSS
-    parentDiv.setAttribute("id", "layer-control-parent-id-gee");
-    parentDiv.appendChild(layerControlDiv);
-    L.DomEvent.disableClickPropagation(parentDiv);
-    return parentDiv;
-};
-// add the Layer to the map
-layerControlParentLayer.addTo(map);
-set_parent(layerControlParentLayer, 'location_gee');
+//
+// var search_control = L.Control.geocoder({collapsed: false});
+//
+// search_control.addTo(map);
+//
+//
+// let layerControlDiv = search_control.getContainer();
+//
+// // you can set an id for it if you want to use it to override the CSS later
+// layerControlDiv.setAttribute("id", "layer-control-id-gee");
+//
+// let layerControlParentLayer = L.control({
+//     position: "topright"
+// });
+// layerControlParentLayer.onAdd = function (map) {
+//     // Create the main div that will hold all your elements
+//     let parentDiv = L.DomUtil.create("a");
+//
+//     // you can set an id for it if you want to use it for CSS
+//     parentDiv.setAttribute("id", "layer-control-parent-id-gee");
+//     parentDiv.appendChild(layerControlDiv);
+//     L.DomEvent.disableClickPropagation(parentDiv);
+//     return parentDiv;
+// };
+// // add the Layer to the map
+// layerControlParentLayer.addTo(map);
+// set_parent(layerControlParentLayer, 'location_gee');
 
 removeLayers = function () {
     satellite.remove();

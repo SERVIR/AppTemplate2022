@@ -96,33 +96,33 @@ var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
     maxZoom: 17,
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 });
-
-var search_control = L.Control.geocoder({collapsed: false});
-
-search_control.addTo(map);
-
-
-let layerControlDiv = search_control.getContainer();
-
-// you can set an id for it if you want to use it to override the CSS later
-layerControlDiv.setAttribute("id", "layer-control-id");
-
-let layerControlParentLayer = L.control({
-    position: "topright"
-});
-layerControlParentLayer.onAdd = function (map) {
-    // Create the main div that will hold all your elements
-    let parentDiv = L.DomUtil.create("a");
-
-    // you can set an id for it if you want to use it for CSS
-    parentDiv.setAttribute("id", "layer-control-parent-id");
-    parentDiv.appendChild(layerControlDiv);
-    L.DomEvent.disableClickPropagation(parentDiv);
-    return parentDiv;
-};
-// add the Layer to the map
-layerControlParentLayer.addTo(map);
-set_parent(layerControlParentLayer, 'location');
+//
+// var search_control = L.Control.geocoder({collapsed: false});
+//
+// search_control.addTo(map);
+//
+//
+// let layerControlDiv = search_control.getContainer();
+//
+// // you can set an id for it if you want to use it to override the CSS later
+// layerControlDiv.setAttribute("id", "layer-control-id");
+//
+// let layerControlParentLayer = L.control({
+//     position: "topright"
+// });
+// layerControlParentLayer.onAdd = function (map) {
+//     // Create the main div that will hold all your elements
+//     let parentDiv = L.DomUtil.create("a");
+//
+//     // you can set an id for it if you want to use it for CSS
+//     parentDiv.setAttribute("id", "layer-control-parent-id");
+//     parentDiv.appendChild(layerControlDiv);
+//     L.DomEvent.disableClickPropagation(parentDiv);
+//     return parentDiv;
+// };
+// // add the Layer to the map
+// layerControlParentLayer.addTo(map);
+// set_parent(layerControlParentLayer, 'location');
 var terrainLayer = L.tileLayer(
     "https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}",
     {

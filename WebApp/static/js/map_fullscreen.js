@@ -90,32 +90,32 @@ $('#opacity_esi_full').change(function () {
     var val = Math.round($(this).val() * 100);
     $('#esi_full_opacity').text(val + "%");
 });
-var control1 = L.Control.geocoder({collapsed: false});
-
-control1.addTo(map);
-
-
-let layerControlDiv = control1.getContainer();
-
-// you can set an id for it if you want to use it to override the CSS later
-layerControlDiv.setAttribute("id", "layer-control-id-full");
-
-let layerControlParentLayer = L.control({
-    position: "topright"
-});
-layerControlParentLayer.onAdd = function (map) {
-    // Create the main div that will hold all your elements
-    let parentDiv = L.DomUtil.create("a");
-
-    // you can set an id for it if you want to use it for CSS
-    parentDiv.setAttribute("id", "layer-control-parent-id-full");
-    parentDiv.appendChild(layerControlDiv);
-    L.DomEvent.disableClickPropagation(parentDiv);
-    return parentDiv;
-};
-// add the Layer to the map
-layerControlParentLayer.addTo(map);
-set_parent(layerControlParentLayer,'location_full');
+// var control1 = L.Control.geocoder({collapsed: false});
+//
+// control1.addTo(map);
+//
+//
+// let layerControlDiv = control1.getContainer();
+//
+// // you can set an id for it if you want to use it to override the CSS later
+// layerControlDiv.setAttribute("id", "layer-control-id-full");
+//
+// let layerControlParentLayer = L.control({
+//     position: "topright"
+// });
+// layerControlParentLayer.onAdd = function (map) {
+//     // Create the main div that will hold all your elements
+//     let parentDiv = L.DomUtil.create("a");
+//
+//     // you can set an id for it if you want to use it for CSS
+//     parentDiv.setAttribute("id", "layer-control-parent-id-full");
+//     parentDiv.appendChild(layerControlDiv);
+//     L.DomEvent.disableClickPropagation(parentDiv);
+//     return parentDiv;
+// };
+// // add the Layer to the map
+// layerControlParentLayer.addTo(map);
+// set_parent(layerControlParentLayer,'location_full');
 
 removeLayers = function () {
     satellite.remove();
