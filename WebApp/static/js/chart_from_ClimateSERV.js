@@ -14,7 +14,7 @@ $("#selectFiles").change(function (event) {
             var geom_data = contents;
             $('#loading_cserv').show();
             get_chart(geom_data);
-            $('#loading_cserv').hide();
+            // $('#loading_cserv').hide();
 
         };
         readFile.readAsText(uploadedFile);
@@ -144,7 +144,9 @@ function get_chart(geom_data) {
             }
 
 
+
         );
+        $('#loading_cserv').hide();
     });
 
 }
