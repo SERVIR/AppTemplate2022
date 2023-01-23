@@ -131,3 +131,6 @@
 #loading-image-full {
     z-index: 500;
 }
+html{
+    margin: 0; height: 100%; overflow: hidden
+}
