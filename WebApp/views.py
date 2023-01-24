@@ -28,19 +28,19 @@ def home(request):
 
 
 def map_fixedSize(request):
-    return render(request, 'WebApp/maps/../templates/WebApp/map_fixedsize.html', {})
+    return render(request, 'WebApp/map_fixedsize.html', {})
 
 
 def login(request):
-    return render(request, 'WebApp/base/../templates/WebApp/login.html', {})
+    return render(request, 'WebApp/login.html', {})
 
 
 def map_fromGEE(request):
-    return render(request, 'WebApp/maps/../templates/WebApp/map_from_GEE.html', {})
+    return render(request, 'WebApp/map_from_GEE.html', {})
 
 
 def map_fullScreen(request):
-    return render(request, 'WebApp/maps/../templates/WebApp/map_fullscreen.html', {})
+    return render(request, 'WebApp/map_fullscreen.html', {})
 
 
 def chart_fromNetcdf(request):
@@ -55,15 +55,15 @@ def chart_fromNetcdf(request):
         "netcdf_path": data["sample_netCDF"],
         # "netcdf_bounds":bounds_nc
     }
-    return render(request, 'WebApp/charts/../templates/WebApp/chart_from_netCDF.html', context)
+    return render(request, 'WebApp/chart_from_netCDF.html', context)
 
 
 def chart_climateserv(request):
-    return render(request, 'WebApp/charts/../templates/WebApp/chart_from_ClimateSERV.html', {})
+    return render(request, 'WebApp/chart_from_ClimateSERV.html', {})
 
 
 def chart_sqlite(request):
-    return render(request, 'WebApp/charts/../templates/WebApp/chart_from_SQLite.html', {})
+    return render(request, 'WebApp/chart_from_SQLite.html', {})
 
 
 def about(request):
