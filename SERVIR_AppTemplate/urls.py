@@ -32,6 +32,7 @@ urlpatterns = [
     path('chart_sqlite/', views.chart_sqlite, name='chart_sqlite'),
     path('about/', views.about, name='about'),
     path('login/', views.login, name='login'),
+    path('setup/', views.setup, name='setup'),
     path('feedback/', views.feedback, name='feedback'),
     path('updates/', views.updates, name='updates'),
     path('chart_sqlite/stations/', controllers.stations, name='stations'),

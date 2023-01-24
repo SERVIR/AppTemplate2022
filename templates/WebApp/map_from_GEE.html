@@ -32,12 +32,13 @@
 {% endblock %}
 
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/gee_map.css' %}">
-
-    <link
+        <link
   rel="stylesheet"
   href="{% static '/css/geosearch.css' %}"
 />
+    <link rel="stylesheet" href="{% static 'css/gee_map.css' %}">
+
+
     <script src="{% static '/js/geosearch.umd.js' %}"></script>
         <script src="{% static '/js/geosearch.umd.js.map' %}"></script>
 
@@ -63,7 +64,10 @@
                         </div>
                         <div class="accordion" id="layer_manager_gee">
                             <div id="loading_gee">
-                                <img id="loading-image-gee" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
+{#                                <img id="loading-image-gee" src="{% static 'images/loading.gif' %}" alt="Loading..."/>#}
+                                <div class="spinner-border text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">

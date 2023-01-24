@@ -74,6 +74,10 @@ def feedback(request):
     return render(request, 'WebApp/feedback.html', {})
 
 
+def setup(request):
+    return render(request, 'WebApp/setup.html', {})
+
+
 @csrf_exempt
 def updates(request):
     if request.method == "POST":

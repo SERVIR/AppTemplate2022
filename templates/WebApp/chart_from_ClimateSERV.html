@@ -38,7 +38,10 @@
                         </label>
 
                         <div id="loading_cserv">
-                            <img id="loading-image-cserv" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
+{#                            <img id="loading-image-cserv" src="{% static 'images/loading.gif' %}" alt="Loading..."/>#}
+                                           <div class="spinner-border text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
                         </div>
                         <figure class="highcharts-figure">
                             <div id="chart-container2"></div>

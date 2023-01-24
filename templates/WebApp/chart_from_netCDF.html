@@ -75,8 +75,11 @@
 
 
                         <div id="loading_nc">
-                            <img id="loading-image-nc" class="im" src="{% static 'images/loading.gif' %}"
-                                 alt="Loading..."/>
+{#                            <img id="loading-image-nc" class="im" src="{% static 'images/loading.gif' %}"#}
+{#                                 alt="Loading..."/>#}
+                                           <div class="spinner-border text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
                         </div>
                         <figure class="highcharts-figure">
                             <div id="chart-container"></div>
