@@ -1,4 +1,4 @@
-{% extends "WebApp/base/app_base.html" %}
+{% extends "WebApp/app_base.html" %}
 {% load static %}
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
@@ -174,5 +174,5 @@
 
     <script src="{% static '/js/home.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    {% include 'WebApp/about_pages/home_about.html' %}
+    {% include 'WebApp/home_about.html' %}
 {% endblock %}

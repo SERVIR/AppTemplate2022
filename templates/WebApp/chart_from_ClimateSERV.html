@@ -1,4 +1,4 @@
-{% extends "WebApp/base/app_base.html" %}
+{% extends "WebApp/app_base.html" %}
 {% load static %}
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
@@ -14,7 +14,7 @@
 
     <!-- Custom styles-->
     <script src="{% static '/js/utils.js' %}"></script>
-    <link rel="stylesheet" src="{% static '/css/charts/../../WebApp/static/css/chart_cserv.css' %}">
+    <link rel="stylesheet" src="{% static '/css/chart_cserv.css' %}">
 
 {% endblock %}
 
@@ -60,8 +60,8 @@
         <br>
     </div>
 
-    <script src="{% static '/js/charts/../../WebApp/static/js/chart_from_ClimateSERV.js' %}"></script>
-    {% include 'WebApp/about_pages/chart_from_ClimateSERV_about.html' %}
+    <script src="{% static '/js/chart_from_ClimateSERV.js' %}"></script>
+    {% include 'WebApp/chart_from_ClimateSERV_about.html' %}
 
 {% endblock %}
 
