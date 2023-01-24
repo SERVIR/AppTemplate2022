@@ -7,11 +7,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="text-left text-dark alert">
-                        <strong>templates/WebApp/home.html</strong> contains the HTML code to modify
-                        the text and graphics in this page.
+                    <div class="container">
+                        <h2>Home Page</h2>
+                        <p>This home page is designed to provide a quick overview of the application,
+                            through a hero image that is intended to illustrate the contents and nature of the 
+                            app, including a title and a brief paragraph (or tagline).</p>
+                        <p>In this case we've opted to use the homepage to direct the users to the 
+                            main components of the application. We have separated the code demonstrations into 
+                            several common use cases to help future implementors look at each case and its 
+                            underlying code separately. Developers can later combine them as needed.</p>
+                        <ul>
+                            <li>The layout and content of this page is defined in the template 
+                                located at <mark>templates\WebApp\home.html</mark>.</li>
+                            <li>For layout and styling we rely on standard bootstrap containers, however, 
+                                you can add your own CSS classes in the <mark>WebApp\static\css\base.css</mark> file.</li>
+                            </li>
+                            <li>The custom interaction used for the search box is implemented through javaScript, 
+                                in <mark>WebApp\static\js\home.js</mark>.</li>
+                            <li>The code for this Django view is in the <strong>home</strong> function, located in
+                                <mark>WebApp\views.py</mark></li>
+                            <li>The URL for this page is defined through the <strong>urlpatterns</strong> 
+                                array, in <mark>SERVIR_AppTemplate\urls.py</mark></li>
+                            <li>The text for this popup window is located at <mark>templates\WebApp\home_about.html</mark></li>
+                        </ul>
+                        <p></p>
                     </div>
-                </div>
+                </div> 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
