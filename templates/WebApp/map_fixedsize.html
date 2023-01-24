@@ -52,7 +52,6 @@
                     <!-- Card Body -->
                     <div class="card-body">
                         <link rel="stylesheet" href="{% static '/css/fixed_map.css' %}">
-                        <link rel="stylesheet" href="{% static 'css/common.css' %}">
                         <div id="map">
                         </div>
                         <div class="accordion" id="fixed_tab_container">
@@ -257,6 +256,8 @@
         </div>
         <br>
     </div>
+                            <link rel="stylesheet" href="{% static 'css/common.css' %}">
+
     {% include 'WebApp/map_fixedsize_about.html' %}
 
 {% endblock %}

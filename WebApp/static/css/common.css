@@ -105,3 +105,18 @@ label {
 #ul_navbar {
     margin-left: 55%;
 }
+
+/***********Common Map Styles***********/
+.leaflet-control-geosearch a.leaflet-bar-part:before {
+    border-top: 0;
+}
+
+a.leaflet-bar-part.leaflet-bar-part-single {
+    background-image: url('../images/search.png') !important;
+    background-size: 18px 18px;
+}
+
+.leaflet-control-geosearch a.leaflet-bar-part:after {
+    border: 0;
+}
+/**********end common map styles********/

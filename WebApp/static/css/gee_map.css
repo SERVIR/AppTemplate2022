@@ -66,7 +66,6 @@
 
 #basemaps_gee, #layers_gee {
     overflow-y: auto;
-    /*height: 20vh;*/
 }
 
 #legend_asset, #legend_coll {
@@ -78,17 +77,4 @@
 .img-thumbnail {
     height: 100px;
     border: none;
-}
-
-.leaflet-control-geosearch a.leaflet-bar-part:before {
-    border-top: 0;
-}
-
-a.leaflet-bar-part.leaflet-bar-part-single {
-    background-image: url('../images/search.png') !important;
-    background-size: 18px 18px;
-}
-
-.leaflet-control-geosearch a.leaflet-bar-part:after {
-    border: 0;
 }

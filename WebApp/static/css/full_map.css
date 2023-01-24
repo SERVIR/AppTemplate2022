@@ -138,16 +138,3 @@ html {
     height: 100%;
     overflow: hidden
 }
-
-.leaflet-control-geosearch a.leaflet-bar-part:before {
-    border-top: 0;
-}
-
-a.leaflet-bar-part.leaflet-bar-part-single {
-    background-image: url('../images/search.png') !important;
-    background-size: 18px 18px;
-}
-
-.leaflet-control-geosearch a.leaflet-bar-part:after {
-    border: 0;
-}
