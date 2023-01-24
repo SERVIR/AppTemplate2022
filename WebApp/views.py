@@ -28,19 +28,19 @@ def home(request):
 
 
 def map_fixedSize(request):
-    return render(request, 'WebApp/map_fixedsize.html', {})
+    return render(request, 'WebApp/maps/map_fixedsize.html', {})
 
 
 def login(request):
-    return render(request, 'WebApp/login.html', {})
+    return render(request, 'WebApp/base/login.html', {})
 
 
 def map_fromGEE(request):
-    return render(request, 'WebApp/map_from_GEE.html', {})
+    return render(request, 'WebApp/maps/map_from_GEE.html', {})
 
 
 def map_fullScreen(request):
-    return render(request, 'WebApp/map_fullscreen.html', {})
+    return render(request, 'WebApp/maps/map_fullscreen.html', {})
 
 
 def chart_fromNetcdf(request):
@@ -55,15 +55,15 @@ def chart_fromNetcdf(request):
         "netcdf_path": data["sample_netCDF"],
         # "netcdf_bounds":bounds_nc
     }
-    return render(request, 'WebApp/chart_from_netCDF.html', context)
+    return render(request, 'WebApp/charts/chart_from_netCDF.html', context)
 
 
 def chart_climateserv(request):
-    return render(request, 'WebApp/chart_from_ClimateSERV.html', {})
+    return render(request, 'WebApp/charts/chart_from_ClimateSERV.html', {})
 
 
 def chart_sqlite(request):
-    return render(request, 'WebApp/chart_from_SQLite.html', {})
+    return render(request, 'WebApp/charts/chart_from_SQLite.html', {})
 
 
 def about(request):
@@ -89,8 +89,10 @@ def updates(request):
                                  measurement_temp=request.POST["measurement_temp"],
                                  measurement_precip=request.POST["measurement_precip"])
             member.save()
-            url = data['CSRF_TRUSTED_ORIGINS'][0]+'/admin/WebApp/measurement/'+str(member.id)+'/change/'
-            messages.success(request, mark_safe('Data submitted! <a href="'+url+'">Go to this record in admin pages</a>'), extra_tags='form1')
+            url = data['CSRF_TRUSTED_ORIGINS'][0] + '/admin/WebApp/measurement/' + str(member.id) + '/change/'
+            messages.success(request,
+                             mark_safe('Data submitted! <a href="' + url + '">Go to this record in admin pages</a>'),
+                             extra_tags='form1')
             form = MeasurementForm()
         else:
             messages.error(request, 'Invalid form submission.')
@@ -98,6 +100,7 @@ def updates(request):
     else:
         form = MeasurementForm()
     return render(request, 'WebApp/update_datamodel.html', {"form": form})
+
 
 """ @csrf_exempt
 def updates2(request):

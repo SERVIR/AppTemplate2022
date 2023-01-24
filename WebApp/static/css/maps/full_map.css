@@ -110,6 +110,7 @@
         font-size: 18px;
     }
 }
+
 .img-thumbnail {
     border: none;
 }
@@ -131,16 +132,22 @@
 #loading-image-full {
     z-index: 500;
 }
-html{
-    margin: 0; height: 100%; overflow: hidden
+
+html {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
 }
+
 .leaflet-control-geosearch a.leaflet-bar-part:before {
     border-top: 0;
 }
+
 a.leaflet-bar-part.leaflet-bar-part-single {
-    background-image: url('../images/search.png') !important;
+    background-image: url('../../images/search.png') !important;
     background-size: 18px 18px;
 }
+
 .leaflet-control-geosearch a.leaflet-bar-part:after {
     border: 0;
 }

@@ -142,9 +142,6 @@ function get_chart(geom_data) {
                     }
                 }
             }
-
-
-
         );
         $('#loading_cserv').hide();
     });

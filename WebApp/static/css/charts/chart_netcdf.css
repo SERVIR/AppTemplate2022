@@ -1,5 +1,21 @@
+html {
+    height: 100%;
+}
 
- #loading_cserv {
+#wrapper {
+    min-height: calc(100vh - 50px);
+}
+
+#map_nc {
+    height: 300px;
+    width: 300px;
+}
+
+#loading-image-nc {
+    z-index: 500;
+}
+
+#loading_nc {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -10,8 +26,5 @@
     left: 0;
     opacity: 0.7;
     background-color: #fff;
-    z-index: 500;
-}
- #loading-image-cserv {
     z-index: 500;
 }

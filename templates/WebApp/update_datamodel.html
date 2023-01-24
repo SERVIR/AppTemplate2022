@@ -1,4 +1,4 @@
-{% extends "WebApp/app_base.html" %}
+{% extends "WebApp/base/app_base.html" %}
 {% load static %}
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
@@ -7,12 +7,12 @@
 
     <!-- Custom scripts-->
     <script>
-    setTimeout(function(){
-      if ($('#msg').length > 0) {
-        $('#msg').remove();
-      }
-    }, 5000);
-  </script>
+        setTimeout(function () {
+            if ($('#msg').length > 0) {
+                $('#msg').remove();
+            }
+        }, 5000);
+    </script>
 {% endblock %}
 <!-- Begin Page Content -->
 {% block content %}
@@ -25,12 +25,12 @@
             <div class="card-body">
                 {% if user.is_authenticated %}
                     {% if messages %}
-    {% for message in messages %}
-        <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endif %}
+                        {% for message in messages %}
+                            <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
 
 
                     <form method="POST" action="">
@@ -80,5 +80,5 @@
         </div>
         <br>
     </div>
-    {% include 'WebApp/update_datamodel_about.html' %}
+    {% include 'WebApp/about_pages/update_datamodel_about.html' %}
 {% endblock %}

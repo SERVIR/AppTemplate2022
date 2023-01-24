@@ -1,4 +1,4 @@
-{% extends "WebApp/app_base.html" %}
+{% extends "WebApp/base/app_base.html" %}
 {% load static %}
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
@@ -10,11 +10,11 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-        <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
 
     <!-- Custom styles-->
     <script src="{% static '/js/utils.js' %}"></script>
-    <link rel="stylesheet" src="{% static '/css/chart_sqlite.css' %}">
+    <link rel="stylesheet" src="{% static '/css/charts/chart_sqlite.css' %}">
 
 {% endblock %}
 
@@ -34,10 +34,9 @@
                     <!-- Card Body -->
                     <div class="card-body">
                         <div id="loading_sql">
-{#                            <img id="loading-image-sql" src="{% static 'images/loading.gif' %}" alt="Loading..."/>#}
-                                           <div class="spinner-border text-secondary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
+                            <div class="spinner-border text-secondary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
                         </div>
                         <label>Select the station to show: </label>
                         <select id="stations">
@@ -62,6 +61,6 @@
     </div>
 
     <script src="{% static '/js/chart_from_SQLite.js' %}"></script>
-    {% include 'WebApp/chart_from_SQLite_about.html' %}
+    {% include 'WebApp/about_pages/chart_from_SQLite_about.html' %}
 
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends "WebApp/app_base.html" %}
+{% extends "WebApp/base/app_base.html" %}
 {% load static %}
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
 {% block script %}
@@ -21,14 +21,14 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-        <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
 
     <!-- Custom styles-->
     <script src="{% static '/js/utils.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"
             integrity="sha512-WL3nAJlWFKoDShduxQRyY3wkBnQsINXdIfWIW48ZaPgYz1wYNnxIwFMMgigzSgjNBC2WWZ8Y8/sSyUU6abuF0g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" src="{% static '/css/chart_netcdf.css' %}">
+    <link rel="stylesheet" src="{% static '/css/charts/chart_netcdf.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -75,11 +75,9 @@
 
 
                         <div id="loading_nc">
-{#                            <img id="loading-image-nc" class="im" src="{% static 'images/loading.gif' %}"#}
-{#                                 alt="Loading..."/>#}
-                                           <div class="spinner-border text-secondary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
+                            <div class="spinner-border text-secondary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
                         </div>
                         <figure class="highcharts-figure">
                             <div id="chart-container"></div>
@@ -105,6 +103,6 @@
     {#    var bounds_nc={{ netcdf_bounds }};#}
     {#    </script>#}
     <script src="{% static '/js/chart_from_netCDF.js' %}"></script>
-    {% include 'WebApp/chart_from_netCDF_about.html' %}
+    {% include 'WebApp/about_pages/chart_from_netCDF_about.html' %}
 
 {% endblock %}

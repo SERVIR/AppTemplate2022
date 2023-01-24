@@ -10,10 +10,12 @@
     right: 3vh;
     max-width: 75%;
 }
-#legends_gee{
+
+#legends_gee {
     width: 90%;
-    margin:auto;
+    margin: auto;
 }
+
 #legends_gee svg {
     margin: 10px 5px 10px 0;
 }
@@ -72,17 +74,21 @@
     margin-left: 10px;
 
 }
+
 .img-thumbnail {
     height: 100px;
     border: none;
 }
+
 .leaflet-control-geosearch a.leaflet-bar-part:before {
     border-top: 0;
 }
+
 a.leaflet-bar-part.leaflet-bar-part-single {
-    background-image: url('../images/search.png') !important;
+    background-image: url('../../images/search.png') !important;
     background-size: 18px 18px;
 }
+
 .leaflet-control-geosearch a.leaflet-bar-part:after {
     border: 0;
 }

@@ -1,4 +1,4 @@
-{% extends "WebApp/app_base.html" %}
+{% extends "WebApp/base/app_base.html" %}
 {% load static %}
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
@@ -17,7 +17,7 @@
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
     <script src="{% static '/js/L.Control.Opacity.js' %}"></script>
-    <link href="{% static '/css/L.Control.Opacity.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/libs/L.Control.Opacity.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.5/leaflet-search.src.js"
@@ -32,15 +32,15 @@
 {% endblock %}
 
 {% block content %}
-        <link
-  rel="stylesheet"
-  href="{% static '/css/geosearch.css' %}"
-/>
-    <link rel="stylesheet" href="{% static 'css/gee_map.css' %}">
+    <link
+            rel="stylesheet"
+            href="{% static '/css/libs/geosearch.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/maps/gee_map.css' %}">
 
 
     <script src="{% static '/js/geosearch.umd.js' %}"></script>
-        <script src="{% static '/js/geosearch.umd.js.map' %}"></script>
+    <script src="{% static '/js/geosearch.umd.js.map' %}"></script>
 
 
     <div class="container-fluid bg-gray-300">
@@ -64,10 +64,9 @@
                         </div>
                         <div class="accordion" id="layer_manager_gee">
                             <div id="loading_gee">
-{#                                <img id="loading-image-gee" src="{% static 'images/loading.gif' %}" alt="Loading..."/>#}
                                 <div class="spinner-border text-secondary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -111,15 +110,15 @@
                                                                 aria-selected="false"></i> Legends
                                                         </button>
                                                     </li>
-{#                                                    <li class="nav-item" role="presentation">#}
-{#                                                        <button class="nav-link p-0" id="location_gee-tab"#}
-{#                                                                data-bs-toggle="tab"#}
-{#                                                                data-bs-target="#location_gee" type="button"#}
-{#                                                                role="tab"#}
-{#                                                                aria-controls="location_gee"#}
-{#                                                                aria-selected="false"></i> Location#}
-{#                                                        </button>#}
-{#                                                    </li>#}
+                                                    {#                                                    <li class="nav-item" role="presentation">#}
+                                                    {#                                                        <button class="nav-link p-0" id="location_gee-tab"#}
+                                                    {#                                                                data-bs-toggle="tab"#}
+                                                    {#                                                                data-bs-target="#location_gee" type="button"#}
+                                                    {#                                                                role="tab"#}
+                                                    {#                                                                aria-controls="location_gee"#}
+                                                    {#                                                                aria-selected="false"></i> Location#}
+                                                    {#                                                        </button>#}
+                                                    {#                                                    </li>#}
 
                                                 </ul>
                                                 <div class="border-grey bg-white tab-content" id="layer_tab_content_gee"
@@ -220,10 +219,10 @@
                                                         <p class="mt-1">Legend for
                                                             the layer(s) selected</p>
                                                     </div>
-{#                                                    <div class="tab-pane p-3 ml-3" id="location_gee"#}
-{#                                                         role="tabpanel"#}
-{#                                                         aria-labelledby="location_gee-tab"><p>Enter location#}
-{#                                                        name and hit Enter to recenter the map</p></div>#}
+                                                    {#                                                    <div class="tab-pane p-3 ml-3" id="location_gee"#}
+                                                    {#                                                         role="tabpanel"#}
+                                                    {#                                                         aria-labelledby="location_gee-tab"><p>Enter location#}
+                                                    {#                                                        name and hit Enter to recenter the map</p></div>#}
                                                 </div>
                                             </div>
                                         </div>
@@ -276,5 +275,5 @@
         <br>
 
     </div>
-    {% include 'WebApp/map_from_GEE_about.html' %}
+    {% include 'WebApp/about_pages/map_from_GEE_about.html' %}
 {% endblock %}

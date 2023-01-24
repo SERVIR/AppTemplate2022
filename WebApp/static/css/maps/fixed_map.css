@@ -81,6 +81,7 @@
     position: absolute;
     display: contents;
 }
+
 .img-thumbnail {
     height: 100px;
     border: none;
@@ -91,20 +92,25 @@
     width: fit-content;
     left: 10px;
 }
-#legend_esi{
+
+#legend_esi {
     margin-left: 10px;
 }
-#legends{
+
+#legends {
     width: 90%;
-margin:auto;
+    margin: auto;
 }
+
 .leaflet-control-geosearch a.leaflet-bar-part:before {
     border-top: 0;
 }
+
 a.leaflet-bar-part.leaflet-bar-part-single {
-    background-image: url('../images/search.png') !important;
+    background-image: url('../../images/search.png') !important;
     background-size: 18px 18px;
 }
+
 .leaflet-control-geosearch a.leaflet-bar-part:after {
     border: 0;
 }

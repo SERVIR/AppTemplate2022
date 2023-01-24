@@ -1,5 +1,5 @@
 
- #loading_cserv {
+#loading_cserv {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -13,6 +13,6 @@
     z-index: 500;
 }
 
- #loading-image-sql {
+#loading-image-cserv {
     z-index: 500;
 }

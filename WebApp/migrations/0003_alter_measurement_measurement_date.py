@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('WebApp', '0002_alter_station_station_elev_and_more'),
     ]

@@ -1,4 +1,4 @@
-{% extends "WebApp/app_base.html" %}
+{% extends "WebApp/base/app_base.html" %}
 {% load static %}
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
@@ -17,7 +17,7 @@
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
     <script src="{% static '/js/L.Control.Opacity.js' %}"></script>
-    <link href="{% static '/css/L.Control.Opacity.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/libs/L.Control.Opacity.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.5/leaflet-search.src.js"
@@ -25,16 +25,16 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/leaflet-providers.js' %}"></script>
     <link
-  rel="stylesheet"
-  href="{% static '/css/geosearch.css' %}"
-/>
+            rel="stylesheet"
+            href="{% static '/css/libs/geosearch.css' %}"
+    />
     <script src="{% static '/js/geosearch.umd.js' %}"></script>
-        <script src="{% static '/js/geosearch.umd.js.map' %}"></script>
+    <script src="{% static '/js/geosearch.umd.js.map' %}"></script>
 
 
-        <script src="{% static 'js/utils.js' %}"></script>
+    <script src="{% static 'js/utils.js' %}"></script>
 
-        <script src="{% static 'js/basemaps.js' %}"></script>
+    <script src="{% static 'js/basemaps.js' %}"></script>
 
 {% endblock %}
 
@@ -51,16 +51,15 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <link rel="stylesheet" href="{% static 'css/fixed_map.css' %}">
+                        <link rel="stylesheet" href="{% static 'css/maps/fixed_map.css' %}">
                         <link rel="stylesheet" href="{% static 'css/common.css' %}">
                         <div id="map">
                         </div>
                         <div class="accordion" id="fixed_tab_container">
                             <div id="loading_fixed">
-{#                                <img id="loading-image-fixed" src="{% static 'images/loading.gif' %}" alt="Loading..."/>#}
-                                               <div class="spinner-border text-secondary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
+                                <div class="spinner-border text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header d-flex" id="headingFixed">
@@ -104,16 +103,6 @@
                                                                 aria-selected="false"> Legends
                                                         </button>
                                                     </li>
-{#                                                    <li class="nav-item" role="presentation">#}
-{#                                                        <button class="nav-link p-0" id="location-tab"#}
-{#                                                                data-bs-toggle="tab"#}
-{#                                                                data-bs-target="#location" type="button"#}
-{#                                                                role="tab"#}
-{#                                                                aria-controls="location"#}
-{#                                                                aria-selected="false"> Location#}
-{#                                                        </button>#}
-{#                                                    </li>#}
-
                                                 </ul>
                                                 <div class="border-grey bg-white tab-content">
                                                     <div class="tab-pane active p-3 ml-3" id="layers"
@@ -215,10 +204,10 @@
                                                     <div class="tab-pane" id="legends" role="tabpanel"
                                                          aria-labelledby="legends-tab"><p class="mt-1 ml-2">Legend for
                                                         the layer(s) selected</p></div>
-{#                                                    <div class="tab-pane p-3 ml-3" id="location"#}
-{#                                                         role="tabpanel"#}
-{#                                                         aria-labelledby="location_tab"><p>Enter location#}
-{#                                                        name and hit Enter to recenter the map</p></div>#}
+                                                    {#                                                    <div class="tab-pane p-3 ml-3" id="location"#}
+                                                    {#                                                         role="tabpanel"#}
+                                                    {#                                                         aria-labelledby="location_tab"><p>Enter location#}
+                                                    {#                                                        name and hit Enter to recenter the map</p></div>#}
 
                                                 </div>
                                             </div>
@@ -268,7 +257,7 @@
         </div>
         <br>
     </div>
-    {% include 'WebApp/map_fixedsize_about.html' %}
+    {% include 'WebApp/about_pages/map_fixedsize_about.html' %}
 
 {% endblock %}
 

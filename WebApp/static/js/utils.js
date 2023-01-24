@@ -26,7 +26,7 @@ function ajax_call(ajax_url, ajax_data) {
 
 }
 
-function set_parent(control, element){
+function set_parent(control, element) {
     var htmlObject = control.getContainer();
     var newParent = document.getElementById(element);
     newParent.appendChild(htmlObject);

@@ -3,7 +3,6 @@
     z-index: 20000;
 }
 
-
 .accordion-collapse.collapse.show {
     width: 50vh;
     max-width: 100%;
@@ -70,11 +69,6 @@ p {
     color: gray;
 }
 
-/*.leaflet-control, .leaflet-control-geocoder-alternatives {*/
-/*    width: 100%;*/
-/*}*/
-
-
 .leaflet-control-geocoder {
     width: 100%;
 }
@@ -93,4 +87,21 @@ label {
     min-width: 75%;
     min-height: 75%;
 
+}
+
+.about_page {
+    bottom: 0;
+    width: 100%;
+}
+
+#navbar_app_base {
+    background-color: #0c1a4e;
+}
+
+#title_navbar {
+    margin-left: 5%
+}
+
+#ul_navbar {
+    margin-left: 55%;
 }

@@ -272,9 +272,9 @@ function add_other_legend(response, dataset, base_service_url) {
 }
 
 const search = new GeoSearch.GeoSearchControl({
-        provider: new GeoSearch.OpenStreetMapProvider(),
-        showMarker: false, // optional: true|false  - default true
-        showPopup: false,
-        autoClose: true,
-    });
-    map.addControl(search);
+    provider: new GeoSearch.OpenStreetMapProvider(),
+    showMarker: false, // optional: true|false  - default true
+    showPopup: false,
+    autoClose: true,
+});
+map.addControl(search);

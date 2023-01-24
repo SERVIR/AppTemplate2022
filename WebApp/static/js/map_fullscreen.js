@@ -28,7 +28,7 @@ var map = L.map('map3', {
     }, center: [42.35, -71.08], zoom: 3
 });
 
-L.control.zoom({ position: 'topright'}).addTo(map);
+L.control.zoom({position: 'topright'}).addTo(map);
 
 osm.addTo(map);
 
@@ -189,7 +189,7 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
             return div;
         };
         legend.addTo(map);
-        set_parent(legend,element);
+        set_parent(legend, element);
     }
 }
 
@@ -225,27 +225,29 @@ function add_other_legend(response, dataset, base_service_url) {
     document.getElementById("legend_full_" + dataset).appendChild(div);
 
 }
+
 const search = new GeoSearch.GeoSearchControl({
-        provider: new GeoSearch.OpenStreetMapProvider(),
-        showMarker: false, // optional: true|false  - default true
-        showPopup: false,
-    position:'topright',
-        autoClose: true,
-    });
-    map.addControl(search);
-    $(".leaflet-bar-timecontrol").css("margin-left","50px");
+    provider: new GeoSearch.OpenStreetMapProvider(),
+    showMarker: false, // optional: true|false  - default true
+    showPopup: false,
+    position: 'topright',
+    autoClose: true,
+});
+map.addControl(search);
+$(".leaflet-bar-timecontrol").css("margin-left", "50px");
 $('.leaflet-bar-timecontrol').css('display', 'inline');
-        function openNav() {
-document.getElementById("mySidenav").style.width = "250px";
-$("#nav_opener").hide();
-$(".leaflet-bar-timecontrol").css("margin-left","270px");
-$('.leaflet-bar-timecontrol').css('display', 'flex');
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    $("#nav_opener").hide();
+    $(".leaflet-bar-timecontrol").css("margin-left", "270px");
+    $('.leaflet-bar-timecontrol').css('display', 'flex');
 }
 
 
 function closeNav() {
-document.getElementById("mySidenav").style.width = "0";
-$("#nav_opener").show();
-$(".leaflet-bar-timecontrol").css("margin-left","50px");
-$('.leaflet-bar-timecontrol').css('display', 'inline');
+    document.getElementById("mySidenav").style.width = "0";
+    $("#nav_opener").show();
+    $(".leaflet-bar-timecontrol").css("margin-left", "50px");
+    $('.leaflet-bar-timecontrol').css('display', 'inline');
 }
