@@ -85,7 +85,7 @@
 }
 
 a.leaflet-bar-part.leaflet-bar-part-single {
-    background-image: url('../../images/search.png') !important;
+    background-image: url('../images/search.png') !important;
     background-size: 18px 18px;
 }
 
