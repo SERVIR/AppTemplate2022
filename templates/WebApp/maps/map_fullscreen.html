@@ -17,14 +17,14 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
-    <script src="{% static '/js/L.Control.Opacity.js' %}"></script>
+    <script src="{% static '/js/libs/L.Control.Opacity.js' %}"></script>
     <link href="{% static '/css/libs/L.Control.Opacity.css' %}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.5/leaflet-search.src.js"
             integrity="sha512-PDM7dpetuBcPp2fV/ZyCj9BGV8ybPchsrSzQqVZ3WoM8YcxEa2lAj0n1+4MCRzgsEROmVTwQXGw0IrXCCgH+/Q=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{% static 'js/leaflet-providers.js' %}"></script>
+    <script src="{% static 'js/libs/leaflet-providers.js' %}"></script>
 
     <script src="{% static 'js/utils.js' %}"></script>
 
@@ -36,8 +36,8 @@
 
     <link href="{% static '/css/maps/full_map.css' %}" rel="stylesheet"/>
 
-    <script src="{% static '/js/geosearch.umd.js' %}"></script>
-    <script src="{% static '/js/geosearch.umd.js.map' %}"></script>
+    <script src="{% static '/js/libs/geosearch.umd.js' %}"></script>
+    <script src="{% static '/js/libs/geosearch.umd.js.map' %}"></script>
 
 {% endblock %}
 
@@ -171,7 +171,7 @@
             </div>
             <div id="map3" style="height:calc(100vh - 166px);">
             </div>
-            <script src="{% static 'js/map_fullscreen.js' %}"></script>
+            <script src="{% static 'js/maps/map_fullscreen.js' %}"></script>
             <link rel="stylesheet" href="{% static 'css/common.css' %}">
         </div>
     </div>
