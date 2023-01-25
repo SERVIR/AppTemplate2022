@@ -44,98 +44,23 @@
 
             <!-- Page Heading -->
             <div class="row flex_cards">
-                <div class="app-card mb-4">
-                    <br>
-                    <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Display WMS data (fixed-size view)</h6>
-                        </div>
-                        <div class="card-body fixed_card">
-                            <div class="text-center">
-                                <a href="{% url 'map_fixedSize' %}" class="stretched-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-card mb-4">
-                    <br>
-                    <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Display WMS data (full-screen view)</h6>
-                        </div>
-                        <div class="card-body full_card">
-                            <div class="text-center">
-                                <a href="{% url 'map_fullScreen' %}" class="stretched-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-card mb-4 ">
-                    <br>
-                    <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Display GEE data (fixed-size view)</h6>
-                        </div>
-                        <div class="card-body gee_card">
-                            <div class="text-center">
-                                <a href="{% url 'map_fromGEE' %}" class="stretched-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-card mb-4">
-                    <br>
-                    <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Chart from NetCDF file</h6>
-                        </div>
-                        <div class="card-body chart_netcdf_card">
-                            <div class="text-center">
-                                <a href="{% url 'chart_fromNetcdf' %}" class="stretched-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-card mb-4">
-                    <br>
-                    <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Chart from ClimateSERV API</h6>
-                        </div>
-                        <div class="card-body chart_cserv_card">
-                            <div class="text-center">
-                                <a href="{% url 'chart_climateserv' %}" class="stretched-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-card mb-4">
-                    <br>
-                    <div class="card shadow mb-4   mr-4 h-100 img-thumbnail">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Chart from SQL Database</h6>
-                        </div>
-                        <div class="card-body chart_sqlite_card">
-                            <div class="text-center">
-                                <a href="{% url 'chart_sqlite' %}" class="stretched-link"></a>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="app-card">
+                {% for app_card in app_cards %}
+
+                    <div class="app-card mb-4">
                     <br>
-                    <div class="card shadow mb-4  mr-4 h-100 img-thumbnail">
+                    <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Use forms to enter data</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">{{ app_card.name }}</h6>
                         </div>
-                        <div class="card-body update_datamodel_card">
+                        <div class="card-body card_bg" style="background-image: url('{{ app_card.background_image_url }}')">
                             <div class="text-center">
-                                <a href="{% url 'updates' %}" class="stretched-link"></a>
+                                <a href='{{ app_card.url }}' class="stretched-link"></a>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
                 <!-- Content Row -->
                 <div class="row">`

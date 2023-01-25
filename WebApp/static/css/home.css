@@ -44,37 +44,6 @@
     width: 400px;
 }
 
-.fixed_card {
-    background: url("../images/cards/fixed.PNG");
-    background-size: cover;
-}
-
-.full_card {
-    background: url("../images/cards/full.PNG");
-    background-size: cover;
-}
-
-.gee_card {
-    background: url("../images/cards/gee.PNG");
-    background-size: cover;
-}
-
-.chart_netcdf_card {
-    background: url("../images/cards/netCDF.jpg");
-    background-size: cover;
-}
-
-.chart_cserv_card {
-    background: url("../images/cards/ClimateSERV.jpg");
-    background-size: cover;
-}
-
-.chart_sqlite_card {
-    background: url("../images/cards/SQLite.jpg");
-    background-size: cover;
-}
-
-.update_datamodel_card {
-    background: url("../images/cards/EnterData.jpg");
+.card_bg{
     background-size: cover;
 }

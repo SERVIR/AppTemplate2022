@@ -10,8 +10,10 @@ import requests
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.views.decorators.csrf import csrf_exempt
+
 from WebApp.forms import MeasurementForm
 from WebApp.models import Measurement
 import requests
@@ -22,9 +24,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 f = open(str(BASE_DIR) + '/data.json', )
 data = json.load(f)
 
-
 def home(request):
-    return render(request, 'WebApp/home.html', {})
+    context={
+        "app_cards":[
+            {"name":"Display WMS data (fixed-size view)","background_image_url":"static/images/cards/fixed.PNG",'url':reverse('map_fixedSize')},
+            {"name":"Display GEE data (fixed-size view)","background_image_url":"static/images/cards/gee.PNG",'url':reverse('map_fromGEE')},
+            {"name":"Display WMS data (full-screen view)","background_image_url":"static/images/cards/full.PNG",'url':reverse('map_fullScreen')},
+            {"name":"Chart from NetCDF file","background_image_url":"static/images/cards/netCDF.jpg",'url':reverse('chart_fromNetcdf')},
+            {"name":"Chart from ClimateSERV API","background_image_url":"static/images/cards/ClimateSERV.jpg",'url':reverse('chart_climateserv')},
+            {"name":"Chart from SQL Database","background_image_url":"static/images/cards/SQLite.jpg",'url':reverse('chart_sqlite')},
+            {"name":"Use forms to enter data","background_image_url":"static/images/cards/EnterData.jpg",'url':reverse('updates')},
+            ],
+    }
+
+    return render(request, 'WebApp/home.html', context)
 
 
 def map_fixedSize(request):

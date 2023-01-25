@@ -5,7 +5,6 @@ import WebApp.views as views
 from WebApp import controllers
 urlpatterns = [
     path('', views.home, name='home'),
-    path('home/', views.home, name='home'),
     path('map_fixedSize/', views.map_fixedSize, name='map_fixedSize'),
     path('map_fromGEE/', views.map_fromGEE, name='map_fromGEE'),
     path('map_fullScreen/', views.map_fullScreen, name='map_fullScreen'),
@@ -25,5 +24,6 @@ urlpatterns = [
     path('chart_sqlite/get-timeseries-sqlite/', controllers.get_timeseries_sqlite, name='get-timeseries-sqlite'),
     path('map_fromGEE/get-gee-layer/', controllers.get_gee_layer, name='get-gee-layer'),
     path('map_fromGEE/get-gee-user-layer/', controllers.get_gee_user_layer, name='get-gee-user-layer'),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
