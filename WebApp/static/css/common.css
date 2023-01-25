@@ -106,6 +106,8 @@ label {
     margin-left: 55%;
 }
 
+
+
 /***********Common Map Styles***********/
 .leaflet-control-geosearch a.leaflet-bar-part:before {
     border-top: 0;
@@ -120,3 +122,20 @@ a.leaflet-bar-part.leaflet-bar-part-single {
     border: 0;
 }
 /**********end common map styles********/
+
+@media (max-width: 800px) {
+    .float-sm-start.ml-5 {
+        margin-left: unset!important;
+        width: 49%;
+        float: left;
+    }
+    .float-sm-end.mr-5 {
+        margin-right: unset!important;
+        width: 49%;
+        float: right;
+    }
+    .float-sm-end.mr-5 a{
+        display: block;
+        text-align: right;
+    }
+}
