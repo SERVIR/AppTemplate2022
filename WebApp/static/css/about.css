@@ -1,3 +1,11 @@
 .img-thumbnail {
     border-radius: 7rem;
 }
+
+.team-member {
+    height: 150px;
+}
+
+.org-logo {
+    height: 100px;
+}
