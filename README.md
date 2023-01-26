@@ -17,9 +17,9 @@ You need the following in order to set up this project.
 
 * Create credentials by following the steps in
   from https://docs.google.com/document/d/1jn3abOHUM5EpfrSipWUPYV-KhphzKVbGNGSLUBPGuHA/edit
-    * You will need the key JSON file, client ID, client secret key and service account detaills
+    * You will need the key JSON file, client ID, client secret key and service account details
 
-* Install and authenticate earth engine using your google account and enable Earthengine API
+* Install and authenticate earth engine using your Google account and enable Earthengine API
 
 ### Installation
 
@@ -32,7 +32,7 @@ Please follow the instructions to set up the project
   conda env create -f environment.yml
 ```
 
-* Create data.json Copy and paste the json object below into the file, then edit the values.
+* Create data.json in the root directory. Copy and paste the json object below into the file, then edit the values.
 
 ```json
 {
@@ -46,34 +46,40 @@ Please follow the instructions to set up the project
 }
 ```
 
-* Edit the WebApp/config.py with respective details
-* Start the app using "python manage.py runserver" from the root directory
+* Run migrations to create the database tables:
+                    ```python manage.py makemigrations```
+  followed by
+                    ```python manage.py migrate```
+* Run the server: 
+                    ```python manage.py runserver```
+* Open a web browser and navigate to http://127.0.0.1:8000/ to access the application.
+
 
 ### Walkthrough
 
 #### Home
 
-* Home page is the welcome page that has the hero image and information about the project.
+* Home page is the welcome page that has the description of the application along with navigation provided to the various available templates. 
 
 #### Maps
 
-* There are three types of maps
-    * WMS fixed size
+* There are three types of map templates
+    * Display WMS data using fixed-size view
       ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/fixed.png?raw=true)
 
-    * WMS full page
+    * Display WMS data using full screen view
       ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/full.png?raw=true)
 
-    * GEE layers
+    * Display GEE data using a fixed-size view
       ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/gee.png?raw=true)
 
 #### Charts
 
-* There are three types of charts
-    * Chart from netCDF
+* All the charts use HighCharts library to generate the chart using data. There are three types of chart templates:
+    * Chart from netCDF file
       ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/netcdf.png?raw=true)
 
-    * Chart from data model
+    * Chart from SQLite data model
       ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/dm.png?raw=true)
 
     * Chart from ClimateSERV API
@@ -84,10 +90,12 @@ Please follow the instructions to set up the project
 * To update data model details, please login using the 'Login' button in the menu bar. It will redirect you to your
   Google(Gmail) login page. After you are authenticated, navigate to the "Update Data Model" page from the home page.
   Here, you will see the form that allows you to enter details and submit to the server.
+        ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/update.png?raw=true)
+
 
 #### About
 
-* Information about the project, team and logos
+* This page has information about the project, team and logos
 
 #### Feedback
 
