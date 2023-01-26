@@ -9,6 +9,7 @@ dependencies:
   - netcdf4
   - shapely
   - earthengine-api
+  - beautifulsoup4
   - pip
   - pip:
       - climateserv==0.0.24
