@@ -15,8 +15,7 @@ interfaces addressing complex use-cases.
 
 You need the following in order to set up this project.
 
-* Create credentials by following the steps in
-  from https://docs.google.com/document/d/1jn3abOHUM5EpfrSipWUPYV-KhphzKVbGNGSLUBPGuHA/edit
+* Create Google credentials
     * You will need the key JSON file, client ID, client secret key and service account details
 
 * Install and authenticate earth engine using your Google account and enable Earthengine API
