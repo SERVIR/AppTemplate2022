@@ -27,7 +27,7 @@ $("#selectFiles").change(function (event) {
 function get_chart(geom_data) {
 
     const xhr = ajax_call("get-timeseries-climateserv", {
-        "dataset": ["CHIRP", "CHIRPS", "IMERG"],
+        "dataset": ["CHIRP", "CHIRPS"],
         "operation": "Average",
         "startdate": "12/01/2022",
         "enddate": "12/31/2022",
@@ -38,7 +38,7 @@ function get_chart(geom_data) {
         let series = [];
         let ds1 = "CHIRP";
         let ds2 = "CHIRPS";
-        let ds3 = "IMERG";
+
         let vals = result;
         series = [{
             data: vals[ds1],
@@ -49,11 +49,6 @@ function get_chart(geom_data) {
                 data: vals[ds2],
                 name: ds2,
                 color: "green"
-            },
-            {
-                data: vals[ds3],
-                name: ds3,
-                color: "black"
             }];
 
         $('#chart-container2').highcharts({
