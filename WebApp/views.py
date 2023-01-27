@@ -102,7 +102,7 @@ def updates(request):
                                  measurement_temp=request.POST["measurement_temp"],
                                  measurement_precip=request.POST["measurement_precip"])
             member.save()
-            url = data['CSRF_TRUSTED_ORIGINS'][0] + '/admin/WebApp/measurement/' + str(member.id) + '/change/'
+            url = reverse('admin:%s_%s_change' % (member._meta.app_label,  member._meta.model_name),  args=[member.id] )
             messages.success(request,
                              mark_safe('Data submitted! <a href="' + url + '">Go to this record in admin pages</a>'),
                              extra_tags='form1')
