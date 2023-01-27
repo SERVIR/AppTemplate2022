@@ -1,64 +1,58 @@
 $('#loading_sql').hide();
-
+// ajax call to get the station data from the SQLite database
 const xhr_stations = ajax_call("stations", {});
 xhr_stations.done(function (result) {
-        console.log(result.stations);
         $('#stations').append("<option value='default'>Select</option>");
-
         result.stations.map(function (st) {
             $('#stations').append("<option value='" + st.station_id + "'>" + st.station_name + "</option>");
-
         });
-
-
     }
 );
+// When a station is selected, get the data for chart using get_chart function.
 $("#stations").change(function () {
+    // Show the loading spinner
     $('#loading_sql').show();
-
+    // ajax call to get the data for the selected station from the SQLite database
     const xhr = ajax_call("get-timeseries-sqlite", {
-        "variable": "BC_MLPM25",
-        "dataset": "geos",
-        "date": "20191123",
-        "interaction": "polygon",
-        "geom_data": "[[95.734863,18.16673],[95.734863,18.646245],[96.174316,18.646245],[96.174316,18.16673],[95.734863,18.16673]]",
         "station": this.value
     });
-    xhr.done(function (result) {
-
+    xhr.done(function (result) {// result is a dictionary with keys as dataset names and values as list of values for each day
         let series = [
             {
-                data: result['plot'],
+                data: result['plot_temp'],// list of temperature values for each day for the selected station
                 name: "Temperature",
                 color: "green",
                 yAxis: 0
             },
             {
-                data: result['plot1'],
+                data: result['plot_precip'],// list of precipitation values for each day for the selected station
                 name: "Precipitation",
                 color: "lightblue",
                 yAxis: 1
             }];
 
-
+        // Create the chart
         $('#chart-container3').highcharts({
             chart: {
                 type: 'spline',
                 zoomType: 'x',
                 paddingBottom: 50
             },
+            // Set the tooltip text style when hovering on the chart
             tooltip: {
                 backgroundColor: '#FCFFC5',
                 borderColor: 'black',
                 borderRadius: 10,
                 borderWidth: 3
             },
+            // Set the title and title text style
             title: {
                 text: "Temperature & Precipitation (sample data)",
                 style: {
                     fontSize: '14px'
                 }
             },
+            // Set the xAxis(horizontal) and yAxis(vertical) labels and text style
             xAxis: {
                 type: 'datetime',
                 labels: {
@@ -95,10 +89,13 @@ $("#stations").change(function () {
             exporting: {
                 enabled: true
             },
+            // Set the series data
             series: series,
+            // Set the text to display when no data is available
             lang: {
                 noData: "No Data Found, Please try with a different station."
             },
+            // Set the style of the text when no data is available
             noData: {
                 style: {
                     fontWeight: 'bold',
@@ -109,5 +106,6 @@ $("#stations").change(function () {
 
         });
     });
+    // Hide the loading spinner
     $('#loading_sql').hide();
 });

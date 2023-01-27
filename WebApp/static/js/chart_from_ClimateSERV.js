@@ -1,4 +1,5 @@
 $('#loading_cserv').hide();
+// When a geojson file is uploaded, read the file and get the data for chart using get_chart function.
 $("#selectFiles").change(function (event) {
     var uploadedFile = event.target.files[0];
     var ext = uploadedFile.name.split('.')[1];
@@ -12,9 +13,9 @@ $("#selectFiles").change(function (event) {
 
             var contents = e.target.result;
             var geom_data = contents;
+            // Show the loading spinner
             $('#loading_cserv').show();
             get_chart(geom_data);
-            // $('#loading_cserv').hide();
 
         };
         readFile.readAsText(uploadedFile);
@@ -23,9 +24,9 @@ $("#selectFiles").change(function (event) {
     }
 });
 
-
+// Function to get the data for chart using ajax call. Parameters are geom_data obtained from the uploaded geojson file.
 function get_chart(geom_data) {
-
+    // Modify the xhr call below in order to get the chart for different parameters
     const xhr = ajax_call("get-timeseries-climateserv", {
         "dataset": ["CHIRP", "CHIRPS"],
         "operation": "Average",
@@ -36,26 +37,27 @@ function get_chart(geom_data) {
     });
     xhr.done(function (result) {
         let series = [];
-        let ds1 = "CHIRP";
-        let ds2 = "CHIRPS";
+        let ds_chirp = "CHIRP";
+        let ds_chirps = "CHIRPS";
 
-        let vals = result;
+        let vals = result;  // result is a dictionary with keys as dataset names and values as list of values for each day
         series = [{
-            data: vals[ds1],
-            name: ds1,
+            data: vals[ds_chirp],// list of values for each day for CHIRP
+            name: ds_chirp,// name of the dataset
             color: "blue"
         },
             {
-                data: vals[ds2],
-                name: ds2,
+                data: vals[ds_chirps],// list of values for each day for CHIRPS
+                name: ds_chirps,// name of the dataset
                 color: "green"
             }];
-
+        // Create the chart
         $('#chart-container2').highcharts({
                 chart: {
                     type: 'spline',
                     zoomType: 'x',
                     events: {
+                        // When the chart is loaded, display a message under the chart
                         load: function () {
                             var label = this.renderer.label("Graph dates and times are in UTC time")
                                 .css({
@@ -81,24 +83,25 @@ function get_chart(geom_data) {
                     },
                     paddingBottom: 50
                 },
+                // Set the tooltip text style when hovering on the chart
                 tooltip: {
                     backgroundColor: '#FCFFC5',
                     borderColor: 'black',
                     borderRadius: 10,
                     borderWidth: 3
                 },
+                // Set the title and title text style
                 title: {
                     text: "Data from ClimateSERV",
                     style: {
                         fontSize: '14px'
                     }
                 },
+                // Set the xAxis(horizontal) and yAxis(vertical) labels and text style
                 xAxis: {
                     type: 'datetime',
                     labels: {
                         format: '{value: %Y-%m-%d}'
-                        // rotation: 45,
-                        // align: 'left'
                     },
                     title: {
                         text: 'Date'
@@ -125,10 +128,13 @@ function get_chart(geom_data) {
                 exporting: {
                     enabled: true
                 },
+                // Set the series data
                 series: series,
+                // Set the text to display when no data is available
                 lang: {
                     noData: "No Data Found, Please try again with different geojson."
                 },
+                // Set the style of the text when no data is available
                 noData: {
                     style: {
                         fontWeight: 'bold',
@@ -138,6 +144,7 @@ function get_chart(geom_data) {
                 }
             }
         );
+        // Hide the loading spinner
         $('#loading_cserv').hide();
     });
 

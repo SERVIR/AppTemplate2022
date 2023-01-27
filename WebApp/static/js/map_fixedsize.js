@@ -1,8 +1,11 @@
 $('#opacity_chirps').hide();
 $('#opacity_esi').hide();
 $('#loading_fixed').hide();
-const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+// Helpers to show/hide the popovers when the info button is clicked
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+[...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
+// Initialize with map control with basemap and time slider
 var map = L.map('map', {
     fullscreenControl: true,
     timeDimension: true,
@@ -28,15 +31,16 @@ var map = L.map('map', {
 
 osm.addTo(map);
 
+// Variables for the WMS layers
 var chirps_variable = 'precipitation_amount';
 var style = 'boxfill/apcp_surface';
 var colorscalerange = '0,5';
 
-var testTimeLayer = L.timeDimension.layer.wms(chirps, {
+// Initialize the WMS layers
+var chirpsTimeLayer = L.timeDimension.layer.wms(chirps, {
     updateTimeDimension: true
 });
-
-testTimeLayer.on('timeload', function (event) {
+chirpsTimeLayer.on('timeload', function (event) {
     $('#loading_fixed').hide();
 });
 
@@ -44,24 +48,25 @@ esi.on('load', function (event) {
     $('#loading_fixed').hide();
 });
 
+// when the checkbox for 'CHIRPS Layer' is clicked, show/hide the layer
 $("#chirps").change(function () {
     if (this.checked) {
         $('#loading_fixed').show();
-        testTimeLayer.addTo(map);
-        testTimeLayer.bringToFront();
+        chirpsTimeLayer.addTo(map);
+        chirpsTimeLayer.bringToFront();
         var val = Math.round($('#opacity_chirps').val() * 100);
         $('#chirps_opacity').text(val + "%");
         $('#chirps_opacity').show();
         $('#opacity_chirps').show();
         add_legend_fixed_size("chirps", chirps_wms, chirps_variable, colorscalerange, style, 'legends');
     } else {
-        testTimeLayer.remove();
+        chirpsTimeLayer.remove();
         $('#chirps_opacity').hide();
         $('#opacity_chirps').hide();
         remove_legend_fixed_size("chirps");
     }
 });
-
+// when the checkbox for 'ESI Layer' is clicked, show/hide the layer
 $("#esi").change(function () {
     if (this.checked) {
         $('#loading_fixed').show();
@@ -79,90 +84,19 @@ $("#esi").change(function () {
         remove_legend_fixed_size("esi");
     }
 });
-
+// when the opacity control for 'CHIRPS Layer' is selected, update the opacity
 $('#opacity_chirps').change(function () {
-    testTimeLayer.setOpacity($(this).val());
+    chirpsTimeLayer.setOpacity($(this).val());
     var val = Math.round($(this).val() * 100);
     $('#chirps_opacity').text(val + "%");
 });
-
+// when the opacity control for 'ESI Layer' is selected, update the opacity
 $('#opacity_esi').change(function () {
     esi.setOpacity($(this).val());
     var val = Math.round($(this).val() * 100);
     $('#esi_opacity').text(val + "%");
 });
-
-var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-    maxZoom: 17,
-    attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-});
-//
-// var search_control = L.Control.geocoder({collapsed: false});
-//
-// search_control.addTo(map);
-//
-//
-// let layerControlDiv = search_control.getContainer();
-//
-// // you can set an id for it if you want to use it to override the CSS later
-// layerControlDiv.setAttribute("id", "layer-control-id");
-//
-// let layerControlParentLayer = L.control({
-//     position: "topright"
-// });
-// layerControlParentLayer.onAdd = function (map) {
-//     // Create the main div that will hold all your elements
-//     let parentDiv = L.DomUtil.create("a");
-//
-//     // you can set an id for it if you want to use it for CSS
-//     parentDiv.setAttribute("id", "layer-control-parent-id");
-//     parentDiv.appendChild(layerControlDiv);
-//     L.DomEvent.disableClickPropagation(parentDiv);
-//     return parentDiv;
-// };
-// // add the Layer to the map
-// layerControlParentLayer.addTo(map);
-// set_parent(layerControlParentLayer, 'location');
-var terrainLayer = L.tileLayer(
-    "https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}",
-    {
-        attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 0,
-        maxZoom: 22,
-        subdomains: 'abcd',
-        accessToken: 'rU9sOZqw2vhWdd1iYYIFqXxstyXPNKIp9UKC1s8NQkl9epmf0YpFF8a2HX1sNMBM',
-        opacity: 1,
-        thumb: "img/terrain.png",
-        displayName: "Terrain",
-    }
-);
-var deLormeLayer = L.tileLayer.wms(
-    "https://server.arcgisonline.com/arcgis/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}",
-    {
-        format: "image/png",
-        transparent: true,
-        attribution:
-            'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-            'rest/services/Reference/Specialty/DeLorme_World_Base_Map/MapServer">ArcGIS</a>',
-        opacity: 1,
-        thumb: "img/delorme.png",
-        displayName: "DeLorme",
-    }
-);
-var gSatLayer = L.tileLayer(
-    "https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
-    {
-        format: "image/png",
-        transparent: true,
-        attribution:
-            'Tiles © Map data ©2019 Google',
-        opacity: 1,
-        thumb: "img/gsatellite.png",
-        displayName: "Google Satellite",
-        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-    }
-);
-
+// Remove all basemap layers from the map
 removeLayers = function () {
     satellite.remove();
     osm.remove();
@@ -171,16 +105,12 @@ removeLayers = function () {
     deLormeLayer.remove();
     gSatLayer.remove();
 };
-
+// Add selected basemap layer to the map
 add_basemap = function (map_name) {
     removeLayers();
-
     switch (map_name) {
         case "osm":
-
             osm.addTo(map);
-            // osm.bringToFront();
-
             break;
         case "delorme":
             deLormeLayer.addTo(map);
@@ -188,7 +118,6 @@ add_basemap = function (map_name) {
         case "satellite":
             satellite.addTo(map);
             break;
-
         case "terrain":
             terrainLayer.addTo(map);
             break;
@@ -203,7 +132,7 @@ add_basemap = function (map_name) {
 
     }
 };
-
+// Add legend to the map for CHIRPS
 function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette, element) {
     if (variable === "") {
         var base_service_url = wms;
@@ -238,11 +167,11 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
         set_parent(legend, element);
     }
 }
-
+// Remove legend from the map
 function remove_legend_fixed_size(val) {
     document.getElementById("legend_" + val).remove();
 }
-
+// Add legend to the map for ESI
 function add_other_legend(response, dataset, base_service_url) {
     var htmlString = "<table>";
     for (var iCnt = 0; iCnt < response.layers.length; iCnt++) {
@@ -270,7 +199,7 @@ function add_other_legend(response, dataset, base_service_url) {
     document.getElementById("legends").appendChild(div);
 
 }
-
+// Add the Search Control to the map
 const search = new GeoSearch.GeoSearchControl({
     provider: new GeoSearch.OpenStreetMapProvider(),
     showMarker: false, // optional: true|false  - default true

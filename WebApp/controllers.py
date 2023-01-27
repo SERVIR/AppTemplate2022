@@ -87,8 +87,6 @@ def get_timeseries_netcdf(request):
 @csrf_exempt
 def get_timeseries_climateserv(request):
     json_obj = {}
-    return_obj = []
-
     if request.method == 'POST':
         DatasetType = request.POST.getlist("dataset[]")
         print(DatasetType)
@@ -123,14 +121,12 @@ def get_timeseries_climateserv(request):
 
 @csrf_exempt
 def get_timeseries_sqlite(request):
-    conn = None
     ts_plot = []
     ts_plot1 = []
     json_obj = {}
     try:
         conn = sqlite3.connect('db.sqlite3')
         cur = conn.cursor()
-
         cur1 = conn.cursor()
         station = request.POST["station"]
         if station != "default":
@@ -154,8 +150,8 @@ def get_timeseries_sqlite(request):
 
                 ts_plot1.append([time_stamp, float(val)])
             ts_plot.sort()
-            json_obj["plot"] = ts_plot
-            json_obj["plot1"] = ts_plot1
+            json_obj["plot_temp"] = ts_plot
+            json_obj["plot_precip"] = ts_plot1
     except Exception as e:
         print(e)
     return JsonResponse(json_obj)
@@ -208,7 +204,6 @@ def update_record(request):
 
 @csrf_exempt
 def stations(request):
-    json_obj = {}
     try:
         station_ids = list(Station.objects.values_list('station_id', flat=True))
         stations = []

@@ -1,3 +1,4 @@
+// Ajax call to get the data using the parameters: ajax_url and ajax_data
 function ajax_call(ajax_url, ajax_data) {
     if (ajax_url.substr(-1) !== "/") {
         ajax_url = ajax_url.concat("/");
@@ -28,6 +29,7 @@ function ajax_call(ajax_url, ajax_data) {
 
 }
 
+// Set the parent div for a html object
 function set_parent(control, element) {
     var htmlObject = control.getContainer();
     var newParent = document.getElementById(element);

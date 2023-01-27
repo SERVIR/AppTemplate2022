@@ -1,3 +1,4 @@
+//Terrain layer
 var terrainLayer = L.tileLayer(
     "https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}",
     {
@@ -11,6 +12,8 @@ var terrainLayer = L.tileLayer(
         displayName: "Terrain",
     }
 );
+
+//DeLorme_World_Base_Map layer
 var deLormeLayer = L.tileLayer.wms(
     "https://server.arcgisonline.com/arcgis/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}",
     {
@@ -24,6 +27,8 @@ var deLormeLayer = L.tileLayer.wms(
         displayName: "DeLorme",
     }
 );
+
+//Google Satellite layer
 var gSatLayer = L.tileLayer(
     "https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
     {
@@ -38,11 +43,13 @@ var gSatLayer = L.tileLayer(
     }
 );
 
+//Open Topo layer
 var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     maxZoom: 17,
     attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 });
 
+//CHIRPS WMS layer from Thredds server
 var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4', {
     layers: 'precipitation_amount',
     transparent: 'true',
@@ -52,6 +59,8 @@ var chirps = L.tileLayer.wms('https://thredds.servirglobal.net/thredds/wms/Agg/u
     zIndex: 400,
     opacity: 0.5
 });
+
+//ESI layer from Map server
 let esi = L.esri.dynamicMapLayer({
     url: 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer',
     transparent: 'true',
@@ -60,14 +69,21 @@ let esi = L.esri.dynamicMapLayer({
     maxZoom: 21,
     opacity: 0.5
 });
+
+//Open Street Map base layer - default
 var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
 });
+
+//Open Street Map base layer
 let streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 
-// create a satellite imagery layer
+//Satellite imagery layer
 let satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
 
+//CHIRPS WMS URL
 var chirps_wms = 'https://thredds.servirglobal.net/thredds/wms/Agg/ucsb-chirps_global_0.05deg_daily.nc4';
+
+//ESI MapServer URL
 var esi_wms = 'https://gis1.servirglobal.net/arcgis/rest/services/Global/ESI_4WK/MapServer';

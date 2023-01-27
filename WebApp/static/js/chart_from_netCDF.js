@@ -1,15 +1,5 @@
 $('#loading_nc').hide();
-// var map = new L.Map('map_nc', {center: [42.35, -71.08], zoom: 3});
-// var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     maxZoom: 19,
-//     attribution: '© OpenStreetMap'
-// }).addTo(map);
-// var southWest = new L.LatLng(parseFloat(bounds_nc[2]).toFixed(2), parseFloat(bounds_nc[0]).toFixed(2));
-//   var northEast = new L.LatLng(parseFloat(bounds_nc[3]).toFixed(2),parseFloat(bounds_nc[1]).toFixed(2));
-//  var bounds = new L.LatLngBounds(southWest, northEast);
-
-// map.fitBounds(bounds);
-
+// When a geojson file is uploaded, read the file and get the data for chart using get_chart function.
 $("#selectFiles").change(function (event) {
     var uploadedFile = event.target.files[0];
 
@@ -20,12 +10,13 @@ $("#selectFiles").change(function (event) {
     }
 
     if (uploadedFile) {
+        // Show the loading spinner
         $('#loading_nc').show();
         var readFile = new FileReader();
         readFile.onload = function (e) {
             var contents = e.target.result;
-            geom_data = contents;
-            get_chart();
+            var geom_data = contents;
+            get_chart(geom_data);
         };
         readFile.readAsText(uploadedFile);
     } else {
@@ -33,8 +24,9 @@ $("#selectFiles").change(function (event) {
     }
 });
 
-function get_chart() {
-
+// Function to get the data for chart using ajax call. Parameters are geom_data obtained from the uploaded geojson file.
+function get_chart(geom_data) {
+    // Modify the xhr call below in order to get the chart for different parameters
     const xhr = ajax_call("get-timeseries-netcdf", {
         "variable": "BC_MLPM25",
         "dataset": "geos",
@@ -42,20 +34,21 @@ function get_chart() {
         "interaction": "polygon",
         "geom_data": geom_data//"[[95.734863,18.16673],[95.734863,18.646245],[96.174316,18.646245],[96.174316,18.16673],[95.734863,18.16673]]"
     });
-    xhr.done(function (result) {
+    xhr.done(function (result) {// result is a dictionary with keys as dataset names and values as list of values for each day
         let series = [
             {
-                data: result.plot,
-                name: "PM2.5",
+                data: result.plot,// list of values for for BC_MLPM25
+                name: "PM2.5",// name of the variable in the dataset
                 color: "blue"
             }];
 
-
+        // Create the chart
         $('#chart-container').highcharts({
             chart: {
                 type: 'spline',
                 zoomType: 'x',
                 events: {
+                    // When the chart is loaded, display a message under the chart
                     load: function () {
                         var label = this.renderer.label($("#run_table option:selected").val() == "geos" ? "Graph dates and times are in Indian Std. Time" : "Graph dates and times are in UTC time")
                             .css({
@@ -81,18 +74,21 @@ function get_chart() {
                 },
                 paddingBottom: 50
             },
+            // Set the tooltip text style when hovering on the chart
             tooltip: {
                 backgroundColor: '#FCFFC5',
                 borderColor: 'black',
                 borderRadius: 10,
                 borderWidth: 3
             },
+            // Set the title and title text style
             title: {
                 text: "Timeseries Data",
                 style: {
                     fontSize: '14px'
                 }
             },
+            // Set the xAxis(horizontal) and yAxis(vertical) labels and text style
             xAxis: {
                 type: 'datetime',
                 labels: {
@@ -125,10 +121,13 @@ function get_chart() {
             exporting: {
                 enabled: true
             },
+            // Set the series data
             series: series,
+            // Set the text to display when no data is available
             lang: {
                 noData: "No Data Found, Please try again with different geojson."
             },
+            // Set the style of the text when no data is available
             noData: {
                 style: {
                     fontWeight: 'bold',
@@ -139,5 +138,6 @@ function get_chart() {
 
         });
     });
+    // Hide the loading spinner
     $('#loading_nc').hide();
 }
