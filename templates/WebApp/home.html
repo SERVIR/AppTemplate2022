@@ -12,6 +12,8 @@
 {% block content %}
     <div class="align-items-center justify-content-between bg-gray-300">
         <div class="card">
+            <!-- Hero image in the home page -->
+            <!-- If there an image that represents the tool/organization, please update the src in the <img> below -->
             <div>
                 <img
                         class="img-fluid hero_style"
@@ -22,9 +24,11 @@
                 </div>
                 <div class="card-img-overlay ">
                     <div class="text-center text-white vertical_center">
+                        <!-- Title on the hero image-->
                         <p id="title_class">
                             SERVIR
                             Geospatial Application Template 2022 </p>
+                        <!-- Tagline under the title on the hero image-->
                         <p id="tagline_class">
                             This web application shows simple implementation of common user interface elements in
                             geospatial
@@ -35,34 +39,38 @@
                 </div>
             </div>
         </div>
-
+        <!-- Search bar -->
+        <!-- Search results are based on the title on the cards shown -->
         <div class="container-fluid">
             <div class="mt-4 form-outline">
                 <input type="search" id="searchBox" class="form-control" placeholder="Search for the app here..."
                        aria-label="Search"/>
             </div>
 
-            <!-- Page Heading -->
+            <!-- Application Template Cards -->
+            <!-- Looping through the list of cards to generate the interface that contains all the cards. This list can be updated in views.py -->
             <div class="row flex_cards">
 
                 {% for app_card in app_cards %}
 
                     <div class="app-card mb-4">
-                    <br>
-                    <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">{{ app_card.name }}</h6>
-                        </div>
-                        <div class="card-body card_bg" style="background-image: url('{{ app_card.background_image_url }}')">
-                            <div class="text-center">
-                                <a href='{{ app_card.url }}' class="stretched-link"></a>
+                        <br>
+                        <div class="card shadow mb-4 mr-4 h-100 img-thumbnail">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">{{ app_card.name }}</h6>
+                            </div>
+                            <div class="card-body card_bg"
+                                 style="background-image: url('{{ app_card.background_image_url }}')">
+                                <div class="text-center">
+                                    <a href='{{ app_card.url }}' class="stretched-link"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
 
-                <!-- Content Row -->
+                <!-- Description of the website -->
+                <!-- The description can be updated in the <p> tags below -->
                 <div class="row">`
                     <div class="col-lg-12 mb-4">
                         <br>

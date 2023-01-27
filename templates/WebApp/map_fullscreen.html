@@ -43,6 +43,8 @@
 {% block content %}
 
     <div class="container-fluid p-0  bg-gray-300">
+        <!-- Full Screen WMS map -->
+        <!-- This template can be used when there is a need to visualize GEE layers in a full screen page. To make any updates, visit map_fullscreen.js -->
 
         <div class="row">
                     <span
@@ -53,6 +55,8 @@
                     <label id="control_label">Map Control</label>
                     <a href="javascript:void(0)" onclick="closeNav()"> &times;</a>
                 </div>
+                <!-- Map Control -->
+                <!-- This is an side panel that has two collapsible tabs - Layers and Basemaps. -->
                 <div class="accordion" id="full_tab_container">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
@@ -62,6 +66,10 @@
                                 Layers
                             </button>
                         </h2>
+                        <!-- Tab pane: Layers -->
+                        <!-- This consists of CHIRPS and ESI Layers. More text about the layer can be added in the popover below
+                             There are opacity controls for the layer and legends are displayed right under the checked layer name-->
+
                         <div id="collapseFull" class="accordion-collapse collapse show"
                              aria-labelledby="headingOne" data-bs-parent="#full_tab_container">
                             <div class="accordion-body">
@@ -97,6 +105,9 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Tab pane: Basemaps -->
+                    <!-- This tab is used when there is a need to change basemaps. The basemaps used are present in basemaps.js -->
+
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

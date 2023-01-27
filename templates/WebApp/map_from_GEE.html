@@ -43,6 +43,9 @@
 
 
     <div class="container-fluid bg-gray-300">
+        <!-- Fixed Size GEE map -->
+        <!-- This template can be used when there is a need to visualize GEE layers in a fixed size panel. To make any updates, visit map_from_GEE.js -->
+
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <br>
@@ -61,6 +64,8 @@
                         <div id="map2">
 
                         </div>
+                        <!-- Map Control -->
+                        <!-- This is an overlay panel that has three tabs - Layers, Basemaps and Legends. -->
                         <div class="accordion" id="layer_manager_gee">
                             <div id="loading_gee">
                                 <div class="spinner-border text-secondary" role="status">
@@ -110,6 +115,10 @@
                                                         </button>
                                                     </li>
                                                 </ul>
+                                                <!-- Tab pane: Layers -->
+                                                <!-- This consists of Image Collection and User Asset Layers. More text about the layer can be added in the popover below
+                                                     There are opacity controls for the layer and legends are displayed in the 'Legends' tab based on the checkbox selection.-->
+
                                                 <div class="border-grey bg-white tab-content" id="layer_tab_content_gee"
                                                 >
                                                     <div class="tab-pane active  p-3 ml-3" id="layers"
@@ -157,6 +166,8 @@
                                                                step="0.01"/><label class="ml-1"
                                                                                    id="asset_opacity"></label>
                                                     </div>
+                                                    <!-- Tab pane: Basemaps -->
+                                                    <!-- This tab is used when there is a need to change basemaps. The basemaps used are present in basemaps.js -->
                                                     <div class="tab-pane" id="basemaps_gee" role="tabpanel"
                                                          aria-labelledby="basemaps_gee-tab">
                                                         <div class="card-body text-center">
@@ -202,16 +213,15 @@
 
 
                                                     </div>
+
+                                                    <!-- Tab pane: Legends -->
+                                                    <!-- This tab is used to display legend for the selected layer(s) -->
                                                     <div class="tab-pane pl-3" id="legends_gee" role="tabpanel"
                                                          aria-labelledby="legends_gee-tab">
 
                                                         <p class="mt-1">Legend for
                                                             the layer(s) selected</p>
                                                     </div>
-                                                    {#                                                    <div class="tab-pane p-3 ml-3" id="location_gee"#}
-                                                    {#                                                         role="tabpanel"#}
-                                                    {#                                                         aria-labelledby="location_gee-tab"><p>Enter location#}
-                                                    {#                                                        name and hit Enter to recenter the map</p></div>#}
                                                 </div>
                                             </div>
                                         </div>
@@ -224,6 +234,8 @@
                 </div>
             </div>
         </div>
+        <!-- Description -->
+        <!-- To update the description, edit the <div> with the class 'card-body' below -->
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow mb-4">
