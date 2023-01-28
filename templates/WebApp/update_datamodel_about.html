@@ -9,13 +9,33 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="alert">
-                        <strong>templates\WebApp\update_datamodel.html</strong> contains the HTML code to modify
-                        the text and graphics in this page.<br>
-                        <strong>WebApp\forms.py</strong> contains the form definition.
-                        <br>
-                        The code for this application is available <a
-                            href="https://github.com/SERVIR/AppTemplate2022">here</a>
+                    <div class="container">
+                        <h2>Update data model</h2>
+                        <p>This page is designed to add records to a data model.</p>
+                        <ul>
+                            <li>The layout and content of this page is defined in the template
+                                located at
+                                <mark>templates\WebApp\update_datamodel.html</mark>
+                                .
+                            </li>
+                            <li>For layout and styling we rely on standard bootstrap containers, however,
+                                you can add your own CSS classes in the
+                                <mark>WebApp\static\css\base.css</mark>
+                                files.
+                            </li>
+                            </li>
+                            <li>The code for this Django view is in the <strong>updates</strong> function, located in
+                                <mark>WebApp\views.py</mark>
+                            </li>
+                            <li>The URL for this page is defined through the <strong>urlpatterns</strong>
+                                array, in
+                                <mark>SERVIR_AppTemplate\urls.py</mark>
+                            </li>
+                            <li>The text for this popup window is located at
+                                <mark>templates\WebApp\update_datamodel_about.html</mark>
+                            </li>
+                        </ul>
+                        <p></p>
                     </div>
                 </div>
                 <div class="modal-footer">
