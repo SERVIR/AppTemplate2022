@@ -101,9 +101,11 @@ def updates(request):
                                  measurement_precip=request.POST["measurement_precip"])
             member.save()
             url = reverse('admin:%s_%s_change' % (member._meta.app_label, member._meta.model_name), args=[member.id])
-            messages.success(request,
-                             mark_safe('Data submitted! <a href="' + url + '">Go to this record in admin pages</a>'),
-                             extra_tags='form1')
+            if request.user.is_active and request.user.is_superuser:
+                messages.success(request, mark_safe('Data submitted! <a href="' + url + '">Go to this record in admin pages</a>'), extra_tags='form1')
+            else:
+                messages.success(request,
+                                 mark_safe('Data submitted!'), extra_tags='form1')
             form = MeasurementForm()
         else:
             messages.error(request, 'Invalid form submission.')

@@ -6,13 +6,13 @@
     <!-- Custom styles-->
 
     <!-- Custom scripts-->
-{#    <script>#}
-{#        setTimeout(function () {#}
-{#            if ($('#msg').length > 0) {#}
-{#                $('#msg').remove();#}
-{#            }#}
-{#        }, 5000);#}
-{#    </script>#}
+    {#    <script>#}
+    {#        setTimeout(function () {#}
+    {#            if ($('#msg').length > 0) {#}
+    {#                $('#msg').remove();#}
+    {#            }#}
+    {#        }, 5000);#}
+    {#    </script>#}
 {% endblock %}
 <!-- Begin Page Content -->
 {% block content %}
@@ -25,16 +25,14 @@
                 <h6 class="m-0 font-weight-bold text-primary">Add records to Measurements Table</h6>
             </div>
             <div class="card-body">
-                {% if user.is_superuser %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-
-
+                {% if user.is_authenticated %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     <form method="POST" action="">
 
                         {% csrf_token %}
