@@ -5,7 +5,6 @@ from WebApp.models import Measurement, Station, Organization
 
 # Measurement Form
 class MeasurementForm(forms.Form):
-    # #
     stations = forms.ModelChoiceField(label="Station", help_text="Select a station", queryset=Station.objects.all(),
 
                                       widget=widgets.Select(attrs={'class': 'form-control'}))
