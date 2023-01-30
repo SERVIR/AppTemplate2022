@@ -1,39 +1,22 @@
 // Ajax call to get the data using the parameters: ajax_url and ajax_data
 function ajax_call(ajax_url, ajax_data) {
-    if (ajax_url.substr(-1) !== "/") {
-        ajax_url = ajax_url.concat("/");
-    }
-    const csrftoken = getCookie('csrftoken');
     //update database
-    var xhr = $.ajax({
+    return $.ajax({
         type: "POST",
-        headers: {'X-CSRFToken': csrftoken},
-        url: ajax_url,
+        headers: {'X-CSRFToken': getCookie('csrftoken')},
+        url: ajax_url.replace(/\/?$/, '/'),
         dataType: "json",
         data: ajax_data
-    });
-
-    xhr.done(function (data) {
-
-        if ("success" in data) {
-            //console.log("success");
-        } else {
-            // console.log(xhr.responseText);
-        }
     })
         .fail(function (xhr, status, error) {
             console.log(xhr.responseText);
         });
-
-    return xhr;
-
 }
 
 // Set the parent div for a html object
 function set_parent(control, element) {
-    var htmlObject = control.getContainer();
-    var newParent = document.getElementById(element);
-    newParent.appendChild(htmlObject);
+    document.getElementById(element)
+        .appendChild(control.getContainer());
 }
 
 /**
@@ -56,3 +39,4 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+

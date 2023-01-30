@@ -1,22 +1,18 @@
-$('#loading_cserv').hide();
+const loading_cserv = $('#loading_cserv');
 // When a geojson file is uploaded, read the file and get the data for chart using get_chart function.
 $("#selectFiles").change(function (event) {
-    var uploadedFile = event.target.files[0];
-    var ext = uploadedFile.name.split('.')[1];
+    const uploadedFile = event.target.files[0];
+    const ext = uploadedFile.name.split('.')[1];
     if (ext in ["geojson", "json"]) {
         alert("Wrong file type == " + uploadedFile.type);
         return false;
     }
     if (uploadedFile) {
-        var readFile = new FileReader();
+        const readFile = new FileReader();
         readFile.onload = function (e) {
-
-            var contents = e.target.result;
-            var geom_data = contents;
             // Show the loading spinner
-            $('#loading_cserv').show();
-            get_chart(geom_data);
-
+            loading_cserv.show();
+            get_chart(e.target.result);
         };
         readFile.readAsText(uploadedFile);
     } else {
@@ -36,12 +32,11 @@ function get_chart(geom_data) {
         "geom_data": geom_data
     });
     xhr.done(function (result) {
-        let series = [];
         let ds_chirp = "CHIRP";
         let ds_chirps = "CHIRPS";
 
         let vals = result;  // result is a dictionary with keys as dataset names and values as list of values for each day
-        series = [{
+        const series = [{
             data: vals[ds_chirp],// list of values for each day for CHIRP
             name: ds_chirp,// name of the dataset
             color: "blue"
@@ -59,7 +54,7 @@ function get_chart(geom_data) {
                     events: {
                         // When the chart is loaded, display a message under the chart
                         load: function () {
-                            var label = this.renderer.label("Graph dates and times are in UTC time")
+                            const label = this.renderer.label("Graph dates and times are in UTC time")
                                 .css({
                                     width: '400px',
                                     fontSize: '12px'
@@ -145,7 +140,6 @@ function get_chart(geom_data) {
             }
         );
         // Hide the loading spinner
-        $('#loading_cserv').hide();
+        loading_cserv.hide();
     });
-
 }

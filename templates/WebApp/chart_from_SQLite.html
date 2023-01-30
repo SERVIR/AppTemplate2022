@@ -35,13 +35,19 @@
 
                     <!-- Card Body -->
                     <div class="card-body">
-                        <div id="loading_sql">
+                        <div id="loading_sql" style="display: none;">
                             <div class="spinner-border text-secondary" role="status">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
                         <label>Select the station to show: </label>
                         <select id="stations">
+                            <option value='default'>Select</option>
+                            {% for station in stations %}
+                                <option value="{{ station.station_id }}">{{ station.station_name }} </option>
+                            {% empty %}
+                                <option>Sorry, no athletes in this list.</option>
+                            {% endfor %}
                         </select>
 
                         <figure class="highcharts-figure">

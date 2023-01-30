@@ -1,9 +1,9 @@
-$('#loading_nc').hide();
+const loading_nc = $('#loading_nc');
 // When a geojson file is uploaded, read the file and get the data for chart using get_chart function.
 $("#selectFiles").change(function (event) {
-    var uploadedFile = event.target.files[0];
+    const uploadedFile = event.target.files[0];
 
-    var ext = uploadedFile.name.split('.')[1];
+    const ext = uploadedFile.name.split('.')[1];
     if (ext in ["geojson", "json"]) {
         alert("Wrong file type == " + uploadedFile.type);
         return false;
@@ -11,12 +11,10 @@ $("#selectFiles").change(function (event) {
 
     if (uploadedFile) {
         // Show the loading spinner
-        $('#loading_nc').show();
-        var readFile = new FileReader();
+        loading_nc.show();
+        const readFile = new FileReader();
         readFile.onload = function (e) {
-            var contents = e.target.result;
-            var geom_data = contents;
-            get_chart(geom_data);
+            get_chart(e.target.result);
         };
         readFile.readAsText(uploadedFile);
     } else {
@@ -50,7 +48,7 @@ function get_chart(geom_data) {
                 events: {
                     // When the chart is loaded, display a message under the chart
                     load: function () {
-                        var label = this.renderer.label($("#run_table option:selected").val() == "geos" ? "Graph dates and times are in Indian Std. Time" : "Graph dates and times are in UTC time")
+                        const label = this.renderer.label($("#run_table option:selected").val() === "geos" ? "Graph dates and times are in Indian Std. Time" : "Graph dates and times are in UTC time")
                             .css({
                                 width: '400px',
                                 fontSize: '12px'
@@ -139,5 +137,5 @@ function get_chart(geom_data) {
         });
     });
     // Hide the loading spinner
-    $('#loading_nc').hide();
+    loading_nc.hide();
 }

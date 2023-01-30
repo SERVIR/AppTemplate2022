@@ -67,7 +67,7 @@
                         <!-- Map Control -->
                         <!-- This is an overlay panel that has three tabs - Layers, Basemaps and Legends. -->
                         <div class="accordion" id="layer_manager_gee">
-                            <div id="loading_gee">
+                            <div id="loading_gee" style="display: none;">
                                 <div class="spinner-border text-secondary" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
@@ -140,9 +140,13 @@
 
                                                     </p>
 
-                                                        <input id="opacity_collection" type="range"
+                                                        <input id="opacity_collection"
+                                                               type="range"
                                                                max="1"
-                                                               min="0" step="0.01"/><label class="ml-1"
+                                                               min="0"
+                                                               step="0.01"
+                                                               style="display: none;"
+                                                        /><label class="ml-1"
                                                                                            id="collection_opacity"></label>
 
                                                         <p>
@@ -161,9 +165,13 @@
                                                                 <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
                                                         </p>
 
-                                                        <input id="opacity_asset" type="range"
-                                                               max="1" min="0"
-                                                               step="0.01"/><label class="ml-1"
+                                                        <input id="opacity_asset"
+                                                               type="range"
+                                                               max="1"
+                                                               min="0"
+                                                               step="0.01"
+                                                               style="display: none;'"
+                                                        /><label class="ml-1"
                                                                                    id="asset_opacity"></label>
                                                     </div>
                                                     <!-- Tab pane: Basemaps -->
