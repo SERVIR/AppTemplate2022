@@ -292,7 +292,7 @@ Github has full instructions for adding existing code to a new repo https://docs
                                                         
         
 6.  Now activate the alias file by running source /etc/profile.d/your\_project\_name\_alias.sh
-7.  Now u can start the site by running myappstart
+7.  Now you can start the site by running myappstart
 8.  When you need to pull any updates from github you will run the following
     1.  myapp (changing you to the home directory)
     2.  actmyapp (activating your environment)
