@@ -126,6 +126,74 @@ add_basemap = function (map_name) {
 
     }
 };
+
+// Add legend to the map for CHIRPS
+function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette, element) {
+    if (variable === "") {
+        var base_service_url = wms;
+
+        $.ajax({
+            url: base_service_url + "/legend?f=json",
+            type: "GET",
+            async: true,
+            crossDomain: true
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            console.warn(jqXHR + textStatus + errorThrown);
+        }).done(function (data, _textStatus, _jqXHR) {
+            if (data.errMsg) {
+                console.info(data.errMsg);
+            } else {
+                add_other_legend(data, dataset, wms);
+            }
+        });
+    } else {
+        var legend = L.control({});
+        var link = wms + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=" + variable + "&colorscalerange=" + colorscalerange + "&PALETTE=" + palette + "&transparent=TRUE";
+        legend.onAdd = function (map) {
+            var src = link;
+            var div = L.DomUtil.create('div', 'info legend');
+            div.innerHTML +=
+                '<img src="' + src + '" alt="legend">';
+            div.id = "legend_full_" + dataset;
+            div.className = "thredds-legend";
+            return div;
+        };
+        legend.addTo(map);
+        set_parent(legend, element);
+    }
+}
+// Remove legend from the map
+function remove_legend_fixed_size(val) {
+    document.getElementById("legend_full_" + val).remove();
+}
+// Add legend to the map for ESI
+function add_other_legend(response, dataset, base_service_url) {
+    var htmlString = "<table>";
+    for (var iCnt = 0; iCnt < response.layers.length; iCnt++) {
+        lyr = response.layers[iCnt];
+        if (lyr.layerId == 3) {
+            if (lyr.legend.length > 1) {
+                htmlString += "<tr><td colspan='2' style='font-weight:bold;'>" + dataset + "</td></tr>";
+                for (var jCnt = 0; jCnt < lyr.legend.length; jCnt++) {
+                    var src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[jCnt].url;
+                    var strlbl = lyr.legend[jCnt].label.replace("<Null>", "Null");
+                    htmlString += "<tr><td align='left'><img src=\"" + src + "\" alt ='' /></td><td>" + strlbl + "</td></tr>";
+                }
+            } else {
+                htmlString += "<tr><td colspan='2' class='tdLayerHeader' style='font-weight:bold;'>" + dataset + "</td></tr>";
+                var img_src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[0].url;
+                htmlString += "<tr><td colspan='2' ><img src=\"" + img_src + "\" alt ='' /></td></tr>";
+            }
+        }
+    }
+    htmlString += "</table>";
+    var div = document.createElement('div');
+    div.innerHTML += htmlString;
+    div.id = "legend_" + dataset;
+    div.className = "arcgis-legend";
+    document.getElementById("legend_full_"+dataset).appendChild(div);
+
+}
 // Add the Search Control to the map
 const search = new GeoSearch.GeoSearchControl({
     provider: new GeoSearch.OpenStreetMapProvider(),
