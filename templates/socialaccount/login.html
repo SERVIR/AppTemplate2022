@@ -36,15 +36,27 @@
 
 
 {% block content %}
-    <div style="min-height: calc(100vh - 190px)">
-        <form method="post">
+        <div class="container-fluid">
+         <div class="row mt-4 justify-content-center">
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Geospatial App Authentication</h6>
+                    </div>
+                    <div class="card-body">
+                         <form method="post">
             {% csrf_token %}
-            <h2 class="m-4 text-center">Geospatial App Authentication</h2>
-            <div class="customGPlusSignIn text-center mt-3" onclick="document.forms[0].submit();">
+            <div class="customGPlusSignIn text-center m-4" onclick="document.forms[0].submit();">
                 <span class="icon"></span>
                 <span class="buttonText">{% trans "Google Login" %}</span>
             </div>
 
         </form>
-    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
 {% endblock %}

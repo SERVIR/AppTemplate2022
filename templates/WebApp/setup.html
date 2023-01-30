@@ -5,13 +5,563 @@
 
 {% block title %}SERVIR AppTemplate - Home{% endblock %}
 {% block script %}
+    <link href="{% static '/css/about.css' %}" rel="stylesheet" type="text/css">
+
 {% endblock %}
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-lg-12 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Overview</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-left text-dark">
+                            <p>Using this app template to create your web application can save a significant amount of
+                                time and effort in the development process.
+                                The template includes many of the common features and functionality needed for data
+                                driven web applications.
+                                It also offers a responsive design that’s suitable for all kinds of devices.
+                                Overall, using this template can be an efficient and cost-effective way to build a web
+                                application that is functional and visually appealing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h1>Instructions</h1>
-                <p>We are working on adding the instructions to set up the app</p>
+            <div class="col-lg-12 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Requirements</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-left text-dark">
+                            <p>git (https://git-scm.com/download/)
+                            <p>
+                            <p>conda (https://conda.io/projects/conda/en/latest/user-guide/install/index.html)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recommendations</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-left text-dark">
+                            <ul>
+                                <li>
+                                    Clone and run the AppTemplate2022
+                                    This will give you the opportunity to see the look and feel of the application. You
+                                    will also be able to view the project structure and all of the template code. At
+                                    this stage you should start to think about which features would be useful in your
+                                    specific application.
+
+
+                                </li>
+                                <li>
+                                    Start a new project
+                                    This will allow you to have a unique project name that fits your purpose.
+
+                                </li>
+                                <li>
+                                    Bring the WebApp and templates directories from the AppTemplate2022 into your new
+                                    project.
+
+                                </li>
+                                <li>
+                                    Begin modifying the code to use just the features your application needs and connect
+                                    your data to the application.
+
+                                </li>
+                                <li>
+                                    Create a new github repo for your application where you can push updates for version
+                                    control as well as make it easier to get assistance when needed.
+
+
+                                </li>
+                                <li>
+                                    Publish your application to a web server.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mb-4 ">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">How to?</h6>
+                    </div>
+                    <div class="card-body">
+                        <ol>
+                            <li>
+                                <h5 class="card-title">Clone AppTemplate</h5>
+                                <ol>
+                                    <li>
+                                        Open a terminal or command prompt on your computer.
+                                    </li>
+                                    <li>
+                                        Navigate to the directory where you want to clone the repository.
+                                    </li>
+                                    <li>
+                                        Run the command git clone https://github.com/SERVIR/AppTemplate2022.git
+
+                                    </li>
+                                    <li>
+                                        Press Enter. This will start the cloning process and create a copy of the
+                                        repository on your computer in the current directory.
+
+                                    </li>
+                                    <li>
+                                        After the cloning process is finished, you will find a new directory named
+                                        AppTemplate2022. This directory contains the full copy of the repository
+                                        including all the files and the full git history.
+
+                                    </li>
+                                    <li>
+                                        You can navigate to the newly created directory and start checking it out.
+                                    </li>
+                                    <li>
+                                        To view the Earth Engine examples you will need an EE account, if you do not
+                                        currently have one you can sign up https://earthengine.google.com/signup
+                                    </li>
+                                    <li>
+                                        Next you will need to create a google cloud project where you will enable EE and
+                                        Google Authentication for your project. Navigate to
+                                        https://console.cloud.google.com/projectcreate
+
+                                    </li>
+                                    <li>
+                                        Follow the prompts to create the project, you may want to name it
+                                        Your_Project_Name so you can skip this part when you set up your application.
+                                    </li>
+                                    <li>
+                                        After you create the project you must select it from the dropdown in the top
+                                    </li>
+
+                                    <li>
+                                        In the left panel under APIs & Services click the "OAuth consent screen" link,
+                                        then fill out the form with the information for your application. There are a
+                                        few pages with choices, proceed when finished.
+
+                                    </li>
+                                    <li>
+                                        In the left panel click "Credentials" link
+
+                                    </li>
+                                    <li>
+                                        At the top left click + Create Credentials and select "OAuth 2.0 Client ID"
+
+                                    </li>
+                                    <li>
+                                        In the dropdown select "Web Application" and give a name.
+
+                                    </li>
+                                    <li>
+                                        In the App Domain fields use the the dev domains for example:
+                                        <ul>
+                                            <li>http://127.0.0.1:8000/
+
+                                            </li>
+                                            <li>http://127.0.0.1:8000/terms-privacy
+                                            </li>
+                                            <li>http://127.0.0.1:8000/terms-privacy</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Add Authorized JavaScript origins (you may enable multiple)
+                                        <ol>
+                                            <li>
+                                                Examples:
+                                                <ul>
+                                                    <li>http://localhost:8000</li>
+                                                    <li>http://127.0.0.1:8000</li>
+                                                    <li>https://your_domain</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        Add Authorized redirect URIs (you may enable multiple)
+                                        <ol>
+                                            <li>
+                                                Examples:
+                                                <ul>
+                                                    <li>http://localhost:8000/accounts/google/login/callback/
+                                                    </li>
+                                                    <li>http://127.0.0.1:8000/accounts/google/login/callback/</li>
+                                                    <li>https://your_domain/accounts/google/login/callback/</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </li>
+
+                                    <li>
+                                        Copy and save the Client ID and Client secret to your local machine (you will
+                                        need these later)
+
+                                    </li>
+                                    <li>
+                                        Click DOWNLOAD JSON and save
+                                    </li>
+                                    <li>
+                                        Click save
+                                    </li>
+                                    <li>
+                                        Click Enabled APIs & Services then click the + Enable APIS AND SERVICES link at
+                                        the top
+
+                                    </li>
+                                    <li>
+                                        Search for Earth Engine, click it, then click enable.
+
+                                    </li>
+                                    <li>
+                                        Click Create Credentials again and select service account
+                                        <ul>
+                                            <li>Fill out information and click CREATE AND CONTINUE.
+                                            </li>
+                                            <li>
+                                                Click Select a role and scroll to Earth Engine, then select Earth Engine
+                                                Resource Viewer
+
+                                            </li>
+                                            <li>Register the service account
+                                                https://signup.earthengine.google.com/#!/service_accounts
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Before you can run the application you will need to create a data.json file in
+                                        the root directory. In this file you will need the following:
+                                        <br>
+                                        <pre>
+                                            {
+                                              "SECRET_KEY": "your_secret_key",
+                                              "ALLOWED_HOSTS": ["localhost", "127.0.0.1"],
+                                              "CSRF_TRUSTED_ORIGINS": ["http://localhost:8000","http://127.0.0.1:8000"],
+                                              "private_key_json" : "your_json_key",
+                                              "DATA_DIR" : "your_data_path",
+                                              "service_account" : "your_service_acccount",
+                                              "sample_netCDF": "https://thredds.servirglobal.net/thredds/fileServer/mk_aqx/geos/20191123.nc"
+                                            }
+
+                                        </pre>
+
+
+                                        <ul>
+                                            <li>SECRET_KEY is any random string of characters</li>
+                                            <li>ALLOWED_HOSTS is the domain you will be accessing the site from, in
+                                                development it will be left as is, in production you will remove those
+                                                and add your actual domain
+                                            </li>
+
+                                            <li>CSRF_TRUSTED_ORIGINS: similar to above except this needs the http or
+                                                https protocol added
+                                            </li>
+                                            <li>private_key_json: is the json file you downloaded from the google
+                                                console
+                                            </li>
+
+                                            <li>DATA_DIR: is a path to any data that will need to be accessed. In the
+                                                AppTemplate you will also need the sample data which you can download
+                                                from
+                                                https://thredds.servirglobal.net/thredds/fileServer/mk_aqx/geos/20191123.nc
+                                                and place it in the DATA_DIR in a directory named geos
+                                            </li>
+                                            <li>Service_account is the service account you created above
+                                            </li>
+
+                                            <li>sample_netCDF is just a pointer to the download, there is no need to
+                                                change this.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        In the terminal run conda env create -f environment.yml
+
+                                    </li>
+                                    <li>
+                                        When the environment is created run conda activate SERVIR_AppTemplate
+
+                                    </li>
+                                    <li>
+                                        Run the command python manage.py migrate
+
+                                    </li>
+                                    <li>
+                                        Setup Site by running the following
+
+                                        <ul>
+                                            <li>python manage.py shell</li>
+                                            <li>from django.contrib.sites.models import Site</li>
+                                            <li>site = Site()</li>
+                                            <li>site.domain = '{REPLACE WITH YOUR DOMAIN}'</li>
+                                            <li>site.name = '{REPLACE WITH YOUR DOMAIN}'</li>
+                                            <li>site.save()</li>
+                                            <li>Site.objects.all().values()</li>
+                                            <li>exit()</li>
+                                            <li>Look for your domain in the printed QuerySet and the id of the object.
+                                                This is your SITE_ID which needs to be changed in settings.py if it is
+                                                not the same.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>Create a super user by running python manage.py createsuperuser</li>
+                                    <li>Start the server by running python manage.py runserver If you have an IDE like
+                                        PyCharm you can just set up the project to run with the Run/Debug
+                                        Configurations.
+                                    </li>
+                                    <li>Navigate to http://127.0.0.1:8000/admin/ and login with your superuser</li>
+                                    <li>Add a social application with your Client ID and Secret that you saved when
+                                        creating the credentials in the cloud console.
+                                    </li>
+                                    <li>While in the admin pages you should add a station or two, along with an
+                                        organization.
+                                    </li>
+                                    <li>Now you can open a browser and navigate to port http://127.0.0.1:8000/ unless
+                                        you specified a different port in your configuration.
+                                    </li>
+                                    <li>For the Chart from SQL Database to show data you will have to go to the “Use
+                                        forms to enter data” example and add some data points for it to graph.
+                                    </li>
+                                </ol>
+                            <li>
+                                <h5 class="card-title">Start new project</h5>
+                                <ol>
+                                    <li>Deactivate the SERVIR_AppTemplate environment with the command conda
+                                        deactivate
+                                    </li>
+                                    <li>Cd to where you would like to create your application. I recommend this be a
+                                        common development directory. You will create the specific directory with your
+                                        project name in the next few steps. My directory where I start all of my apps is
+                                        named websites.
+                                    </li>
+                                    <li>Copy the environment.yml file from the AppTemplate2022 directory into the
+                                        directory.
+                                    </li>
+                                    <li>Edit the environment.yml file changing only the name: Your_Project_Name</li>
+                                    <li>run In the terminal run conda env create -f environment.yml</li>
+                                    <li>When the environment is created run conda activate Your_Project_Name</li>
+                                    <li>Run the command django-admin startproject Your_Project_Name This will create the
+                                        directory with your project name as well as the necessary files to run a Django
+                                        project.
+                                    </li>
+                                    <li>Move the environment.yml from the current directory into Your_Project_Name</li>
+                                </ol>
+                            </li>
+                            <li>
+                                <h5 class="card-title">Bring directories over</h5>
+                                <ol>
+                                    <li>Copy WebApp, templates, data.json, and ur key.json file into the new project
+                                        directory
+                                    </li>
+                                    <li>Copy the SERVIR_AppTemplate/settings.py and overwrite the new existing one
+                                        located in Your_Project_Name/settings.py
+                                    </li>
+                                    <li>Edit settings.py find and replace SERVIR_AppTemplate with Your_Project_Name</li>
+                                    <li>Copy the SERVIR_AppTemplate/urls.py and overwrite the new existing one located
+                                        in Your_Project_Name/urls.py
+                                    </li>
+                                    <li>Copy the .gitignore file from the root directory of the project into the new
+                                        project directory
+                                    </li>
+                                    <li>Back in the terminal run python manage.py migrate</li>
+                                    <li>Setup Site by running the following
+                                        <ul>
+                                            <li>python manage.py shell</li>
+                                            <li>from django.contrib.sites.models import Site</li>
+                                            <li>site = Site()</li>
+                                            <li>site.domain = '{REPLACE WITH YOUR DOMAIN}'</li>
+                                            <li>site.name = '{REPLACE WITH YOUR DOMAIN}'</li>
+                                            <li>site.save()</li>
+                                            <li>Site.objects.all().values()</li>
+                                            <li>exit()</li>
+                                        </ul>
+                                    </li>
+                                    <li>Look for your domain in the printed QuerySet and the id of the object. This is
+                                        your SITE_ID which needs to be changed in settings.py if it is not the same.
+                                    </li>
+                                    <li>Create a super user by running python manage.py createsuperuser</li>
+                                    <li>Start the server by running python manage.py runserver If you have an IDE like
+                                        PyCharm you can just set up the project to run with the Run/Debug
+                                        Configurations.
+                                    </li>
+                                    <li>Navigate to http://127.0.0.1:8000/admin/ and login with your superuser</li>
+                                    <li>Add a social application with your Client ID and Secret that you saved when
+                                        creating the credentials in the cloud console. Move the domain in available
+                                        sites to Chosen sites and save.
+                                    </li>
+                                    <li>While in the admin pages you should add a station or two, along with an
+                                        organization.
+                                    </li>
+                                    <li>Now you can open a browser and navigate to port http://127.0.0.1:8000/ unless
+                                        you specified a different port in your configuration.
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <h5 class="card-title">Modify</h5>
+                                Now you can start modifying the site. You can start by mapping out what features you
+                                would like your application to have. Then reading the information in the “Learn how to
+                                modify this page” popup.
+                            </li>
+                            <li>
+                                <h5 class="card-title">Create repo
+                                </h5>
+                                Github has full instructions for adding existing code to a new repo
+                                https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github
+                            </li>
+                            <li>
+                                <h5 class="card-title">Publish</h5>
+                                <ol>
+                                    <li>Of course the endgame of this is to get your application published and visible
+                                        to the public. There are hundreds or likely thousands of ways to publish a
+                                        website. I will explain one of them, publishing to Ubuntu using nginx and
+                                        gunicorn. Feel free to publish differently if you would like.
+                                    </li>
+                                    <li>You will need conda, nginx, and gunicorn installed before you start. There are
+                                        enough resources explaining in depth how to install them, so I will avoid
+                                        duplicating this information.
+                                    </li>
+                                    <li>Follow the directions from Clone AppTemplate above using your repo that you just
+                                        created instead of the template. Make sure you use the domain that will be
+                                        pointing to your website instead of 127.0.0.1:8000 in all locations. Because
+                                        this is a production website, you will not need to runserver. So stop at
+                                        direction cc for now.
+                                    </li>
+                                    <li>Run the command python manage.py collectstatic</li>
+                                    <li>Add a service to start the application
+                                        <ol>
+                                            <li>Create a file located /etc/systemd/system name it
+                                                your_project_name.service Do not use and dashes.
+                                            </li>
+                                            <li>In the file edit and add the following
+                                                <pre>
+                                                    [Unit]
+                                                    Description=your_project_name daemon
+                                                    After=network.target
+
+                                                    [Service]
+                                                    User=nginx
+                                                    Group=nginx
+                                                    SocketUser=nginx
+                                                    WorkingDirectory={REPLACE WITH PATH TO APPLICATION ROOT}/your_project_name
+                                                    accesslog = "/var/log/your_project_name/your_project_name_gunicorn.log"
+                                                    errorlog = "/var/log/your_project_name/your_project_name_gunicornerror.log"
+                                                    ExecStart={REPLACE WITH FULL PATH TO gunicorn IN YOUR CONDA ENV}/bin/gunicorn --timeout 60 --workers 5 --pythonpath '{REPLACE WITH PATH TO APPLICATION ROOT},{REPLACE WITH FULL PATH TO YOUR CONDA ENV}/lib/python3.9/site-packages' --bind unix:{REPLACE WITH LOCATION YOU WANT THE SOCK}/your_project_name_prod.sock wsgi:application
+
+                                                    [Install]
+                                                    WantedBy=multi-user.target
+
+                                                </pre>
+                                            </li>
+                                            <li>Create a file in /etc/nginx/conf.d named your_project_name_prod.conf and
+                                                edit and paste the following
+                                            </li>
+                                            <pre>
+                                                upstream your_project_name_prod {
+                                                  server unix:{REPLACE WITH LOCATION YOU WANT THE SOCK}/your_project_name_prod.sock
+                                                  fail_timeout=0;
+                                                }
+
+                                                server {
+                                                    listen 443;
+                                                    server_name {REPLACE WITH YOUR DOMAIN};
+                                                    add_header Access-Control-Allow-Origin *;
+
+                                                    ssl on;
+                                                    ssl_certificate {REPLACE WITH FULL PATH TO CERT FILE};
+                                                    ssl_certificate_key {REPLACE WITH FULL PATH TO CERT KEY};
+
+                                                    # Some Settings that worked along the way
+                                                    client_max_body_size 8000M;
+                                                    client_body_buffer_size 8000M;
+                                                    client_body_timeout 120;
+
+                                                    proxy_read_timeout 300;
+                                                 proxy_connect_timeout 300;
+                                                    proxy_send_timeout 300;
+                                                    fastcgi_buffers 8 16k;
+                                                    fastcgi_buffer_size 32k;
+                                                    fastcgi_connect_timeout 90s;
+                                                    fastcgi_send_timeout 90s;
+                                                    fastcgi_read_timeout 90s;
+
+
+                                                    location = /favicon.ico { access_log off; log_not_found off; }
+                                                    location /static/ {
+                                                        autoindex on;
+                                                        alias /your_project_name/staticfiles/;
+                                                    }
+
+                                                    location / {
+                                                        proxy_set_header Host $http_host;
+                                                        proxy_set_header X-Real-IP $remote_addr;
+                                                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                                                        proxy_pass http://unix:{REPLACE WITH LOCATION YOU WANT THE SOCK}/your_project_name_prod.sock ;
+                                                    }
+
+
+                                                }
+
+                                                # Reroute any non https traffic to https
+                                                server {
+                                                    listen 80;
+                                                    server_name {REPLACE WITH YOUR DOMAIN};
+                                                    rewrite ^(.*) https://$server_name$1 permanent;
+                                                }
+
+                                            </pre>
+                                            <li>Create Alias commands to make starting the application simple by
+                                                creating a file located /etc/profile.d named your_project_alias.sh for
+                                                this you will need a short acronym for you application i’ll use myapp as
+                                                an example
+                                                <pre>
+                                                    alias myapp='cd {REPLACE WITH PATH TO APPLICATION ROOT}'
+                                                    alias actmyapp='conda activate your_project_name'
+                                                    alias uomyapp='sudo chown -R ${USER} {REPLACE WITH PATH TO APPLICATION ROOT}'
+                                                    alias somyapp='sudo chown -R www-data {REPLACE WITH PATH TO APPLICATION ROOT}'
+                                                    alias myappstart='sudo service your_project_name restart; sudo service nginx restart; somyapp'
+                                                    alias myappstop='sudo service your_project_name stop'
+                                                    alias myapprestart='myappstop; myappstart'
+
+                                                </pre>
+                                            </li>
+                                            <li>Now activate the alias file by running source
+                                                /etc/profile.d/your_project_name_alias.sh
+                                            </li>
+                                            <li>Now u can start the site by running myappstart</li>
+                                            <li>When you need to pull any updates from github you will run the following
+                                                <ol>
+                                                    <li>myapp (changing you to the home directory)</li>
+                                                    <li>actmyapp (activating your environment)</li>
+                                                    <li> uomyapp (taking ownership of the app directory)</li>
+                                                    <li>git pull (gets the updates)</li>
+                                                    <li>python manage.py collectstatic (collects the static files)</li>
+                                                    <li>myapprestart (starts the application and gives the server back
+                                                        the ownership of the directory)
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
