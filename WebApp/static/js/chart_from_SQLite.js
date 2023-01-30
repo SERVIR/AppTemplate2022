@@ -1,17 +1,8 @@
-$('#loading_sql').hide();
-// ajax call to get the station data from the SQLite database
-const xhr_stations = ajax_call("stations", {});
-xhr_stations.done(function (result) {
-        $('#stations').append("<option value='default'>Select</option>");
-        result.stations.map(function (st) {
-            $('#stations').append("<option value='" + st.station_id + "'>" + st.station_name + "</option>");
-        });
-    }
-);
+const loading_sql = $('#loading_sql');
 // When a station is selected, get the data for chart using get_chart function.
 $("#stations").change(function () {
     // Show the loading spinner
-    $('#loading_sql').show();
+    loading_sql.show();
     // ajax call to get the data for the selected station from the SQLite database
     const xhr = ajax_call("get-timeseries-sqlite", {
         "station": this.value
@@ -19,13 +10,13 @@ $("#stations").change(function () {
     xhr.done(function (result) {// result is a dictionary with keys as dataset names and values as list of values for each day
         let series = [
             {
-                data: result['plot_temp'],// list of temperature values for each day for the selected station
+                data: result.plot_temp,// list of temperature values for each day for the selected station
                 name: "Temperature",
                 color: "green",
                 yAxis: 0
             },
             {
-                data: result['plot_precip'],// list of precipitation values for each day for the selected station
+                data: result.plot_precip,// list of precipitation values for each day for the selected station
                 name: "Precipitation",
                 color: "lightblue",
                 yAxis: 1
@@ -107,5 +98,5 @@ $("#stations").change(function () {
         });
     });
     // Hide the loading spinner
-    $('#loading_sql').hide();
+    loading_sql.hide();
 });

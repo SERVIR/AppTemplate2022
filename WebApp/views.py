@@ -12,6 +12,8 @@ from WebApp.forms import MeasurementForm
 from WebApp.models import Measurement
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from WebApp.utils import get_stations
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 f = open(str(BASE_DIR) + '/data.json', )
 data = json.load(f)
@@ -74,7 +76,7 @@ def chart_climateserv(request):
 
 
 def chart_sqlite(request):
-    return render(request, 'WebApp/chart_from_SQLite.html', {})
+    return render(request, 'WebApp/chart_from_SQLite.html', get_stations())
 
 
 def about(request):

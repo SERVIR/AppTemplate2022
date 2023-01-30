@@ -58,7 +58,7 @@
                         <!-- Map Control -->
                         <!-- This is an overlay panel that has three tabs - Layers, Basemaps and Legends. -->
                         <div class="accordion" id="fixed_tab_container">
-                            <div id="loading_fixed">
+                            <div id="loading_fixed" style="display: none;">
                                 <div class="spinner-border text-secondary" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
@@ -132,9 +132,12 @@
                                                                 <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
                                                         </p>
 
-                                                        <input id="opacity_chirps" type="range"
+                                                        <input id="opacity_chirps"
+                                                               type="range"
                                                                max="1"
-                                                               min="0" step="0.01"/>
+                                                               min="0"
+                                                               step="0.01"
+                                                        style="display: none;"/>
                                                         <label
                                                                 class="ml-1"
                                                                 for="opacity_chirps"
@@ -152,9 +155,12 @@
                                                                 <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
                                                         </p>
 
-                                                        <input id="opacity_esi" type="range"
-                                                               max="1" min="0"
-                                                               step="0.01"/>
+                                                        <input id="opacity_esi"
+                                                               type="range"
+                                                               max="1"
+                                                               min="0"
+                                                               step="0.01"
+                                                        style="display: none;"/>
                                                         <label
                                                                 class="ml-1"
                                                                 for="opacity_esi"
