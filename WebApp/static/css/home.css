@@ -45,6 +45,38 @@
     width: 400px;
 }
 
-.card_bg{
+.card_bg {
     background-size: cover;
+}
+
+@media (max-width: 800px) {
+    .hero_style {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 610px) {
+    .hero_style {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 490px) {
+    #title_class {
+        font-size: 1.4em;
+    }
+
+    #tagline_class {
+        font-size: 1.1em
+    }
+}
+
+@media (max-width: 350px) {
+    #title_class {
+        font-size: 1.1em;
+    }
+
+    #tagline_class {
+        font-size: .9em
+    }
 }
