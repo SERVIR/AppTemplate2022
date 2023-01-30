@@ -154,7 +154,7 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
             var div = L.DomUtil.create('div', 'info legend');
             div.innerHTML +=
                 '<img src="' + src + '" alt="legend">';
-            div.id = "legend_full_" + dataset;
+            div.id = "legend_" + dataset;
             div.className = "thredds-legend";
             return div;
         };
@@ -164,7 +164,7 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
 }
 // Remove legend from the map
 function remove_legend_fixed_size(val) {
-    document.getElementById("legend_full_" + val).remove();
+    document.getElementById("legend_" + val).remove();
 }
 // Add legend to the map for ESI
 function add_other_legend(response, dataset, base_service_url) {
