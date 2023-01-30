@@ -117,16 +117,16 @@ conda (https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
     25. Click Select a role and scroll to Earth Engine, then select Earth Engine Resource Viewer
     26. Register the service account https://signup.earthengine.google.com/#!/service\_accounts
     27. Before you can run the application you will need to create a data.json file in the root directory. In this file you will need the following:  
-    
-                                                {
-                                                  "SECRET\_KEY": "your\_secret\_key",
-                                                  "ALLOWED\_HOSTS": \["localhost", "127.0.0.1"\],
-                                                  "CSRF\_TRUSTED\_ORIGINS": \["http://localhost:8000","http://127.0.0.1:8000"\],
-                                                  "private\_key\_json" : "your\_json\_key",
-                                                  "DATA\_DIR" : "your\_data\_path",
-                                                  "service\_account" : "your\_service\_acccount",
-                                                  "sample\_netCDF": "https://thredds.servirglobal.net/thredds/fileServer/mk\_aqx/geos/20191123.nc"
-                                                }
+        
+            {
+              "SECRET\_KEY": "your\_secret\_key",
+              "ALLOWED\_HOSTS": \["localhost", "127.0.0.1"\],
+              "CSRF\_TRUSTED\_ORIGINS": \["http://localhost:8000","http://127.0.0.1:8000"\],
+              "private\_key\_json" : "your\_json\_key",
+              "DATA\_DIR" : "your\_data\_path",
+              "service\_account" : "your\_service\_acccount",
+              "sample\_netCDF": "https://thredds.servirglobal.net/thredds/fileServer/mk\_aqx/geos/20191123.nc"
+            }
     28. SECRET\_KEY is any random string of characters
     29. ALLOWED\_HOSTS is the domain you will be accessing the site from, in development it will be left as is, in production you will remove those and add your actual domain
     30. CSRF\_TRUSTED\_ORIGINS: similar to above except this needs the http or https protocol added
