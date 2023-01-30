@@ -52,6 +52,7 @@
 @media (max-width: 800px) {
     .hero_style {
         height: 70vh;
+        min-height: 600px;
     }
 }
 
