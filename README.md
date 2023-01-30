@@ -178,14 +178,16 @@ conda (https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
 5.  Copy the .gitignore file from the root directory of the project into the new project directory
 6.  Back in the terminal run python manage.py migrate
 7.  Setup Site by running the following
-    *   python manage.py shell
-    *   from django.contrib.sites.models import Site
-    *   site = Site()
-    *   site.domain = '{REPLACE WITH YOUR DOMAIN}'
-    *   site.name = '{REPLACE WITH YOUR DOMAIN}'
-    *   site.save()
-    *   Site.objects.all().values()
-    *   exit()
+    ```
+       python manage.py shell
+       from django.contrib.sites.models import Site
+       site = Site()
+       site.domain = '{REPLACE WITH YOUR DOMAIN}'
+       site.name = '{REPLACE WITH YOUR DOMAIN}'
+       site.save()
+       Site.objects.all().values()
+       exit()
+    ```
 8.  Look for your domain in the printed QuerySet and the id of the object. This is your SITE\_ID which needs to be changed in settings.py if it is not the same.
 9.  Create a super user by running python manage.py createsuperuser
 10.  Start the server by running python manage.py runserver If you have an IDE like PyCharm you can just set up the project to run with the Run/Debug Configurations.
