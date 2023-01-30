@@ -1,4 +1,4 @@
-# About this Project
+### About this Project
 
 This repository is intended to be used as a base template to use for development of custom applications. It contains
 several commonly used elements implemented in separate pages so that developers can remove or combine them to build
@@ -11,7 +11,7 @@ interfaces addressing complex use-cases.
 * Bootstrap 5.2.2
 * Google Earth Engine Python API
 
-### Walkthrough
+### Walkthrough of the web application pages
 
 #### Home
 
@@ -302,7 +302,7 @@ Github has full instructions for adding existing code to a new repo https://docs
     6.  myapprestart (starts the application and gives the server back the ownership of the directory)
 
 
-## Contact
+### Contact
 
 Please feel free to contact us if you have any questions.
 
