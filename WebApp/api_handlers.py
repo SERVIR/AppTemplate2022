@@ -183,3 +183,4 @@ def get_gee_user_layer(request):
 @csrf_exempt
 def stations(request):
     return JsonResponse(get_stations())
+
