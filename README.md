@@ -64,9 +64,9 @@ on [https://startbootstrap.com/theme/sb-admin-2](https://startbootstrap.com/them
 ### Instructions to set up the Project
 ###### Requirements
 
-git (https://git-scm.com/download/)
+*   git (https://git-scm.com/download/)
 
-conda (https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
+*   conda (https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
 ###### Recommendations
 
 *   Clone and run the AppTemplate2022 This will give you the opportunity to see the look and feel of the application. You will also be able to view the project structure and all of the template code. At this stage you should start to think about which features would be useful in your specific application.
