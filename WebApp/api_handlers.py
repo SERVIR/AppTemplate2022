@@ -1,7 +1,6 @@
 import calendar
 import json
 import os
-import sqlite3
 import warnings
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -15,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from shapely.errors import ShapelyDeprecationWarning
 from shapely.geometry import Polygon
 
-from WebApp.models import Organization, Station, Measurement
+from WebApp.models import Measurement
 from WebApp.utils import get_stations
 
 warnings.filterwarnings("ignore", category=ShapelyDeprecationWarning)
