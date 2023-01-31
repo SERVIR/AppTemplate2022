@@ -7,6 +7,7 @@ from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from WebApp.forms import MeasurementForm
 from WebApp.models import Measurement
@@ -83,6 +84,7 @@ def about(request):
     return render(request, 'WebApp/about.html', {})
 
 
+@xframe_options_exempt
 def feedback(request):
     return render(request, 'WebApp/feedback.html', {})
 
