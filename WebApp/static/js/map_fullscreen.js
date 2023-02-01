@@ -6,11 +6,9 @@ const esi_full_opacity = $('#esi_full_opacity');
 let map;
 
 $(function () {
-    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-    [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 // Initialize with map control with basemap and time slider
     map = L.map('map3', {
-        zoomControl: false,
+        zoomControl: true,
         fullscreenControl: true,
         timeDimension: true,
         timeDimensionOptions: {
@@ -32,7 +30,7 @@ $(function () {
             }
         }, center: [42.35, -71.08], zoom: 3
     });
-    L.control.zoom({position: 'topright'}).addTo(map);
+    map.zoomControl.setPosition('topright');
     osm.addTo(map);
 // Initialize the WMS layers
     const chirpsTimeLayer = L.timeDimension.layer.wms(chirps, {

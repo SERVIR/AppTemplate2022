@@ -6,10 +6,6 @@ const asset_opacity = $('#asset_opacity');
 let map;
 
 $(function () {
-// Helpers to show/hide the popovers when the info button is clicked
-    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-    [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
-
 // Initialize with map control
     map = L.map('map2', {center: [42.35, -71.08], zoom: 3});
     osm.addTo(map);
@@ -30,14 +26,22 @@ $(function () {
             if (localStorage.getItem("gee_layer")) {
                 const item = JSON.parse(localStorage.getItem("gee_layer"));
                 const now = new Date();
-                if (now.getTime() - item.time < 24) {
-                    gee_layer = item.layer;
+                console.log("here");
+                if (now < item.time + 86400000) {
+                    gee_layer = L.tileLayer(item.layer._url, {
+                        zoom: 3,
+                        zIndex: 400,
+                        opacity: 0.5
+                    });
                 } else {
                     localStorage.removeItem(gee_layer);
                 }
             }
             // Add the layer to the map and legend in the Legends tab of the Map Control
             if (gee_layer) {
+                gee_layer.on('load', function () {
+                    loading_gee.hide();
+                });
                 gee_layer.addTo(map);
                 opacity_collection.show();
                 collection_opacity.text(Math.round(opacity_collection.val() * 100) + "%");
@@ -95,14 +99,21 @@ $(function () {
             if (localStorage.getItem("user_layer")) {
                 const item = JSON.parse(localStorage.getItem("user_layer"));
                 const now = new Date();
-                if (now.getTime() - item.time < 24) {
-                    user_layer = item.layer;
+                if (now < item.time + 86400000) {
+                    user_layer = gee_layer = L.tileLayer(item.layer._url, {
+                        zoom: 3,
+                        zIndex: 400,
+                        opacity: 0.5
+                    });
                 } else {
                     localStorage.removeItem(user_layer);
                 }
             }
             // Add the layer to the map and legend in the Legends tab of the Map Control
             if (user_layer) {
+                user_layer.on('load', function () {
+                    loading_gee.hide();
+                });
                 user_layer.addTo(map);
                 opacity_asset.show();
                 asset_opacity.text(Math.round(opacity_asset.val() * 100) + "%");
