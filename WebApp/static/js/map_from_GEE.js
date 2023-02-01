@@ -6,6 +6,12 @@ const asset_opacity = $('#asset_opacity');
 let map;
 
 $(function () {
+    // forcing update to new storage formatting, can safely remove after 48 hours
+    if(!localStorage.getItem("updated_format")){
+        localStorage.removeItem("gee_layer");
+        localStorage.removeItem("user_layer");
+        localStorage.setItem("updated_format", true);
+    }
 // Initialize with map control
     map = L.map('map2', {center: [42.35, -71.08], zoom: 3});
     osm.addTo(map);
@@ -27,13 +33,13 @@ $(function () {
                 const item = JSON.parse(localStorage.getItem("gee_layer"));
                 const now = new Date();
                 if (now < item.time + 86400000) {
-                    gee_layer = L.tileLayer(item.layer._url, {
+                    gee_layer = L.tileLayer(item.url, {
                         zoom: 3,
                         zIndex: 400,
                         opacity: 0.5
                     });
                 } else {
-                    localStorage.removeItem(gee_layer);
+                    localStorage.removeItem("gee_layer");
                 }
             }
             // Add the layer to the map and legend in the Legends tab of the Map Control
@@ -56,7 +62,7 @@ $(function () {
                     });
                     const now = new Date();
                     const item = {
-                        layer: gee_layer,
+                        url: gee_layer._url,
                         time: now.getTime(),
                     };
                     // Save the layer to local storage
@@ -99,13 +105,13 @@ $(function () {
                 const item = JSON.parse(localStorage.getItem("user_layer"));
                 const now = new Date();
                 if (now < item.time + 86400000) {
-                    user_layer = L.tileLayer(item.layer._url, {
+                    user_layer = L.tileLayer(item.url, {
                         zoom: 3,
                         zIndex: 400,
                         opacity: 0.5
                     });
                 } else {
-                    localStorage.removeItem(user_layer);
+                    localStorage.removeItem("user_layer");
                 }
             }
             // Add the layer to the map and legend in the Legends tab of the Map Control
@@ -121,7 +127,6 @@ $(function () {
             } else {
                 // If the layer is not in local storage, fetch it using ajax call
                 ajax_call("get-gee-user-layer", {}).done(function (data) {
-                    console.log(data.url);
                     user_layer = L.tileLayer(data.url, {
                         zoom: 3,
                         zIndex: 400,
@@ -129,7 +134,7 @@ $(function () {
                     });
                     const now = new Date();
                     const item = {
-                        layer: user_layer,
+                        url: user_layer._url,
                         time: now.getTime(),
                     };
                     // Save the layer to local storage
