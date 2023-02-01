@@ -26,7 +26,6 @@ $(function () {
             if (localStorage.getItem("gee_layer")) {
                 const item = JSON.parse(localStorage.getItem("gee_layer"));
                 const now = new Date();
-                console.log("here");
                 if (now < item.time + 86400000) {
                     gee_layer = L.tileLayer(item.layer._url, {
                         zoom: 3,
@@ -100,7 +99,7 @@ $(function () {
                 const item = JSON.parse(localStorage.getItem("user_layer"));
                 const now = new Date();
                 if (now < item.time + 86400000) {
-                    user_layer = gee_layer = L.tileLayer(item.layer._url, {
+                    user_layer = L.tileLayer(item.layer._url, {
                         zoom: 3,
                         zIndex: 400,
                         opacity: 0.5
