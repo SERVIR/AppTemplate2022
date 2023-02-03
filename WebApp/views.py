@@ -37,9 +37,7 @@ def home(request):
              'url': reverse('chart_sqlite')},
             {"name": "Use forms to enter data", "background_image_url": static("/images/cards/EnterData.jpg"),
              'url': reverse('updates')},
-            {"name": "Use forms to enter data", "background_image_url": static("/images/cards/EnterData.jpg"),
-             'url': reverse('updates')},
-            {"name": "Select AOI on a map", "background_image_url": static("/images/cards/full.PNG"),
+            {"name": "Select AOI on a map", "background_image_url": static("/images/cards/aoi.PNG"),
              'url': reverse('select_aoi')},
         ],
     }
