@@ -19,17 +19,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 
     <script src="{% static 'js/basemaps.js' %}"></script>
-    <style>
-        .leaflet-top.leaflet-right {
-        {#top:50px;#}
-
-        }
-    </style>
 
 {% endblock %}
 
 {% block content %}
     <div class="container-fluid bg-gray-300">
+        <!-- Select AOI -->
+        <!-- Allow the user to draw a polygon and download GEOJSON file for the same -->
 
         <div class="row">
             <div class="col-xl-12 col-lg-12">
@@ -80,8 +76,6 @@
             </div>
         </div>
     </div>
-
-
 
     <link rel="stylesheet" href="{% static '/css/common.css' %}">
     <script src="{% static 'js/select_aoi.js' %}"></script>
