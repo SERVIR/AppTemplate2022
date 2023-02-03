@@ -39,7 +39,7 @@ def home(request):
              'url': reverse('updates')},
             {"name": "Use forms to enter data", "background_image_url": static("/images/cards/EnterData.jpg"),
              'url': reverse('updates')},
-            {"name": "Select AOI on a map", "background_image_url": static("/images/cards/EnterData.jpg"),
+            {"name": "Select AOI on a map", "background_image_url": static("/images/cards/full.jpg"),
              'url': reverse('select_aoi')},
         ],
     }
