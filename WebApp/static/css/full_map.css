@@ -100,7 +100,12 @@
     height: calc(100vh - 166px);
     z-index: 99;
     margin-left: 5px;
+
 }
+.leaflet-top.leaflet-right {
+    margin-right: 20px;
+}
+
 
 @media screen and (max-height: 450px) {
     .sidenav {

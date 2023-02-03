@@ -20,9 +20,6 @@
     margin: 10px 17px 10px 0;
 }
 
-.leaflet-top.leaflet-right {
-    margin-right: 10px;
-}
 
 .leaflet-control-zoom.leaflet-bar.leaflet-control {
     width: 34px;
