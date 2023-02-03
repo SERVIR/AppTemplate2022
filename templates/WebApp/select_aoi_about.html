@@ -1,0 +1,52 @@
+{% block content %}
+    <!-- Learn how to modify -->
+    <!-- Update the text inside the div with "modal-body" class below in order to update the help info -->
+    <div class="modal fade" id="aoiModal" tabindex="-1" aria-labelledby="aoilModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="aoiModalLabel">About this page</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                 <div class="modal-body">
+                    <div class="container">
+                        <h2>Select AOI on a map</h2>
+                        <p>In this template we are using the map controls to draw a polygon and download GEOJSON file from the drawn polygon.</p>
+                        <ul>
+                            <li>The layout and content of this page is defined in the template
+                                located at
+                                <mark>templates\WebApp\select_aoi.html</mark>
+                                .
+                            </li>
+                            <li>For layout and styling we rely on standard bootstrap containers, however,
+                                you can add your own CSS classes in the
+                                <mark>WebApp\static\css\common.css</mark>
+                                file.
+                            </li>
+                            </li>
+                            <li>The custom interaction used for the search box is implemented through javaScript,
+                                in
+                                <mark>WebApp\static\js\select_aoi.js</mark>
+                                .
+                            </li>
+                            <li>The code for this Django view is in the <strong>select_aoi</strong> function, located in
+                                <mark>WebApp\views.py</mark>
+                            </li>
+                            <li>The URL for this page is defined through the <strong>urlpatterns</strong>
+                                array, in
+                                <mark>SERVIR_AppTemplate\urls.py</mark>
+                            </li>
+                            <li>The text for this popup window is located at
+                                <mark>templates\WebApp\select_aoi_about.html</mark>
+                            </li>
+                        </ul>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
