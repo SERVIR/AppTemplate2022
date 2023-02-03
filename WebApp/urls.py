@@ -16,6 +16,7 @@ urlpatterns = [
     path('setup/', views.setup, name='setup'),
     path('feedback/', views.feedback, name='feedback'),
     path('updates/', views.updates, name='updates'),
+    path('select_aoi', views.select_aoi, name='select_aoi'),
     path('chart_sqlite/stations/', api_handlers.stations, name='stations'),
     path('chart_from_netcdf/get-timeseries-netcdf/', api_handlers.get_timeseries_netcdf, name='get-timeseries-netcdf'),
     path('chart_climateserv/get-timeseries-climateserv/', api_handlers.get_timeseries_climateserv,

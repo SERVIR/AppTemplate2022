@@ -37,11 +37,18 @@ def home(request):
              'url': reverse('chart_sqlite')},
             {"name": "Use forms to enter data", "background_image_url": static("/images/cards/EnterData.jpg"),
              'url': reverse('updates')},
+            {"name": "Use forms to enter data", "background_image_url": static("/images/cards/EnterData.jpg"),
+             'url': reverse('updates')},
+            {"name": "Select AOI on a map", "background_image_url": static("/images/cards/EnterData.jpg"),
+             'url': reverse('select_aoi')},
         ],
     }
 
     return render(request, 'WebApp/home.html', context)
 
+@csrf_exempt
+def select_aoi(request):
+    return render(request, 'WebApp/select_aoi.html', {})
 
 def map_fixed_size(request):
     return render(request, 'WebApp/map_fixedsize.html', {})

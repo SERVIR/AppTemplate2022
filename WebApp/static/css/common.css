@@ -142,3 +142,17 @@ a.leaflet-bar-part.leaflet-bar-part-single {
         text-align: right;
     }
 }
+html, body {
+  height: 100%;
+}
+#map_aoi {
+    height: calc(100vh - 166px);
+}
+
+#export {
+    position: fixed;
+    z-index: 999;
+    height: 50px;
+    text-decoration: none;
+    padding-top: 10px;
+}
