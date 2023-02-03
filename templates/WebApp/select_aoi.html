@@ -4,11 +4,11 @@
 {% block script %}
     <!-- Custom styles-->
     <!-- Custom scripts-->
- <link rel="stylesheet"
+    <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.min.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
           integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
 
     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
             integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
@@ -16,24 +16,26 @@
             integrity="sha512-E0DKVahIg0p1UHR2Kf9NX7x7TUewJb30mxkxEm2qOYTVJObgsAGpEol9F6iK6oefCbkJiA4/i6fnTHzM6H1kEA=="
             crossorigin=""></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 
-        <script src="{% static 'js/basemaps.js' %}"></script>
+    <script src="{% static 'js/basemaps.js' %}"></script>
 
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid p-0  bg-gray-300">
-        <!-- Full Screen WMS map -->
-        <!-- This template can be used when there is a need to visualize GEE layers in a full screen page. To make any updates, visit map_fullscreen.js -->
+    <div class="row bg-white">
+        <div class="col-lg-12">
 
-        <div class="row">
-            <a id="export" class="col-12 text-center bg-white text-gray-700 align-content-center w-100" href="#">Download</a>
-<div id="map_aoi"></div>
+            <div>
 
-                        <link rel="stylesheet" href="{% static '/css/common.css' %}">
-                    <script src="{% static 'js/select_aoi.js' %}"></script>
-
+                <a id="export" class="text-gray-700 text-center" href="#">Download</a>
+            </div>
         </div>
     </div>
+
+    <div id="map_aoi"></div>
+
+    <link rel="stylesheet" href="{% static '/css/common.css' %}">
+    <script src="{% static 'js/select_aoi.js' %}"></script>
+
 {% endblock %}

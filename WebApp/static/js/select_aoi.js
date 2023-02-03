@@ -52,7 +52,7 @@ $(function () {
             var convertedData = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
             // Create export
             document.getElementById('export').setAttribute('href', 'data:' + convertedData);
-            document.getElementById('export').setAttribute('download', 'drawnItems.geojson');
+            document.getElementById('export').setAttribute('download', 'drawn_aoi.geojson');
         };
 
     });

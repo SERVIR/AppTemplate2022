@@ -155,4 +155,7 @@ html, body {
     height: 50px;
     text-decoration: none;
     padding-top: 10px;
+    width: 100%;
+    left: 0;
+    background: white;
 }
