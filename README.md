@@ -48,6 +48,12 @@ interfaces addressing complex use-cases.
   Here, you will see the form that allows you to enter details and submit to the server.
         ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/update.png?raw=true)
 
+#### Select AOI on map
+
+* This page lets the user draw a polygon and download corresponding GEOJSON file.
+        ![alt text](https://github.com/SERVIR/AppTemplate2022/blob/master/WebApp/static/images/readme/aoi.png?raw=true)
+
+
 #### About
 
 * This page has information about the project, team and logos
