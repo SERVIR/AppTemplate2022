@@ -143,16 +143,17 @@ html, body {
   height: 100%;
 }
 #map_aoi {
-    height: calc(100vh - 166px);
+    height: 600px;
+    margin-bottom: 20px;
 }
 
 #export {
-    position: fixed;
+    /*position: fixed;*/
     z-index: 999;
     height: 50px;
     text-decoration: none;
     padding-top: 10px;
-    width: 100%;
+    /*width: 100%;*/
     left: 0;
-    background: white;
+    /*background:gray;*/
 }

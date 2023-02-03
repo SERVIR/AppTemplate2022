@@ -43,6 +43,7 @@ $(function () {
     map.addControl(drawControlFull);
 
     map.on("draw:created", function (e) {
+        document.getElementById("export").style.display = "initial";
         //var drawn_layer = e.layer;
         var temp = drawnItems.addLayer(e.layer);
         document.getElementById('export').onclick = function (e) {

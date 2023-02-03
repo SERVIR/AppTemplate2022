@@ -21,7 +21,7 @@
     <script src="{% static 'js/basemaps.js' %}"></script>
     <style>
     .leaflet-top.leaflet-right{
-        top:50px;
+        {#top:50px;#}
 
     }
     </style>
@@ -29,17 +29,33 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row bg-white">
-        <div class="col-lg-12">
+    <div class="container-fluid bg-gray-300">
 
-            <div>
+            <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card mb-4 mt-4 shadow">
+                    <!-- Card Header -->
+                    <div
+                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Select AOI</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
 
-                <a id="export" class="text-gray-700 text-center" href="#">Download</a>
+                            <div id="map_aoi"></div>
+                        <a id="export" class="btn btn-primary text-center" >Download the GEOJSON</a><label class="ml-2">Please draw an area of interest before downloading.</label>
             </div>
-        </div>
+ <div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            </div>
     </div>
 
-    <div id="map_aoi"></div>
+
 
     <link rel="stylesheet" href="{% static '/css/common.css' %}">
     <script src="{% static 'js/select_aoi.js' %}"></script>
