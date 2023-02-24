@@ -1,0 +1,289 @@
+{% extends "WebApp/app_base.html" %}
+
+{% load static %}
+
+{% block title %}SERVIR AppTemplate - Home{% endblock %}
+{% block script %}
+    <!-- Leaflet-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+          integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+            integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <script src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js"
+            integrity="sha512-E0DKVahIg0p1UHR2Kf9NX7x7TUewJb30mxkxEm2qOYTVJObgsAGpEol9F6iK6oefCbkJiA4/i6fnTHzM6H1kEA=="
+            crossorigin=""></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="{% static '/js/L.Control.Opacity.js' %}"></script>
+    <link href="{% static '/css/L.Control.Opacity.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.5/leaflet-search.src.js"
+            integrity="sha512-PDM7dpetuBcPp2fV/ZyCj9BGV8ybPchsrSzQqVZ3WoM8YcxEa2lAj0n1+4MCRzgsEROmVTwQXGw0IrXCCgH+/Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static '/js/leaflet-providers.js' %}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+    <script src="{% static 'js/utils.js' %}"></script>
+
+    <script src="{% static 'js/basemaps.js' %}"></script>
+    <link
+            rel="stylesheet"
+            href="{% static '/css/geosearch.css' %}"
+    />
+
+    <link href="{% static '/css/map_chart.css' %}" rel="stylesheet"/>
+
+    <script src="{% static '/js/geosearch.umd.js' %}"></script>
+    <script src="{% static '/js/map_utils.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div id="map_chart" style="height:calc(100vh - 166px);">
+        </div>
+
+
+        <div id="slideOut">
+            <!--   // Tab -->
+            <div class="slideOutTab">
+                <div>
+                    <p>Chart/Data</p>
+                </div>
+            </div>
+
+            <div class="card shadow h-50">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Measurement Data</h6>
+                </div>
+                <div class="card-body overflow-auto">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                        <tr>
+                            <td>Date</td>
+                            <td>Prec</td>
+                            <td>Temp</td>
+                        </tr>
+                        </tr>
+                        </thead>
+                        {% if obj %}
+                            {% for i in obj %}
+
+                                <tr>
+                                    <td>{{ obj.date }}</td>
+                                    <td>{{ obj.prec }}</td>
+                                    <td>{{ obj.temp }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <script src="{% static '/js/map_chart.js' %}"></script>
+            <link rel="stylesheet" href="{% static 'css/common.css' %}">
+            <div class="card shadow h-50">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
+                </div>
+                <div class="card-body">
+
+                    <figure class="highcharts-figure h-100">
+                        <div id="chart-container_new"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+    </div>
+                            <div class="accordion" id="mc_tab_container">
+                            <div id="loading_mc" style="display: none;">
+                                <div class="spinner-border text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header d-flex" id="headingMC">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseMC" aria-expanded="true"
+                                            aria-controls="collapseMC">
+                                        Map Control
+                                    </button>
+                                </h2>
+                                <div id="collapseMC" class="accordion-collapse collapse show"
+                                     aria-labelledby="headingMC" data-bs-parent="#mc_tab_container">
+                                    <div class="accordion-body">
+                                        <div id="mc_tabs">
+                                            <div class="container mt-3">
+                                                <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="mc_tab_list"
+                                                    role="tablist">
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="active nav-link p-0" id="layers-tab"
+                                                                data-bs-toggle="tab"
+                                                                data-bs-target="#layers" type="button"
+                                                                role="tab"
+                                                                aria-controls="layers" aria-selected="true">
+                                                            Layers
+                                                        </button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="nav-link p-0" id="profile-tab"
+                                                                data-bs-toggle="tab"
+                                                                data-bs-target="#basemaps" type="button"
+                                                                role="tab"
+                                                                aria-controls="basemaps"
+                                                                aria-selected="false"> Basemaps
+                                                        </button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="nav-link p-0" id="legends-tab"
+                                                                data-bs-toggle="tab"
+                                                                data-bs-target="#legends" type="button"
+                                                                role="tab"
+                                                                aria-controls="legends"
+                                                                aria-selected="false"> Legends
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                                <!-- Tab pane: Layers -->
+                                                <!-- This consists of CHIRPS and ESI Layers. More text about the layer can be added in the popover below
+                                                     There are opacity controls for the layer and legends are displayed in the 'Legends' tab based on the checkbox selection.-->
+                                                <div class="border-grey bg-white tab-content">
+                                                    <div class="tab-pane active p-3 ml-3" id="layers"
+                                                         role="tabpanel"
+                                                         aria-labelledby="layers-tab">
+
+                                                        <p>
+
+                                                            <label class="form-check-label mt-2 w-75"
+                                                                   for="chirps"><input
+                                                                    class="form-check-input"
+                                                                    id="chirps" type="checkbox"/>CHIRPS
+                                                                Layer</label>
+
+                                                            <a role="button" href="#" data-bs-toggle="popover"
+                                                               title="CHIRPS dataset Info"
+                                                               data-bs-trigger="focus"
+                                                               data-bs-content="Use this space to offer a description of the dataset.
+                                                   For this template we are using CHIRPS Dataset.
+                                                   This is defined in the file filename.ext">
+                                                                <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                                        </p>
+
+                                                        <input id="opacity_chirps"
+                                                               type="range"
+                                                               max="1"
+                                                               min="0"
+                                                               step="0.01"
+                                                        style="display: none;"/>
+                                                        <label
+                                                                class="ml-1"
+                                                                for="opacity_chirps"
+                                                                id="chirps_opacity"></label>
+                                                        <p>
+                                                            <label class="form-check-label  mt-2 w-75"
+                                                                   for="esi"> <input class="form-check-input"
+                                                                                     id="esi" type="checkbox"/>ESI
+                                                                Layer</label>
+                                                            <a role="button" href="#" data-bs-toggle="popover"
+                                                               data-bs-trigger="focus" title="ESI dataset Info"
+                                                               data-bs-content="Use this space to offer a description of the dataset.
+                                                   For this template we are using ESI Dataset.
+                                                   This is defined in the file filename.ext">
+                                                                <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                                        </p>
+
+                                                        <input id="opacity_esi"
+                                                               type="range"
+                                                               max="1"
+                                                               min="0"
+                                                               step="0.01"
+                                                        style="display: none;"/>
+                                                        <label
+                                                                class="ml-1"
+                                                                for="opacity_esi"
+                                                                id="esi_opacity"></label>
+
+
+                                                    </div>
+                                                    <!-- Tab pane: Basemaps -->
+                                                    <!-- This tab is used when there is a need to change basemaps. The basemaps used are present in basemaps.js -->
+                                                    <div class="tab-pane" id="basemaps" role="tabpanel"
+                                                         aria-labelledby="basemaps-tab">
+                                                        <div class="card-body text-center">
+                                                            <div class="row row-centered pos d-block">
+                                                                <a id="osm" href="#"
+                                                                   onclick="add_basemap(this.id);"><img
+                                                                        src="{% static 'images/basemaps/osm.png' %}"
+                                                                        alt="img1" class="img-thumbnail">
+                                                                </a>
+
+                                                                <a id="topo" href="#"
+                                                                   onclick="add_basemap(this.id);"><img
+                                                                        src="{% static 'images/basemaps/topo.png' %}"
+                                                                        alt="img1" class="img-thumbnail">
+                                                                </a>
+
+                                                                <a id="gsatellite" href="#"
+                                                                   onclick="add_basemap(this.id);"><img
+                                                                        src="{% static 'images/basemaps/gsatellite.png' %}"
+                                                                        alt="img1" class="img-thumbnail">
+                                                                </a>
+
+                                                                <a id="satellite" href="#"
+                                                                   onclick="add_basemap(this.id);"><img
+                                                                        src="{% static 'images/basemaps/satellite.png' %}"
+                                                                        alt="img1" class="img-thumbnail">
+                                                                </a>
+
+                                                                <a id="terrain" href="#"
+                                                                   onclick="add_basemap(this.id);"><img
+                                                                        src="{% static 'images/basemaps/terrain.png' %}"
+                                                                        alt="img1" class="img-thumbnail">
+                                                                </a>
+
+                                                                <a id="delorme" href="#"
+                                                                   onclick="add_basemap(this.id);"><img
+                                                                        src="{% static 'images/basemaps/delorme.png' %}"
+                                                                        alt="img1" class="img-thumbnail">
+                                                                </a>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <!-- Tab pane: Legends -->
+                                                    <!-- This tab is used to display legend for the selected layer(s) -->
+                                                    <div class="tab-pane" id="legends" role="tabpanel"
+                                                         aria-labelledby="legends-tab"><p class="mt-1 ml-2">Legend for
+                                                        the layer(s) selected</p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+    {% include 'WebApp/map_fullscreen_about.html' %}
+{% endblock %}

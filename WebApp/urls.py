@@ -16,12 +16,16 @@ urlpatterns = [
     path('setup/', views.setup, name='setup'),
     path('feedback/', views.feedback, name='feedback'),
     path('updates/', views.updates, name='updates'),
-    path('select_aoi', views.select_aoi, name='select_aoi'),
+    path('select_aoi/', views.select_aoi, name='select_aoi'),
+
+    path('map_chart/', views.map_chart, name='map_chart'),
     path('chart_sqlite/stations/', api_handlers.stations, name='stations'),
     path('chart_from_netcdf/get-timeseries-netcdf/', api_handlers.get_timeseries_netcdf, name='get-timeseries-netcdf'),
     path('chart_climateserv/get-timeseries-climateserv/', api_handlers.get_timeseries_climateserv,
          name='get-timeseries-climateserv'),
     path('chart_sqlite/get-timeseries-sqlite/', api_handlers.get_timeseries_sqlite, name='get-timeseries-sqlite'),
+
+    path('map_chart/get-timeseries-sqlite/', api_handlers.get_timeseries_sqlite, name='get-timeseries-sqlite'),
     path('map_from_gee/get-gee-layer/', api_handlers.get_gee_layer, name='get-gee-layer'),
     path('map_from_gee/get-gee-user-layer/', api_handlers.get_gee_user_layer, name='get-gee-user-layer'),
 

@@ -1,0 +1,112 @@
+html {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+#map_chart {
+    height: calc(100vh - 166px);
+    /*width: 100%;*/
+    z-index: 9;
+    margin-left: 10px;
+
+}
+#chart-container_new{
+    height: 100%;
+}
+#slideOut {
+  padding:0px;
+  position: fixed;
+  width: 40rem;
+   height:calc(100vh - 166px);
+  top: 130px;
+  right: -800px;
+  z-index:10;
+  /* Animation  */
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+
+/* Display slideOut */
+
+.showSlideOut {
+  right: 0px !important;
+}
+
+.slideMap {
+  width: 60%;
+}
+
+
+/* Tab */
+
+.slideOutTab {
+  margin-top: 50px;
+  position: absolute;
+  left: -40px;
+  height: 200px;
+  width: 40px;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  background: white;
+  border-radius: 15px 0px 0px 15px
+}
+
+.slideOutTab div {
+  text-align: center;
+  position: relative;
+  right: 70px;
+  top: 90px;
+  background: white;
+  width: 180px;
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  writing-mode: lr-tb;
+}
+
+#mc_tab_container {
+    top: 14.5vh;
+    position: absolute;
+    z-index: 400;
+    left: 5vh;
+    max-width: 75%;
+}
+
+#fixed_tab_list {
+    font-size: smaller;
+}
+
+.tab-content {
+    height: 30vh;
+    overflow: auto;
+}
+
+#opacity_chirps, #opacity_esi {
+    accent-color: #0c1a4e;
+    background: #e3e6f0;
+    width: 12vw;
+    margin-bottom: 20px;
+}
+
+#basemaps, #layers {
+    overflow-y: auto;
+}
+
+#chirps_opacity, #esi_opacity {
+    display: contents;
+}
+
+#legend_chirps img {
+    background: black;
+    width: fit-content;
+    left: 10px;
+}
+
+#legend_esi img {
+    background: white;
+    width: fit-content;
+    left: 10px;
+
+}

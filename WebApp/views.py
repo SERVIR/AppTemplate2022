@@ -39,6 +39,8 @@ def home(request):
              'url': reverse('updates')},
             {"name": "Select AOI on a map", "background_image_url": static("/images/cards/aoi.PNG"),
              'url': reverse('select_aoi')},
+            {"name": "Map & Chart", "background_image_url": static("/images/cards/fixed.PNG"),
+             'url': reverse('map_chart')},
         ],
     }
 
@@ -47,6 +49,14 @@ def home(request):
 @csrf_exempt
 def select_aoi(request):
     return render(request, 'WebApp/select_aoi.html', {})
+
+@csrf_exempt
+def map_chart(request):
+    context={}
+    obj= Measurement.objects.all().first()
+    context={'obj':{'date':obj.measurement_date,'temp':obj.measurement_temp,'prec':obj.measurement_precip,}}
+    print(context)
+    return render(request, 'WebApp/map_chart.html', context)
 
 def map_fixed_size(request):
     return render(request, 'WebApp/map_fixedsize.html', {})
