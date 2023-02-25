@@ -118,13 +118,13 @@
 
                                                         <p>
 
-                                                            <label class="form-check-label mt-2 w-75"
+                                                            <label class="form-check-label w-75"
                                                                    for="chirps"><input
                                                                     class="form-check-input"
                                                                     id="chirps" type="checkbox"/>CHIRPS
                                                                 Layer</label>
 
-                                                            <a role="button" href="#" data-bs-toggle="popover"
+                                                            <a role="button" class="float-right" href="#" data-bs-toggle="popover"
                                                                title="CHIRPS dataset Info"
                                                                data-bs-trigger="focus"
                                                                data-bs-content="Use this space to offer a description of the dataset.
@@ -144,11 +144,11 @@
                                                                 for="opacity_chirps"
                                                                 id="chirps_opacity"></label>
                                                         <p>
-                                                            <label class="form-check-label  mt-2 w-75"
+                                                            <label class="form-check-label  w-75"
                                                                    for="esi"> <input class="form-check-input"
                                                                                      id="esi" type="checkbox"/>ESI
                                                                 Layer</label>
-                                                            <a role="button" href="#" data-bs-toggle="popover"
+                                                            <a role="button" class="float-right" href="#" data-bs-toggle="popover"
                                                                data-bs-trigger="focus" title="ESI dataset Info"
                                                                data-bs-content="Use this space to offer a description of the dataset.
                                                    For this template we are using ESI Dataset.
@@ -171,10 +171,10 @@
                                                     </div>
                                                     <!-- Tab pane: Basemaps -->
                                                     <!-- This tab is used when there is a need to change basemaps. The basemaps used are present in basemaps.js -->
-                                                    <div class="tab-pane" id="basemaps" role="tabpanel"
+                                                    <div class="tab-pane h-100 pt-3" id="basemaps" role="tabpanel"
                                                          aria-labelledby="basemaps-tab">
-                                                        <div class="card-body text-center">
-                                                            <div class="row row-centered pos d-block">
+                                                        <div class="h-100 text-center">
+                                                            <div class=" pos d-block">
                                                                 <a id="osm" href="#"
                                                                    onclick="add_basemap(this.id);"><img
                                                                         src="{% static 'images/basemaps/osm.png' %}"

@@ -9,7 +9,6 @@ const chirps_variable = 'precipitation_amount';
 const style = 'boxfill/apcp_surface';
 const colorscalerange = '0,5';
 
-
 $(function () {
 // Initialize with map control with basemap and time slider
     map = L.map('map', {
