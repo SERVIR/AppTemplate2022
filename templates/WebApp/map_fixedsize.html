@@ -235,12 +235,13 @@
                     </div>
                 </div>
             </div>
+        </div>
             <!-- Description -->
             <!-- To update the description, edit the <div> with the class 'card-body' below -->
-            <div class="row">
-                <div class="col-lg-12 mb-4">
-                    <div class="card shadow">
-                        <div class="card-header py-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">About WMS</h6>
                         </div>
                         <div class="card-body">
@@ -261,7 +262,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
             <div class="col">
                 <button type="button" class="btn btn-info" data-bs-toggle="modal"
                         data-bs-target="#fixedModal">
@@ -269,8 +270,9 @@
                 </button>
             </div>
         </div>
-        <br>
-    </div>
+                    <br>
+
+        </div>
     <link rel="stylesheet" href="{% static 'css/common.css' %}">
 
     {% include 'WebApp/map_fixedsize_about.html' %}

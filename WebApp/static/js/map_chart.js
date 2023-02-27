@@ -3,7 +3,7 @@
 
 $(function () {
 // Initialize with map control with basemap and time slider
-
+function get_chart(station_name) {
 
     const xhr = ajax_call("get-timeseries-sqlite", {
         "station": "Sample Station PQRST"
@@ -100,7 +100,7 @@ $(function () {
 
 
     });
-
+}
 
     const opacity_chirps = $('#opacity_chirps');
     const chirps_opacity = $('#chirps_opacity');
@@ -326,11 +326,15 @@ $(function () {
         map.zoomControl.setPosition('topleft');
 
     });
- function markerOnClick(e) {
+
+    function markerOnClick(e) {
         var customId = this.options.customId;
-        alert('cliked customId: ' + customId);
+
+        // alert('cliked customId: ' + customId);
+        get_chart(customId);
     }
-     const xhr1 = ajax_call("get-station-coords", {});
+
+    const xhr1 = ajax_call("get-station-coords", {});
     xhr1.done(function (result) {
         let i = 0;
         for (i = 0; i < result.stations.length; i++) {
@@ -338,21 +342,12 @@ $(function () {
                 title: result.stations[i].station_name,
                 clickable: true,
                 draggable: true,
-                customId: result.stations[i].station_id,
+                customId: result.stations[i].station_name,
             };
             // Creating a marker
             L.marker([result.stations[i].station_lat, result.stations[i].station_lon], markerOptions).addTo(map).on('click', markerOnClick);
-
         }
-
-
     });
 
-
-
-
-
-
-
-
+get_chart("Sample Station ABCDE");
 });

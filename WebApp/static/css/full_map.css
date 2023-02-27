@@ -12,7 +12,7 @@
 }
 
 .sidenav a {
-    padding: 0px 8px 8px 32px;
+    /*padding: 0px 8px 8px 32px;*/
     text-decoration: none;
     /*font-size: 25px;*/
     color: #818181;
@@ -65,10 +65,10 @@
     margin-bottom: 10px;
 }
 
-.full_map_popover {
-    padding-top: 0;
-    display: flex;
-}
+/*.full_map_popover {*/
+/*    padding-top: 0;*/
+/*    display: flex;*/
+/*}*/
 
 #layer-control-parent-id-full {
     padding: 0px;

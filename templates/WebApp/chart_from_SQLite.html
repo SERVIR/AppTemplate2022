@@ -14,7 +14,6 @@
 
     <!-- Custom styles-->
     <script src="{% static '/js/utils.js' %}"></script>
-    <link rel="stylesheet" href="{% static '/css/chart.css' %}">
 
 {% endblock %}
 
@@ -41,7 +40,7 @@
                             </div>
                         </div>
                         <label>Select the station to show: </label>
-                        <select id="stations">
+                        <select id="stations" class="form-control w-auto d-inline">
                             <option value='default'>Select</option>
                             {% for station in stations %}
                                 <option value="{{ station.station_id }}">{{ station.station_name }} </option>
@@ -67,6 +66,7 @@
         </div>
         <br>
     </div>
+    <link rel="stylesheet" href="{% static 'css/chart.css' %}">
 
     <script src="{% static '/js/chart_from_SQLite.js' %}"></script>
     {% include 'WebApp/chart_from_SQLite_about.html' %}
