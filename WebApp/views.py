@@ -54,7 +54,7 @@ def select_aoi(request):
 def map_chart(request):
     context={}
     obj= Measurement.objects.all().first()
-    context={'obj':{'date':obj.measurement_date,'temp':obj.measurement_temp,'prec':obj.measurement_precip,}}
+    context={'obj':{'temp':obj.measurement_temp,'prec':obj.measurement_precip,}}
     print(context)
     return render(request, 'WebApp/map_chart.html', context)
 

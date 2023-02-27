@@ -5,7 +5,6 @@ $(function () {
 // Initialize with map control with basemap and time slider
 
 
-
     const xhr = ajax_call("get-timeseries-sqlite", {
         "station": "Sample Station PQRST"
     });
@@ -100,25 +99,23 @@ $(function () {
         });
 
 
-
-        });
-
+    });
 
 
-const opacity_chirps = $('#opacity_chirps');
-const chirps_opacity = $('#chirps_opacity');
-const opacity_esi = $('#opacity_esi');
-const esi_opacity = $('#esi_opacity');
-const loading_fixed = $('#loading_mc');
-let map;
+    const opacity_chirps = $('#opacity_chirps');
+    const chirps_opacity = $('#chirps_opacity');
+    const opacity_esi = $('#opacity_esi');
+    const esi_opacity = $('#esi_opacity');
+    const loading_fixed = $('#loading_mc');
+    let map;
 // Variables for the WMS layers
-const chirps_variable = 'precipitation_amount';
-const style = 'boxfill/apcp_surface';
-const colorscalerange = '0,5';
+    const chirps_variable = 'precipitation_amount';
+    const style = 'boxfill/apcp_surface';
+    const colorscalerange = '0,5';
 
 
 // Initialize with map control with basemap and time slider
-     map = L.map('map_chart', {
+    map = L.map('map_chart', {
         fullscreenControl: true,
         timeDimension: true,
         timeDimensionOptions: {
@@ -141,7 +138,7 @@ const colorscalerange = '0,5';
         }, center: [42.35, -71.08], zoom: 3
     });
 
-     map.zoomControl.setPosition('topleft');
+    map.zoomControl.setPosition('topleft');
     osm.addTo(map);
 
     // Initialize the WMS layers
@@ -209,136 +206,153 @@ const colorscalerange = '0,5';
     }));
 
 
-
-
-
 // when the checkbox for 'CHIRPS Layer' is clicked, show/hide the layer
 
 // Remove all basemap layers from the map
-removeLayers = function () {
-    satellite.remove();
-    osm.remove();
-    OpenTopoMap.remove();
-    terrainLayer.remove();
-    deLormeLayer.remove();
-    gSatLayer.remove();
-};
+    removeLayers = function () {
+        satellite.remove();
+        osm.remove();
+        OpenTopoMap.remove();
+        terrainLayer.remove();
+        deLormeLayer.remove();
+        gSatLayer.remove();
+    };
 // Add selected basemap layer to the map
-add_basemap = function (map_name) {
-    removeLayers();
-    switch (map_name) {
-        case "osm":
-            osm.addTo(map);
-            break;
-        case "delorme":
-            deLormeLayer.addTo(map);
-            break;
-        case "satellite":
-            satellite.addTo(map);
-            break;
-        case "terrain":
-            terrainLayer.addTo(map);
-            break;
-        case "topo":
-            OpenTopoMap.addTo(map);
-            break;
-        case "gsatellite":
-            gSatLayer.addTo(map);
-            break;
-        default:
-            osm.addTo(map);
+    add_basemap = function (map_name) {
+        removeLayers();
+        switch (map_name) {
+            case "osm":
+                osm.addTo(map);
+                break;
+            case "delorme":
+                deLormeLayer.addTo(map);
+                break;
+            case "satellite":
+                satellite.addTo(map);
+                break;
+            case "terrain":
+                terrainLayer.addTo(map);
+                break;
+            case "topo":
+                OpenTopoMap.addTo(map);
+                break;
+            case "gsatellite":
+                gSatLayer.addTo(map);
+                break;
+            default:
+                osm.addTo(map);
 
-    }
-};
+        }
+    };
+
 // Add legend to the map for CHIRPS
-function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette, element) {
-    if (variable === "") {
-        $.ajax({
-            url: wms + "/legend?f=json",
-            type: "GET",
-            async: true,
-            crossDomain: true
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            console.warn(jqXHR + textStatus + errorThrown);
-        }).done(function (data, _textStatus, _jqXHR) {
-            if (data.errMsg) {
-                console.info(data.errMsg);
-            } else {
-                add_other_legend(data, dataset, wms);
-            }
-        });
-    } else {
-        const legend = L.control({});
-        const link = wms + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=" + variable + "&colorscalerange=" + colorscalerange + "&PALETTE=" + palette + "&transparent=TRUE";
-        legend.onAdd = function () {
-            const src = link;
-            const div = L.DomUtil.create('div', 'info legend');
-            div.innerHTML +=
-                '<img src="' + src + '" alt="legend">';
-            div.id = "legend_" + dataset;
-            div.className = "thredds-legend";
-            return div;
-        };
-        legend.addTo(map);
-        set_parent(legend, element);
-    }
-}
-// Remove legend from the map
-function remove_legend_fixed_size(val) {
-    document.getElementById("legend_" + val).remove();
-}
-// Add legend to the map for ESI
-function add_other_legend(response, dataset, base_service_url) {
-    let htmlString = "<table>";
-    for (let iCnt = 0; iCnt < response.layers.length; iCnt++) {
-        const lyr = response.layers[iCnt];
-        if (lyr.layerId === 3) {
-            if (lyr.legend.length > 1) {
-                htmlString += "<tr><td colspan='2' style='font-weight:bold;'>" + dataset + "</td></tr>";
-                for (let jCnt = 0; jCnt < lyr.legend.length; jCnt++) {
-                    const src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[jCnt].url;
-                    const strlbl = lyr.legend[jCnt].label.replace("<Null>", "Null");
-                    htmlString += "<tr><td><img src=\"" + src + "\" alt ='' /></td><td>" + strlbl + "</td></tr>";
+    function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette, element) {
+        if (variable === "") {
+            $.ajax({
+                url: wms + "/legend?f=json",
+                type: "GET",
+                async: true,
+                crossDomain: true
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.warn(jqXHR + textStatus + errorThrown);
+            }).done(function (data, _textStatus, _jqXHR) {
+                if (data.errMsg) {
+                    console.info(data.errMsg);
+                } else {
+                    add_other_legend(data, dataset, wms);
                 }
-            } else {
-                htmlString += "<tr><td colspan='2' class='tdLayerHeader' style='font-weight:bold;'>" + dataset + "</td></tr>";
-                const img_src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[0].url;
-                htmlString += "<tr><td colspan='2' ><img src=\"" + img_src + "\" alt ='' /></td></tr>";
-            }
+            });
+        } else {
+            const legend = L.control({});
+            const link = wms + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&LAYER=" + variable + "&colorscalerange=" + colorscalerange + "&PALETTE=" + palette + "&transparent=TRUE";
+            legend.onAdd = function () {
+                const src = link;
+                const div = L.DomUtil.create('div', 'info legend');
+                div.innerHTML +=
+                    '<img src="' + src + '" alt="legend">';
+                div.id = "legend_" + dataset;
+                div.className = "thredds-legend";
+                return div;
+            };
+            legend.addTo(map);
+            set_parent(legend, element);
         }
     }
-    htmlString += "</table>";
-    const div = document.createElement('div');
-    div.innerHTML += htmlString;
-    div.id = "legend_" + dataset;
-    div.className = "arcgis-legend";
-    document.getElementById("legends").appendChild(div);
 
-}
-   this.$slideOut = $('#slideOut');
+// Remove legend from the map
+    function remove_legend_fixed_size(val) {
+        document.getElementById("legend_" + val).remove();
+    }
 
-        // Slideout show
-        this.$slideOut.find('.slideOutTab').on('click', function () {
-            $("#slideOut").toggleClass('showSlideOut');
-            $("#map_chart").toggleClass('slideMap');
+// Add legend to the map for ESI
+    function add_other_legend(response, dataset, base_service_url) {
+        let htmlString = "<table>";
+        for (let iCnt = 0; iCnt < response.layers.length; iCnt++) {
+            const lyr = response.layers[iCnt];
+            if (lyr.layerId === 3) {
+                if (lyr.legend.length > 1) {
+                    htmlString += "<tr><td colspan='2' style='font-weight:bold;'>" + dataset + "</td></tr>";
+                    for (let jCnt = 0; jCnt < lyr.legend.length; jCnt++) {
+                        const src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[jCnt].url;
+                        const strlbl = lyr.legend[jCnt].label.replace("<Null>", "Null");
+                        htmlString += "<tr><td><img src=\"" + src + "\" alt ='' /></td><td>" + strlbl + "</td></tr>";
+                    }
+                } else {
+                    htmlString += "<tr><td colspan='2' class='tdLayerHeader' style='font-weight:bold;'>" + dataset + "</td></tr>";
+                    const img_src = base_service_url + "/" + lyr.layerId + "/images/" + lyr.legend[0].url;
+                    htmlString += "<tr><td colspan='2' ><img src=\"" + img_src + "\" alt ='' /></td></tr>";
+                }
+            }
+        }
+        htmlString += "</table>";
+        const div = document.createElement('div');
+        div.innerHTML += htmlString;
+        div.id = "legend_" + dataset;
+        div.className = "arcgis-legend";
+        document.getElementById("legends").appendChild(div);
 
-          map.invalidateSize() ;
-     map.zoomControl.setPosition('topleft');
+    }
 
-        });
-          var markerOptions = {
-            title: "MyLocation",
-            clickable: true,
-            draggable: true
-         };
-         // Creating a marker
-         var marker = L.marker([17.385044, 78.486671], markerOptions);
-L.marker([55.7522200, 37.6155600], {customId:"010000006148", icon: greenIcon, title:setMarkerTitle("010000006148")}).addTo(mymap).on('click', markerOnClick);
-         // Adding marker to the map
-         marker.addTo(map);
-         function markerOnClick(e) {
-    var customId = this.options.customId;
-    document.location.href = "/view/abonents/" + customId;
-}
+    this.$slideOut = $('#slideOut');
+
+    // Slideout show
+    this.$slideOut.find('.slideOutTab').on('click', function () {
+        $("#slideOut").toggleClass('showSlideOut');
+        $("#map_chart").toggleClass('slideMap');
+
+        map.invalidateSize();
+        map.setView([42.35, -71.08], 3, {animation: true});
+
+        map.zoomControl.setPosition('topleft');
+
+    });
+ function markerOnClick(e) {
+        var customId = this.options.customId;
+        alert('cliked customId: ' + customId);
+    }
+     const xhr1 = ajax_call("get-station-coords", {});
+    xhr1.done(function (result) {
+        let i = 0;
+        for (i = 0; i < result.stations.length; i++) {
+            var markerOptions = {
+                title: result.stations[i].station_name,
+                clickable: true,
+                draggable: true,
+                customId: result.stations[i].station_id,
+            };
+            // Creating a marker
+            L.marker([result.stations[i].station_lat, result.stations[i].station_lon], markerOptions).addTo(map).on('click', markerOnClick);
+
+        }
+
+
+    });
+
+
+
+
+
+
+
 
 });

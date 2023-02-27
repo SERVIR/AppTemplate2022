@@ -5,7 +5,7 @@ html {
 }
 #map_chart {
     height: calc(100vh - 166px);
-    /*width: 100%;*/
+    /*width:-webkit-fill-available;*/
     z-index: 9;
     margin-left: 10px;
 
@@ -35,7 +35,7 @@ html {
 }
 
 .slideMap {
-  width: 60%;
+  width: calc(100% - 40rem);
 }
 
 
@@ -109,4 +109,28 @@ html {
     width: fit-content;
     left: 10px;
 
+}
+#loading_mc {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 500;
+}
+
+#loading-image-mc {
+    z-index: 500;
+}
+.img-thumbnail {
+    height: 100px;
+    border: none;
+}
+a:hover{
+    text-decoration: none;
 }

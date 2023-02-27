@@ -22,6 +22,8 @@ urlpatterns = [
 
     path('map_chart/', views.map_chart, name='map_chart'),
     path('chart_sqlite/stations/', api_handlers.stations, name='stations'),
+
+    path('map_chart/get-station-coords/', api_handlers.stations, name='get-station-coords'),
     path('chart_from_netcdf/get-timeseries-netcdf/', api_handlers.get_timeseries_netcdf, name='get-timeseries-netcdf'),
     path('chart_climateserv/get-timeseries-climateserv/', api_handlers.get_timeseries_climateserv,
          name='get-timeseries-climateserv'),
