@@ -1,6 +1,7 @@
 name: SERVIR_AppTemplate
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - python=3.9
   - django=4.1
