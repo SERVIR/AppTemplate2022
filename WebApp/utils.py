@@ -8,6 +8,8 @@ def get_stations():
         for s in station_ids:
             stations.append(
                 {'station_name': list(Station.objects.filter(station_id=s).values_list('station_name', flat=True))[0],
+                 'station_lat': list(Station.objects.filter(station_id=s).values_list('station_lat', flat=True))[0],
+                    'station_lon': list(Station.objects.filter(station_id=s).values_list('station_lon', flat=True))[0],
                  'station_id': s})
 
         json_obj = {"stations": stations}

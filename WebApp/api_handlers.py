@@ -127,10 +127,9 @@ def get_timeseries_sqlite(request):
     try:
         station = request.POST["station"]  # Get the station name from the request
         if station != "default":
-            measurement_rows = Measurement.objects.all().filter(station_id=station).only("measurement_date",
+            measurement_rows = Measurement.objects.all().filter(station_id=3).only("measurement_date",
                                                                                          "measurement_temp",
                                                                                          "measurement_precip")[:10]
-
             for row in measurement_rows:
                 dt = row.measurement_date
                 time_stamp = calendar.timegm(dt.timetuple()) * 1000
