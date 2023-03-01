@@ -173,6 +173,12 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
         };
         legend.addTo(map);
         set_parent(legend, element);
+
+
+        var x = document.createElement("p");
+        var t = document.createTextNode(dataset);
+        x.appendChild(t);
+        document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
     }
 }
 // Remove legend from the map
@@ -206,4 +212,10 @@ function add_other_legend(response, dataset, base_service_url) {
     div.className = "arcgis-legend";
     document.getElementById("legends").appendChild(div);
 
+        var x = document.createElement("p");
+        x.id="a_esi";
+
+        var t = document.createTextNode(dataset);
+        x.appendChild(t);
+        document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
 }

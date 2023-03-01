@@ -2,7 +2,7 @@
 
 
 $(function () {
-// Initialize with map control with basemap and time slider
+
 function get_chart(station_name) {
 
     const xhr = ajax_call("get-timeseries-sqlite", {
@@ -39,7 +39,7 @@ function get_chart(station_name) {
             },
             // Set the title and title text style
             title: {
-                text: "Temperature & Precipitation (sample data)",
+                text: "Temperature & Precipitation ("+station_name+")",
                 style: {
                     fontSize: '14px'
                 }

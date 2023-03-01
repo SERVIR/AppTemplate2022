@@ -45,6 +45,8 @@
     <script src="{% static '/js/geosearch.umd.js' %}"></script>
     <script src="{% static '/js/map_utils.js' %}"></script>
 
+            <script src="{% static '/js/map_chart.js' %}"></script>
+
 {% endblock %}
 
 {% block content %}
@@ -66,6 +68,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Measurement Data</h6>
                 </div>
                 <div class="card-body overflow-auto">
+                <label>Select a date: </label>
 
                     <table class="table">
                         <thead>
@@ -90,14 +93,12 @@
                     </table>
                 </div>
             </div>
-            <script src="{% static '/js/map_chart.js' %}"></script>
             <link rel="stylesheet" href="{% static 'css/common.css' %}">
             <div class="card shadow h-50">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
                 </div>
                 <div class="card-body">
-
                     <figure class="highcharts-figure h-100">
                         <div id="chart-container_new"></div>
                     </figure>
@@ -125,7 +126,7 @@
                                      aria-labelledby="headingMC" data-bs-parent="#mc_tab_container">
                                     <div class="accordion-body">
                                         <div id="mc_tabs">
-                                            <div class="container mt-3">
+                                            <div class="">
                                                 <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="mc_tab_list"
                                                     role="tablist">
                                                     <li class="nav-item" role="presentation">
@@ -172,7 +173,7 @@
                                                                     id="chirps" type="checkbox"/>CHIRPS
                                                                 Layer</label>
 
-                                                            <a role="button" href="#" data-bs-toggle="popover"
+                                                            <a role="button" class="float-right pt-2" href="#" data-bs-toggle="popover"
                                                                title="CHIRPS dataset Info"
                                                                data-bs-trigger="focus"
                                                                data-bs-content="Use this space to offer a description of the dataset.
@@ -196,7 +197,7 @@
                                                                    for="esi"> <input class="form-check-input"
                                                                                      id="esi" type="checkbox"/>ESI
                                                                 Layer</label>
-                                                            <a role="button" href="#" data-bs-toggle="popover"
+                                                            <a role="button" class="float-right pt-2" href="#" data-bs-toggle="popover"
                                                                data-bs-trigger="focus" title="ESI dataset Info"
                                                                data-bs-content="Use this space to offer a description of the dataset.
                                                    For this template we are using ESI Dataset.

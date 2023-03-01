@@ -67,10 +67,10 @@ html {
 }
 
 #mc_tab_container {
-    top: 14.5vh;
+   top: 260px;
     position: absolute;
     z-index: 400;
-    left: 5vh;
+    left: 0.5vh;
     max-width: 75%;
 }
 
@@ -134,3 +134,6 @@ html {
 a:hover{
     text-decoration: none;
 }
+label{margin-left: 20px;}
+#datepicker{width:180px; margin: 0 20px 20px 20px;}
+#datepicker > span:hover{cursor: pointer;}
