@@ -83,7 +83,7 @@ on [https://startbootstrap.com/theme/sb-admin-2](https://startbootstrap.com/them
 *   Publish your application to a web server.
 ###### How to?
 
-1.  ##### Clone AppTemplate
+1. ##### Clone AppTemplate
     
     1.  Open a terminal or command prompt on your computer.
     2.  Navigate to the directory where you want to clone the repository.
@@ -164,50 +164,19 @@ on [https://startbootstrap.com/theme/sb-admin-2](https://startbootstrap.com/them
     45. While in the admin pages you should add a station or two, along with an organization.
     46. Now you can open a browser and navigate to port http://127.0.0.1:8000/ unless you specified a different port in your configuration.
     47. For the Chart from SQL Database to show data you will have to go to the “Use forms to enter data” example and add some data points for it to graph.
-2.  ##### Start new project
+2. ##### Start new project
 
-    1.  Deactivate the SERVIR\_AppTemplate environment with the command conda deactivate
-    2.  Cd to where you would like to create your application. I recommend this be a common development directory. You will create the specific directory with your project name in the next few steps. My directory where I start all of my apps is named websites.
-    3.  Copy the environment.yml file from the AppTemplate2022 directory into the directory.
-    4.  Edit the environment.yml file changing only the name: Your\_Project\_Name
-    5.  run In the terminal run conda env create -f environment.yml
-    6.  When the environment is created run conda activate Your\_Project\_Name
-    7.  Run the command django-admin startproject Your\_Project\_Name This will create the directory with your project name as well as the necessary files to run a Django project.
-    8.  Move the environment.yml from the current directory into Your\_Project\_Name
+    In a browser navigate to https://pypi.org/project/SERVIR-Template-CLI/ and follow the installation instructions. 
+    If you have already created the cloud application and keys from cloning, you may skip those steps and use the 
+    same ones rather than creating new ones.
 
-3.  ##### Bring directories over
-
-    1.  Copy WebApp, templates, data.json, and ur key.json file into the new project directory
-    2.  Copy the SERVIR\_AppTemplate/settings.py and overwrite the new existing one located in Your\_Project\_Name/settings.py
-    3.  Edit settings.py find and replace SERVIR\_AppTemplate with Your\_Project\_Name
-    4.  Copy the SERVIR\_AppTemplate/urls.py and overwrite the new existing one located in Your\_Project\_Name/urls.py
-    5.  Copy the .gitignore file from the root directory of the project into the new project directory
-    6.  Back in the terminal run python manage.py migrate
-    7.  Setup Site by running the following
-        ```
-           python manage.py shell
-           from django.contrib.sites.models import Site
-           site = Site()
-           site.domain = '{REPLACE WITH YOUR DOMAIN}'
-           site.name = '{REPLACE WITH YOUR DOMAIN}'
-           site.save()
-           Site.objects.all().values()
-           exit()
-        ```
-    8.  Look for your domain in the printed QuerySet and the id of the object. This is your SITE\_ID which needs to be changed in settings.py if it is not the same.
-    9.  Create a super user by running python manage.py createsuperuser
-    10.  Start the server by running python manage.py runserver If you have an IDE like PyCharm you can just set up the project to run with the Run/Debug Configurations.
-    11.  Navigate to http://127.0.0.1:8000/admin/ and login with your superuser
-    12.  Add a social application with your Client ID and Secret that you saved when creating the credentials in the cloud console. Move the domain in available sites to Chosen sites and save.
-    13.  While in the admin pages you should add a station or two, along with an organization.
-    14.  Now you can open a browser and navigate to port http://127.0.0.1:8000/ unless you specified a different port in your configuration.
-4.  ##### Modify
+3. ##### Modify
 
     Now you can start modifying the site. You can start by mapping out what features you would like your application to have. Then reading the information in the “Learn how to modify this page” popup.
-5.  ##### Create repo
+4. ##### Create repo
 
     Github has full instructions for adding existing code to a new repo https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github
-6.  ##### Publish
+5. ##### Publish
 
     1.  Of course the endgame of this is to get your application published and visible to the public. There are hundreds or likely thousands of ways to publish a website. I will explain one of them, publishing to Ubuntu using nginx and gunicorn. Feel free to publish differently if you would like.
     2.  You will need conda, nginx, and gunicorn installed before you start. There are enough resources explaining in depth how to install them, so I will avoid duplicating this information.
