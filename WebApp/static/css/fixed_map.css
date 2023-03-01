@@ -88,7 +88,7 @@
     padding-left: 10px;
 }
 
-.tab-pane#layers, .tab-pane#legends {
+.tab-pane#layers {
     padding-left: 1.5rem!important;
     padding-right: 1.5rem!important;
 }
@@ -112,15 +112,15 @@ border: 0;
 #legend_chirps {
 background: black;
 width: fit-content;
-left: 10px;
+/*left: 10px;*/
 }
 
 #legend_esi {
-margin-left: 10px;
+/*margin-left: 10px;*/
 }
 
 #legends {
-width: 90%;
+/*width: 90%;*/
 margin: auto;
 
 }
