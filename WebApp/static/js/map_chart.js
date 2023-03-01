@@ -1,5 +1,5 @@
 // Helpers to show/hide the popovers when the info button is clicked
-
+let map;
 
 $(function () {
 
@@ -107,7 +107,7 @@ function get_chart(station_name) {
     const opacity_esi = $('#opacity_esi');
     const esi_opacity = $('#esi_opacity');
     const loading_fixed = $('#loading_mc');
-    let map;
+
 // Variables for the WMS layers
     const chirps_variable = 'precipitation_amount';
     const style = 'boxfill/apcp_surface';

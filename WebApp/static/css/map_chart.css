@@ -21,7 +21,7 @@ html {
     position: fixed;
     width: 800px;
     height: calc(100vh - 166px);
-    top: 130px;
+    top: 116px;
     right: -800px;
     z-index: 10;
     /* Animation  */
@@ -74,7 +74,7 @@ html {
 #mc_tab_container {
     top: 260px;
     position: absolute;
-    z-index: 400;
+    z-index: 9;
     left: 0.5vh;
     max-width: 75%;
 }
@@ -162,5 +162,8 @@ label {
     }
     .showSlideOut .slideOutTab{
         right:calc(100vw - 40px);
+    }
+    #map_chart{
+        width:100vw;
     }
 }
