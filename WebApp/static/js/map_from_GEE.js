@@ -328,6 +328,10 @@ function add_legend(element, params) {
     //Add the legend to the 'legends_gee' div in map_from_GEE.html
     document.getElementById('legends_gee').appendChild(legend_container);
 
+        var x = document.createElement("p");
+        var t = document.createTextNode(element);
+        x.appendChild(t);
+        document.getElementById("legends_gee").insertBefore(x, document.getElementById("legend_" + element));
 }
 
 // Remove legend from the map
