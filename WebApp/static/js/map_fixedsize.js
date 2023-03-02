@@ -182,9 +182,12 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
         xx.appendChild(t);
         var x = document.createElement("div");
         x.appendChild(xx);
+                     x.style.clear="both";
+
         document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
             var linebreak = document.createElement("br");
         document.getElementById("legend_" + dataset).appendChild(linebreak);
+
         document.getElementById("a_chirps").addEventListener("click", function () {
 
             document.getElementById("legend_chirps").classList.toggle("legend-zeroheight");
@@ -230,9 +233,10 @@ function add_other_legend(response, dataset, base_service_url) {
     xx.href = "#";
  var x = document.createElement("div");
         x.appendChild(xx);
+                             x.style.clear="both";
+
     var t = document.createTextNode(dataset);
     xx.appendChild(t);
-    var linebreak = document.createElement("br");
 
     document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
 
