@@ -317,11 +317,13 @@ function get_chart(station_name) {
 
     // Slideout show
     this.$slideOut.find('.slideOutTab').on('click', function () {
+        const center = map.getCenter();
+        const zoom = map.getZoom();
         $("#slideOut").toggleClass('showSlideOut');
         $("#map_chart").toggleClass('slideMap');
 
         map.invalidateSize();
-        map.setView([12.9719, 77.5937], 3, {animation: true});
+        map.setView([center.lat, center.lng], zoom, {animation: true});
 
         map.zoomControl.setPosition('topleft');
 
