@@ -135,7 +135,7 @@ function get_chart(station_name) {
                 transitionTime: 250,
                 loop: true,
             }
-        }, center: [42.35, -71.08], zoom: 3
+        }, center: [12.9719, 77.5937], zoom: 3
     });
 
     map.zoomControl.setPosition('topleft');
@@ -321,7 +321,7 @@ function get_chart(station_name) {
         $("#map_chart").toggleClass('slideMap');
 
         map.invalidateSize();
-        map.setView([42.35, -71.08], 3, {animation: true});
+        map.setView([12.9719, 77.5937], 3, {animation: true});
 
         map.zoomControl.setPosition('topleft');
 
