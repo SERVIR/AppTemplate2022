@@ -150,3 +150,12 @@ html {
     height: 100%;
     overflow: hidden
 }
+.map-thumb-full {
+    float: left;
+    position: relative;
+    overflow: hidden;
+    max-height: 300px;
+    cursor: pointer;
+    margin: 5px;
+    max-width: calc(50% - 12px);
+}
