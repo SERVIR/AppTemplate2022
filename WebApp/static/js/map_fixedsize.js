@@ -175,10 +175,20 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
         set_parent(legend, element);
 
 
-        var x = document.createElement("p");
+        var xx = document.createElement("a");
+        xx.id = "a_chirps";
+        xx.href = "#";
         var t = document.createTextNode(dataset);
-        x.appendChild(t);
+        xx.appendChild(t);
+        var x = document.createElement("div");
+        x.appendChild(xx);
         document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
+            var linebreak = document.createElement("br");
+        document.getElementById("legend_" + dataset).appendChild(linebreak);
+        document.getElementById("a_chirps").addEventListener("click", function () {
+
+            document.getElementById("legend_chirps").classList.toggle("legend-zeroheight");
+        });
     }
 }
 
@@ -189,7 +199,7 @@ function remove_legend_fixed_size(val) {
 
 // Add legend to the map for ESI
 function add_other_legend(response, dataset, base_service_url) {
-    let htmlString = "<table>";
+   let htmlString = "<table id='esi_table'>";
     for (let iCnt = 0; iCnt < response.layers.length; iCnt++) {
         const lyr = response.layers[iCnt];
         if (lyr.layerId === 3) {
@@ -208,16 +218,28 @@ function add_other_legend(response, dataset, base_service_url) {
         }
     }
     htmlString += "</table>";
+
     const div = document.createElement('div');
     div.innerHTML += htmlString;
     div.id = "legend_" + dataset;
     div.className = "arcgis-legend";
     document.getElementById("legends").appendChild(div);
 
-    var x = document.createElement("p");
-    x.id = "a_esi";
-
+    var xx = document.createElement("a");
+    xx.id = "a_esi";
+    xx.href = "#";
+ var x = document.createElement("div");
+        x.appendChild(xx);
     var t = document.createTextNode(dataset);
-    x.appendChild(t);
+    xx.appendChild(t);
+    var linebreak = document.createElement("br");
+
     document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
+
+    document.getElementById("a_esi").addEventListener("click", function () {
+        document.getElementById("legend_esi").classList.toggle("arcgis-legend");
+
+        document.getElementById("esi_table").classList.toggle("legend-collapse");
+    });
+
 }
