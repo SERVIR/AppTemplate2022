@@ -198,6 +198,8 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
 // Remove legend from the map
 function remove_legend_fixed_size(val) {
     document.getElementById("legend_" + val).remove();
+
+    document.getElementById("a_" + val).remove();
 }
 
 // Add legend to the map for ESI
