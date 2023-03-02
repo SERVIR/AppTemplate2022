@@ -124,7 +124,7 @@
 
                                                 <div class="border-grey bg-white tab-content" id="layer_tab_content_gee"
                                                 >
-                                                    <div class="tab-pane active  p-3 ml-3" id="layers"
+                                                    <div class="tab-pane active  pt-2 ml-2" id="layers"
                                                          role="tabpanel"
                                                          aria-labelledby="layers-tab"><p>
                                                         <label class="form-check-label  w-75"
@@ -181,46 +181,52 @@
                                                     </div>
                                                     <!-- Tab pane: Basemaps -->
                                                     <!-- This tab is used when there is a need to change basemaps. The basemaps used are present in basemaps.js -->
-                                                    <div class="tab-pane  h-100 pt-3" id="basemaps_gee" role="tabpanel"
+                                                    <div class="tab-pane  h-100 pt-2 ml-2" id="basemaps_gee" role="tabpanel"
                                                          aria-labelledby="basemaps_gee-tab">
                                                         <div class="h-100 text-center">
                                                             <div class=" pos d-block">
-                                                                <a id="osm" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/osm.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="topo" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/topo.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="gsatellite" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/gsatellite.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="satellite" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/satellite.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="terrain" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/terrain.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="delorme" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/delorme.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
+                                                                <div class="map-thumb">
+                                                                    <a id="osm" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/osm.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="map-thumb">
+                                                                    <a id="topo" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/topo.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="map-thumb">
+                                                                    <a id="gsatellite" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/gsatellite.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="map-thumb">
+                                                                    <a id="satellite" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/satellite.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="map-thumb">
+                                                                    <a id="terrain" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/terrain.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="map-thumb">
+                                                                    <a id="delorme" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/delorme.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -255,7 +261,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">About GEE</h6>
                     </div>
                     <div class="card-body">
-                        <div class="text-left text-dark">
+                        <div class="text-left">
                             Google Earth Engine (GEE) is a very popular cloud-based platform for processing and
                             analyzing
                             geospatial data.
