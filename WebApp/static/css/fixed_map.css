@@ -4,6 +4,10 @@
     height: 600px;
 }
 
+.legend-collapse{
+    display:none;
+}
+
 #fixed_tab_container {
     top: 12vh;
     position: absolute;
@@ -127,4 +131,9 @@
 
 a:hover {
     text-decoration: none;
+}
+
+.legend-zeroheight{
+    max-height: 0;
+    overflow: hidden;
 }
