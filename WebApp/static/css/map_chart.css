@@ -136,7 +136,7 @@ html {
 }
 
 .img-thumbnail {
-    height: 100px;
+    /*height: 100px;*/
     border: none;
 }
 
@@ -169,4 +169,13 @@ label {
     #map_chart {
         width: 100vw;
     }
+}
+.map-thumb {
+    float: left;
+    position: relative;
+    overflow: hidden;
+    max-height: 300px;
+    cursor: pointer;
+    margin: 5px;
+    max-width: calc(25% - 12px);
 }

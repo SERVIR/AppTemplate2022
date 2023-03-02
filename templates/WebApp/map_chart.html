@@ -126,7 +126,7 @@
                  aria-labelledby="headingMC" data-bs-parent="#mc_tab_container">
                 <div class="accordion-body">
                     <div id="mc_tabs">
-                        <div class="container mt-3 outer-tabs">
+                        <div class="p-2 mt-3 outer-tabs">
                             <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="mc_tab_list"
                                 role="tablist">
                                 <li class="nav-item" role="presentation">
@@ -161,7 +161,7 @@
                             <!-- This consists of CHIRPS and ESI Layers. More text about the layer can be added in the popover below
                                  There are opacity controls for the layer and legends are displayed in the 'Legends' tab based on the checkbox selection.-->
                             <div class="border-grey bg-white tab-content">
-                                <div class="tab-pane active p-3 ml-3" id="layers"
+                                <div class="tab-pane active p-2" id="layers"
                                      role="tabpanel"
                                      aria-labelledby="layers-tab">
 
@@ -224,42 +224,48 @@
                                      aria-labelledby="basemaps-tab">
                                     <div class="h-100 text-center">
                                         <div class=" pos d-block">
+ <div class="map-thumb">
                                             <a id="osm" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/osm.png' %}"
                                                     alt="img1" class="img-thumbnail">
                                             </a>
-
+ </div>
+                                             <div class="map-thumb">
                                             <a id="topo" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/topo.png' %}"
                                                     alt="img1" class="img-thumbnail">
                                             </a>
-
+                                             </div>
+                                             <div class="map-thumb">
                                             <a id="gsatellite" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/gsatellite.png' %}"
                                                     alt="img1" class="img-thumbnail">
                                             </a>
-
+                                             </div>
+ <div class="map-thumb">
                                             <a id="satellite" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/satellite.png' %}"
                                                     alt="img1" class="img-thumbnail">
                                             </a>
-
+ </div>
+                                             <div class="map-thumb">
                                             <a id="terrain" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/terrain.png' %}"
                                                     alt="img1" class="img-thumbnail">
                                             </a>
-
+                                             </div>
+                                             <div class="map-thumb">
                                             <a id="delorme" href="#"
                                                onclick="add_basemap(this.id);"><img
                                                     src="{% static 'images/basemaps/delorme.png' %}"
                                                     alt="img1" class="img-thumbnail">
                                             </a>
-
+                                             </div>
                                         </div>
                                     </div>
 
@@ -268,8 +274,7 @@
                                 <!-- Tab pane: Legends -->
                                 <!-- This tab is used to display legend for the selected layer(s) -->
                                 <div class="tab-pane" id="legends" role="tabpanel"
-                                     aria-labelledby="legends-tab"><p class="mt-1 ml-2">Legend for
-                                    the layer(s) selected</p></div>
+                                     aria-labelledby="legends-tab"><p class="mt-1 ml-2"></p></div>
                             </div>
                         </div>
                     </div>
