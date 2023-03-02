@@ -6,12 +6,11 @@ from django.shortcuts import render
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.clickjacking import xframe_options_exempt
+from django.views.decorators.csrf import csrf_exempt
 
 from WebApp.forms import MeasurementForm
 from WebApp.models import Measurement
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from WebApp.utils import get_stations
 
@@ -46,17 +45,20 @@ def home(request):
 
     return render(request, 'WebApp/home.html', context)
 
+
 @csrf_exempt
 def select_aoi(request):
     return render(request, 'WebApp/select_aoi.html', {})
 
+
 @csrf_exempt
 def map_chart(request):
-    context={}
-    obj= Measurement.objects.all().first()
-    context={'obj':{'temp':obj.measurement_temp,'prec':obj.measurement_precip,}}
+    context = {}
+    obj = Measurement.objects.all().first()
+    context = {'obj': {'temp': obj.measurement_temp, 'prec': obj.measurement_precip, }}
     print(context)
     return render(request, 'WebApp/map_chart.html', context)
+
 
 def map_fixed_size(request):
     return render(request, 'WebApp/map_fixedsize.html', {})
@@ -121,7 +123,8 @@ def updates(request):
             member.save()
             url = reverse('admin:%s_%s_change' % (member._meta.app_label, member._meta.model_name), args=[member.id])
             if request.user.is_active and request.user.is_superuser:
-                messages.success(request, mark_safe('Data submitted! <a href="' + url + '">Go to this record in admin pages</a>'), extra_tags='form1')
+                messages.success(request, mark_safe(
+                    'Data submitted! <a href="' + url + '">Go to this record in admin pages</a>'), extra_tags='form1')
             else:
                 messages.success(request,
                                  mark_safe('Data submitted!'), extra_tags='form1')

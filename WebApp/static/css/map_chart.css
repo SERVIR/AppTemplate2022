@@ -161,10 +161,12 @@ label {
     #slideOut {
         width: calc(100% - 40px);
     }
-    .showSlideOut .slideOutTab{
-        right:calc(100vw - 40px);
+
+    .showSlideOut .slideOutTab {
+        right: calc(100vw - 40px);
     }
-    #map_chart{
-        width:100vw;
+
+    #map_chart {
+        width: 100vw;
     }
 }

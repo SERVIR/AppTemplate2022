@@ -67,11 +67,12 @@
                             <img src="{% static 'images/static_nc.PNG' %}" height="250px">
                         </div>
                         <br>
-
+                        <label class="d-block">Click on the 'Choose File' button below to upload a GeoJSON file of your
+                            choice. The chart will be updated with the data from the GeoJSON file. </label>
                         <label
-                                class="form-label" for="selectFiles">Click on the 'Choose File' button below to upload a GeoJSON file of your choice  <input type="file"
-                                                                                                  class="form-control"
-                                                                                                  id="selectFiles"/>
+                                class="form-label" for="selectFiles"> <input type="file"
+                                                                             class="form-control"
+                                                                             id="selectFiles"/>
                         </label>
                         <link rel="stylesheet" href="{% static 'css/common.css' %}">
 
@@ -91,6 +92,26 @@
                     </div>
                 </div>
             </div>
+            <!-- Description -->
+            <!-- To update the description, edit the <div> with the class 'card-body' below -->
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">About netCDF file</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-left text-dark">
+                            NetCDF (network Common Data Form) is a file format for storing multidimensional scientific
+                            data (variables) such as temperature,
+                            humidity, pressure, wind speed, and direction. Each of these variables can be displayed
+                            through a dimension (such as time) in ArcGIS by making a layer or table view from the netCDF
+                            file.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="col">
                 <button type="button" class="btn btn-info" data-bs-toggle="modal"
                         data-bs-target="#netcdfModal">
