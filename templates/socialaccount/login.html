@@ -36,27 +36,27 @@
 
 
 {% block content %}
-        <div class="container-fluid">
-         <div class="row mt-4 justify-content-center">
+    <div class="container-fluid">
+        <div class="row mt-4 justify-content-center">
             <div class="col-lg-6 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Geospatial App Authentication</h6>
                     </div>
                     <div class="card-body">
-                         <form method="post">
-            {% csrf_token %}
-            <div class="customGPlusSignIn text-center m-4" onclick="document.forms[0].submit();">
-                <span class="icon"></span>
-                <span class="buttonText">{% trans "Google Login" %}</span>
-            </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="customGPlusSignIn text-center m-4" onclick="document.forms[0].submit();">
+                                <span class="icon"></span>
+                                <span class="buttonText">{% trans "Google Login" %}</span>
+                            </div>
 
-        </form>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 
 {% endblock %}
