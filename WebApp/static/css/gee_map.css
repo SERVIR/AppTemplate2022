@@ -76,6 +76,23 @@
 }
 
 .img-thumbnail {
-    height: 100px;
-    border: none;
+    height: auto;
+    width: 100%;
+    border: 0;
+}
+
+
+.tab-pane#layers {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
+.map-thumb {
+    float: left;
+    position: relative;
+    overflow: hidden;
+    max-height: 300px;
+    cursor: pointer;
+    margin: 5px;
+    max-width: calc(33% - 12px);
 }
