@@ -45,7 +45,7 @@
     <script src="{% static '/js/geosearch.umd.js' %}"></script>
     <script src="{% static '/js/map_utils.js' %}"></script>
 
-            <script src="{% static '/js/map_chart.js' %}"></script>
+    <script src="{% static '/js/map_chart.js' %}"></script>
 
 {% endblock %}
 
@@ -68,7 +68,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Measurement Data</h6>
                 </div>
                 <div class="card-body overflow-auto">
-                <label>Select a date: </label>
+                    <label>Select a date: </label>
 
                     <table class="table">
                         <thead>
@@ -107,179 +107,179 @@
         </div>
 
     </div>
-                            <div class="accordion" id="mc_tab_container">
-                            <div id="loading_mc" style="display: none;">
-                                <div class="spinner-border text-secondary" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
+    <div class="accordion" id="mc_tab_container">
+        <div id="loading_mc" style="display: none;">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header d-flex" id="headingMC">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseMC" aria-expanded="true"
-                                            aria-controls="collapseMC">
-                                        Map Control
+        <div class="accordion-item">
+            <h2 class="accordion-header d-flex" id="headingMC">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseMC" aria-expanded="true"
+                        aria-controls="collapseMC">
+                    Map Control
+                </button>
+            </h2>
+            <div id="collapseMC" class="accordion-collapse collapse show"
+                 aria-labelledby="headingMC" data-bs-parent="#mc_tab_container">
+                <div class="accordion-body">
+                    <div id="mc_tabs">
+                        <div class="">
+                            <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="mc_tab_list"
+                                role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="active nav-link p-0" id="layers-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#layers" type="button"
+                                            role="tab"
+                                            aria-controls="layers" aria-selected="true">
+                                        Layers
                                     </button>
-                                </h2>
-                                <div id="collapseMC" class="accordion-collapse collapse show"
-                                     aria-labelledby="headingMC" data-bs-parent="#mc_tab_container">
-                                    <div class="accordion-body">
-                                        <div id="mc_tabs">
-                                            <div class="">
-                                                <ul class="m-0 nav nav-fill nav-justified nav-tabs" id="mc_tab_list"
-                                                    role="tablist">
-                                                    <li class="nav-item" role="presentation">
-                                                        <button class="active nav-link p-0" id="layers-tab"
-                                                                data-bs-toggle="tab"
-                                                                data-bs-target="#layers" type="button"
-                                                                role="tab"
-                                                                aria-controls="layers" aria-selected="true">
-                                                            Layers
-                                                        </button>
-                                                    </li>
-                                                    <li class="nav-item" role="presentation">
-                                                        <button class="nav-link p-0" id="profile-tab"
-                                                                data-bs-toggle="tab"
-                                                                data-bs-target="#basemaps" type="button"
-                                                                role="tab"
-                                                                aria-controls="basemaps"
-                                                                aria-selected="false"> Basemaps
-                                                        </button>
-                                                    </li>
-                                                    <li class="nav-item" role="presentation">
-                                                        <button class="nav-link p-0" id="legends-tab"
-                                                                data-bs-toggle="tab"
-                                                                data-bs-target="#legends" type="button"
-                                                                role="tab"
-                                                                aria-controls="legends"
-                                                                aria-selected="false"> Legends
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                                <!-- Tab pane: Layers -->
-                                                <!-- This consists of CHIRPS and ESI Layers. More text about the layer can be added in the popover below
-                                                     There are opacity controls for the layer and legends are displayed in the 'Legends' tab based on the checkbox selection.-->
-                                                <div class="border-grey bg-white tab-content">
-                                                    <div class="tab-pane active p-3 ml-3" id="layers"
-                                                         role="tabpanel"
-                                                         aria-labelledby="layers-tab">
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link p-0" id="profile-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#basemaps" type="button"
+                                            role="tab"
+                                            aria-controls="basemaps"
+                                            aria-selected="false"> Basemaps
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link p-0" id="legends-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#legends" type="button"
+                                            role="tab"
+                                            aria-controls="legends"
+                                            aria-selected="false"> Legends
+                                    </button>
+                                </li>
+                            </ul>
+                            <!-- Tab pane: Layers -->
+                            <!-- This consists of CHIRPS and ESI Layers. More text about the layer can be added in the popover below
+                                 There are opacity controls for the layer and legends are displayed in the 'Legends' tab based on the checkbox selection.-->
+                            <div class="border-grey bg-white tab-content">
+                                <div class="tab-pane active p-3 ml-3" id="layers"
+                                     role="tabpanel"
+                                     aria-labelledby="layers-tab">
 
-                                                        <p>
+                                    <p>
 
-                                                            <label class="form-check-label mt-2 w-75"
-                                                                   for="chirps"><input
-                                                                    class="form-check-input"
-                                                                    id="chirps" type="checkbox"/>CHIRPS
-                                                                Layer</label>
+                                        <label class="form-check-label mt-2 w-75"
+                                               for="chirps"><input
+                                                class="form-check-input"
+                                                id="chirps" type="checkbox"/>CHIRPS
+                                            Layer</label>
 
-                                                            <a role="button" class="float-right pt-2" href="#" data-bs-toggle="popover"
-                                                               title="CHIRPS dataset Info"
-                                                               data-bs-trigger="focus"
-                                                               data-bs-content="Use this space to offer a description of the dataset.
+                                        <a role="button" class="float-right pt-2" href="#" data-bs-toggle="popover"
+                                           title="CHIRPS dataset Info"
+                                           data-bs-trigger="focus"
+                                           data-bs-content="Use this space to offer a description of the dataset.
                                                    For this template we are using CHIRPS Dataset.
                                                    This is defined in the file filename.ext">
-                                                                <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
-                                                        </p>
+                                            <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                    </p>
 
-                                                        <input id="opacity_chirps"
-                                                               type="range"
-                                                               max="1"
-                                                               min="0"
-                                                               step="0.01"
-                                                        style="display: none;"/>
-                                                        <label
-                                                                class="ml-1"
-                                                                for="opacity_chirps"
-                                                                id="chirps_opacity"></label>
-                                                        <p>
-                                                            <label class="form-check-label  mt-2 w-75"
-                                                                   for="esi"> <input class="form-check-input"
-                                                                                     id="esi" type="checkbox"/>ESI
-                                                                Layer</label>
-                                                            <a role="button" class="float-right pt-2" href="#" data-bs-toggle="popover"
-                                                               data-bs-trigger="focus" title="ESI dataset Info"
-                                                               data-bs-content="Use this space to offer a description of the dataset.
+                                    <input id="opacity_chirps"
+                                           type="range"
+                                           max="1"
+                                           min="0"
+                                           step="0.01"
+                                           style="display: none;"/>
+                                    <label
+                                            class="ml-1"
+                                            for="opacity_chirps"
+                                            id="chirps_opacity"></label>
+                                    <p>
+                                        <label class="form-check-label  mt-2 w-75"
+                                               for="esi"> <input class="form-check-input"
+                                                                 id="esi" type="checkbox"/>ESI
+                                            Layer</label>
+                                        <a role="button" class="float-right pt-2" href="#" data-bs-toggle="popover"
+                                           data-bs-trigger="focus" title="ESI dataset Info"
+                                           data-bs-content="Use this space to offer a description of the dataset.
                                                    For this template we are using ESI Dataset.
                                                    This is defined in the file filename.ext">
-                                                                <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
-                                                        </p>
+                                            <i class="fa-solid fa-circle-info ml-2 info_btn"></i></a>
+                                    </p>
 
-                                                        <input id="opacity_esi"
-                                                               type="range"
-                                                               max="1"
-                                                               min="0"
-                                                               step="0.01"
-                                                        style="display: none;"/>
-                                                        <label
-                                                                class="ml-1"
-                                                                for="opacity_esi"
-                                                                id="esi_opacity"></label>
-
-
-                                                    </div>
-                                                    <!-- Tab pane: Basemaps -->
-                                                    <!-- This tab is used when there is a need to change basemaps. The basemaps used are present in basemaps.js -->
-                                                            <div class="tab-pane h-100 pt-3" id="basemaps" role="tabpanel"
-                                                         aria-labelledby="basemaps-tab">
-                                                        <div class="h-100 text-center">
-                                                            <div class=" pos d-block">
-                                                                <a id="osm" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/osm.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="topo" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/topo.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="gsatellite" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/gsatellite.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="satellite" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/satellite.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="terrain" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/terrain.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                                <a id="delorme" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/delorme.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-
-                                                            </div>
-                                                        </div>
+                                    <input id="opacity_esi"
+                                           type="range"
+                                           max="1"
+                                           min="0"
+                                           step="0.01"
+                                           style="display: none;"/>
+                                    <label
+                                            class="ml-1"
+                                            for="opacity_esi"
+                                            id="esi_opacity"></label>
 
 
-                                                    </div>
-                                                    <!-- Tab pane: Legends -->
-                                                    <!-- This tab is used to display legend for the selected layer(s) -->
-                                                    <div class="tab-pane" id="legends" role="tabpanel"
-                                                         aria-labelledby="legends-tab"><p class="mt-1 ml-2">Legend for
-                                                        the layer(s) selected</p></div>
-                                                </div>
-                                            </div>
+                                </div>
+                                <!-- Tab pane: Basemaps -->
+                                <!-- This tab is used when there is a need to change basemaps. The basemaps used are present in basemaps.js -->
+                                <div class="tab-pane h-100 pt-3" id="basemaps" role="tabpanel"
+                                     aria-labelledby="basemaps-tab">
+                                    <div class="h-100 text-center">
+                                        <div class=" pos d-block">
+                                            <a id="osm" href="#"
+                                               onclick="add_basemap(this.id);"><img
+                                                    src="{% static 'images/basemaps/osm.png' %}"
+                                                    alt="img1" class="img-thumbnail">
+                                            </a>
+
+                                            <a id="topo" href="#"
+                                               onclick="add_basemap(this.id);"><img
+                                                    src="{% static 'images/basemaps/topo.png' %}"
+                                                    alt="img1" class="img-thumbnail">
+                                            </a>
+
+                                            <a id="gsatellite" href="#"
+                                               onclick="add_basemap(this.id);"><img
+                                                    src="{% static 'images/basemaps/gsatellite.png' %}"
+                                                    alt="img1" class="img-thumbnail">
+                                            </a>
+
+                                            <a id="satellite" href="#"
+                                               onclick="add_basemap(this.id);"><img
+                                                    src="{% static 'images/basemaps/satellite.png' %}"
+                                                    alt="img1" class="img-thumbnail">
+                                            </a>
+
+                                            <a id="terrain" href="#"
+                                               onclick="add_basemap(this.id);"><img
+                                                    src="{% static 'images/basemaps/terrain.png' %}"
+                                                    alt="img1" class="img-thumbnail">
+                                            </a>
+
+                                            <a id="delorme" href="#"
+                                               onclick="add_basemap(this.id);"><img
+                                                    src="{% static 'images/basemaps/delorme.png' %}"
+                                                    alt="img1" class="img-thumbnail">
+                                            </a>
+
                                         </div>
                                     </div>
+
+
                                 </div>
-
+                                <!-- Tab pane: Legends -->
+                                <!-- This tab is used to display legend for the selected layer(s) -->
+                                <div class="tab-pane" id="legends" role="tabpanel"
+                                     aria-labelledby="legends-tab"><p class="mt-1 ml-2">Legend for
+                                    the layer(s) selected</p></div>
                             </div>
-
-
                         </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
 
 
 

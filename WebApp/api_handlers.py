@@ -128,8 +128,8 @@ def get_timeseries_sqlite(request):
         station = request.POST["station"]  # Get the station name from the request
         if station != "default":
             measurement_rows = Measurement.objects.all().filter(station_id=3).only("measurement_date",
-                                                                                         "measurement_temp",
-                                                                                         "measurement_precip")[:10]
+                                                                                   "measurement_temp",
+                                                                                   "measurement_precip")[:10]
             for row in measurement_rows:
                 dt = row.measurement_date
                 time_stamp = calendar.timegm(dt.timetuple()) * 1000
@@ -181,4 +181,3 @@ def get_gee_user_layer(request):
 @csrf_exempt
 def stations(request):
     return JsonResponse(get_stations())
-

@@ -1,12 +1,14 @@
 from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls.static import static
+
 import WebApp.views as views
 from WebApp import api_handlers
+
 urlpatterns = [
     path('', views.home, name='home'),
-    path('admin',    admin.site.urls),
+    path('admin', admin.site.urls),
     path('map_fixed_size/', views.map_fixed_size, name='map_fixed_size'),
     path('map_from_gee/', views.map_from_gee, name='map_from_gee'),
     path('map_full_screen/', views.map_full_screen, name='map_full_screen'),

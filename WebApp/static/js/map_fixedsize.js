@@ -103,7 +103,6 @@ $(function () {
 });
 
 
-
 // when the checkbox for 'CHIRPS Layer' is clicked, show/hide the layer
 
 // Remove all basemap layers from the map
@@ -142,6 +141,7 @@ add_basemap = function (map_name) {
 
     }
 };
+
 // Add legend to the map for CHIRPS
 function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette, element) {
     if (variable === "") {
@@ -181,10 +181,12 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
         document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
     }
 }
+
 // Remove legend from the map
 function remove_legend_fixed_size(val) {
     document.getElementById("legend_" + val).remove();
 }
+
 // Add legend to the map for ESI
 function add_other_legend(response, dataset, base_service_url) {
     let htmlString = "<table>";
@@ -212,10 +214,10 @@ function add_other_legend(response, dataset, base_service_url) {
     div.className = "arcgis-legend";
     document.getElementById("legends").appendChild(div);
 
-        var x = document.createElement("p");
-        x.id="a_esi";
+    var x = document.createElement("p");
+    x.id = "a_esi";
 
-        var t = document.createTextNode(dataset);
-        x.appendChild(t);
-        document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
+    var t = document.createTextNode(dataset);
+    x.appendChild(t);
+    document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
 }

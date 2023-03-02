@@ -89,41 +89,42 @@
 }
 
 .tab-pane#layers {
-    padding-left: 1.5rem!important;
-    padding-right: 1.5rem!important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
 }
 
 .map-thumb {
-float: left;
-position: relative;
-overflow: hidden;
-max-height: 300px;
-cursor: pointer;
-margin: 5px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    max-height: 300px;
+    cursor: pointer;
+    margin: 5px;
     max-width: calc(33% - 12px);
 }
 
 .img-thumbnail {
-width: 100%;
-height: auto;
-border: 0;
+    width: 100%;
+    height: auto;
+    border: 0;
 }
 
 #legend_chirps {
-background: black;
-width: fit-content;
-/*left: 10px;*/
+    background: black;
+    width: fit-content;
+    /*left: 10px;*/
 }
 
 #legend_esi {
-/*margin-left: 10px;*/
+    /*margin-left: 10px;*/
 }
 
 #legends {
-/*width: 90%;*/
-margin: auto;
+    /*width: 90%;*/
+    margin: auto;
 
 }
-a:hover{
-text-decoration: none;
+
+a:hover {
+    text-decoration: none;
 }

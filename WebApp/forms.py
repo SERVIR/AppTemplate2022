@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import widgets
-from WebApp.models import Measurement, Station, Organization
+
+from WebApp.models import Station
 
 
 # Measurement Form

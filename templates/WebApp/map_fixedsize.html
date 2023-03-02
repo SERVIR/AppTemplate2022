@@ -124,7 +124,8 @@
                                                                     id="chirps" type="checkbox"/>CHIRPS
                                                                 Layer</label>
 
-                                                            <a role="button" class="float-right" href="#" data-bs-toggle="popover"
+                                                            <a role="button" class="float-right" href="#"
+                                                               data-bs-toggle="popover"
                                                                title="CHIRPS dataset Info"
                                                                data-bs-trigger="focus"
                                                                data-bs-content="Use this space to offer a description of the dataset.
@@ -138,7 +139,7 @@
                                                                max="1"
                                                                min="0"
                                                                step="0.01"
-                                                        style="display: none;"/>
+                                                               style="display: none;"/>
                                                         <label
                                                                 class="ml-1"
                                                                 for="opacity_chirps"
@@ -148,7 +149,8 @@
                                                                    for="esi"> <input class="form-check-input"
                                                                                      id="esi" type="checkbox"/>ESI
                                                                 Layer</label>
-                                                            <a role="button" class="float-right" href="#" data-bs-toggle="popover"
+                                                            <a role="button" class="float-right" href="#"
+                                                               data-bs-toggle="popover"
                                                                data-bs-trigger="focus" title="ESI dataset Info"
                                                                data-bs-content="Use this space to offer a description of the dataset.
                                                    For this template we are using ESI Dataset.
@@ -161,7 +163,7 @@
                                                                max="1"
                                                                min="0"
                                                                step="0.01"
-                                                        style="display: none;"/>
+                                                               style="display: none;"/>
                                                         <label
                                                                 class="ml-1"
                                                                 for="opacity_esi"
@@ -175,47 +177,47 @@
                                                          aria-labelledby="basemaps-tab">
                                                         <div class="h-100 text-center">
                                                             <div class=" pos d-block">
-                                                            <div class="map-thumb">
-                                                                <a id="osm" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/osm.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
-                                                            </div>
                                                                 <div class="map-thumb">
-                                                                <a id="topo" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/topo.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
+                                                                    <a id="osm" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/osm.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
                                                                 </div>
                                                                 <div class="map-thumb">
-                                                                <a id="gsatellite" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/gsatellite.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
+                                                                    <a id="topo" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/topo.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
                                                                 </div>
                                                                 <div class="map-thumb">
-                                                                <a id="satellite" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/satellite.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
+                                                                    <a id="gsatellite" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/gsatellite.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
                                                                 </div>
                                                                 <div class="map-thumb">
-                                                                <a id="terrain" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/terrain.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
+                                                                    <a id="satellite" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/satellite.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
                                                                 </div>
                                                                 <div class="map-thumb">
-                                                                <a id="delorme" href="#"
-                                                                   onclick="add_basemap(this.id);"><img
-                                                                        src="{% static 'images/basemaps/delorme.png' %}"
-                                                                        alt="img1" class="img-thumbnail">
-                                                                </a>
+                                                                    <a id="terrain" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/terrain.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="map-thumb">
+                                                                    <a id="delorme" href="#"
+                                                                       onclick="add_basemap(this.id);"><img
+                                                                            src="{% static 'images/basemaps/delorme.png' %}"
+                                                                            alt="img1" class="img-thumbnail">
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -241,32 +243,32 @@
                 </div>
             </div>
         </div>
-            <!-- Description -->
-            <!-- To update the description, edit the <div> with the class 'card-body' below -->
+        <!-- Description -->
+        <!-- To update the description, edit the <div> with the class 'card-body' below -->
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">About WMS</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="text-left text-dark">
-                                WMS stands for web map services. This is one very common mechanism to
-                                show geospatial content. It is a standard recongized by the Open Geospatial
-                                Consortium.
-                                <hr>
-                                Usually, you can find WMS services from government agencies, universities, and other
-                                entities.
-                                WMS services are usually free to use. WMS services can be produced by a variety of
-                                software,
-                                the most common are ArcGIS for Server, GeoServer, and THREDDS.
-                                <hr>
-                                Web applications use common JS libraries such as Leaflet, OpenLayers and others to
-                                display WMS content.
-                            </div>
+                        <h6 class="m-0 font-weight-bold text-primary">About WMS</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-left text-dark">
+                            WMS stands for web map services. This is one very common mechanism to
+                            show geospatial content. It is a standard recongized by the Open Geospatial
+                            Consortium.
+                            <hr>
+                            Usually, you can find WMS services from government agencies, universities, and other
+                            entities.
+                            WMS services are usually free to use. WMS services can be produced by a variety of
+                            software,
+                            the most common are ArcGIS for Server, GeoServer, and THREDDS.
+                            <hr>
+                            Web applications use common JS libraries such as Leaflet, OpenLayers and others to
+                            display WMS content.
                         </div>
                     </div>
                 </div>
+            </div>
 
             <div class="col">
                 <button type="button" class="btn btn-info" data-bs-toggle="modal"
@@ -275,9 +277,9 @@
                 </button>
             </div>
         </div>
-                    <br>
+        <br>
 
-        </div>
+    </div>
     <link rel="stylesheet" href="{% static 'css/common.css' %}">
 
     {% include 'WebApp/map_fixedsize_about.html' %}

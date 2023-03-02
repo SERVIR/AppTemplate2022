@@ -32,10 +32,14 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
+                        <label class="d-block">Click on the 'Choose File' button below to upload a GeoJSON file of your
+                            choice. The chart will be updated with the data from the GeoJSON file. </label>
                         <label
-                                class="form-label" for="selectFiles">Upload your json file
-                            <input type="file" class="form-control" id="selectFiles"/>
+                                class="form-label" for="selectFiles"> <input type="file"
+                                                                             class="form-control"
+                                                                             id="selectFiles"/>
                         </label>
+
 
                         <div id="loading_cserv" style="display: none;">
                             <div class="spinner-border text-secondary" role="status">
@@ -50,6 +54,30 @@
                     </div>
                 </div>
             </div>
+            <!-- Description -->
+            <!-- To update the description, edit the <div> with the class 'card-body' below -->
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">About ClimateSERV</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-left text-dark">
+                            SERVIR has created a user-friendly, web-based tool -- ClimateSERV -- that provides three
+                            important datasets together in one system to help decision-makers in SERVIR's data-sparse
+                            regions
+                            assess the evolving situation via holistic analysis of water and agriculture. Using
+                            ClimateSERV, development practitioners, scientists/researchers, and government
+                            decision-makers can readily
+                            analyze historical rainfall for the past 30 years and compare it with the best available
+                            forecasts for the next 180 days for their defined area of interest to improve the
+                            understanding of, and
+                            make improved decisions for, issues related to agriculture and water availability
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col">
                 <button type="button" class="btn btn-info" data-bs-toggle="modal"
                         data-bs-target="#cservModal">
