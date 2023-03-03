@@ -181,3 +181,20 @@ def get_gee_user_layer(request):
 @csrf_exempt
 def stations(request):
     return JsonResponse(get_stations())
+
+
+def get_measurements(request):
+    obj = Measurement.objects.all().filter(measurement_date=request.POST["date"]).values("station__station_name",
+                                                                                         "measurement_precip",
+                                                                                         "measurement_temp")
+    json_obj = {}
+    resullt = []
+    print(obj)
+    for r in obj:
+        temp = r["measurement_temp"]
+        precip = r["measurement_precip"]
+        station = r["station__station_name"]
+        resullt.append({"station": station, "temp": temp, "precip": precip})
+    print(resullt)
+    json_obj["data"] = resullt
+    return JsonResponse(json_obj)

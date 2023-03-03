@@ -352,4 +352,36 @@ $(function () {
     });
 
     get_chart("Sample Station ABCDE");
+    var date_input = document.getElementById('date_input');
+    date_input.valueAsDate = new Date();
+
+    date_input.onchange = function () {
+        console.log(this.value);
+        const xhr1 = ajax_call("get-measurements", {"date": this.value});
+        xhr1.done(function (result) {
+            console.log(result['data']);
+
+            var arr = [];
+            for (let i = 0; i < result['data'].length; i++) {
+                var station = result['data'][i]['station'];
+                var prec = result['data'][i]['precip'];
+                var temp = result['data'][i]['temp'];
+                arr.push({"station": station, "prec": prec, "temp": temp});
+            }
+
+
+            const tableData = arr.map(value => {
+                return (
+                    `<tr>
+       <td>${value.station}</td>
+       <td>${value.prec}</td>
+       <td>${value.temp}</td>
+    </tr>`
+                );
+            }).join('');
+
+            const tableBody = document.querySelector("#tableBody");
+            tableBody.innerHTML = tableData;
+        });
+    };
 });

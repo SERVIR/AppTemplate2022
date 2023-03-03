@@ -54,9 +54,6 @@ def select_aoi(request):
 @csrf_exempt
 def map_chart(request):
     context = {}
-    obj = Measurement.objects.all().first()
-    context = {'obj': {'temp': obj.measurement_temp, 'prec': obj.measurement_precip, }}
-    print(context)
     return render(request, 'WebApp/map_chart.html', context)
 
 

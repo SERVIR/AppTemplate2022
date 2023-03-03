@@ -34,6 +34,7 @@ urlpatterns = [
     path('map_chart/get-timeseries-sqlite/', api_handlers.get_timeseries_sqlite, name='get-timeseries-sqlite'),
     path('map_from_gee/get-gee-layer/', api_handlers.get_gee_layer, name='get-gee-layer'),
     path('map_from_gee/get-gee-user-layer/', api_handlers.get_gee_user_layer, name='get-gee-user-layer'),
+    path('map_chart/get-measurements/', api_handlers.get_measurements, name='get-measurements'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

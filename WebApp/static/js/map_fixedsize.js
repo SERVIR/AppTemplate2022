@@ -182,10 +182,10 @@ function add_legend_fixed_size(dataset, wms, variable, colorscalerange, palette,
         xx.appendChild(t);
         var x = document.createElement("div");
         x.appendChild(xx);
-                     x.style.clear="both";
+        x.style.clear = "both";
 
         document.getElementById("legends").insertBefore(x, document.getElementById("legend_" + dataset));
-            var linebreak = document.createElement("br");
+        var linebreak = document.createElement("br");
         document.getElementById("legend_" + dataset).appendChild(linebreak);
 
         document.getElementById("a_chirps").addEventListener("click", function () {
@@ -204,7 +204,7 @@ function remove_legend_fixed_size(val) {
 
 // Add legend to the map for ESI
 function add_other_legend(response, dataset, base_service_url) {
-   let htmlString = "<table id='esi_table'>";
+    let htmlString = "<table id='esi_table'>";
     for (let iCnt = 0; iCnt < response.layers.length; iCnt++) {
         const lyr = response.layers[iCnt];
         if (lyr.layerId === 3) {
@@ -233,9 +233,9 @@ function add_other_legend(response, dataset, base_service_url) {
     var xx = document.createElement("a");
     xx.id = "a_esi";
     xx.href = "#";
- var x = document.createElement("div");
-        x.appendChild(xx);
-                             x.style.clear="both";
+    var x = document.createElement("div");
+    x.appendChild(xx);
+    x.style.clear = "both";
 
     var t = document.createTextNode(dataset);
     xx.appendChild(t);

@@ -107,10 +107,11 @@
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
                                        data-bs-toggle="dropdown">{{ user.username }} </a>
                                     <ul class="dropdown-menu" id="details" style="margin-top: 3vh">
-                                        <li><a class="dropdown-item" href="/accounts/logout/?next={{request.path}}">Log Out</a></li>
+                                        <li><a class="dropdown-item" href="/accounts/logout/?next={{ request.path }}">Log
+                                            Out</a></li>
                                     </ul>
                                 {% else %}
-                                    <a class="nav-link" href="/accounts/google/login/?next={{request.path}}">
+                                    <a class="nav-link" href="/accounts/google/login/?next={{ request.path }}">
                                         Login
                                     </a>
                                 {% endif %}

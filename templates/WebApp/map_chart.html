@@ -67,30 +67,30 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Measurement Data</h6>
                 </div>
-                <div class="card-body overflow-auto">
-                    <label>Select a date: </label>
+                <div class="card-body">
+                    <div class="d-flex">
+                        <label class="w-25
+">Select a date: </label>
+                        <input class="form-control w-25" type="date" id="date_input">
+                    </div>
+                    <br>
+                    <div class="overflow-auto" style="max-height: 90%">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                            <tr>
+                                <td>Station Name</td>
 
-                    <table class="table">
-                        <thead>
-                        <tr>
-                        <tr>
-                            <td>Prec</td>
-                            <td>Temp</td>
-                        </tr>
-                        </tr>
-                        </thead>
-                        {% if obj %}
-                            {% for i in obj %}
+                                <td>Precipitation</td>
+                                <td>Temperature</td>
+                            </tr>
+                            </tr>
+                            </thead>
+                            <tbody id="tableBody">
 
-                                <tr>
-                                    <td>{{ obj.prec }}</td>
-                                    <td>{{ obj.temp }}</td>
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
-
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <link rel="stylesheet" href="{% static 'css/common.css' %}">
@@ -224,48 +224,48 @@
                                      aria-labelledby="basemaps-tab">
                                     <div class="h-100 text-center">
                                         <div class=" pos d-block">
- <div class="map-thumb">
-                                            <a id="osm" href="#"
-                                               onclick="add_basemap(this.id);"><img
-                                                    src="{% static 'images/basemaps/osm.png' %}"
-                                                    alt="img1" class="img-thumbnail">
-                                            </a>
- </div>
-                                             <div class="map-thumb">
-                                            <a id="topo" href="#"
-                                               onclick="add_basemap(this.id);"><img
-                                                    src="{% static 'images/basemaps/topo.png' %}"
-                                                    alt="img1" class="img-thumbnail">
-                                            </a>
-                                             </div>
-                                             <div class="map-thumb">
-                                            <a id="gsatellite" href="#"
-                                               onclick="add_basemap(this.id);"><img
-                                                    src="{% static 'images/basemaps/gsatellite.png' %}"
-                                                    alt="img1" class="img-thumbnail">
-                                            </a>
-                                             </div>
- <div class="map-thumb">
-                                            <a id="satellite" href="#"
-                                               onclick="add_basemap(this.id);"><img
-                                                    src="{% static 'images/basemaps/satellite.png' %}"
-                                                    alt="img1" class="img-thumbnail">
-                                            </a>
- </div>
-                                             <div class="map-thumb">
-                                            <a id="terrain" href="#"
-                                               onclick="add_basemap(this.id);"><img
-                                                    src="{% static 'images/basemaps/terrain.png' %}"
-                                                    alt="img1" class="img-thumbnail">
-                                            </a>
-                                             </div>
-                                             <div class="map-thumb">
-                                            <a id="delorme" href="#"
-                                               onclick="add_basemap(this.id);"><img
-                                                    src="{% static 'images/basemaps/delorme.png' %}"
-                                                    alt="img1" class="img-thumbnail">
-                                            </a>
-                                             </div>
+                                            <div class="map-thumb">
+                                                <a id="osm" href="#"
+                                                   onclick="add_basemap(this.id);"><img
+                                                        src="{% static 'images/basemaps/osm.png' %}"
+                                                        alt="img1" class="img-thumbnail">
+                                                </a>
+                                            </div>
+                                            <div class="map-thumb">
+                                                <a id="topo" href="#"
+                                                   onclick="add_basemap(this.id);"><img
+                                                        src="{% static 'images/basemaps/topo.png' %}"
+                                                        alt="img1" class="img-thumbnail">
+                                                </a>
+                                            </div>
+                                            <div class="map-thumb">
+                                                <a id="gsatellite" href="#"
+                                                   onclick="add_basemap(this.id);"><img
+                                                        src="{% static 'images/basemaps/gsatellite.png' %}"
+                                                        alt="img1" class="img-thumbnail">
+                                                </a>
+                                            </div>
+                                            <div class="map-thumb">
+                                                <a id="satellite" href="#"
+                                                   onclick="add_basemap(this.id);"><img
+                                                        src="{% static 'images/basemaps/satellite.png' %}"
+                                                        alt="img1" class="img-thumbnail">
+                                                </a>
+                                            </div>
+                                            <div class="map-thumb">
+                                                <a id="terrain" href="#"
+                                                   onclick="add_basemap(this.id);"><img
+                                                        src="{% static 'images/basemaps/terrain.png' %}"
+                                                        alt="img1" class="img-thumbnail">
+                                                </a>
+                                            </div>
+                                            <div class="map-thumb">
+                                                <a id="delorme" href="#"
+                                                   onclick="add_basemap(this.id);"><img
+                                                        src="{% static 'images/basemaps/delorme.png' %}"
+                                                        alt="img1" class="img-thumbnail">
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
 

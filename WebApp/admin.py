@@ -10,7 +10,7 @@ admin.site.site_header = "SERVIR Template App Administration"
 
 class MeasurementAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = (
-    'station', 'measurement_date', 'measurement_temp', 'measurement_precip')  # list of fields to display
+        'station', 'measurement_date', 'measurement_temp', 'measurement_precip')  # list of fields to display
     list_filter = ('station__station_name',)  # filter by station name
     search_fields = ['station__station_name', ]  # search by station name
     date_hierarchy = 'measurement_date'  # filter by date
