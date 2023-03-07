@@ -3,10 +3,12 @@ let map;
 
 $(function () {
 
-    function get_chart(station_name) {
+    function get_chart(station_name, startdate, enddate) {
 
         const xhr = ajax_call("get-timeseries-sqlite", {
-            "station": "Sample Station PQRST"
+            "station": station_name,
+            "startdate": startdate,
+            "enddate": enddate
         });
         xhr.done(function (result) {// result is a dictionary with keys as dataset names and values as list of values for each day
             let series = [
@@ -85,7 +87,7 @@ $(function () {
                 series: series,
                 // Set the text to display when no data is available
                 lang: {
-                    noData: "No Data Found, Please try with a different station."
+                    noData: "No Data Found, Please try with a different station/date range."
                 },
                 // Set the style of the text when no data is available
                 noData: {
@@ -333,7 +335,8 @@ $(function () {
         var customId = this.options.customId;
 
         // alert('cliked customId: ' + customId);
-        get_chart(customId);
+        get_chart(customId, document.getElementById('date_input_start').value, document.getElementById('date_input_end').value);
+        gen_table(customId, document.getElementById('date_input_st').value, document.getElementById('date_input_en').value);
     }
 
     const xhr1 = ajax_call("get-station-coords", {});
@@ -350,14 +353,59 @@ $(function () {
             L.marker([result.stations[i].station_lat, result.stations[i].station_lon], markerOptions).addTo(map).on('click', markerOnClick);
         }
     });
+    get_chart("Sample Station ABCDE", document.getElementById('date_input_start').value, document.getElementById('date_input_end').value);
+    var date_input_st = document.getElementById('date_input_st');
+    date_input_st.valueAsDate = new Date();
 
-    get_chart("Sample Station ABCDE");
-    var date_input = document.getElementById('date_input');
-    date_input.valueAsDate = new Date();
+    date_input_st.onchange = function () {
+                if (this.value <= document.getElementById('date_input_en').value)
 
-    date_input.onchange = function () {
+        gen_table("Sample Station ABCDE",this.value,document.getElementById('date_input_en').value);
+                else
+                    alert("Start date should be less than end date");
+
+    };
+        var date_input_en = document.getElementById('date_input_en');
+    date_input_en.valueAsDate = new Date();
+
+    date_input_en.onchange = function () {
+                if (document.getElementById('date_input_st').value <= this.value)
+
+        gen_table("Sample Station ABCDE",this.value,document.getElementById('date_input_en').value);
+                else {
+                    alert("Start date should be less than end date");
+                }
+
+    };
+
+    var date_input_start = document.getElementById('date_input_start');
+    date_input_start.valueAsDate = new Date();
+
+    date_input_start.onchange = function () {
         console.log(this.value);
-        const xhr1 = ajax_call("get-measurements", {"date": this.value});
+        if (this.value <= document.getElementById('date_input_end').value)
+
+            get_chart("Sample Station ABCDE", this.value, document.getElementById('date_input_end').value);
+        else {
+            alert("Start date should be less than end date");
+        }
+    };
+
+    var date_input_end = document.getElementById('date_input_end');
+    date_input_end.valueAsDate = new Date();
+
+    date_input_end.onchange = function () {
+
+        if (document.getElementById('date_input_start').value <= this.value)
+
+            get_chart("Sample Station ABCDE", document.getElementById('date_input_start').value, this.value);
+        else {
+            alert("Start date should be less than end date");
+        }
+
+    };
+    function gen_table(station,startdate,enddate){
+             const xhr1 = ajax_call("get-measurements", {"station":station,"startdate": startdate,"enddate": enddate});
         xhr1.done(function (result) {
             console.log(result['data']);
 
@@ -383,5 +431,7 @@ $(function () {
             const tableBody = document.querySelector("#tableBody");
             tableBody.innerHTML = tableData;
         });
-    };
+    }
+
+
 });

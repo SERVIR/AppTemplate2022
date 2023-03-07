@@ -126,11 +126,18 @@ def get_timeseries_sqlite(request):
     json_obj = {}
     try:
         station = request.POST["station"]  # Get the station name from the request
+        startdate = request.POST["startdate"]  # Get the start date from the request
+        enddate = request.POST["enddate"]  # Get the end date from the request
+        print(startdate)
+        print(station)
+        print(enddate)
         if station != "default":
-            measurement_rows = Measurement.objects.all().filter(station_id=3).only("measurement_date",
+            measurement_rows = Measurement.objects.all().filter(measurement_date__range=[startdate,enddate]).filter(station__station_name=station).only("measurement_date",
                                                                                    "measurement_temp",
                                                                                    "measurement_precip")[:10]
+            print(measurement_rows)
             for row in measurement_rows:
+                print(row)
                 dt = row.measurement_date
                 time_stamp = calendar.timegm(dt.timetuple()) * 1000
                 val = row.measurement_temp
@@ -184,7 +191,7 @@ def stations(request):
 
 
 def get_measurements(request):
-    obj = Measurement.objects.all().filter(measurement_date=request.POST["date"]).values("station__station_name",
+    obj = Measurement.objects.all().filter(measurement_date__range=[request.POST["startdate"],request.POST["enddate"]]).filter(station__station_name=request.POST["station"]).values("station__station_name",
                                                                                          "measurement_precip",
                                                                                          "measurement_temp")
     json_obj = {}

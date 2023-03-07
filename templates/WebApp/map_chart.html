@@ -69,10 +69,17 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex">
-                        <label class="w-25
-">Select a date: </label>
-                        <input class="form-control w-25" type="date" id="date_input">
+                    <div class="d-flex">
+                        <label class="
+">Start date: </label>
+                        <input class="form-control" type="date" id="date_input_st">
                     </div>
+                    <div class="d-flex">
+                        <label class="
+">End date: </label>
+                        <input class="form-control" type="date" id="date_input_en">
+                    </div>
+                        </div>
                     <br>
                     <div class="overflow-auto" style="max-height: 90%">
                         <table class="table">
@@ -99,7 +106,19 @@
                     <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
                 </div>
                 <div class="card-body">
-                    <figure class="highcharts-figure h-100">
+                    <div class="d-flex">
+                    <div class="d-flex">
+                        <label class="
+">Start date: </label>
+                        <input class="form-control" type="date" id="date_input_start">
+                    </div>
+                    <div class="d-flex">
+                        <label class="
+">End date: </label>
+                        <input class="form-control" type="date" id="date_input_end">
+                    </div>
+                        </div>
+                    <figure class="highcharts-figure h-75">
                         <div id="chart-container_new"></div>
                     </figure>
                 </div>
