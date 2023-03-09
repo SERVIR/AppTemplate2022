@@ -13,13 +13,13 @@ $(function () {
         xhr.done(function (result) {// result is a dictionary with keys as dataset names and values as list of values for each day
             let series = [
                 {
-                    data: result.plot_temp,// list of temperature values for each day for the selected station
+                    data: result.plot_temp.sort((a, b) => a[0] - b[0]),// list of temperature values for each day for the selected station
                     name: "Temperature",
                     color: "green",
                     yAxis: 0
                 },
                 {
-                    data: result.plot_precip,// list of precipitation values for each day for the selected station
+                    data: result.plot_precip.sort((a, b) => a[0] - b[0]),// list of precipitation values for each day for the selected station
                     name: "Precipitation",
                     color: "lightblue",
                     yAxis: 1
@@ -332,11 +332,21 @@ $(function () {
     });
 
     function markerOnClick(e) {
+         const center = map.getCenter();
+        const zoom = map.getZoom();
+        $("#slideOut").addClass('showSlideOut');
+        $("#map_chart").addClass('slideMap');
+
+        map.invalidateSize();
+        map.setView([center.lat, center.lng], zoom, {animation: true});
+
+        map.zoomControl.setPosition('topleft');
         var customId = this.options.customId;
 
         // alert('cliked customId: ' + customId);
         get_chart(customId, document.getElementById('date_input_start').value, document.getElementById('date_input_end').value);
         gen_table(customId, document.getElementById('date_input_st').value, document.getElementById('date_input_en').value);
+
     }
 
     const xhr1 = ajax_call("get-station-coords", {});
@@ -412,9 +422,10 @@ $(function () {
             var arr = [];
             for (let i = 0; i < result['data'].length; i++) {
                 var station = result['data'][i]['station'];
+                 var date = result['data'][i]['date'];
                 var prec = result['data'][i]['precip'];
                 var temp = result['data'][i]['temp'];
-                arr.push({"station": station, "prec": prec, "temp": temp});
+                arr.push({"station": station,"date":date, "prec": prec, "temp": temp});
             }
 
 
@@ -422,6 +433,7 @@ $(function () {
                 return (
                     `<tr>
        <td>${value.station}</td>
+       <td>${value.date}</td>
        <td>${value.prec}</td>
        <td>${value.temp}</td>
     </tr>`

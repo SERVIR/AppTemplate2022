@@ -180,3 +180,7 @@ label {
     margin: 5px;
     max-width: calc(25% - 12px);
 }
+.highcharts-contextmenu {
+    top: -100px!important;
+    right: 7px!important;
+}
