@@ -4,7 +4,8 @@
 }
 
 .team-member {
-    height: 150px;
+    height: 100px;
+    border-radius: 7rem;
 }
 
 .org-logo {
