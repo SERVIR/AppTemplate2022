@@ -4,10 +4,57 @@
 }
 
 .team-member {
-    height: 100px;
+    height: 150px;
     border-radius: 7rem;
 }
 
 .org-logo {
     height: 100px;
+}
+
+.member-wrap {
+    display: flex;
+}
+
+.member-image {
+    width: unset;
+}
+
+.member-details {
+    flex-grow: 1;
+    margin: 0 15px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.modal-title {
+    color: #4e73df !important;
+    font-weight: 700 !important;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.modal-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+@media screen and (max-width: 800px) {
+    .member-wrap {
+        display: block;
+    }
+
+    .member-details, .member-image, .member-image img {
+        float: unset;
+        width: 100%;
+    }
+
+    .member-details img {
+        flex-grow: unset;
+        width: 100%;
+    }
 }

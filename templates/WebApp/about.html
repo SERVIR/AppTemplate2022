@@ -3,10 +3,11 @@
 {% block title %}SERVIR AppTemplate - About{% endblock %}
 {% block script %}
     <!-- Custom styles-->
-
-    <!-- Custom scripts-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link href="{% static '/css/about.css' %}" rel="stylesheet" type="text/css">
-
+    <!-- Custom scripts-->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="{% static 'js/about.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -49,82 +50,156 @@
                         <h6 class="m-0 font-weight-bold text-primary">Team members</h6>
                     </div>
                     <div class="card-body text-center">
-                                <a href=""  class="p-3 d-inline-block text-decoration-none"><img src="{% static 'images/teammembers/TeamMember1.jpg' %}" alt="img1"
-                                          class="team-member">
-                                    <p>Team member 1</p></a>
+                                <span onclick="open_more_info(this)"
+                                      class="p-3 d-inline-block text-decoration-none pointer"><img
+                                        src="{% static 'images/teammembers/TeamMember1.jpg' %}" alt="img1"
+                                        class="team-member">
+                                    <p>Team member 1</p>
+                                    <span style="display:none;" class="member_title">
+                                    PI: The University of Alabama in Huntsville
+                                    </span>
+                                    <span style="display:none;" class="more_info">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </span>
+                                </span>
+                        <span onclick="open_more_info(this)"
+                              class="p-3 d-inline-block text-decoration-none pointer"><img
+                                src="{% static 'images/teammembers/TeamMember2.jpg' %}" alt="img1"
+                                class="team-member">
+                                            <p>Team member 2</p>
+                                            <span style="display:none;" class="member_title">
+                                            Co-I: Some university
+                                            </span>
+                                            <span style="display:none;" class="more_info">
+                                                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                consequat.
+                                            </span>
+                                        </span>
 
-                                <a href=""  class="p-3 d-inline-block text-decoration-none"><img src="{% static 'images/teammembers/TeamMember2.jpg' %}" alt="img1"
-                                          class="team-member">
-                                    <p>Team member 2</p></a>
+                        <span onclick="open_more_info(this)"
+                              class="p-3 d-inline-block text-decoration-none pointer"><img
+                                src="{% static 'images/teammembers/TeamMember3.jpg' %}" alt="img1"
+                                class="team-member">
+                                                    <p>Team member 3</p>
+                                                    <span style="display:none;" class="member_title">
+                                                    PI: The University of Amazingness
+                                                    </span>
+                                                    <span style="display:none;" class="more_info">
+                                                        Lorem sunt in culpa qui officia deserunt mollit anim id est , sed do eiusmod
+                                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                                        non proident, exercitation ullamco laboris nisi ut aliquip ex ea laborum.
+                                                    </span>
+                                        </span>
 
-                                <a href=""  class="p-3 d-inline-block text-decoration-none"><img src="{% static 'images/teammembers/TeamMember3.jpg' %}" alt="img1"
-                                          class="team-member">
-                                    <p>Team member 3</p></a>
+                        <span onclick="open_more_info(this)"
+                              class="p-3 d-inline-block text-decoration-none pointer"><img
+                                src="{% static 'images/teammembers/TeamMember4.jpg' %}" alt="img1"
+                                class="team-member">
+                                                    <p>Team member 4</p>
+                                                    <span style="display:none;" class="member_title">
+                                                    PI: The University of Where am I
+                                                    </span>
+                                                    <span style="display:none;" class="more_info">
+                                                        Ut enim ad minim veniam,
+                                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                        cillum dolore eu fugiat nulla pariatur.
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                        tempor incididunt ut labore et dolore magna aliqua.
+                                                        Excepteur sint occaecat cupidatat
+                                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </span>
+                                        </span>
 
-                                <a href=""  class="p-3 d-inline-block text-decoration-none"><img src="{% static 'images/teammembers/TeamMember4.jpg' %}" alt="img1"
-                                          class="team-member">
-                                    <p>Team member 4</p></a>
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Disclaimer -->
-        <!-- Update the text inside <strong> in order to update the disclaimer text -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card shadow ml-4 mr-4 mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Disclaimer</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-left text-dark">
-                            SERVIR's standard disclaimer is
-                            <hr>
-                            <strong>SERVIR Program, NASA, USAID and SERVIR partner organizations
-                                make no express or implied warranty of this application as to the
-                                merchantability or fitness for any particular purpose.
-                                Neither the US Government nor its contractors shall be liable for
-                                special, consequential or incidental damages attributed to this application.</strong>
-                            <hr>
-                            Modify it to add other organizations that contributed to the
-                            development of this application as necessary.
-                        </div>
+    </div>
+    <!-- Disclaimer -->
+    <!-- Update the text inside <strong> in order to update the disclaimer text -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow ml-4 mr-4 mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Disclaimer</h6>
+                </div>
+                <div class="card-body">
+                    <div class="text-left text-dark">
+                        SERVIR's standard disclaimer is
+                        <hr>
+                        <strong>SERVIR Program, NASA, USAID and SERVIR partner organizations
+                            make no express or implied warranty of this application as to the
+                            merchantability or fitness for any particular purpose.
+                            Neither the US Government nor its contractors shall be liable for
+                            special, consequential or incidental damages attributed to this application.</strong>
+                        <hr>
+                        Modify it to add other organizations that contributed to the
+                        development of this application as necessary.
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Logos -->
-        <!-- Update the path inside src of <img> tag in order to update the logo images -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card shadow m-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Logos</h6>
-                    </div>
-                    <div class="card-body text-center">
-                        <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/AMZ_Alliance.jpg' %}"></a>
-                        <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/ICRISAT.jpg' %}"></a>
-                        <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/RCMRD.jpg' %}"></a>
-                        <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/ICIMOD.jpg' %}"></a>
-                        <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/ADPC.jpg' %}"></a>
+    </div>
+    <!-- Logos -->
+    <!-- Update the path inside src of <img> tag in order to update the logo images -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow m-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Logos</h6>
+                </div>
+                <div class="card-body text-center">
+                    <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/AMZ_Alliance.jpg' %}"></a>
+                    <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/ICRISAT.jpg' %}"></a>
+                    <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/RCMRD.jpg' %}"></a>
+                    <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/ICIMOD.jpg' %}"></a>
+                    <a href="" class="p-3"><img class="org-logo" src="{% static 'images/logos/ADPC.jpg' %}"></a>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-info ml-4 mt-4" data-bs-toggle="modal"
-                        data-bs-target="#aboutModal">
-                    Learn how to modify this page
-                </button>
-            </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-info ml-4 mt-4" data-bs-toggle="modal"
+                    data-bs-target="#aboutModal">
+                Learn how to modify this page
+            </button>
         </div>
-        <br>
+    </div>
+    <br>
     </div>
     {% include 'WebApp/about_about.html' %}
-
+    <div class="modal fade" id="teamMemberModal" tabindex="-1" role="dialog" aria-labelledby="teamMemberModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teamMemberModalLabel">Team Member Name</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add team member information here -->
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
