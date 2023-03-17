@@ -14,6 +14,7 @@
 
 .member-image {
     width: unset;
+    margin-bottom: 10px;
 }
 .member-image img {
     border-radius: 10px;
