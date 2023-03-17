@@ -12,9 +12,9 @@ function open_more_info(which){
     bio += '<img src="' + member_img +'" title="'+ member_name +'" alt="'+ member_name +'">';
     bio += '</div>';
     bio += '<div class="member-details">';
-    bio += '<p className="name">'+ member_name +'</p>';
-    bio += '<p className="title">'+ member_title +'</p>';
-    bio += '<p className="biography">'+ member_info +'</p>';
+    bio += '<p class="team-name">'+ member_name +'</p>';
+    bio += '<p class="team-title">'+ member_title +'</p>';
+    bio += '<p class="team-biography">'+ member_info +'</p>';
     bio += '</div></div>';
 
 

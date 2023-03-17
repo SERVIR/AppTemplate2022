@@ -15,10 +15,21 @@
 .member-image {
     width: unset;
 }
+.member-image img {
+    border-radius: 10px;
+}
 
 .member-details {
     flex-grow: 1;
     margin: 0 15px;
+}
+
+.team-name{
+    font-weight: bold;
+}
+.team-biography{
+    height: 100px;
+    overflow-y: auto;
 }
 
 .pointer {
