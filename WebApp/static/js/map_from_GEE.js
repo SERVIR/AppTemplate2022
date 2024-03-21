@@ -13,7 +13,7 @@ $(function () {
         localStorage.setItem("updated_format", true);
     }
 // Initialize with map control
-    map = L.map('map2', {center: [42.35, -71.08], zoom: 3});
+    map = L.map('map2', {center: [89, 24], zoom: 3});
     osm.addTo(map);
     let gee_layer, user_layer;
 

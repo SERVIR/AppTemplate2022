@@ -1,4 +1,4 @@
-name: SERVIR_AppTemplate
+ name: SERVIR_AppTemplate
 channels:
   - defaults
   - conda-forge
