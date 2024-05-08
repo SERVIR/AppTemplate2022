@@ -14,4 +14,5 @@ dependencies:
   - pip
   - pip:
       - climateserv==0.0.24
+      - asgiref==3.8.0
 prefix: C:\ProgramData\Anaconda3\envs\SERVIR_AppTemplate
